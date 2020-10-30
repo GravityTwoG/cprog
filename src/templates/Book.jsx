@@ -182,26 +182,25 @@ export const StyledHeading = styled("h1")`
 
 export const Edit = styled("div")`
   padding: 1rem 1.5rem;
-  text-align: right;
 
   a {
+    width: 150px;
     font-size: 14px;
     font-weight: 500;
     line-height: 1em;
     text-decoration: none;
-    color: #555;
-    border: 1px solid rgb(211, 220, 228);
-    cursor: pointer;
-    border-radius: 3px;
-    transition: all 0.2s ease-out 0s;
-    text-decoration: none;
     color: rgb(36, 42, 49);
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgba(116, 129, 141, 0.1) 0px 1px 1px 0px;
-    height: 30px;
     padding: 5px 16px;
+
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(211, 220, 228);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease-out 0s;
+    box-shadow: rgba(116, 129, 141, 0.1) 0px 1px 1px 0px;
     &:hover {
       background-color: rgb(245, 247, 249);
+      color: rgb(36, 42, 49);
     }
   }
 `

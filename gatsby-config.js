@@ -6,6 +6,7 @@
 const config = require("./config")
 
 const plugins = [
+  "gatsby-plugin-react-helmet",
   {
     resolve: "gatsby-source-filesystem",
     options: {
@@ -13,11 +14,26 @@ const plugins = [
       path: `${__dirname}/content/`,
     },
   },
-  "gatsby-transformer-remark",
   {
     resolve: "gatsby-plugin-mdx",
     options: {
       extensions: [".md"],
+    },
+  },
+  "gatsby-plugin-sharp",
+  {
+    resolve: "gatsby-transformer-remark",
+    options: {
+      plugins: [
+        "gatsby-remark-relative-images",
+        {
+          resolve: "gatsby-remark-images",
+          options: {
+            maxWidth: 750,
+            linkImagesToOriginal: false,
+          },
+        },
+      ],
     },
   },
 ]
@@ -37,7 +53,6 @@ module.exports = {
     headerTitle: config.header.title,
     githubUrl: config.header.githubUrl,
     helpUrl: config.header.helpUrl,
-    tweetText: config.header.tweetText,
     headerLinks: config.header.links,
     siteUrl: config.gatsby.siteUrl,
   },

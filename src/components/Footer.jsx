@@ -1,36 +1,24 @@
-import React from 'react';
-import { ExternalLink } from 'react-feather';
-import styled from '@emotion/styled';
+import React from "react"
+import { ExternalLink } from "react-feather"
+import styled from "@emotion/styled"
+import { Link } from "./Link"
 
-const StyledLink = styled('a')`
-  color: #5c6975;
-  text-decoration: none;
-  font-weight: ${({ level }) => (level === 0 ? 700 : 400)};
-  display: inline-block;
-  position: relative;
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.link};
-  }
-
-  svg {
-    // external link icon
-    margin-left: 0.5rem;
-  }
-`;
+const StyledText = styled("p")`
+  color: ${props => props.theme.colors.text};
+`
 
 const StyledFooter = styled.footer`
   padding: 1rem 0;
-`;
+`
 
 export const Footer = () => (
   <StyledFooter>
-    <p>
+    <StyledText className="paragraph">
       <strong>Все материалы взяты с сайта </strong>
-      <StyledLink href="http://ermak.cs.nstu.ru/cprog/html/">
-        http://ermak.cs.nstu.ru/cprog/html/
-        <ExternalLink size={14} />
-      </StyledLink>
-    </p>
+      <Link to="http://ermak.cs.nstu.ru/cprog/html/">
+        ermak.cs.nstu.ru/cprog/html
+        <ExternalLink size={14} style={{ marginLeft: "0.3rem" }} />
+      </Link>
+    </StyledText>
   </StyledFooter>
-);
+)
