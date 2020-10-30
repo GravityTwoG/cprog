@@ -102,7 +102,7 @@ const BookTemplate = props => {
       }
       return null
     })
-  console.log(nav)
+
   // meta tags
   const metaTitle = markdownRemark.frontmatter.metaTitle
 
