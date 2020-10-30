@@ -32,6 +32,7 @@ const Wrapper = styled("div")`
 
 const Content = styled("main")`
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
   margin: 0px 88px;
   padding-top: 3rem;
@@ -56,6 +57,10 @@ const MaxWidth = styled("div")`
   }
 `
 
+const ChildrenContainer = styled.div`
+  flex: 1;
+`
+
 const LeftSideBarWidth = styled("div")`
   width: 298px;
 `
@@ -78,8 +83,10 @@ export const Layout = ({ children, location }) => (
           />
         ) : null}
         <Content>
+          <ChildrenContainer>
+            <MaxWidth>{children}</MaxWidth>
+          </ChildrenContainer>
           <MaxWidth>
-            {children}
             <Footer />
           </MaxWidth>
         </Content>
