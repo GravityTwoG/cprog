@@ -33,11 +33,9 @@ export const pageQuery = graphql`
     allMarkdownRemark {
       edges {
         node {
-          frontmatter {
-            title
-          }
           fields {
             slug
+            title
           }
         }
       }
@@ -104,7 +102,7 @@ const BookTemplate = props => {
       }
       return null
     })
-
+  console.log(nav)
   // meta tags
   const metaTitle = markdownRemark.frontmatter.metaTitle
 
