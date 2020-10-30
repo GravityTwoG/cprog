@@ -1,12 +1,17 @@
 import React from "react"
 import { Layout } from "../components/Layout"
 import { Link } from "../components/Link"
+import { StyledText } from "../components/StyledText"
 
-const Page404 = () => {
+const Page404 = props => {
   return (
-    <Layout>
-      <h1>Такой страницы не существует</h1>
-      <Link to="/">Главная</Link>
+    <Layout {...props}>
+      <StyledText>
+        <h1>Такой страницы не существует</h1>
+        <p className="paragraph">
+          <Link to="/">Главная</Link>
+        </p>
+      </StyledText>
     </Layout>
   )
 }
