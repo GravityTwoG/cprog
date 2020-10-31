@@ -18,7 +18,7 @@ const plugins = [
   {
     resolve: "gatsby-plugin-mdx",
     options: {
-      extensions: [".md"],
+      extensions: [".md", ".mdx"],
       gatsbyRemarkPlugins: [
         "gatsby-remark-relative-images",
         {

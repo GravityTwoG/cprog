@@ -10,7 +10,7 @@ const StyledPre = styled("pre")`
   background: ${props => props.theme.colors.preFormattedText};
 `
 
-export default {
+export const mdxComponents = {
   h1: ({ children, ...props }) => (
     <h1
       className="heading1"
