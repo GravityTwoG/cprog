@@ -14,17 +14,12 @@ const plugins = [
       path: `${__dirname}/content/`,
     },
   },
+  "gatsby-plugin-sharp",
   {
     resolve: "gatsby-plugin-mdx",
     options: {
       extensions: [".md"],
-    },
-  },
-  "gatsby-plugin-sharp",
-  {
-    resolve: "gatsby-transformer-remark",
-    options: {
-      plugins: [
+      gatsbyRemarkPlugins: [
         "gatsby-remark-relative-images",
         {
           resolve: "gatsby-remark-images",

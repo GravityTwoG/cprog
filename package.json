@@ -16,6 +16,8 @@
   "dependencies": {
     "@emotion/core": "^10.0.35",
     "@emotion/styled": "^10.0.27",
+    "@mdx-js/mdx": "^1.6.19",
+    "@mdx-js/react": "^1.6.19",
     "emotion": "^10.0.27",
     "emotion-theming": "^10.0.27",
     "gatsby": "^2.24.85",
@@ -25,7 +27,6 @@
     "gatsby-remark-images": "^3.3.40",
     "gatsby-remark-relative-images": "^2.0.2",
     "gatsby-source-filesystem": "^2.3.37",
-    "gatsby-transformer-remark": "^2.8.47",
     "prism-react-renderer": "^1.1.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",

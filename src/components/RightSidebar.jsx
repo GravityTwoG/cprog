@@ -101,9 +101,9 @@ export const ListItem = ({ className, active, level, ...props }) => {
 }
 
 export const RightSidebar = ({ location }) => {
-  const { allMarkdownRemark } = useStaticQuery(graphql`
+  const { allMdx } = useStaticQuery(graphql`
     query RightSidebarQuery {
-      allMarkdownRemark {
+      allMdx {
         edges {
           node {
             fields {
@@ -118,11 +118,8 @@ export const RightSidebar = ({ location }) => {
 
   let finalNavItems
 
-  if (
-    allMarkdownRemark.edges !== undefined &&
-    allMarkdownRemark.edges.length > 0
-  ) {
-    allMarkdownRemark.edges.forEach(item => {
+  if (allMdx.edges !== undefined && allMdx.edges.length > 0) {
+    allMdx.edges.forEach(item => {
       let innerItems
 
       if (item !== undefined) {

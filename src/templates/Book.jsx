@@ -13,13 +13,13 @@ const forcedNavOrder = config.sidebar.forcedNavOrder
 
 export const pageQuery = graphql`
   query BookQuery($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    mdx(fields: { slug: { eq: $slug } }) {
       frontmatter {
         metaDescription
         metaTitle
         title
       }
-      html
+      body
       fields {
         slug
         title
@@ -30,7 +30,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMarkdownRemark {
+    allMdx {
       edges {
         node {
           fields {
@@ -53,8 +53,8 @@ const BookTemplate = props => {
     return null
   }
   const {
-    allMarkdownRemark,
-    markdownRemark,
+    allMdx,
+    mdx,
     site: {
       siteMetadata: { docsLocation },
     },
@@ -62,7 +62,7 @@ const BookTemplate = props => {
 
   const gitHub = require("../components/images/github.svg")
 
-  const navItems = allMarkdownRemark.edges
+  const navItems = allMdx.edges
     .map(({ node }) => node.fields.slug)
     .filter(slug => slug !== "/")
     .sort()
@@ -94,7 +94,7 @@ const BookTemplate = props => {
     .concat(navItems.items)
     .map(slug => {
       if (slug) {
-        const { node } = allMarkdownRemark.edges.find(
+        const { node } = allMdx.edges.find(
           ({ node }) => node.fields.slug === slug
         )
 
@@ -104,9 +104,9 @@ const BookTemplate = props => {
     })
 
   // meta tags
-  const metaTitle = markdownRemark.frontmatter.metaTitle
+  const metaTitle = mdx.frontmatter.metaTitle
 
-  const metaDescription = markdownRemark.frontmatter.metaDescription
+  const metaDescription = mdx.frontmatter.metaDescription
 
   let canonicalUrl = config.gatsby.siteUrl
 
@@ -114,7 +114,7 @@ const BookTemplate = props => {
     config.gatsby.pathPrefix !== "/"
       ? canonicalUrl + config.gatsby.pathPrefix
       : canonicalUrl
-  canonicalUrl = canonicalUrl + markdownRemark.fields.slug
+  canonicalUrl = canonicalUrl + mdx.fields.slug
 
   return (
     <Layout {...props}>
@@ -138,13 +138,13 @@ const BookTemplate = props => {
       </Helmet>
 
       <div className={"titleWrapper"}>
-        <StyledHeading>{markdownRemark.fields.title}</StyledHeading>
+        <StyledHeading>{mdx.fields.title}</StyledHeading>
         <Edit className={"mobileView"}>
           {docsLocation && (
             <Link
               className={"gitBtn"}
               target="_blank"
-              to={`${docsLocation}/${markdownRemark.parent.relativePath}`}
+              to={`${docsLocation}/${mdx.parent.relativePath}`}
             >
               <img src={gitHub} alt={"Github logo"} /> Edit on GitHub
             </Link>
@@ -153,12 +153,11 @@ const BookTemplate = props => {
       </div>
 
       <StyledMainWrapper>
-        {/* <MDXRenderer>{markdownRemark.excerpt}</MDXRenderer> */}
-        <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }}></div>
+        <MDXRenderer>{mdx.body}</MDXRenderer>
       </StyledMainWrapper>
 
       <div className={"addPaddTopBottom"}>
-        <NextPrevious mdx={markdownRemark} nav={nav} />
+        <NextPrevious mdx={mdx} nav={nav} />
       </div>
     </Layout>
   )

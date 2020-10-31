@@ -93,9 +93,9 @@ const Divider = styled(props => (
 `
 
 export const Sidebar = () => {
-  const { allMarkdownRemark } = useStaticQuery(graphql`
+  const { allMdx } = useStaticQuery(graphql`
     query SidebarQuery {
-      allMarkdownRemark {
+      allMdx {
         edges {
           node {
             id
@@ -118,7 +118,7 @@ export const Sidebar = () => {
         />
       ) : null}
       <ul className={"sideBarUL"}>
-        <Tree edges={allMarkdownRemark.edges} />
+        <Tree edges={allMdx.edges} />
 
         {config.sidebar.links && config.sidebar.links.length > 0 && <Divider />}
 
