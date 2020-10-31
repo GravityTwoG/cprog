@@ -14,7 +14,7 @@ export default {
   h1: ({ children, ...props }) => (
     <h1
       className="heading1"
-      id={props.children.replace(/\s+/g, "").toLowerCase()}
+      id={children.replace(/\s+/g, "").toLowerCase()}
       {...props}
     >
       {children}
@@ -23,7 +23,7 @@ export default {
   h2: ({ children, ...props }) => (
     <h2
       className="heading2"
-      id={props.children.replace(/\s+/g, "").toLowerCase()}
+      id={children.replace(/\s+/g, "").toLowerCase()}
       {...props}
     >
       {children}
@@ -32,7 +32,7 @@ export default {
   h3: ({ children, ...props }) => (
     <h3
       className="heading3"
-      id={props.children.replace(/\s+/g, "").toLowerCase()}
+      id={children.replace(/\s+/g, "").toLowerCase()}
       {...props}
     >
       {children}
@@ -41,7 +41,7 @@ export default {
   h4: ({ children, ...props }) => (
     <h4
       className="heading4"
-      id={props.children.replace(/\s+/g, "").toLowerCase()}
+      id={children.replace(/\s+/g, "").toLowerCase()}
       {...props}
     >
       {children}
@@ -50,7 +50,7 @@ export default {
   h5: ({ children, ...props }) => (
     <h5
       className="heading5"
-      id={props.children.replace(/\s+/g, "").toLowerCase()}
+      id={children.replace(/\s+/g, "").toLowerCase()}
       {...props}
     >
       {children}
@@ -59,7 +59,7 @@ export default {
   h6: ({ children, ...props }) => (
     <h6
       className="heading6"
-      id={props.children.replace(/\s+/g, "").toLowerCase()}
+      id={children.replace(/\s+/g, "").toLowerCase()}
       {...props}
     >
       {children}
