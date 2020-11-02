@@ -34,7 +34,7 @@ const Content = styled("main")`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  margin: 0px 88px;
+  margin: 0px 48px;
   padding-top: 3rem;
   background: ${({ theme }) => theme.colors.background};
 
@@ -45,7 +45,6 @@ const Content = styled("main")`
   @media only screen and (max-width: 1023px) {
     padding-left: 0;
     margin: 0 10px;
-    padding-top: 3rem;
   }
 `
 
