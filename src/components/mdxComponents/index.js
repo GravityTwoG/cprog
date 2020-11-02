@@ -6,8 +6,17 @@ import CodeBlock from "./codeBlock"
 import AnchorTag from "./anchor"
 
 const StyledPre = styled("pre")`
-  padding: 16px;
+  padding: 16px 16px;
   background: ${props => props.theme.colors.preFormattedText};
+
+  @media (max-width: 768px) {
+    padding: 8px 8px;
+  }
+`
+
+const StyledGrid = styled(Grid)`
+  padding-left: 0;
+  padding-right: 0;
 `
 
 export const mdxComponents = {
@@ -73,7 +82,7 @@ export const mdxComponents = {
   ),
   code: CodeBlock,
   a: AnchorTag,
-  Grid,
+  Grid: StyledGrid,
   Row,
   Col,
   // TODO add `img`

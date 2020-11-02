@@ -1,6 +1,5 @@
 import styled from "@emotion/styled"
 import React from "react"
-import { Grid, Row, Col } from "react-flexbox-grid"
 import { mdxComponents as MDXC } from "../src/components/mdxComponents"
 
 const selfImage = require("./Self.jpg")
@@ -25,9 +24,9 @@ export const IndexPage = () => {
         </MDXC.a>
       </span>
 
-      <Grid fluid>
-        <Row>
-          <Col xs>
+      <MDXC.Grid fluid>
+        <MDXC.Row>
+          <MDXC.Col xs>
             <MDXC.p>
               <MDXC.pre>
                 <b
@@ -44,12 +43,12 @@ export const IndexPage = () => {
                 </div>
               </MDXC.pre>
             </MDXC.p>
-          </Col>
-          <Col xs>
+          </MDXC.Col>
+          <MDXC.Col xs>
             <StyledImage src={selfImage} alt="self" />
-          </Col>
-        </Row>
-      </Grid>
+          </MDXC.Col>
+        </MDXC.Row>
+      </MDXC.Grid>
 
       <MDXC.p>
         <strong>
