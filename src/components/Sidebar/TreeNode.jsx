@@ -2,6 +2,7 @@ import React from "react"
 import OpenedSvg from "../images/opened"
 import ClosedSvg from "../images/closed"
 import config from "../../../config"
+import { StyledListItem } from "./items"
 import { Link } from "../Link"
 
 export const TreeNode = ({
@@ -33,7 +34,7 @@ export const TreeNode = ({
   const calculatedClassName = `${className} item ${active ? "active" : ""}`
 
   return (
-    <li className={calculatedClassName}>
+    <StyledListItem className={calculatedClassName}>
       {title && (
         <Link to={url}>
           {title}
@@ -48,7 +49,6 @@ export const TreeNode = ({
           ) : null}
         </Link>
       )}
-
       {!isCollapsed && hasChildren ? (
         <ul>
           {items.map((item, index) => (
@@ -61,6 +61,6 @@ export const TreeNode = ({
           ))}
         </ul>
       ) : null}
-    </li>
+    </StyledListItem>
   )
 }

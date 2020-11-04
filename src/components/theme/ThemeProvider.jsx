@@ -1,10 +1,14 @@
-import React from "react"
+import React, { useContext } from "react"
 import { ThemeProvider as EmotionThemeProvider } from "emotion-theming"
 import { Global } from "@emotion/core"
 
 import { lightTheme, darkTheme } from "./theme"
-import { Header } from "../Header"
 import { baseStyles } from "../styles/GlobalStyles"
+
+const ThemeContext = React.createContext({
+  isDarkThemeActive: false,
+  toggleActiveTheme: () => {},
+})
 
 class ThemeProvider extends React.Component {
   state = {
@@ -35,26 +39,29 @@ class ThemeProvider extends React.Component {
   }
 
   render() {
-    const { children, location } = this.props
+    const { children } = this.props
 
     const { isDarkThemeActive } = this.state
 
     const currentActiveTheme = isDarkThemeActive ? darkTheme : lightTheme
 
     return (
-      <div>
+      <ThemeContext.Provider
+        value={{ isDarkThemeActive, toggleActiveTheme: this.toggleActiveTheme }}
+      >
         <EmotionThemeProvider theme={currentActiveTheme}>
           <Global styles={baseStyles} />
-          <Header
-            location={location}
-            isDarkThemeActive={isDarkThemeActive}
-            toggleActiveTheme={this.toggleActiveTheme}
-          />
           {children}
         </EmotionThemeProvider>
-      </div>
+      </ThemeContext.Provider>
     )
   }
 }
 
 export default ThemeProvider
+
+export const useThemeContext = () => {
+  const { toggleActiveTheme, isDarkThemeActive } = useContext(ThemeContext)
+
+  return [toggleActiveTheme, isDarkThemeActive]
+}

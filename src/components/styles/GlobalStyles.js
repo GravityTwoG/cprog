@@ -39,6 +39,10 @@ export const baseStyles = injectGlobal`
 
   body {
     font-family: 'Roboto';
+    overflow-x: hidden;
+  }
+  .ovh {
+    overflow: hidden;
   }
   .visibleMobile {
     display: none;
@@ -56,6 +60,8 @@ export const baseStyles = injectGlobal`
   a:hover {
     text-decoration: none;
   }
+
+  
   .displayInline {
     display: inline-block;
   }
@@ -69,18 +75,7 @@ export const baseStyles = injectGlobal`
     padding: 8px 5px;
     display: none;
   }
-  .navBarToggle .iconBar {
-    display: block;
-    width: 22px;
-    height: 2px;
-    border-radius: 1px;
-    margin: 0 auto;
-    margin-top: 4px;
-    background-color: #001934;
-  }
-  .navBarToggle .iconBar:first-child {
-    margin-top: 0px;
-  }
+  
   .video-responsive iframe {
     position: absolute;
     width: 100%;
@@ -126,15 +121,6 @@ export const baseStyles = injectGlobal`
   .githubSection:hover {
     text-decoration: none;
     opacity: 1;
-  }
-
-  .navbar-default .navbar-toggle .icon-bar {
-    background-color: #fff !important;
-  }
-
-  .navbar-default .navbar-toggle:focus,
-  .navbar-default .navbar-toggle:hover {
-    background-color: #001933;
   }
 
   .headerWrapper {
@@ -268,7 +254,7 @@ export const baseStyles = injectGlobal`
     z-index: 1;
     padding: 15px;
     position: relative;
-    height: 80px;
+    height: 70px;
   }
   .navBarHeader {
     min-width: 335px;
@@ -424,7 +410,6 @@ export const baseStyles = injectGlobal`
   }
 
   .sideBarUL li a {
-    /* color: #fff; */
     font-size: 14px;
     font-weight: 500;
     line-height: 1.5;
@@ -467,7 +452,6 @@ export const baseStyles = injectGlobal`
   }
 
   .sideBarUL .item > a {
-    color: #000;
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -798,11 +782,6 @@ export const baseStyles = injectGlobal`
     .navBarUL li a {
       font-size: 14px;
       padding: 10px 15px;
-    }
-
-    .navBarDefault {
-      display: block;
-      height: auto;
     }
 
     .navBarToggle {

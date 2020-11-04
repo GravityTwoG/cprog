@@ -8,6 +8,7 @@ import { mdxComponents } from "./mdxComponents"
 import { Footer } from "./Footer.jsx"
 import { Sidebar } from "./Sidebar"
 import { RightSidebar } from "./RightSidebar"
+import { Header } from "./Header.jsx"
 
 const Wrapper = styled("div")`
   display: flex;
@@ -37,7 +38,7 @@ const Content = styled("main")`
   margin: 0px 48px;
   padding-top: 3rem;
   background: ${({ theme }) => theme.colors.background};
-
+  min-height: calc(100vh - 70px);
   table tr {
     background: ${({ theme }) => theme.colors.background};
   }
@@ -71,6 +72,8 @@ const RightSideBarWidth = styled("div")`
 export const Layout = ({ children, location }) => (
   <ThemeProvider location={location}>
     <MDXProvider components={mdxComponents}>
+      <Header />
+
       <Wrapper>
         <LeftSideBarWidth className={"hiddenMobile"}>
           <Sidebar location={location} />

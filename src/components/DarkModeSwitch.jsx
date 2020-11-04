@@ -1,10 +1,11 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from "react"
+import styled from "@emotion/styled"
 
-import NightImage from './images/night.png';
-import DayImage from './images/day.png';
+import NightImage from "./images/night.png"
+import DayImage from "./images/day.png"
+import { useThemeContext } from "./theme/ThemeProvider"
 
-const StyledSwitch = styled('div')`
+const StyledSwitch = styled("div")`
   display: flex;
   justify-content: flex-end;
   width: 100%;
@@ -40,7 +41,7 @@ const StyledSwitch = styled('div')`
 
   .slider:before {
     position: absolute;
-    content: '';
+    content: "";
     height: 30px;
     width: 30px;
     left: 0px;
@@ -77,18 +78,22 @@ const StyledSwitch = styled('div')`
   .slider.round:before {
     border-radius: 50%;
   }
-`;
+`
 
-export const DarkModeSwitch = ({ isDarkThemeActive, toggleActiveTheme }) => (
-  <StyledSwitch>
-    <label id="switch" className="switch">
-      <input
-        type="checkbox"
-        id="slider"
-        onChange={toggleActiveTheme}
-        checked={isDarkThemeActive ? false : true}
-      />
-      <span className="slider round"></span>
-    </label>
-  </StyledSwitch>
-);
+export const DarkModeSwitch = ({ ...props }) => {
+  const [toggleActiveTheme, isDarkThemeActive] = useThemeContext()
+
+  return (
+    <StyledSwitch {...props}>
+      <label id="switch" className="switch">
+        <input
+          type="checkbox"
+          id="slider"
+          onChange={toggleActiveTheme}
+          checked={isDarkThemeActive ? false : true}
+        />
+        <span className="slider round"></span>
+      </label>
+    </StyledSwitch>
+  )
+}
