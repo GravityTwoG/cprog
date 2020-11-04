@@ -25,7 +25,7 @@ const config = {
       },
     ],
     frontline: false,
-    ignoreIndex: true,
+    ignoreIndex: false,
   },
   siteMetadata: {
     title: "Cprog | powered by Gatsby",
