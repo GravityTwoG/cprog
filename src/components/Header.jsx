@@ -8,8 +8,9 @@ import { DarkModeSwitch } from "./DarkModeSwitch"
 import { Link } from "./Link"
 import { Sidebar } from "./Sidebar"
 import { useThemeContext } from "./theme/ThemeProvider.jsx"
+import { Logo } from "./Logo.jsx"
 
-const help = require("./images/help.svg")
+const help = require("../images/help.svg")
 
 function myFunction() {
   const x = document.getElementById("navbar")
@@ -136,8 +137,6 @@ const StyledHeaderTitle = styled("div")`
   color: ${({ theme }) => theme.colors.text};
 `
 
-const logoImg = require("./images/logo.svg")
-
 export const Header = () => {
   const data = useStaticQuery(graphql`
     query headerTitleQuery {
@@ -173,11 +172,7 @@ export const Header = () => {
       <StyledNav className={"navBarDefault"}>
         <StyledNavbarHeader>
           <Link to={finalLogoLink} className={"navBarBrand"}>
-            <img
-              className={"img-responsive displayInline"}
-              src={logo.image !== "" ? logo.image : logoImg}
-              alt={"logo"}
-            />
+            <Logo />
           </Link>
           <StyledHeaderTitle
             className={"headerTitle displayInline"}

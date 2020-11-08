@@ -6,6 +6,30 @@
 const config = require("./config")
 
 const plugins = [
+  {
+    resolve: "gatsby-plugin-sharp",
+    options: {
+      icon: "src/images/night.png",
+    },
+  },
+  {
+    resolve: "gatsby-plugin-svgr",
+    svgoConfig: {
+      cleanupIDs: false, // remove unused IDs and minify remaining IDs (default)
+    },
+  },
+  {
+    resolve: `gatsby-plugin-manifest`,
+    options: {
+      name: `gatsby-starter-default`,
+      short_name: `starter`,
+      start_url: `/`,
+      background_color: `#663399`,
+      theme_color: `#663399`,
+      display: `minimal-ui`,
+      icon: `src/images/favicon.svg`,
+    },
+  },
   "gatsby-plugin-react-helmet",
   {
     resolve: "gatsby-source-filesystem",
@@ -14,7 +38,6 @@ const plugins = [
       path: `${__dirname}/content/`,
     },
   },
-  "gatsby-plugin-sharp",
   {
     resolve: "gatsby-plugin-mdx",
     options: {
@@ -43,7 +66,7 @@ module.exports = {
     favicon: config.siteMetadata.favicon,
     logo: {
       link: config.header.logoLink ? config.header.logoLink : "/",
-      image: config.header.logo,
+      image: config.header.logoImage,
     }, // backwards compatible
     headerTitle: config.header.title,
     githubUrl: config.header.githubUrl,

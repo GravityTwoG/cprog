@@ -60,7 +60,7 @@ const BookTemplate = props => {
     },
   } = props.data
 
-  const gitHub = require("../components/images/github.svg")
+  const gitHub = require("../images/github.svg")
 
   const navItems = allMdx.edges
     .map(({ node }) => node.fields.slug)

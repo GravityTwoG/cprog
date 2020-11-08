@@ -1,8 +1,8 @@
 import React from "react"
 import styled from "@emotion/styled"
 
-import NightImage from "./images/night.png"
-import DayImage from "./images/day.png"
+import NightImage from "../images/night.png"
+import DayImage from "../images/day.png"
 import { useThemeContext } from "./theme/ThemeProvider"
 
 const StyledSwitch = styled("div")`

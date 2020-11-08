@@ -1,5 +1,5 @@
 import React from "react"
-import OpenedSvg from "../images/opened"
+import OpenedSvg from "../../images/opened"
 import config from "../../../config"
 import { StyledListItem } from "./items"
 import { Link } from "../Link"

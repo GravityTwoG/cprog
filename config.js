@@ -1,15 +1,15 @@
 const config = {
   gatsby: {
     pathPrefix: "/",
-    siteUrl: "https://github.com/GravityTwoG/cprog-gatsby",
+    siteUrl: "https://github.com/GravityTwoG/cprog",
     gaTrackingId: null,
     trailingSlash: false,
   },
   header: {
-    logo: "C",
     logoLink: "/",
-    title: "CPROG",
-    githubUrl: "https://github.com/GravityTwoG/cprog-gatsby",
+    logoImage: "",
+    title: "",
+    githubUrl: "https://github.com/GravityTwoG/cprog",
     helpUrl: "",
     links: [{ text: "", link: "" }],
   },
@@ -28,12 +28,11 @@ const config = {
     ignoreIndex: false,
   },
   siteMetadata: {
-    title: "Cprog | powered by Gatsby",
-    description: "Documentation built with mdx. Powering hasura.io/learn ",
-    ogImage: null,
-    favicon: "https://graphql-engine-cdn.hasura.io/img/hasura_icon_black.svg",
-    docsLocation:
-      "https://github.com/GravityTwoG/cprog-gatsby/blob/master/content",
+    title: "Cprog",
+    description: "",
+    ogImage: "",
+    favicon: "",
+    docsLocation: "https://github.com/GravityTwoG/cprog/blob/master/content",
   },
   pwa: {
     enabled: false, // disabling this will also remove the existing service worker.
