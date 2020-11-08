@@ -8,6 +8,7 @@ import AnchorTag from "./anchor"
 const StyledPre = styled("pre")`
   padding: 16px 16px;
   background: ${props => props.theme.colors.preFormattedText};
+  border-radius: 5px;
 
   @media (max-width: 768px) {
     padding: 8px 8px;
@@ -75,11 +76,7 @@ export const mdxComponents = {
     </h6>
   ),
   p: props => <p className="paragraph" {...props} />,
-  pre: props => (
-    <StyledPre>
-      <pre {...props} />
-    </StyledPre>
-  ),
+  pre: props => <StyledPre {...props} />,
   code: CodeBlock,
   a: AnchorTag,
   Grid: StyledGrid,

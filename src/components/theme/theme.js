@@ -24,7 +24,7 @@ const darkTheme = {
     background: "#001933",
     heading: "#fff",
     text: "#fff",
-    preFormattedText: "#000",
+    preFormattedText: "#242a31",
     link: "#3884ff",
   },
 }
