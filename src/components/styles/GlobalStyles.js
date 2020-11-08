@@ -37,6 +37,20 @@ export const baseStyles = injectGlobal`
     /* color: #663399; */
   }
 
+  table {
+    border-collapse: collapse;
+  }
+
+  .tableWrapper {
+    max-width: 100%;
+    overflow: auto;
+
+    @media (max-width: 767px) {
+      margin: 0 -25px;
+      max-width: calc(100% + 50px);
+    }
+  }
+
   body {
     font-family: 'Roboto';
     overflow-x: hidden;
@@ -250,7 +264,7 @@ export const baseStyles = injectGlobal`
     border: 0;
     display: flex;
     align-items: center;
-    box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
+    
     z-index: 1;
     padding: 15px;
     position: relative;
@@ -439,10 +453,6 @@ export const baseStyles = injectGlobal`
     fill: #001933 !important;
   }
 
-  .firstLevel ul .item ul .item {
-    border-left: 1px solid #e6ecf1;
-  }
-
   .sideBarUL .item {
     list-style: none;
     padding: 0;
@@ -492,7 +502,6 @@ export const baseStyles = injectGlobal`
     display: flex;
     align-items: center;
     padding-bottom: 40px;
-    border-bottom: 1px solid rgb(230, 236, 241);
     margin-bottom: 32px;
   }
 

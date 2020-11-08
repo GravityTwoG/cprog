@@ -86,5 +86,9 @@ export const mdxComponents = {
   // TODO add `blockquote`
   // TODO add `ul`
   // TODO add `li`
-  // TODO add `table`
+  table: props => (
+    <div className="tableWrapper">
+      <table {...props} />
+    </div>
+  ),
 }

@@ -37,7 +37,7 @@ const StyledNavbarHeader = styled.header`
 
 const StyledNavbarToggler = styled.div`
   display: none;
-  background: ${props => (props.isDarkThemeActive ? "#2d3b48" : "#fff")};
+  background: transparent;
   border: 0px solid #fff;
   border-radius: 4px;
   width: 36px;
@@ -103,7 +103,7 @@ const StyledMobileNavbar = styled.div`
     padding-top: 70px;
     transition: right 0.3s ease-in-out;
     overflow: hidden;
-    box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
+    box-shadow: ${({ theme }) => theme.boxShadow};
 
     &.is-open {
       right: 0;
@@ -125,6 +125,7 @@ const StyledNav = styled("nav")`
   background-color: ${({ theme }) => theme.colors.background};
   position: relative;
   z-index: 1;
+  box-shadow: ${({ theme }) => theme.boxShadow};
 
   @media (max-width: 767px) {
     & .styled-list {

@@ -24,9 +24,9 @@ export const StyledNextPrevious = styled("div")`
     align-items: center;
     place-self: stretch;
     border-radius: 3px;
-    border: 1px solid rgb(230, 236, 241);
+    border: 1px solid ${({ theme }) => theme.colors.deco};
     transition: border 200ms ease 0s;
-    box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
+    box-shadow: ${({ theme }) => theme.boxShadow};
     text-decoration: none;
 
     background-color: ${props => props.theme.colors.background};
@@ -46,9 +46,9 @@ export const StyledNextPrevious = styled("div")`
     align-items: center;
     place-self: stretch;
     border-radius: 3px;
-    border: 1px solid rgb(230, 236, 241);
+    border: 1px solid ${({ theme }) => theme.colors.deco};
     transition: border 200ms ease 0s;
-    box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
+    box-shadow: ${({ theme }) => theme.boxShadow};
     text-decoration: none;
 
     background-color: ${props => props.theme.colors.background};
@@ -99,6 +99,10 @@ export const StyledNextPrevious = styled("div")`
     font-size: 16px;
     line-height: 1.5;
     font-weight: 500;
+  }
+
+  .smallContent {
+    color: ${({ theme }) => theme.colors.text};
   }
 
   @media (max-width: 767px) {

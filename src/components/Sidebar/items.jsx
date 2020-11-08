@@ -3,6 +3,7 @@ import React from "react"
 
 export const StyledListItem = styled("li")`
   list-style: none;
+  border-left: 1px solid ${({ theme }) => theme.colors.deco};
 
   &.active a:hover {
     color: ${({ theme }) => theme.colors.text};
@@ -43,7 +44,7 @@ export const StyledSidebar = styled("aside")`
   position: sticky;
   top: 0;
   padding-right: 0;
-  box-shadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
+  box-shadow: ${({ theme }) => theme.boxShadow};
 
   @media only screen and (max-width: 1023px) {
     width: 100%;

@@ -136,7 +136,7 @@ const BookTemplate = props => {
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
-      <div className={"titleWrapper"}>
+      <StyledTitleWrapper className={"titleWrapper"}>
         <StyledHeading>{mdx.fields.title}</StyledHeading>
         <Edit className={"mobileView"}>
           {docsLocation && (
@@ -149,7 +149,7 @@ const BookTemplate = props => {
             </Link>
           )}
         </Edit>
-      </div>
+      </StyledTitleWrapper>
 
       <StyledMainWrapper>
         <MDXRenderer>{mdx.body}</MDXRenderer>
@@ -163,6 +163,10 @@ const BookTemplate = props => {
 }
 
 export default BookTemplate
+
+const StyledTitleWrapper = styled.div`
+  border-bottom: 1px solid ${({ theme }) => theme.colors.deco};
+`
 
 export const StyledHeading = styled("h1")`
   font-size: 32px;

@@ -19,6 +19,7 @@ const ArrowButton = styled.button`
     transform: rotate(0deg);
     transform-origin: center;
     transition: rotate 0.3s ease-in-out;
+    fill: ${({ theme }) => (theme.isDark ? "#fff" : "#000")};
   }
   &[data-is-active="true"] > svg {
     fill: #fff;
