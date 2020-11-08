@@ -7,6 +7,7 @@ import styled from "@emotion/styled"
 import { Layout } from "../components/Layout"
 import { Link } from "../components/Link"
 import { NextPrevious } from "../components/NextPrevious"
+import gitHub from "../images/github.svg"
 import config from "../../config"
 
 const forcedNavOrder = config.sidebar.forcedNavOrder
@@ -59,8 +60,6 @@ const BookTemplate = props => {
       siteMetadata: { docsLocation },
     },
   } = props.data
-
-  const gitHub = require("../images/github.svg")
 
   const navItems = allMdx.edges
     .map(({ node }) => node.fields.slug)
