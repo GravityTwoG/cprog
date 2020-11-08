@@ -1,66 +1,86 @@
 import React from "react"
 import OpenedSvg from "../images/opened"
-import ClosedSvg from "../images/closed"
 import config from "../../../config"
 import { StyledListItem } from "./items"
 import { Link } from "../Link"
+import styled from "@emotion/styled"
 
-export const TreeNode = ({
-  className = "",
-  setCollapsed,
-  collapsed,
-  url,
-  title,
-  items,
-}) => {
-  const isCollapsed = collapsed[url]
+const ArrowButton = styled.button`
+  background: transparent;
+  border: none;
+  outline: none;
+  margin-left: auto;
+  padding-left: 1.5rem;
+  cursor: pointer;
 
-  const collapse = () => {
-    setCollapsed(url)
+  & > svg {
+    width: 20px;
+    height: 20px;
+    transform: rotate(0deg);
+    transform-origin: center;
+    transition: rotate 0.3s ease-in-out;
   }
-
-  const hasChildren = items.length !== 0
-
-  let location
-
-  if (typeof document != "undefined") {
-    location = document.location
+  &[data-is-active="true"] > svg {
+    fill: #fff;
   }
-  const active =
-    location &&
-    (location.pathname === url ||
-      location.pathname === config.gatsby.pathPrefix + url)
+  &[data-is-collapsed="true"] > svg {
+    transform: rotate(-90deg);
+  }
+`
 
-  const calculatedClassName = `${className} item ${active ? "active" : ""}`
+export const TreeNode = React.memo(
+  ({ className = "", setCollapsed, collapsed, url, title, items }) => {
+    const isCollapsed = collapsed[url]
 
-  return (
-    <StyledListItem className={calculatedClassName}>
-      {title && (
-        <Link to={url}>
-          {title}
-          {!config.sidebar.frontLine && title && hasChildren ? (
-            <button
-              onClick={collapse}
-              aria-label="collapse"
-              className="collapser"
-            >
-              {!isCollapsed ? <OpenedSvg /> : <ClosedSvg />}
-            </button>
-          ) : null}
-        </Link>
-      )}
-      {!isCollapsed && hasChildren ? (
-        <ul>
-          {items.map((item, index) => (
-            <TreeNode
-              key={item.url + index.toString()}
-              setCollapsed={setCollapsed}
-              collapsed={collapsed}
-              {...item}
-            />
-          ))}
-        </ul>
-      ) : null}
-    </StyledListItem>
-  )
-}
+    const collapse = () => {
+      setCollapsed(url)
+    }
+
+    const hasChildren = items.length !== 0
+
+    let location
+
+    if (typeof document != "undefined") {
+      location = document.location
+    }
+    const active =
+      location &&
+      (location.pathname === url ||
+        location.pathname === config.gatsby.pathPrefix + url)
+
+    const calculatedClassName = `${className} item ${active ? "active" : ""}`
+
+    return (
+      <StyledListItem className={calculatedClassName}>
+        {title && (
+          <Link to={url}>
+            {title}
+            {!config.sidebar.frontLine && title && hasChildren ? (
+              <ArrowButton
+                onClick={collapse}
+                aria-label="collapse"
+                data-is-active={active}
+                data-is-collapsed={isCollapsed}
+              >
+                <OpenedSvg />
+              </ArrowButton>
+            ) : null}
+          </Link>
+        )}
+
+        {!isCollapsed && hasChildren ? (
+          <ul>
+            {items.map((item, index) => (
+              <TreeNode
+                key={item.url + index.toString()}
+                setCollapsed={setCollapsed}
+                collapsed={collapsed}
+                {...item}
+              />
+            ))}
+          </ul>
+        ) : null}
+      </StyledListItem>
+    )
+  }
+)

@@ -12,18 +12,12 @@ export const StyledListItem = styled("li")`
     color: ${({ theme }) => theme.colors.text};
     text-decoration: none;
     font-weight: ${({ level }) => (level === 0 ? 700 : 400)};
-    padding: 0.45rem 0 0.45rem ${props => 2 + (props.level || 0) * 1}rem;
+    padding: 0.45rem 1rem 0.45rem ${props => 2 + (props.level || 0) * 1}rem;
     display: block;
     position: relative;
 
     &:hover {
       color: ${({ theme }) => theme?.colors?.accent};
-    }
-
-    // external link icon
-    svg {
-      float: right;
-      margin-right: 1rem;
     }
   }
 `
