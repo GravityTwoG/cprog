@@ -28,7 +28,7 @@ export const IndexPage = () => {
       <MDXC.Grid fluid>
         <MDXC.Row>
           <MDXC.Col xs>
-            <MDXC.pre>
+            <MDXC.pre style={{ marginTop: "16px" }}>
               <b
                 dangerouslySetInnerHTML={{
                   __html:
