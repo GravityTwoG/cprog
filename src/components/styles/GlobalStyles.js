@@ -256,20 +256,6 @@ export const baseStyles = injectGlobal`
   .removePadd {
     padding: 0 !important;
   }
-  .navBarDefault {
-    background-color: #fff;
-    border-radius: 0;
-    border-top: 0;
-    margin-bottom: 0;
-    border: 0;
-    display: flex;
-    align-items: center;
-    
-    z-index: 1;
-    padding: 15px;
-    position: relative;
-    height: 70px;
-  }
   .navBarHeader {
     min-width: 335px;
     padding-right: 20px;
@@ -846,9 +832,6 @@ export const baseStyles = injectGlobal`
   }
 
   @media (min-width: 768px) and (max-width: 991px) {
-    .navBarDefault {
-      padding: 10px;
-    }
     .navBarBrand {
       font-size: 22px;
     }

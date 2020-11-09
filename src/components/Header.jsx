@@ -121,11 +121,22 @@ const StyledList = styled.ul`
   }
 `
 
-const StyledNav = styled("nav")`
-  background-color: ${({ theme }) => theme.colors.background};
-  position: relative;
+const StyledHeader = styled.header`
+  width: 100%;
+  height: 70px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
   z-index: 1;
+  background-color: ${({ theme }) => theme.colors.background};
   box-shadow: ${({ theme }) => theme.boxShadow};
+
+  & ~ .header-place {
+    height: 70px;
+  }
 
   @media (max-width: 767px) {
     & .styled-list {
@@ -169,8 +180,8 @@ export const Header = () => {
   const [, isDarkThemeActive] = useThemeContext()
 
   return (
-    <div className={"navBarWrapper"}>
-      <StyledNav className={"navBarDefault"}>
+    <>
+      <StyledHeader className={"navBarDefault"}>
         <StyledNavbarHeader>
           <Link to={finalLogoLink} className={"navBarBrand"}>
             <Logo />
@@ -180,6 +191,7 @@ export const Header = () => {
             dangerouslySetInnerHTML={{ __html: headerTitle }}
           />
         </StyledNavbarHeader>
+
         {config.header.social ? (
           <ul
             className="socialWrapper visibleMobileView"
@@ -309,7 +321,8 @@ export const Header = () => {
 
           <Sidebar />
         </StyledMobileNavbar>
-      </StyledNav>
-    </div>
+      </StyledHeader>
+      <div className="header-place" />
+    </>
   )
 }
