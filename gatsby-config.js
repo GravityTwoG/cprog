@@ -6,23 +6,19 @@
 const config = require("./config")
 
 const plugins = [
-  {
-    resolve: "gatsby-plugin-sharp",
-    options: {
-      icon: "src/images/night.png",
-    },
-  },
+  "gatsby-plugin-sharp",
   {
     resolve: "gatsby-plugin-svgr",
-    svgoConfig: {
-      cleanupIDs: false, // remove unused IDs and minify remaining IDs (default)
+    options: {
+      prettier: true,
+      svgo: false,
     },
   },
   {
     resolve: `gatsby-plugin-manifest`,
     options: {
-      name: `gatsby-starter-default`,
-      short_name: `starter`,
+      name: `cprog book`,
+      short_name: `cprog`,
       start_url: `/`,
       background_color: `#663399`,
       theme_color: `#663399`,
