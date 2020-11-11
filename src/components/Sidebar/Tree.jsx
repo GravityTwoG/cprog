@@ -78,9 +78,9 @@ const calculateTreeData = edges => {
   } = config
 
   const tmp = [...forcedNavOrder]
-
   tmp.reverse()
-  return tmp.reduce((accu, slug) => {
+
+  const treeData = tmp.reduce((accu, slug) => {
     const parts = slug.split("/")
 
     let { items: prevItems } = accu
@@ -105,12 +105,6 @@ const calculateTreeData = edges => {
         prevItems = tmp.items
       }
     }
-    // sort items alphabetically with number compare
-    prevItems.forEach(item => {
-      item.items = item.items.sort((a, b) =>
-        a.label.localeCompare(b.label, "kn", { numeric: true })
-      )
-    })
 
     const slicedLength =
       config.gatsby && config.gatsby.trailingSlash
@@ -126,4 +120,21 @@ const calculateTreeData = edges => {
     }
     return accu
   }, tree)
+
+  return sortTreeData(treeData)
+}
+
+function sortTreeData(tree) {
+  const sortedItems = tree.items.sort((a, b) => {
+    return a.label.localeCompare(b.label, "kn", { numeric: true })
+  })
+
+  const finallySortedItems = sortedItems.map(item => {
+    if (item.items.length > 0) {
+      return sortTreeData(item)
+    }
+    return item
+  })
+
+  return { ...tree, items: finallySortedItems }
 }
