@@ -15,7 +15,10 @@ export const StyledListItem = styled("li")`
 
   &.active > .tree-node-title {
     background-color: #3884ff;
-    color: #fff !important;
+
+    & > a {
+      color: #fff;
+    }
   }
 
   a {

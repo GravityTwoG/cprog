@@ -41,7 +41,7 @@ export const Sidebar = () => {
             return (
               <ListItem key={key} to={link.link}>
                 {link.text}
-                <ExternalLink size={14} />
+                <ExternalLink size={14} style={{ marginLeft: "5px" }} />
               </ListItem>
             )
           }
