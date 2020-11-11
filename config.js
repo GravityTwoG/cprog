@@ -15,9 +15,7 @@ const config = {
   },
   sidebar: {
     forcedNavOrder: ["/", "/book"],
-    collapsedNav: [
-      // add trailing slash if enabled above
-    ],
+    notCollapsedDepth: 2,
     links: [
       {
         text: "Cprog — оригинальный сайт",

@@ -418,27 +418,11 @@ export const baseStyles = injectGlobal`
     border-color: transparent currentcolor transparent transparent;
   }
 
-  .hideFrontLine .collapser {
-    background: transparent;
-    border: none;
-    outline: none;
-    position: absolute;
-    right: 20px;
-    z-index: 1;
-    cursor: pointer;
-  }
-
   .hideFrontLine .active > a {
     background-color: #3884ff;
     color: #fff !important;
   }
-  .firstLevel ul li .collapser svg path {
-    fill: #fff !important;
-  }
-  .active .collapser > svg > path {
-    fill: #001933 !important;
-  }
-
+  
   .sideBarUL .item {
     list-style: none;
     padding: 0;

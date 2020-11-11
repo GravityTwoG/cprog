@@ -4,12 +4,22 @@ import React from "react"
 export const StyledListItem = styled("li")`
   list-style: none;
   border-left: 1px solid ${({ theme }) => theme.colors.deco};
+  & .tree-node-title {
+    display: flex;
+    align-items: center;
+  }
 
   &.active a:hover {
     color: ${({ theme }) => theme.colors.text};
   }
 
+  &.active > .tree-node-title {
+    background-color: #3884ff;
+    color: #fff !important;
+  }
+
   a {
+    flex-grow: 1;
     color: ${({ theme }) => theme.colors.text};
     text-decoration: none;
     font-weight: ${({ level }) => (level === 0 ? 700 : 400)};

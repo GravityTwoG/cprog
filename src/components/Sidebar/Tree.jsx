@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react"
+import React, { useState } from "react"
 import config from "../../../config"
 import { TreeNode } from "./TreeNode"
 
@@ -7,37 +7,12 @@ export const Tree = ({ edges }) => {
     return calculateTreeData(edges)
   })
 
-  const defaultCollapsed = useMemo(() => {
-    const defaultC = {}
-    treeData.items.forEach(item => {
-      if (
-        config.sidebar.collapsedNav &&
-        config.sidebar.collapsedNav.includes(item.url)
-      ) {
-        defaultC[item.url] = true
-      } else {
-        defaultC[item.url] = false
-      }
-    })
-    return defaultC
-  }, [treeData.items])
-
-  const [collapsed, setCollapsed] = useState(defaultCollapsed)
-
-  const toggle = useCallback(url => {
-    setCollapsed(collapsed => ({
-      ...collapsed,
-      [url]: !collapsed[url],
-    }))
-  }, [])
-
   return (
     <TreeNode
       className={`${
         config.sidebar.frontLine ? "showFrontLine" : "hideFrontLine"
       } firstLevel`}
-      setCollapsed={toggle}
-      collapsed={collapsed}
+      notCollapsedDepth={config.sidebar.notCollapsedDepth || 1}
       {...treeData}
     />
   )
