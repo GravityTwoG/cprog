@@ -1,29 +1,17 @@
-import React from "react"
-import styled from "@emotion/styled"
+import React, { useEffect, useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import GitHubButton from "react-github-btn"
-
 import config from "../../config.js"
+import { useThemeContext } from "./theme/ThemeProvider.jsx"
+import styled from "@emotion/styled"
+
+import { Global } from "@emotion/core"
+import GitHubButton from "react-github-btn"
 import { DarkModeSwitch } from "./DarkModeSwitch"
 import { Link } from "./Link"
 import { Sidebar } from "./Sidebar"
-import { useThemeContext } from "./theme/ThemeProvider.jsx"
 import { Logo } from "./Logo.jsx"
 
 const help = require("../images/help.svg")
-
-function myFunction() {
-  const x = document.getElementById("navbar")
-  const b = document.getElementById("burger-button")
-
-  if (x.className.includes("is-open")) {
-    x.classList.remove("is-open")
-    b.classList.remove("is-open")
-  } else {
-    x.classList.add("is-open")
-    b.classList.add("is-open")
-  }
-}
 
 const MLAuto = styled.div`
   margin-left: auto;
@@ -71,7 +59,7 @@ const StyledNavbarToggler = styled.div`
     }
   }
 
-  &.is-open > .iconBar {
+  &[data-is-open="true"] > .iconBar {
     &:nth-of-type(1) {
       transform: translate(-50%, -50%) rotate(-45deg);
     }
@@ -105,7 +93,7 @@ const StyledMobileNavbar = styled.div`
     overflow: hidden;
     box-shadow: ${({ theme }) => theme.boxShadow};
 
-    &.is-open {
+    &[data-is-open="true"] {
       right: 0;
       overflow-y: auto;
     }
@@ -133,7 +121,12 @@ const StyledHeader = styled.header`
   z-index: 1;
   background-color: ${({ theme }) => theme.colors.background};
   box-shadow: ${({ theme }) => theme.boxShadow};
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(0%);
 
+  &[data-is-hidden="true"] {
+    transform: translateY(-100%);
+  }
   & ~ .header-place {
     height: 70px;
   }
@@ -179,9 +172,31 @@ export const Header = () => {
   const finalLogoLink = logo.link !== "" ? logo.link : "/"
   const [, isDarkThemeActive] = useThemeContext()
 
+  const [navbarIsOpen, setNavbarIsOpen] = useState(false)
+  const toggleNavbar = () => setNavbarIsOpen(isOpen => !isOpen)
+  const [headerIsHidden, setHeaderIsHidden] = useState(false)
+  useEffect(() => {
+    let prevScrollpos = window.pageYOffset
+
+    function onScroll() {
+      const currentScrollPos = window.pageYOffset
+      if (currentScrollPos > prevScrollpos) {
+        setHeaderIsHidden(true)
+      } else {
+        setHeaderIsHidden(false)
+      }
+
+      prevScrollpos = currentScrollPos
+    }
+
+    window.addEventListener("scroll", onScroll)
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
   return (
     <>
-      <StyledHeader className={"navBarDefault"}>
+      <StyledHeader className={"navBarDefault"} data-is-hidden={headerIsHidden}>
+        {navbarIsOpen && <Global styles={{ body: { overflow: "hidden" } }} />}
         <StyledNavbarHeader>
           <Link to={finalLogoLink} className={"navBarBrand"}>
             <Logo />
@@ -191,14 +206,12 @@ export const Header = () => {
             dangerouslySetInnerHTML={{ __html: headerTitle }}
           />
         </StyledNavbarHeader>
-
         {config.header.social ? (
           <ul
             className="socialWrapper visibleMobileView"
             dangerouslySetInnerHTML={{ __html: config.header.social }}
           ></ul>
         ) : null}
-
         <MLAuto>
           <StyledList className="styled-list">
             {headerLinks.map((link, key) => {
@@ -252,21 +265,19 @@ export const Header = () => {
             </li>
           </StyledList>
         </MLAuto>
-
         <MLAuto>
           <StyledNavbarToggler
-            onClick={myFunction}
+            onClick={toggleNavbar}
             role="button"
             isDarkThemeActive={isDarkThemeActive}
-            id="burger-button"
+            data-is-open={navbarIsOpen}
           >
             <span className="iconBar" />
             <span className="iconBar" />
             <span className="iconBar" />
           </StyledNavbarToggler>
         </MLAuto>
-
-        <StyledMobileNavbar id="navbar">
+        <StyledMobileNavbar data-is-open={navbarIsOpen}>
           <StyledList>
             {headerLinks.map((link, key) => {
               if (link.link !== "" && link.text !== "") {
