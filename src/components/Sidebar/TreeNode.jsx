@@ -5,12 +5,18 @@ import { StyledListItem } from "./items"
 import { Link } from "../Link"
 import styled from "@emotion/styled"
 
+const StyledTreeHeader = styled.div`
+  display: flex;
+  align-items: center;
+`
+
 const ArrowButton = styled.button`
   background: transparent;
   border: none;
   outline: none;
   margin-left: auto;
-  padding-left: 1.5rem;
+  margin-right: 5px;
+  padding: 0.5rem;
   cursor: pointer;
 
   & > svg {
@@ -33,7 +39,7 @@ export const TreeNode = React.memo(
   ({ className = "", setCollapsed, collapsed, url, title, items }) => {
     const isCollapsed = collapsed[url]
 
-    const collapse = () => {
+    const collapse = e => {
       setCollapsed(url)
     }
 
@@ -53,21 +59,19 @@ export const TreeNode = React.memo(
 
     return (
       <StyledListItem className={calculatedClassName}>
-        {title && (
-          <Link to={url}>
-            {title}
-            {!config.sidebar.frontLine && title && hasChildren ? (
-              <ArrowButton
-                onClick={collapse}
-                aria-label="collapse"
-                data-is-active={active}
-                data-is-collapsed={isCollapsed}
-              >
-                <OpenedSvg />
-              </ArrowButton>
-            ) : null}
-          </Link>
-        )}
+        <StyledTreeHeader>
+          {title && <Link to={url}>{title}</Link>}
+          {title && !config.sidebar.frontLine && title && hasChildren ? (
+            <ArrowButton
+              onClick={collapse}
+              aria-label="collapse"
+              data-is-active={active}
+              data-is-collapsed={isCollapsed}
+            >
+              <OpenedSvg />
+            </ArrowButton>
+          ) : null}
+        </StyledTreeHeader>
 
         {!isCollapsed && hasChildren ? (
           <ul>
