@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useRef } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import config from "../../config.js"
 import { useThemeContext } from "./theme/ThemeProvider.jsx"
 import styled from "@emotion/styled"
 
-import { Global } from "@emotion/core"
 import GitHubButton from "react-github-btn"
 import { DarkModeSwitch } from "./DarkModeSwitch"
 import { Link } from "./Link"
@@ -86,15 +85,17 @@ const StyledMobileNavbar = styled.div`
     background: ${({ theme }) => theme.colors.background};
     position: fixed;
     top: 0px;
-    right: -100%;
+    right: 0%;
     z-index: 1;
     padding-top: 70px;
-    transition: right 0.3s ease-in-out;
-    overflow: hidden;
     box-shadow: ${({ theme }) => theme.boxShadow};
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+    transform: translateX(100%);
+    will-change: translateX;
 
     &[data-is-open="true"] {
-      right: 0;
+      transform: translateX(0%);
       overflow-y: auto;
     }
   }
@@ -123,6 +124,7 @@ const StyledHeader = styled.header`
   box-shadow: ${({ theme }) => theme.boxShadow};
   transition: transform 0.3s ease-in-out;
   transform: translateY(0%);
+  will-change: translateY;
 
   &[data-is-hidden="true"] {
     transform: translateY(-100%);
@@ -172,18 +174,31 @@ export const Header = () => {
   const finalLogoLink = logo.link !== "" ? logo.link : "/"
   const [, isDarkThemeActive] = useThemeContext()
 
-  const [navbarIsOpen, setNavbarIsOpen] = useState(false)
-  const toggleNavbar = () => setNavbarIsOpen(isOpen => !isOpen)
-  const [headerIsHidden, setHeaderIsHidden] = useState(false)
+  const burgerButtonRef = useRef(null)
+  const navbarRef = useRef(null)
+  const toggleNavbar = () => {
+    const isOpen = navbarRef.current.dataset.isOpen
+    if (isOpen === "true") {
+      navbarRef.current.dataset.isOpen = "false"
+      burgerButtonRef.current.dataset.isOpen = "false"
+      document.body.style.overflow = "auto"
+    } else {
+      navbarRef.current.dataset.isOpen = "true"
+      burgerButtonRef.current.dataset.isOpen = "true"
+      document.body.style.overflow = "hidden"
+    }
+  }
+
+  const headerRef = useRef(null)
   useEffect(() => {
     let prevScrollpos = window.pageYOffset
 
     function onScroll() {
       const currentScrollPos = window.pageYOffset
-      if (currentScrollPos > prevScrollpos) {
-        setHeaderIsHidden(true)
+      if (currentScrollPos > 70 && currentScrollPos > prevScrollpos) {
+        headerRef.current.dataset.isHidden = true
       } else {
-        setHeaderIsHidden(false)
+        headerRef.current.dataset.isHidden = false
       }
 
       prevScrollpos = currentScrollPos
@@ -195,8 +210,11 @@ export const Header = () => {
 
   return (
     <>
-      <StyledHeader className={"navBarDefault"} data-is-hidden={headerIsHidden}>
-        {navbarIsOpen && <Global styles={{ body: { overflow: "hidden" } }} />}
+      <StyledHeader
+        className={"navBarDefault"}
+        ref={headerRef}
+        data-is-hidden="false"
+      >
         <StyledNavbarHeader>
           <Link to={finalLogoLink} className={"navBarBrand"}>
             <Logo />
@@ -269,15 +287,16 @@ export const Header = () => {
           <StyledNavbarToggler
             onClick={toggleNavbar}
             role="button"
+            ref={burgerButtonRef}
             isDarkThemeActive={isDarkThemeActive}
-            data-is-open={navbarIsOpen}
+            data-is-open="false"
           >
             <span className="iconBar" />
             <span className="iconBar" />
             <span className="iconBar" />
           </StyledNavbarToggler>
         </MLAuto>
-        <StyledMobileNavbar data-is-open={navbarIsOpen}>
+        <StyledMobileNavbar ref={navbarRef} data-is-open="false">
           <StyledList>
             {headerLinks.map((link, key) => {
               if (link.link !== "" && link.text !== "") {
