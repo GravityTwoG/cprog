@@ -210,11 +210,7 @@ export const Header = () => {
 
   return (
     <>
-      <StyledHeader
-        className={"navBarDefault"}
-        ref={headerRef}
-        data-is-hidden="false"
-      >
+      <StyledHeader ref={headerRef} data-is-hidden="false">
         <StyledNavbarHeader>
           <Link to={finalLogoLink} className={"navBarBrand"}>
             <Logo />

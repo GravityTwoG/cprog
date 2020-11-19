@@ -1,8 +1,7 @@
 import { injectGlobal } from "emotion"
 
 export const baseStyles = injectGlobal`
-  @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
-  @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600&display=swap');
+  @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
   * {
     margin: 0;
     padding: 0;
@@ -13,51 +12,25 @@ export const baseStyles = injectGlobal`
     /* Edge */
     color: #c2c2c2;
   }
-
   :-ms-input-placeholder {
     /* Internet Explorer */
     color: #c2c2c2;
   }
-
   ::placeholder {
     color: #c2c2c2;
   }
   html,
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Roboto Light', 'Oxygen',
+    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Roboto Light', 'Segoe UI', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif,
       'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-
     font-size: 16px;
     scroll-behavior: smooth;
   }
-
-  a {
-    transition: color 0.15s;
-    /* color: #663399; */
-  }
-
-  table {
-    border-collapse: collapse;
-  }
-
-  .tableWrapper {
-    max-width: 100%;
-    overflow: auto;
-
-    @media (max-width: 767px) {
-      margin: 0 -25px;
-      max-width: calc(100% + 50px);
-    }
-  }
-
   body {
-    font-family: 'Roboto';
     overflow-x: hidden;
   }
-  .ovh {
-    overflow: hidden;
-  }
+
   .visibleMobile {
     display: none;
   }
@@ -68,159 +41,30 @@ export const baseStyles = injectGlobal`
     position: relative;
     padding-bottom: 56.2%;
   }
-  a {
-    text-decoration: none;
-  }
-  a:hover {
-    text-decoration: none;
-  }
-
-  
-  .displayInline {
-    display: inline-block;
-  }
-  .navBarToggle {
-    border: 0px solid #fff;
-    border-radius: 4px;
-    width: 36px;
-    height: 33px;
-    position: absolute;
-    right: 20px;
-    padding: 8px 5px;
-    display: none;
-  }
-  
   .video-responsive iframe {
     position: absolute;
     width: 100%;
     height: 100%;
   }
 
-  .diffNewLine {
-    color: #22863a;
-    background-color: #f0fff4;
+  a {
+    transition: color 0.15s;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
   }
 
-  .diffRemoveLine {
-    color: red;
-    background-color: #ffcccc;
+  .displayInline {
+    display: inline-block;
   }
-  .navBarParent {
-    width: 100%;
-    float: left;
-    display: flex;
-    align-items: center;
-  }
+
   .divider {
     height: 30px;
     margin: 0 15px;
     border-right: 1px solid rgba(255, 255, 255, 0.3);
   }
-  .navBarULRight {
-    /* position: absolute;
-  right: 30px; */
-  }
-  .githubIcon {
-    width: 15px;
-    margin-right: 5px;
-  }
 
-  .githubSection {
-    display: flex;
-    align-items: center;
-    color: #000;
-    opacity: 0.7;
-  }
-
-  .githubSection:hover {
-    text-decoration: none;
-    opacity: 1;
-  }
-
-  .headerWrapper {
-    border-bottom: 1px solid rgb(212, 218, 223);
-    box-shadow: rgba(116, 129, 141, 0.1) 0px 1px 1px 0px;
-    display: flex;
-    align-items: center;
-  }
-  .formElement {
-    background-color: transparent;
-    padding: 4px;
-    border-radius: 5px;
-    position: relative;
-  }
-  .formElement:focus {
-    outline: none;
-    border: none;
-  }
-  .formElement svg path {
-    fill: #2fd2c5;
-  }
-  .searchInput {
-    width: 100%;
-    background-color: rgba(28,211,198,.12) !important;
-    border-width: 0 !important;
-    color: #C2C2C2;
-    padding: 10px;
-    border-radius: 5px;
-    color: #fff;
-    opacity: .6;
-    padding-left: 38px;
-    max-width: 600px;
-  }
-  .searchInput:focus,
-  .searchInput:visited,
-  .searchInput:hover,
-  .searchInput:focus-within {
-    outline: none;
-    border: 0;
-  }
-  .searchWrapper {
-    padding-left: 0px;
-    padding-right: 20px;
-    flex: 1;
-    position: relative;
-  }
-  .searchWrapper a {
-    font-weight: 500;
-  }
-  .hitWrapper {
-    background-color: #fff;
-    padding: 0.7em 1em 0.4em;
-    border-radius: 4px;
-    position: absolute;
-    width: 80vw;
-    max-width: 30em;
-    top: 40px;
-    border: 1px solid #ccc;
-    box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.16);
-    height: auto;
-    max-height: 80vh;
-    overflow: scroll;
-    left: 0;
-  }
-  .hitWrapper ul li {
-    margin-top: 0.7em;
-    padding-top: 0.7em;
-    border-top: 1px solid;
-    list-style-type: none;
-  }
-  .hitWrapper ul li:first-child {
-    border-top: 0px;
-    margin-top: 0px;
-    color: black !important;
-    padding: 0px;
-  }
-  .showResults {
-    display: block;
-  }
-  .hideResults {
-    display: none;
-  }
-  .hitWrapper span {
-    color: black;
-    font-size: 14px;
-  }
   .headerTitle {
     height: auto;
     font-size: 22px;
@@ -238,24 +82,8 @@ export const baseStyles = injectGlobal`
     text-decoration: none;
     opacity: 0.8;
   }
-  .logoWrapper {
-    padding: 21px 0;
-    padding-left: 20px;
-  }
-
-  .logoContent {
-    font-family: 'Roboto';
-    margin-left: 16px;
-    font-size: 28px;
-    line-height: 1.5;
-    font-weight: 500;
-    padding-right: 10px;
-  }
 
   /* Header section starts here */
-  .removePadd {
-    padding: 0 !important;
-  }
   .navBarHeader {
     min-width: 335px;
     padding-right: 20px;
@@ -272,32 +100,6 @@ export const baseStyles = injectGlobal`
     width: 120px;
     margin-right: 6px;
     display: inline-block;
-  }
-  .navBarUL li {
-    list-style-type: none;
-  }
-  .navBarUL {
-    -webkit-overflow-scrolling: touch;
-  }
-  .navBarUL li a {
-    font-family: 'Roboto';
-    color: #fff !important;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1em;
-    opacity: 1;
-    padding: 10px 15px;
-  }
-  .navBarNav {
-    display: flex;
-    align-items: center;
-  }
-  .navBarUL li a img,
-  .navBarUL li a .shareIcon {
-    width: 20px;
-  }
-  .navBarUL li a:hover {
-    opacity: 0.7;
   }
   pre {
     border: 0 !important;
@@ -321,40 +123,13 @@ export const baseStyles = injectGlobal`
   .socialWrapper li a {
     display: contents;
   }
-  .discordBtn, .twitterBtn {
-    border-radius: 4px;
-    border: solid 1px #d1d2d3;
-    background-color: #f1f5f8;
-    width: 20px;
-    height: 20px;
-    padding-top: 2px;
-    margin-left: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: .8;
-    cursor: pointer;
-  }
-  .twitterBtn img {
-    width: 12px !important;
-  }
-  .discordBtn img {
-    width: 10px !important;
-  }
-  .discordBtn:hover, .twitterBtn:hover {
-    opacity: 1;
-  }
-  .discordBtn {
-    img {
-      width: 10px;
-    }
-  }
+
   /* Header section ends here */
   .sidebarTitle {
     /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); */
     background-color: #f8f8f8;
     padding: 18px 16px;
-    font-family: 'Poppins';
+    font-family: 'Roboto';
     font-size: 18px;
     font-weight: 600;
     color: #001934;
@@ -368,104 +143,6 @@ export const baseStyles = injectGlobal`
 
   .sidebarTitle a {
     color: #001934;
-  }
-
-  .greenCircle {
-    width: 8px;
-    height: 8px;
-    background-color: #1cd3c6;
-    border-radius: 50%;
-    margin: 0 12px;
-  }
-
-  .headerNav {
-    font-family: 'Roboto';
-    padding: 0px 24px;
-    color: #001933;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 1em;
-  }
-
-  .headerNav a {
-    color: #001933;
-    text-decoration: none;
-  }
-
-  .headerNav a:hover {
-    text-decoration: none;
-  }
-
-  .logoWrapper img {
-    width: 40px;
-  }
-
-  .sideBarUL {
-    margin-top: 32px;
-  }
-
-  .sideBarUL li {
-    list-style-type: none;
-    width: auto;
-  }
-
-  .sideBarUL li a {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.5;
-    border-style: solid none solid solid;
-    border-width: 1px 0px 1px 1px;
-    border-color: transparent currentcolor transparent transparent;
-  }
-
-  .hideFrontLine .active > a {
-    background-color: #3884ff;
-    color: #fff !important;
-  }
-  
-  .sideBarUL .item {
-    list-style: none;
-    padding: 0;
-  }
-
-  .sideBarUL .item > a {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 100%;
-  }
-
-  .showFrontLine .item > a:hover {
-    background-color: #001933;
-  }
-
-  .showFrontLine .active > a {
-    /* color: #fff; */
-    background-color: #001933;
-  }
-
-  .sideBarUL .item .item {
-    margin-left: 16px;
-  }
-
-  .firstLevel > ul > .item {
-    margin-left: 0 !important;
-  }
-
-  .showFrontLine .item .item {
-    border-left: 1px solid #e6ecf1;
-    border-left-color: rgb(230, 236, 241);
-    padding: 0;
-    width: calc(100% - 16px) !important;
-  }
-
-  .showFrontLine .item .active > a {
-    border-color: rgb(230, 236, 241) !important;
-    border-style: solid none solid solid;
-    border-width: 1px 0px 1px 1px;
-    background-color: #3884ff !important;
-    color: #fff;
   }
 
   .titleWrapper {
@@ -523,8 +200,18 @@ export const baseStyles = injectGlobal`
   }
 
   /* tables.css */
+  .tableWrapper {
+    max-width: 100%;
+    overflow: auto;
+
+    @media (max-width: 767px) {
+      margin: 0 -25px;
+      max-width: calc(100% + 50px);
+    }
+  }
   table {
     padding: 0;
+    border-collapse: collapse;
   }
 
   table tr {
@@ -581,43 +268,6 @@ export const baseStyles = injectGlobal`
     align-items: center;
   }
 
-  .communitySection {
-    font-size: 24px;
-    font-weight: 700;
-  }
-  .authorSection {
-    padding: 20px 0;
-  }
-  .authorSection,
-  .authorName {
-    display: flex;
-    align-items: center;
-  }
-  .authorImg img {
-    width: 75px;
-    height: 75px;
-    border-radius: 50%;
-    min-width: 75px;
-    max-width: 75px;
-    min-height: 75px;
-    max-height: 75px;
-  }
-  .authorDetails {
-    padding-left: 10px;
-  }
-  .authorDesc {
-    padding-top: 5px;
-    font-size: 14px;
-  }
-  .authorName img {
-    margin-left: 10px;
-    display: inline-block;
-    width: 20px;
-  }
-  .authorName img:hover {
-    opacity: 0.7;
-  }
-
   .heading1 {
     font-size: 26px;
     font-weight: 800;
@@ -660,7 +310,7 @@ export const baseStyles = injectGlobal`
 
   .heading6 {
     font-size: 14px;
-    font-weight: 300;
+    font-weight: 400;
     line-height: 1.5;
     margin-bottom: 16px;
     margin-top: 32px;
@@ -683,30 +333,15 @@ export const baseStyles = injectGlobal`
     text-align: end;
     padding: 0;
   }
-  .topnav {
-    -webkit-transition: top 0.5s, bottom 0.5s;
-  }
 
   @media (max-width: 767px) {
-    .formElement svg path {
-      fill: #001934;
-    }
     .visibleMobileView {
       display: block !important;
-    }
-    .searchInput {
-      color: #001934;
     }
     .socialWrapper {
       position: absolute;
       right: 10px;
       top: 29px;
-    }
-    .responsive {
-      margin-top: 15px;
-      position: relative;
-      padding-bottom: 20px;
-      border-top: 1px solid #fff;
     }
     .headerTitle {
       padding-right: 50px;
@@ -718,16 +353,7 @@ export const baseStyles = injectGlobal`
     .navBarBrand img {
       margin-right: 8px;
     }
-    .topnav.responsive .visibleMobile {
-      display: block;
-    }
-    .topnav .navBarUL {
-      display: none;
-    }
-    .topnav.responsive .navBarUL {
-      display: block;
-      text-align: left;
-    }
+
     .hiddenMobile {
       display: none !important;
     }
@@ -735,37 +361,7 @@ export const baseStyles = injectGlobal`
       margin-top: 0;
       margin-bottom: 0;
     }
-    .navBarParent {
-      display: block;
-    }
-    .separator {
-      margin-top: 20px;
-      margin-bottom: 20px;
-    }
-    .navBarULRight {
-      position: static;
-    }
-    .navBarUL {
-      display: flex;
-      align-items: center;
-      margin: 7.5px 0px;
-    }
-    .navBarUL li {
-      height: 37px;
-    }
-    .navBarUL li a {
-      font-size: 14px;
-      padding: 10px 15px;
-    }
 
-    .navBarToggle {
-      margin-right: 0;
-      display: block;
-      position: absolute;
-      left: 11px;
-      top: 15px;
-      background: #fff;
-    }
 
     .navBarHeader {
       display: flex;
@@ -795,24 +391,6 @@ export const baseStyles = injectGlobal`
       text-align: left !important;
       padding-left: 0 !important;
     }
-
-    .searchWrapper {
-      padding: 0px 0;
-      padding-top: 0px;
-      position: absolute;
-      bottom: 0px;
-      width: calc(100% - 70px);
-      position: absolute;
-      left: 40px;
-      top: 8px;
-    }
-    .hitWrapper {
-      width: 100%;
-      right: 0;
-      top: 35px;
-      max-height: fit-content;
-      position: static;
-    }
   }
 
   @media (min-width: 768px) and (max-width: 991px) {
@@ -829,15 +407,6 @@ export const baseStyles = injectGlobal`
     .divider {
       margin: 0 5px;
       height: 20px;
-    }
-    .hitWrapper {
-      max-width: 500px;
-    }
-    .navBarUL li a {
-      padding: 10px 5px;
-    }
-    .searchWrapper {
-      padding-left: 0px;
     }
   }
 `

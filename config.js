@@ -22,7 +22,6 @@ const config = {
         link: "http://ermak.cs.nstu.ru/cprog/html/",
       },
     ],
-    frontline: false,
     ignoreIndex: false,
   },
   siteMetadata: {

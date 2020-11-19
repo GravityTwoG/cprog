@@ -9,9 +9,7 @@ export const Tree = ({ edges }) => {
 
   return (
     <TreeNode
-      className={`${
-        config.sidebar.frontLine ? "showFrontLine" : "hideFrontLine"
-      } firstLevel`}
+      className="firstLevel"
       notCollapsedDepth={config.sidebar.notCollapsedDepth || 1}
       {...treeData}
     />

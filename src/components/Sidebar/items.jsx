@@ -59,6 +59,37 @@ export const StyledSidebar = styled("aside")`
   padding-right: 0;
   box-shadow: ${({ theme }) => theme.boxShadow};
 
+  .firstLevel > ul > .item {
+    margin-left: 0 !important;
+  }
+
+  .sideBarUL li {
+    list-style-type: none;
+    width: auto;
+  }
+  .sideBarUL li a {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+    border-style: solid none solid solid;
+    border-width: 1px 0px 1px 1px;
+    border-color: transparent currentcolor transparent transparent;
+  }
+  .sideBarUL .item {
+    list-style: none;
+    padding: 0;
+  }
+  .sideBarUL .item > a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+  }
+  .sideBarUL .item .item {
+    margin-left: 16px;
+  }
+
   @media only screen and (max-width: 1023px) {
     width: 100%;
     /* position: relative; */
