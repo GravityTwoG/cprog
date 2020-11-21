@@ -86,7 +86,7 @@ const StyledMobileNavbar = styled.div`
     position: fixed;
     top: 0px;
     right: 0%;
-    z-index: 1;
+    z-index: -1;
     padding-top: 70px;
     box-shadow: ${({ theme }) => theme.boxShadow};
     overflow: hidden;
@@ -101,42 +101,13 @@ const StyledMobileNavbar = styled.div`
   }
 `
 const StyledList = styled.ul`
+  margin-top: 5px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 
   & > li {
     list-style: none;
-  }
-`
-
-const StyledHeader = styled.header`
-  width: 100%;
-  height: 70px;
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  background-color: ${({ theme }) => theme.colors.background};
-  box-shadow: ${({ theme }) => theme.boxShadow};
-  transition: transform 0.3s ease-in-out;
-  transform: translateY(0%);
-  will-change: translateY;
-
-  &[data-is-hidden="true"] {
-    transform: translateY(-100%);
-  }
-  & ~ .header-place {
-    height: 70px;
-  }
-
-  @media (max-width: 767px) {
-    & .styled-list {
-      display: none;
-    }
   }
 `
 
@@ -209,6 +180,7 @@ export const Header = ({ location }) => {
           dangerouslySetInnerHTML={{ __html: headerTitle }}
         />
       </StyledNavbarHeader>
+
       {config.header.social ? (
         <ul
           className="socialWrapper visibleMobileView"
@@ -268,6 +240,7 @@ export const Header = ({ location }) => {
           </li>
         </StyledList>
       </MLAuto>
+
       <MLAuto>
         <StyledNavbarToggler
           onClick={toggleNavbar}
@@ -281,6 +254,7 @@ export const Header = ({ location }) => {
           <span className="iconBar" />
         </StyledNavbarToggler>
       </MLAuto>
+
       <StyledMobileNavbar ref={navbarRef} data-is-open="false">
         <StyledList>
           {headerLinks.map((link, key) => {
@@ -340,6 +314,46 @@ export const Header = ({ location }) => {
   )
 }
 
+const StyledHeader = styled.header`
+  height: 70px;
+`
+
+const StyledHeaderBG = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background-color: ${({ theme }) => theme.colors.background};
+  box-shadow: ${({ theme }) => theme.boxShadow};
+`
+
+const StyledHeaderContent = styled.div`
+  width: 100%;
+  height: 70px;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: transform 0.3s ease-in-out;
+  transform: translateY(0%);
+  will-change: translateY;
+
+  &[data-is-hidden="true"] {
+    transform: translateY(-100%);
+  }
+
+  @media (max-width: 767px) {
+    & .styled-list {
+      display: none;
+    }
+  }
+`
+
 const HeaderContainer = ({ children }) => {
   const headerRef = useRef(null)
   useEffect(() => {
@@ -361,11 +375,11 @@ const HeaderContainer = ({ children }) => {
   }, [])
 
   return (
-    <>
-      <StyledHeader ref={headerRef} data-is-hidden="false">
+    <StyledHeader>
+      <StyledHeaderContent ref={headerRef} data-is-hidden="false">
+        <StyledHeaderBG />
         {children}
-      </StyledHeader>
-      <div className="header-place" />
-    </>
+      </StyledHeaderContent>
+    </StyledHeader>
   )
 }
