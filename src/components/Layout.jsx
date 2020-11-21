@@ -3,7 +3,6 @@ import styled from "@emotion/styled"
 import { MDXProvider } from "@mdx-js/react"
 
 import config from "../../config.js"
-import ThemeProvider from "./theme/ThemeProvider"
 import { mdxComponents } from "./mdxComponents"
 import { Footer } from "./Footer.jsx"
 import { Sidebar } from "./Sidebar"
@@ -71,34 +70,32 @@ const RightSideBarWidth = styled("div")`
 
 export const Layout = ({ children, location }) => {
   return (
-    <ThemeProvider location={location}>
-      <MDXProvider components={mdxComponents}>
-        <Header location={location} />
+    <MDXProvider components={mdxComponents}>
+      <Header location={location} />
 
-        <Wrapper>
-          <LeftSideBarWidth className={"hiddenMobile"}>
-            <Sidebar location={location} />
-          </LeftSideBarWidth>
-          {config.sidebar.title ? (
-            <div
-              className={"sidebarTitle sideBarShow"}
-              dangerouslySetInnerHTML={{ __html: config.sidebar.title }}
-            />
-          ) : null}
-          <Content>
-            <ChildrenContainer>
-              <MaxWidth>{children}</MaxWidth>
-            </ChildrenContainer>
-            <MaxWidth>
-              <Footer />
-            </MaxWidth>
-          </Content>
+      <Wrapper>
+        <LeftSideBarWidth className={"hiddenMobile"}>
+          <Sidebar location={location} />
+        </LeftSideBarWidth>
+        {config.sidebar.title ? (
+          <div
+            className={"sidebarTitle sideBarShow"}
+            dangerouslySetInnerHTML={{ __html: config.sidebar.title }}
+          />
+        ) : null}
+        <Content>
+          <ChildrenContainer>
+            <MaxWidth>{children}</MaxWidth>
+          </ChildrenContainer>
+          <MaxWidth>
+            <Footer />
+          </MaxWidth>
+        </Content>
 
-          <RightSideBarWidth className={"hiddenMobile"}>
-            <RightSidebar location={location} />
-          </RightSideBarWidth>
-        </Wrapper>
-      </MDXProvider>
-    </ThemeProvider>
+        <RightSideBarWidth className={"hiddenMobile"}>
+          <RightSidebar location={location} />
+        </RightSideBarWidth>
+      </Wrapper>
+    </MDXProvider>
   )
 }

@@ -10,7 +10,7 @@ const ThemeContext = React.createContext({
   toggleActiveTheme: () => {},
 })
 
-class ThemeProvider extends React.Component {
+export class ThemeProvider extends React.Component {
   state = {
     isDarkThemeActive: false,
   }
@@ -57,8 +57,6 @@ class ThemeProvider extends React.Component {
     )
   }
 }
-
-export default ThemeProvider
 
 export const useThemeContext = () => {
   const { toggleActiveTheme, isDarkThemeActive } = useContext(ThemeContext)
