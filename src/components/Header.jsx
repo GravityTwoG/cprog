@@ -144,7 +144,7 @@ const StyledHeaderTitle = styled("div")`
   color: ${({ theme }) => theme.colors.text};
 `
 
-export const Header = () => {
+export const Header = ({ location }) => {
   const data = useStaticQuery(graphql`
     query headerTitleQuery {
       site {
@@ -176,19 +176,171 @@ export const Header = () => {
 
   const burgerButtonRef = useRef(null)
   const navbarRef = useRef(null)
+  const closeNavbar = () => {
+    navbarRef.current.dataset.isOpen = "false"
+    burgerButtonRef.current.dataset.isOpen = "false"
+    document.body.style.overflow = "auto"
+  }
+  const openNavbar = () => {
+    navbarRef.current.dataset.isOpen = "true"
+    burgerButtonRef.current.dataset.isOpen = "true"
+    document.body.style.overflow = "hidden"
+  }
   const toggleNavbar = () => {
     const isOpen = navbarRef.current.dataset.isOpen
     if (isOpen === "true") {
-      navbarRef.current.dataset.isOpen = "false"
-      burgerButtonRef.current.dataset.isOpen = "false"
-      document.body.style.overflow = "auto"
+      closeNavbar()
     } else {
-      navbarRef.current.dataset.isOpen = "true"
-      burgerButtonRef.current.dataset.isOpen = "true"
-      document.body.style.overflow = "hidden"
+      openNavbar()
     }
   }
+  useEffect(() => {
+    closeNavbar()
+  }, [location.pathname])
 
+  return (
+    <HeaderContainer>
+      <StyledNavbarHeader>
+        <Link to={finalLogoLink} className={"navBarBrand"}>
+          <Logo />
+        </Link>
+        <StyledHeaderTitle
+          className={"headerTitle displayInline"}
+          dangerouslySetInnerHTML={{ __html: headerTitle }}
+        />
+      </StyledNavbarHeader>
+      {config.header.social ? (
+        <ul
+          className="socialWrapper visibleMobileView"
+          dangerouslySetInnerHTML={{ __html: config.header.social }}
+        ></ul>
+      ) : null}
+      <MLAuto>
+        <StyledList className="styled-list">
+          {headerLinks.map((link, key) => {
+            if (link.link !== "" && link.text !== "") {
+              return (
+                <li key={key}>
+                  {
+                    // eslint-disable-next-line jsx-a11y/control-has-associated-label
+                    <a
+                      className="sidebarLink"
+                      href={link.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      dangerouslySetInnerHTML={{ __html: link.text }}
+                    />
+                  }
+                </li>
+              )
+            }
+            return null
+          })}
+          {helpUrl !== "" ? (
+            <li>
+              <a href={helpUrl}>
+                <img src={help} alt={"Help icon"} />
+              </a>
+            </li>
+          ) : null}
+
+          {config.header.social ? (
+            <li className={"hiddenMobile"}>
+              <ul
+                className="socialWrapper"
+                dangerouslySetInnerHTML={{ __html: config.header.social }}
+              ></ul>
+            </li>
+          ) : null}
+          {githubUrl !== "" ? (
+            <li className={"githubBtn"}>
+              <GitHubButton
+                href={githubUrl}
+                data-show-count="true"
+                aria-label="Star on GitHub"
+              >
+                Star
+              </GitHubButton>
+            </li>
+          ) : null}
+          <li>
+            <DarkModeSwitch />
+          </li>
+        </StyledList>
+      </MLAuto>
+      <MLAuto>
+        <StyledNavbarToggler
+          onClick={toggleNavbar}
+          role="button"
+          ref={burgerButtonRef}
+          isDarkThemeActive={isDarkThemeActive}
+          data-is-open="false"
+        >
+          <span className="iconBar" />
+          <span className="iconBar" />
+          <span className="iconBar" />
+        </StyledNavbarToggler>
+      </MLAuto>
+      <StyledMobileNavbar ref={navbarRef} data-is-open="false">
+        <StyledList>
+          {headerLinks.map((link, key) => {
+            if (link.link !== "" && link.text !== "") {
+              return (
+                <li key={key}>
+                  {
+                    // eslint-disable-next-line jsx-a11y/control-has-associated-label
+                    <a
+                      className="sidebarLink"
+                      href={link.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      dangerouslySetInnerHTML={{ __html: link.text }}
+                    />
+                  }
+                </li>
+              )
+            }
+            return null
+          })}
+          {helpUrl !== "" ? (
+            <li>
+              <a href={helpUrl}>
+                <img src={help} alt={"Help icon"} />
+              </a>
+            </li>
+          ) : null}
+
+          {config.header.social ? (
+            <li className={"hiddenMobile"}>
+              <ul
+                className="socialWrapper"
+                dangerouslySetInnerHTML={{ __html: config.header.social }}
+              ></ul>
+            </li>
+          ) : null}
+          {githubUrl !== "" ? (
+            <li className={"githubBtn"}>
+              <GitHubButton
+                href={githubUrl}
+                data-show-count="true"
+                aria-label="Star on GitHub"
+              >
+                Star
+              </GitHubButton>
+            </li>
+          ) : null}
+          <li>
+            <DarkModeSwitch />
+          </li>
+        </StyledList>
+
+        <Sidebar location={location} />
+      </StyledMobileNavbar>
+    </HeaderContainer>
+  )
+}
+
+const HeaderContainer = ({ children }) => {
   const headerRef = useRef(null)
   useEffect(() => {
     let prevScrollpos = window.pageYOffset
@@ -211,142 +363,7 @@ export const Header = () => {
   return (
     <>
       <StyledHeader ref={headerRef} data-is-hidden="false">
-        <StyledNavbarHeader>
-          <Link to={finalLogoLink} className={"navBarBrand"}>
-            <Logo />
-          </Link>
-          <StyledHeaderTitle
-            className={"headerTitle displayInline"}
-            dangerouslySetInnerHTML={{ __html: headerTitle }}
-          />
-        </StyledNavbarHeader>
-        {config.header.social ? (
-          <ul
-            className="socialWrapper visibleMobileView"
-            dangerouslySetInnerHTML={{ __html: config.header.social }}
-          ></ul>
-        ) : null}
-        <MLAuto>
-          <StyledList className="styled-list">
-            {headerLinks.map((link, key) => {
-              if (link.link !== "" && link.text !== "") {
-                return (
-                  <li key={key}>
-                    {
-                      // eslint-disable-next-line jsx-a11y/control-has-associated-label
-                      <a
-                        className="sidebarLink"
-                        href={link.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        dangerouslySetInnerHTML={{ __html: link.text }}
-                      />
-                    }
-                  </li>
-                )
-              }
-              return null
-            })}
-            {helpUrl !== "" ? (
-              <li>
-                <a href={helpUrl}>
-                  <img src={help} alt={"Help icon"} />
-                </a>
-              </li>
-            ) : null}
-
-            {config.header.social ? (
-              <li className={"hiddenMobile"}>
-                <ul
-                  className="socialWrapper"
-                  dangerouslySetInnerHTML={{ __html: config.header.social }}
-                ></ul>
-              </li>
-            ) : null}
-            {githubUrl !== "" ? (
-              <li className={"githubBtn"}>
-                <GitHubButton
-                  href={githubUrl}
-                  data-show-count="true"
-                  aria-label="Star on GitHub"
-                >
-                  Star
-                </GitHubButton>
-              </li>
-            ) : null}
-            <li>
-              <DarkModeSwitch />
-            </li>
-          </StyledList>
-        </MLAuto>
-        <MLAuto>
-          <StyledNavbarToggler
-            onClick={toggleNavbar}
-            role="button"
-            ref={burgerButtonRef}
-            isDarkThemeActive={isDarkThemeActive}
-            data-is-open="false"
-          >
-            <span className="iconBar" />
-            <span className="iconBar" />
-            <span className="iconBar" />
-          </StyledNavbarToggler>
-        </MLAuto>
-        <StyledMobileNavbar ref={navbarRef} data-is-open="false">
-          <StyledList>
-            {headerLinks.map((link, key) => {
-              if (link.link !== "" && link.text !== "") {
-                return (
-                  <li key={key}>
-                    {
-                      // eslint-disable-next-line jsx-a11y/control-has-associated-label
-                      <a
-                        className="sidebarLink"
-                        href={link.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        dangerouslySetInnerHTML={{ __html: link.text }}
-                      />
-                    }
-                  </li>
-                )
-              }
-              return null
-            })}
-            {helpUrl !== "" ? (
-              <li>
-                <a href={helpUrl}>
-                  <img src={help} alt={"Help icon"} />
-                </a>
-              </li>
-            ) : null}
-
-            {config.header.social ? (
-              <li className={"hiddenMobile"}>
-                <ul
-                  className="socialWrapper"
-                  dangerouslySetInnerHTML={{ __html: config.header.social }}
-                ></ul>
-              </li>
-            ) : null}
-            {githubUrl !== "" ? (
-              <li className={"githubBtn"}>
-                <GitHubButton
-                  href={githubUrl}
-                  data-show-count="true"
-                  aria-label="Star on GitHub"
-                >
-                  Star
-                </GitHubButton>
-              </li>
-            ) : null}
-            <li>
-              <DarkModeSwitch />
-            </li>
-          </StyledList>
-
-          <Sidebar />
-        </StyledMobileNavbar>
+        {children}
       </StyledHeader>
       <div className="header-place" />
     </>

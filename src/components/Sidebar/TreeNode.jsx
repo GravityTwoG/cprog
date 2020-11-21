@@ -31,22 +31,15 @@ const ArrowButton = styled.button`
 `
 
 export const TreeNode = React.memo(
-  ({ className = "", url, title, items, notCollapsedDepth }) => {
-    let location
-
-    if (typeof document != "undefined") {
-      location = document.location
-    }
-    const active =
-      location &&
-      (location.pathname === url ||
-        location.pathname === config.gatsby.pathPrefix + url)
+  ({ className = "", url, title, items, notCollapsedDepth, location }) => {
+    const active = isNodeActive(location, url)
 
     const calculatedClassName = `${className} item ${active ? "active" : ""}`
     const [isCollapsed, setIsCollapsed] = useState(!notCollapsedDepth > 0)
     const collapse = () => {
       setIsCollapsed(c => !c)
     }
+
     const hasChildren = items.length !== 0
     return (
       <StyledListItem className={calculatedClassName}>
@@ -69,6 +62,7 @@ export const TreeNode = React.memo(
             {items.map((item, index) => (
               <TreeNode
                 key={item.url + index.toString()}
+                location={location}
                 {...item}
                 notCollapsedDepth={notCollapsedDepth - 1}
               />
@@ -79,3 +73,21 @@ export const TreeNode = React.memo(
     )
   }
 )
+
+const isNodeActive = (location, url) => {
+  if (!location) return false
+  if (
+    location.pathname === url ||
+    location.pathname === config.gatsby.pathPrefix + url
+  ) {
+    return true
+  }
+  if (
+    location.pathname === `${url}/` ||
+    location.pathname === config.gatsby.pathPrefix + `${url}/`
+  ) {
+    return true
+  }
+
+  return false
+}

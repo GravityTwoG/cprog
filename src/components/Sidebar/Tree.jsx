@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import config from "../../../config"
 import { TreeNode } from "./TreeNode"
 
-export const Tree = ({ edges }) => {
+export const Tree = ({ edges, location }) => {
   const [treeData] = useState(() => {
     return calculateTreeData(edges)
   })
@@ -11,6 +11,7 @@ export const Tree = ({ edges }) => {
     <TreeNode
       className="firstLevel"
       notCollapsedDepth={config.sidebar.notCollapsedDepth || 1}
+      location={location}
       {...treeData}
     />
   )

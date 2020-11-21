@@ -6,7 +6,7 @@ import { ExternalLink } from "react-feather"
 import { Tree } from "./Tree"
 import { Divider, ListItem, StyledSidebar } from "./items.jsx"
 
-export const Sidebar = () => {
+export const Sidebar = ({ location }) => {
   const { allMdx } = useStaticQuery(graphql`
     query SidebarQuery {
       allMdx {
@@ -32,7 +32,7 @@ export const Sidebar = () => {
         />
       ) : null}
       <ul className={"sideBarUL"}>
-        <Tree edges={allMdx.edges} />
+        <Tree edges={allMdx.edges} location={location} />
 
         {config.sidebar.links && config.sidebar.links.length > 0 && <Divider />}
 

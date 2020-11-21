@@ -4,7 +4,6 @@ import { graphql } from "gatsby"
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 import styled from "@emotion/styled"
 
-import { Layout } from "../components/Layout"
 import { Link } from "../components/Link"
 import { NextPrevious } from "../components/NextPrevious"
 import gitHub from "../images/github.svg"
@@ -116,7 +115,7 @@ const BookTemplate = props => {
   canonicalUrl = canonicalUrl + mdx.fields.slug
 
   return (
-    <Layout {...props}>
+    <>
       <Helmet>
         {metaTitle ? <title>{metaTitle}</title> : null}
         {metaTitle ? <meta name="title" content={metaTitle} /> : null}
@@ -158,7 +157,7 @@ const BookTemplate = props => {
       <div className={"addPaddTopBottom"}>
         <NextPrevious mdx={mdx} nav={nav} />
       </div>
-    </Layout>
+    </>
   )
 }
 
