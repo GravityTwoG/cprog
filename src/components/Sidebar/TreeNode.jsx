@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import OpenedSvg from "../../images/opened"
 import config from "../../../config"
-import { StyledListItem } from "./items"
+import { ChapterHeading, StyledListItem } from "./items"
 import { Link } from "../Link"
 import styled from "@emotion/styled"
 
@@ -31,7 +31,15 @@ const ArrowButton = styled.button`
 `
 
 export const TreeNode = React.memo(
-  ({ className = "", url, title, items, notCollapsedDepth, location }) => {
+  ({
+    className = "",
+    url,
+    title,
+    items,
+    notCollapsedDepth,
+    location,
+    isChapterHeading = false,
+  }) => {
     const active = isNodeActive(location, url)
 
     const calculatedClassName = `${className} item ${active ? "active" : ""}`
@@ -39,12 +47,16 @@ export const TreeNode = React.memo(
     const collapse = () => {
       setIsCollapsed(c => !c)
     }
-
     const hasChildren = items.length !== 0
     return (
       <StyledListItem className={calculatedClassName}>
         <div className="tree-node-title">
-          {title && <Link to={url}>{title}</Link>}
+          {title && !isChapterHeading && <Link to={url}>{title}</Link>}
+          {isChapterHeading && (
+            <ChapterHeading onClick={collapse} role="button">
+              {title}
+            </ChapterHeading>
+          )}
           {title && hasChildren && !config.sidebar.frontLine ? (
             <ArrowButton
               onClick={collapse}
@@ -61,10 +73,13 @@ export const TreeNode = React.memo(
           <ul>
             {items.map((item, index) => (
               <TreeNode
-                key={item.url + index.toString()}
                 location={location}
-                {...item}
                 notCollapsedDepth={notCollapsedDepth - 1}
+                key={item.url}
+                items={item.items}
+                url={item.url}
+                isChapterHeading={item.isChapterHeading}
+                title={item.title}
               />
             ))}
           </ul>

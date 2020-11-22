@@ -30,6 +30,9 @@ module.exports.createPages = async ({ graphql, actions }) => {
       allMdx {
         edges {
           node {
+            frontmatter {
+              type
+            }
             fields {
               slug
             }
@@ -40,6 +43,9 @@ module.exports.createPages = async ({ graphql, actions }) => {
   `)
 
   res.data.allMdx.edges.forEach(edge => {
+    if (edge.node.frontmatter.type === "chapter-heading") {
+      return
+    }
     createPage({
       component: bookTemplate,
       path: edge.node.fields.slug,

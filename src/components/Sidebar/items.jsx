@@ -1,6 +1,13 @@
 import styled from "@emotion/styled"
 import React from "react"
 
+export const ChapterHeading = styled(p => (
+  <span {...p} className={"chapter-heading " + p.className} />
+))`
+  transition: color 0.2s linear;
+  cursor: pointer;
+`
+
 export const StyledListItem = styled("li")`
   list-style: none;
   border-left: 1px solid ${({ theme }) => theme.colors.deco};
@@ -8,31 +15,35 @@ export const StyledListItem = styled("li")`
     display: flex;
     align-items: center;
   }
+  .tree-node-title:hover > a,
+  .tree-node-title:hover > .chapter-heading {
+    color: ${({ theme }) => theme?.colors?.accent};
+  }
 
-  &.active a:hover {
+  &.active a:hover,
+  &.active .chapter-heading:hover {
     color: ${({ theme }) => theme.colors.text};
   }
 
   &.active > .tree-node-title {
     background-color: #3884ff;
 
-    & > a {
+    & > a,
+    & > .chapter-heading {
       color: #fff;
     }
   }
 
-  a {
+  a,
+  .chapter-heading {
     flex-grow: 1;
     color: ${({ theme }) => theme.colors.text};
     text-decoration: none;
-    font-weight: ${({ level }) => (level === 0 ? 700 : 400)};
+    font-weight: ${({ level }) => (level === 0 ? 700 : 500)};
+    font-size: 14px;
     padding: 0.45rem 1rem 0.45rem ${props => 2 + (props.level || 0) * 1}rem;
     display: block;
     position: relative;
-
-    &:hover {
-      color: ${({ theme }) => theme?.colors?.accent};
-    }
   }
 `
 

@@ -6,7 +6,7 @@ export const Tree = ({ edges, location }) => {
   const [treeData] = useState(() => {
     return calculateTreeData(edges)
   })
-
+  console.log(treeData)
   return (
     <TreeNode
       className="firstLevel"
@@ -26,6 +26,7 @@ const calculateTreeData = edges => {
     (accu, { node }) => {
       const { slug, title } = node.fields
       const parts = slug.split("/")
+      const isChapterHeading = node.frontmatter.type === "chapter-heading"
 
       const slicedParts =
         config.gatsby && config.gatsby.trailingSlash
@@ -59,10 +60,12 @@ const calculateTreeData = edges => {
       if (existingItem) {
         existingItem.url = slug
         existingItem.title = title
+        existingItem.isChapterHeading = isChapterHeading
       } else {
         prevItems.push({
           label: parts[slicedLength],
           url: slug,
+          isChapterHeading,
           items: [],
           title: title || "Undefined",
         })

@@ -13,6 +13,9 @@ export const Sidebar = ({ location }) => {
         edges {
           node {
             id
+            frontmatter {
+              type
+            }
             fields {
               slug
               title
