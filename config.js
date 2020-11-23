@@ -1,4 +1,8 @@
 const config = {
+  author: {
+    githubUrl: "https://github.com/GravityTwoG",
+    githubNickname: "GravityTwoG",
+  },
   gatsby: {
     pathPrefix: "/",
     siteUrl: "https://github.com/GravityTwoG/cprog",
