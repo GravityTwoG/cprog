@@ -6,53 +6,46 @@ export const StyledNextPrevious = styled("div")`
   margin: 0px;
   padding: 0px;
   width: auto;
-  display: grid;
-  grid-template-rows: auto;
-  column-gap: 24px;
-  grid-template-columns: calc(50% - 8px) calc(50% - 8px);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 
-  .previousBtn {
-    cursor: pointer;
-    -moz-box-align: center;
-    -moz-box-direction: normal;
-    -moz-box-orient: horizontal;
-    margin: 0px;
-    padding: 0px;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    place-self: stretch;
-    border-radius: 3px;
-    border: 1px solid ${({ theme }) => theme.colors.deco};
-    transition: border 200ms ease 0s;
-    box-shadow: ${({ theme }) => theme.boxShadow};
-    text-decoration: none;
-
-    background-color: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.text};
+  .preRightWrapper,
+  .nextRightWrapper {
+    flex: 1 1 0%;
+    padding: 16px;
+  }
+  .preRightWrapper {
+    text-align: right;
+  }
+  .nextRightWrapper {
+    text-align: left;
   }
 
+  .previousBtn,
   .nextBtn {
+    margin: 0.5rem;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+    min-width: min-content;
     cursor: pointer;
     -moz-box-align: center;
     -moz-box-direction: normal;
     -moz-box-orient: horizontal;
-    margin: 0px;
-    padding: 0px;
     position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+
     place-self: stretch;
     border-radius: 3px;
     border: 1px solid ${({ theme }) => theme.colors.deco};
-    transition: border 200ms ease 0s;
-    box-shadow: ${({ theme }) => theme.boxShadow};
     text-decoration: none;
-
     background-color: ${props => props.theme.colors.background};
     color: ${props => props.theme.colors.text};
+
+    transition: border 200ms ease 0s;
+    box-shadow: ${({ theme }) => theme.boxShadow};
   }
 
   .nextBtn:hover,
@@ -66,7 +59,8 @@ export const StyledNextPrevious = styled("div")`
     color: ${({ theme }) => theme.colors.link};
   }
 
-  .leftArrow {
+  .leftArrow,
+  .rightArrow {
     display: block;
     margin: 0px;
     color: rgb(157, 170, 182);
@@ -78,14 +72,7 @@ export const StyledNextPrevious = styled("div")`
   }
 
   .rightArrow {
-    flex: 0 0 auto;
-    font-size: 24px;
-    transition: color 200ms ease 0s;
-    padding: 16px;
     padding-left: 16px;
-    display: block;
-    margin: 0px;
-    color: rgb(157, 170, 182);
   }
 
   .nextPreviousTitle {
@@ -93,24 +80,24 @@ export const StyledNextPrevious = styled("div")`
     margin: 0px;
     padding: 0px;
     transition: color 200ms ease 0s;
-  }
 
-  .nextPreviousTitle span {
-    font-size: 16px;
-    line-height: 1.5;
-    font-weight: 500;
+    & span {
+      font-size: 16px;
+      line-height: 1.5;
+      font-weight: 500;
+    }
   }
 
   .smallContent {
     color: ${({ theme }) => theme.colors.text};
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 650px) {
     display: block;
     padding: 0 15px;
 
     .previousBtn {
-      margin-bottom: 20px;
+      margin-bottom: 1.5rem;
     }
   }
 `
@@ -187,7 +174,7 @@ export const NextPrevious = ({ mdx, nav }) => {
           </div>
           <div className={"preRightWrapper"}>
             <div className={"smallContent"}>
-              <span>Previous</span>
+              <span>Назад</span>
             </div>
             <div className={"nextPreviousTitle"}>
               <span>{nav[currentIndex - 1].title}</span>
@@ -199,7 +186,7 @@ export const NextPrevious = ({ mdx, nav }) => {
         <Link to={nav[currentIndex + 1].url} className={"nextBtn"}>
           <div className={"nextRightWrapper"}>
             <div className={"smallContent"}>
-              <span>Next</span>
+              <span>Вперёд</span>
             </div>
             <div className={"nextPreviousTitle"}>
               <span>

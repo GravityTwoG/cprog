@@ -169,14 +169,6 @@ export const baseStyles = injectGlobal`
     padding: 50px 0;
   }
 
-  .preRightWrapper {
-    display: block;
-    margin: 0px;
-    flex: 1 1 0%;
-    padding: 16px;
-    text-align: right;
-  }
-
   .smallContent {
     display: block;
     margin: 0px;
@@ -192,12 +184,7 @@ export const baseStyles = injectGlobal`
 
   /* **************************** */
 
-  .nextRightWrapper {
-    display: block;
-    margin: 0px;
-    padding: 16px;
-    flex: 1 1 0%;
-  }
+  
 
   /* tables.css */
   .tableWrapper {
@@ -326,12 +313,6 @@ export const baseStyles = injectGlobal`
     margin: 0px;
     padding: 16px;
     overflow: auto;
-  }
-
-  .poweredBy {
-    font-size: 0.6em;
-    text-align: end;
-    padding: 0;
   }
 
   @media (max-width: 767px) {
