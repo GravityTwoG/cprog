@@ -21,12 +21,12 @@ const Wrapper = styled("div")`
   .sideBarUL .item > a:hover {
     background-color: ${({ theme }) => theme.colors.accent};
     color: #fff !important;
-
-    /* background: #F8F8F8 */
   }
 
-  @media only screen and (max-width: 767px) {
-    display: block;
+  @media (max-width: 1023px) {
+    .rightSidebar {
+      display: none;
+    }
   }
 `
 
@@ -34,6 +34,7 @@ const Content = styled("main")`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  flex-shrink: 1;
   margin: 0px 60px;
   background: ${({ theme }) => theme.colors.background};
   min-height: calc(100vh - 70px);
@@ -42,12 +43,15 @@ const Content = styled("main")`
   }
 
   @media only screen and (max-width: 1023px) {
-    padding-left: 0;
-    margin: 0 10px;
+    margin: 0 25px;
+  }
+  @media only screen and (max-width: 475px) {
+    margin: 0 18px;
   }
 `
 
 const MaxWidth = styled("div")`
+  flex: 1;
   @media only screen and (min-width: 1279px) {
     width: 100%;
     max-width: 900px;
@@ -55,12 +59,9 @@ const MaxWidth = styled("div")`
   }
 `
 
-const ChildrenContainer = styled.div`
-  flex: 1;
-`
-
 const LeftSideBarWidth = styled("div")`
-  width: 298px;
+  width: 310px;
+  flex: 1 0 auto;
 `
 
 const RightSideBarWidth = styled("div")`
@@ -76,22 +77,22 @@ export const Layout = ({ children, location }) => {
         <LeftSideBarWidth className={"hiddenMobile"}>
           <Sidebar location={location} />
         </LeftSideBarWidth>
+
         {config.sidebar.title ? (
           <div
             className={"sidebarTitle sideBarShow"}
             dangerouslySetInnerHTML={{ __html: config.sidebar.title }}
           />
         ) : null}
+
         <Content>
-          <ChildrenContainer>
-            <MaxWidth>{children}</MaxWidth>
-          </ChildrenContainer>
+          <MaxWidth>{children}</MaxWidth>
           <MaxWidth>
             <Footer />
           </MaxWidth>
         </Content>
 
-        <RightSideBarWidth className={"hiddenMobile"}>
+        <RightSideBarWidth className={"hiddenMobile rightSidebar"}>
           <RightSidebar location={location} />
         </RightSideBarWidth>
       </Wrapper>

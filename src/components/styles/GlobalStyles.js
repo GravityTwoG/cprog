@@ -145,13 +145,6 @@ export const baseStyles = injectGlobal`
     color: #001934;
   }
 
-  .titleWrapper {
-    display: flex;
-    align-items: center;
-    padding-bottom: 40px;
-    margin-bottom: 32px;
-  }
-
   .gitBtn {
     height: 30px;
     min-height: 30px;
@@ -187,15 +180,6 @@ export const baseStyles = injectGlobal`
   
 
   /* tables.css */
-  .tableWrapper {
-    max-width: 100%;
-    overflow: auto;
-
-    @media (max-width: 767px) {
-      margin: 0 -25px;
-      max-width: calc(100% + 50px);
-    }
-  }
   table {
     padding: 0;
     border-collapse: collapse;
@@ -357,11 +341,6 @@ export const baseStyles = injectGlobal`
       padding-left: 0;
       flex: initial;
       padding-right: 15px;
-    }
-
-    .titleWrapper {
-      padding: 0 15px;
-      display: block;
     }
 
     .gitBtn {

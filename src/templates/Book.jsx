@@ -115,23 +115,45 @@ const BookTemplate = props => {
 export default BookTemplate
 
 const StyledTitleWrapper = styled.div`
+  margin-bottom: 30px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 0px 15px 20px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.deco};
+
+  @media (max-width: 475px) {
+    padding: 0px 0px 20px;
+  }
 `
 
 export const StyledHeading = styled("h1")`
+  max-width: 100%;
+  flex: 1;
   font-size: 32px;
   line-height: 1.5;
   font-weight: 500;
   border-left: 2px solid ${props => props.theme.colors.accent};
   padding: 0 16px;
-  flex: 1;
   margin-top: 0;
   padding-top: 0;
   color: ${props => props.theme.colors.heading};
+
+  @media (max-width: 767px) {
+    font-size: 28px;
+  }
+  @media (max-width: 576px) {
+    font-size: 24px;
+  }
+  @media (max-width: 475px) {
+    font-size: 20px;
+  }
 `
 
 export const Edit = styled("div")`
-  padding: 1rem 1.5rem;
+  padding: 1rem 0 0 1.5rem;
 
   a {
     width: 150px;
@@ -186,9 +208,5 @@ export const StyledMainWrapper = styled.div`
     font-size: 0.9375em;
 
     background: ${props => props.theme.colors.background};
-  }
-
-  @media (max-width: 767px) {
-    padding: 0 15px;
   }
 `
