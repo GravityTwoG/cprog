@@ -35,7 +35,6 @@ const Content = styled("main")`
   flex-direction: column;
   flex-grow: 1;
   margin: 0px 60px;
-  padding-top: 3rem;
   background: ${({ theme }) => theme.colors.background};
   min-height: calc(100vh - 70px);
   table tr {

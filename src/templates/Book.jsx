@@ -135,6 +135,10 @@ const BookTemplate = props => {
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
+      <div className="addPaddTopBottom">
+        <NextPrevious mdx={mdx} nav={nav} />
+      </div>
+
       <StyledTitleWrapper className={"titleWrapper"}>
         <StyledHeading>{mdx.fields.title}</StyledHeading>
         <Edit className={"mobileView"}>
