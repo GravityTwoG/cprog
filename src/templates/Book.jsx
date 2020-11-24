@@ -81,38 +81,92 @@ const BookTemplate = props => {
         ) : null}
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
-
-      <div className="addPaddTopBottom">
+      <PaddingWrapper className="addPaddTopBottom">
         <NextPrevious mdx={mdx} />
-      </div>
+      </PaddingWrapper>
 
-      <StyledTitleWrapper className={"titleWrapper"}>
-        <StyledHeading>{mdx.fields.title}</StyledHeading>
-        <Edit className={"mobileView"}>
-          {docsLocation && (
-            <Link
-              className={"gitBtn"}
-              target="_blank"
-              to={`${docsLocation}/${mdx.parent.relativePath}`}
-            >
-              <img src={gitHub} alt={"Github logo"} /> Edit on GitHub
-            </Link>
-          )}
-        </Edit>
-      </StyledTitleWrapper>
+      <PaddingWrapper>
+        <StyledTitleWrapper className={"titleWrapper"}>
+          <StyledHeading>{mdx.fields.title}</StyledHeading>
+          <Edit className={"mobileView"}>
+            {docsLocation && (
+              <Link
+                className={"gitBtn"}
+                target="_blank"
+                to={`${docsLocation}/${mdx.parent.relativePath}`}
+              >
+                <img src={gitHub} alt={"Github logo"} /> Edit on GitHub
+              </Link>
+            )}
+          </Edit>
+        </StyledTitleWrapper>
+      </PaddingWrapper>
 
       <StyledMainWrapper>
         <MDXRenderer>{mdx.body}</MDXRenderer>
       </StyledMainWrapper>
 
-      <div className={"addPaddTopBottom"}>
+      <PaddingWrapper className={"addPaddTopBottom"}>
         <NextPrevious mdx={mdx} />
-      </div>
+      </PaddingWrapper>
     </>
   )
 }
 
 export default BookTemplate
+
+export const PaddingWrapper = styled.div`
+  padding: 0 60px;
+
+  @media only screen and (max-width: 475px) {
+    padding: 0 18px;
+  }
+`
+
+export const StyledMainWrapper = styled.div`
+  max-width: 100%;
+  color: ${props => props.theme.colors.text};
+  overflow: hidden;
+  padding: 0 60px;
+
+  @media (max-width: 1440px) {
+    max-width: 100%;
+  }
+
+  @media only screen and (max-width: 475px) {
+    padding: 0 18px;
+  }
+
+  ul,
+  ol {
+    -webkit-padding-start: 40px;
+    -moz-padding-start: 40px;
+    -o-padding-start: 40px;
+    margin: 24px 0px;
+    padding: 0px 0px 0px 2em;
+
+    li {
+      font-size: 16px;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+  }
+
+  a {
+    transition: color 0.15s;
+    color: ${props => props.theme.colors.link};
+  }
+
+  code {
+    max-width: 100%;
+    border: 1px solid #ede7f3;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.9375em;
+
+    background: ${props => props.theme.colors.background};
+  }
+`
 
 const StyledTitleWrapper = styled.div`
   margin-bottom: 30px;
@@ -174,39 +228,5 @@ export const Edit = styled("div")`
       background-color: rgb(245, 247, 249);
       color: rgb(36, 42, 49);
     }
-  }
-`
-
-export const StyledMainWrapper = styled.div`
-  max-width: 750px;
-  color: ${props => props.theme.colors.text};
-
-  ul,
-  ol {
-    -webkit-padding-start: 40px;
-    -moz-padding-start: 40px;
-    -o-padding-start: 40px;
-    margin: 24px 0px;
-    padding: 0px 0px 0px 2em;
-
-    li {
-      font-size: 16px;
-      line-height: 1.8;
-      font-weight: 400;
-    }
-  }
-
-  a {
-    transition: color 0.15s;
-    color: ${props => props.theme.colors.link};
-  }
-
-  code {
-    border: 1px solid #ede7f3;
-    border-radius: 4px;
-    padding: 2px 6px;
-    font-size: 0.9375em;
-
-    background: ${props => props.theme.colors.background};
   }
 `

@@ -33,20 +33,12 @@ const Wrapper = styled("div")`
 const Content = styled("main")`
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  flex-shrink: 1;
-  margin: 0px 60px;
+  align-items: center;
+  flex: 1 1 100%;
   background: ${({ theme }) => theme.colors.background};
   min-height: calc(100vh - 70px);
   table tr {
     background: ${({ theme }) => theme.colors.background};
-  }
-
-  @media only screen and (max-width: 1023px) {
-    margin: 0 25px;
-  }
-  @media only screen and (max-width: 475px) {
-    margin: 0 18px;
   }
 `
 
@@ -60,12 +52,14 @@ const MaxWidth = styled("div")`
 `
 
 const LeftSideBarWidth = styled("div")`
-  width: 310px;
-  flex: 1 0 auto;
+  max-width: 390px;
+  min-width: 300px;
+  flex: 1 1 300px;
 `
 
 const RightSideBarWidth = styled("div")`
   width: 224px;
+  flex: 0.2 1 auto;
 `
 
 export const Layout = ({ children, location }) => {

@@ -69,14 +69,14 @@ const StyledNavbarToggler = styled.div`
       transform: translate(-50%, -50%) rotate(45deg);
     }
   }
-  @media (max-width: 767px) {
+  @media (max-width: 1024px) {
     display: block;
   }
 `
 
 const StyledMobileNavbar = styled.div`
   display: none;
-  @media (max-width: 768px) {
+  @media (max-width: 1024px) {
     display: block;
     max-width: 100%;
     max-height: 100vh;

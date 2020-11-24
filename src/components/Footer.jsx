@@ -7,6 +7,7 @@ import { ExternalLink } from "react-feather"
 import { Link } from "./Link"
 import { StyledText } from "./StyledText"
 import { ReactComponent as GithubIcon } from "../images/github.svg"
+import { PaddingWrapper } from "../templates/Book"
 
 const StyledFooter = styled.footer`
   padding: 1rem 0;
@@ -14,20 +15,22 @@ const StyledFooter = styled.footer`
 `
 
 export const Footer = () => (
-  <StyledFooter>
-    <p className="paragraph">
-      <StyledText>
-        <strong>Все материалы взяты с сайта </strong>
-        <Link to="http://ermak.cs.nstu.ru/cprog/html/">
-          ermak.cs.nstu.ru/cprog/html
-          <ExternalLink size={14} style={{ marginLeft: "0.3rem" }} />
-        </Link>
-      </StyledText>
-    </p>
-    {config.author?.githubUrl && config.author?.githubUrl ? (
-      <GithubProfile />
-    ) : null}
-  </StyledFooter>
+  <PaddingWrapper>
+    <StyledFooter>
+      <p className="paragraph">
+        <StyledText>
+          <strong>Все материалы взяты с сайта </strong>
+          <Link to="http://ermak.cs.nstu.ru/cprog/html/">
+            ermak.cs.nstu.ru/cprog/html
+            <ExternalLink size={14} style={{ marginLeft: "0.3rem" }} />
+          </Link>
+        </StyledText>
+      </p>
+      {config.author?.githubUrl && config.author?.githubUrl ? (
+        <GithubProfile />
+      ) : null}
+    </StyledFooter>
+  </PaddingWrapper>
 )
 
 const GithubLink = styled.a`

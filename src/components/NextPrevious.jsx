@@ -25,7 +25,7 @@ export const StyledNextPrevious = styled("div")`
 
   .previousBtn,
   .nextBtn {
-    margin: 0.5rem;
+    margin: 1.5rem 0.5rem 1.5rem;
     padding: 0px;
     display: flex;
     flex-direction: row;
@@ -96,10 +96,6 @@ export const StyledNextPrevious = styled("div")`
   @media (max-width: 650px) {
     display: block;
     padding: 0 15px;
-
-    .previousBtn {
-      margin-bottom: 1.5rem;
-    }
   }
 `
 

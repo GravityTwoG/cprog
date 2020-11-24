@@ -299,6 +299,12 @@ export const baseStyles = injectGlobal`
     overflow: auto;
   }
 
+  @media (max-width: 1024px) {
+    .hiddenMobile {
+      display: none;
+    }
+  }
+
   @media (max-width: 767px) {
     .visibleMobileView {
       display: block !important;
@@ -319,14 +325,10 @@ export const baseStyles = injectGlobal`
       margin-right: 8px;
     }
 
-    .hiddenMobile {
-      display: none !important;
-    }
     hr {
       margin-top: 0;
       margin-bottom: 0;
     }
-
 
     .navBarHeader {
       display: flex;

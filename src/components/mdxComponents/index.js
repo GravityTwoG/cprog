@@ -15,6 +15,16 @@ const StyledPre = styled("pre")`
   }
 `
 
+const StyledTableWrapper = styled.div`
+  max-width: 100%;
+  width: 100%;
+  overflow-x: auto;
+
+  table {
+    max-width: 100%;
+  }
+`
+
 const StyledGrid = styled(Grid)`
   padding-left: 0;
   padding-right: 0;
@@ -87,8 +97,8 @@ export const mdxComponents = {
   // TODO add `ul`
   // TODO add `li`
   table: props => (
-    <div className="tableWrapper">
+    <StyledTableWrapper>
       <table {...props} />
-    </div>
+    </StyledTableWrapper>
   ),
 }
