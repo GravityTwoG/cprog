@@ -1,9 +1,14 @@
 const React = require("react")
 const { Layout } = require("./src/components/Layout")
+const { NavigationProvider } = require("./src/components/NavigationProvider")
 const { ThemeProvider } = require("./src/components/theme/ThemeProvider")
 
 exports.wrapRootElement = ({ element }) => {
-  return <ThemeProvider>{element}</ThemeProvider>
+  return (
+    <NavigationProvider>
+      <ThemeProvider>{element}</ThemeProvider>
+    </NavigationProvider>
+  )
 }
 exports.wrapPageElement = ({ element, props }) => {
   // props provide same data to Layout as Page element will get

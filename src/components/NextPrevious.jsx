@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 import { Link } from "./Link"
+import { useNavigationArray } from "./NavigationProvider"
 
 export const StyledNextPrevious = styled("div")`
   margin: 0px;
@@ -102,7 +103,8 @@ export const StyledNextPrevious = styled("div")`
   }
 `
 
-export const NextPrevious = ({ mdx, nav }) => {
+export const NextPrevious = ({ mdx }) => {
+  const nav = useNavigationArray()
   let currentIndex
 
   nav.forEach((el, index) => {

@@ -3,13 +3,11 @@ import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 import styled from "@emotion/styled"
+import config from "../../config"
 
 import { Link } from "../components/Link"
 import { NextPrevious } from "../components/NextPrevious"
 import gitHub from "../images/github.svg"
-import config from "../../config"
-
-const forcedNavOrder = config.sidebar.forcedNavOrder
 
 export const pageQuery = graphql`
   query BookQuery($slug: String!) {
@@ -30,16 +28,6 @@ export const pageQuery = graphql`
         }
       }
     }
-    allMdx {
-      edges {
-        node {
-          fields {
-            slug
-            title
-          }
-        }
-      }
-    }
     site {
       siteMetadata {
         docsLocation
@@ -52,54 +40,13 @@ const BookTemplate = props => {
   if (!props.data) {
     return null
   }
+
   const {
-    allMdx,
     mdx,
     site: {
       siteMetadata: { docsLocation },
     },
   } = props.data
-
-  const navItems = allMdx.edges
-    .map(({ node }) => node.fields.slug)
-    .filter(slug => slug !== "/")
-    .sort()
-    .reduce(
-      (acc, cur) => {
-        if (forcedNavOrder.find(url => url === cur)) {
-          return { ...acc, [cur]: [cur] }
-        }
-
-        let prefix = cur.split("/")[1]
-
-        if (config.gatsby && config.gatsby.trailingSlash) {
-          prefix = prefix + "/"
-        }
-
-        if (prefix && forcedNavOrder.find(url => url === `/${prefix}`)) {
-          return { ...acc, [`/${prefix}`]: [...acc[`/${prefix}`], cur] }
-        } else {
-          return { ...acc, items: [...acc.items, cur] }
-        }
-      },
-      { items: [] }
-    )
-
-  const nav = forcedNavOrder
-    .reduce((acc, cur) => {
-      return acc.concat(navItems[cur])
-    }, [])
-    .concat(navItems.items)
-    .map(slug => {
-      if (slug) {
-        const { node } = allMdx.edges.find(
-          ({ node }) => node.fields.slug === slug
-        )
-
-        return { title: node.fields.title, url: node.fields.slug }
-      }
-      return null
-    })
 
   // meta tags
   const metaTitle = mdx.frontmatter.metaTitle
@@ -136,7 +83,7 @@ const BookTemplate = props => {
       </Helmet>
 
       <div className="addPaddTopBottom">
-        <NextPrevious mdx={mdx} nav={nav} />
+        <NextPrevious mdx={mdx} />
       </div>
 
       <StyledTitleWrapper className={"titleWrapper"}>
@@ -159,7 +106,7 @@ const BookTemplate = props => {
       </StyledMainWrapper>
 
       <div className={"addPaddTopBottom"}>
-        <NextPrevious mdx={mdx} nav={nav} />
+        <NextPrevious mdx={mdx} />
       </div>
     </>
   )
