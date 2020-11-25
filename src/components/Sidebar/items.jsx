@@ -60,7 +60,6 @@ export const ListItem = ({ className, active, level, ...props }) => {
 export const StyledSidebar = styled("aside")`
   width: 100%;
   height: 100vh;
-  overflow: auto;
   position: fixed;
   padding-left: 0px;
   position: -webkit-sticky;
@@ -68,7 +67,6 @@ export const StyledSidebar = styled("aside")`
   position: sticky;
   top: 0;
   padding-right: 0;
-  box-shadow: ${({ theme }) => theme.boxShadow};
 
   .firstLevel > ul > .item {
     margin-left: 0 !important;

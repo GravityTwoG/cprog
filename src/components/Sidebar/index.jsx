@@ -5,9 +5,9 @@ import { ExternalLink } from "react-feather"
 import { Tree } from "./Tree"
 import { Divider, ListItem, StyledSidebar } from "./items.jsx"
 
-export const Sidebar = ({ location }) => {
+export const Sidebar = ({ location, ...props }) => {
   return (
-    <StyledSidebar>
+    <StyledSidebar {...props}>
       {config.sidebar.title ? (
         <div
           className={"sidebarTitle hiddenMobile"}

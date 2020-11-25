@@ -35,6 +35,7 @@ const Content = styled("main")`
   flex-direction: column;
   align-items: center;
   flex: 1 1 100%;
+  overflow: hidden;
   background: ${({ theme }) => theme.colors.background};
   min-height: calc(100vh - 70px);
   table tr {
@@ -44,6 +45,7 @@ const Content = styled("main")`
 
 const MaxWidth = styled("div")`
   flex: 1;
+  max-width: 100%;
   @media only screen and (min-width: 1279px) {
     width: 100%;
     max-width: 900px;
@@ -51,10 +53,12 @@ const MaxWidth = styled("div")`
   }
 `
 
-const LeftSideBarWidth = styled("div")`
+const LeftSideBar = styled.div`
   max-width: 390px;
   min-width: 300px;
   flex: 1 1 300px;
+  z-index: 0;
+  box-shadow: ${({ theme }) => theme.boxShadow};
 `
 
 const RightSideBarWidth = styled("div")`
@@ -68,9 +72,9 @@ export const Layout = ({ children, location }) => {
       <Header location={location} />
 
       <Wrapper>
-        <LeftSideBarWidth className={"hiddenMobile"}>
-          <Sidebar location={location} />
-        </LeftSideBarWidth>
+        <LeftSideBar className={"hiddenMobile"}>
+          <Sidebar location={location} style={{ top: "70px" }} />
+        </LeftSideBar>
 
         {config.sidebar.title ? (
           <div
