@@ -210,7 +210,7 @@ export const baseStyles = injectGlobal`
   .heading1, .heading2, .heading3, .heading4, .heading5, .heading6 {
     line-height: 1.5;
     margin-bottom: 16px;
-    margin-top: 32px;
+    margin-top: 16px;
   }
 
   .heading1 {
@@ -275,6 +275,8 @@ export const baseStyles = injectGlobal`
     margin: 0px;
     padding: 16px;
     overflow: auto;
+    max-width: 100%;
+    min-width: min-content;
   }
 
   @media (max-width: 767px) {

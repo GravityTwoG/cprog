@@ -8,7 +8,8 @@ const pdp8 = require("./images/lera.jpg")
 
 const StyledImage = styled.img`
   max-width: 100%;
-  min-width: 200px;
+  min-width: 230px;
+  object-fit: cover;
 `
 
 export const IndexPage = () => {
@@ -26,9 +27,9 @@ export const IndexPage = () => {
       </span>
 
       <MDXC.Grid fluid>
-        <MDXC.Row>
-          <MDXC.Col xs>
-            <MDXC.pre style={{ marginTop: "16px" }}>
+        <MDXC.Row style={{ marginTop: "1rem" }}>
+          <MDXC.Col xs md={8} style={{ marginBottom: "1rem" }}>
+            <MDXC.pre>
               <b
                 dangerouslySetInnerHTML={{
                   __html:
@@ -42,12 +43,12 @@ export const IndexPage = () => {
               ("Болдинская осень", 1996 г.)
             </MDXC.pre>
           </MDXC.Col>
-          <MDXC.Col xs>
-            <StyledImage
-              src={selfImage}
-              alt="self"
-              style={{ marginTop: "16px" }}
-            />
+          <MDXC.Col
+            xs
+            md={4}
+            style={{ marginBottom: "1rem", textAlign: "center" }}
+          >
+            <StyledImage src={selfImage} alt="self" />
           </MDXC.Col>
         </MDXC.Row>
       </MDXC.Grid>
@@ -80,7 +81,11 @@ export const IndexPage = () => {
         <StyledImage
           src={self2}
           alt="self"
-          style={{ float: "left", margin: "0 8px 0 8px" }}
+          style={{
+            float: "left",
+            margin: "0.5rem",
+            maxWidth: "calc(100% - 1rem)",
+          }}
         />
         Немного истории. Когда мне, новоиспеченному кандидату технических наук,
         в 1987 году было поручено чтение лекций по языку Си в течение одного
