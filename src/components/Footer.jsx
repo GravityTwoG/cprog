@@ -6,7 +6,7 @@ import { useThemeContext } from "./theme/ThemeProvider"
 import { ExternalLink } from "react-feather"
 import { Link } from "./Link"
 import { StyledText } from "./StyledText"
-import { ReactComponent as GithubIcon } from "../images/github.svg"
+import GithubIcon from "../images/github.svg"
 import { PaddingWrapper } from "../templates/Book"
 
 const StyledFooter = styled.footer`
@@ -56,7 +56,7 @@ const GithubLink = styled.a`
     background-color: rgba(0, 0, 0, 0.1);
   }
 
-  & > svg {
+  & > img {
     height: 100%;
     margin-right: 0.4em;
   }
@@ -74,7 +74,7 @@ const GithubProfile = () => {
         href={config.author.githubUrl}
         data-is-dark={isDarkThemeActive}
       >
-        <GithubIcon />
+        <img src={GithubIcon} alt="github-icon" />
         <span>{config.author.githubNickname}</span>
       </GithubLink>
     </StyledText>

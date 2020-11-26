@@ -99,6 +99,22 @@ export const StyledSidebar = styled("aside")`
     margin-left: 16px;
   }
 
+  .sidebarTitle {
+    /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); */
+    background-color: #f8f8f8;
+    padding: 18px 16px;
+    font-family: "Roboto";
+    font-size: 18px;
+    font-weight: 600;
+    color: #001934;
+    display: flex;
+    align-items: center;
+
+    & a {
+      color: #001934;
+    }
+  }
+
   @media only screen and (max-width: 1023px) {
     width: 100%;
     /* position: relative; */

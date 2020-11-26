@@ -79,6 +79,11 @@ const BookTemplate = props => {
         {metaDescription ? (
           <meta property="twitter:description" content={metaDescription} />
         ) : null}
+        {/* Google Search Console verification */}
+        <meta
+          name="google-site-verification"
+          content="e8ODwZKRJ5H_TiNsq-70JsUkCkCiXRtvC6IMNJayTN8"
+        />
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
       <PaddingWrapper className="addPaddTopBottom">
@@ -118,8 +123,8 @@ export default BookTemplate
 export const PaddingWrapper = styled.div`
   padding: 0 60px;
 
-  @media only screen and (max-width: 475px) {
-    padding: 0 18px;
+  @media only screen and (max-width: 520px) {
+    padding: 0 25px;
   }
 `
 
@@ -133,8 +138,8 @@ export const StyledMainWrapper = styled.div`
     max-width: 100%;
   }
 
-  @media only screen and (max-width: 475px) {
-    padding: 0 18px;
+  @media only screen and (max-width: 520px) {
+    padding: 0 25px;
   }
 
   ul,
@@ -169,18 +174,14 @@ export const StyledMainWrapper = styled.div`
 `
 
 const StyledTitleWrapper = styled.div`
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   max-width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  padding: 0px 15px 20px;
+  padding-bottom: 20px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.deco};
-
-  @media (max-width: 475px) {
-    padding: 0px 0px 20px;
-  }
 `
 
 export const StyledHeading = styled("h1")`
@@ -201,14 +202,10 @@ export const StyledHeading = styled("h1")`
   @media (max-width: 576px) {
     font-size: 24px;
   }
-  @media (max-width: 475px) {
-    font-size: 20px;
-  }
 `
 
 export const Edit = styled("div")`
-  padding: 1rem 0 0 1.5rem;
-
+  margin: 0.5rem 0 0.5rem 0.5rem;
   a {
     width: 150px;
     font-size: 14px;

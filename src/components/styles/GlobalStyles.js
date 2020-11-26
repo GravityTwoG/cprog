@@ -21,7 +21,7 @@ export const baseStyles = injectGlobal`
   }
   html,
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Roboto Light', 'Segoe UI', 'Oxygen',
+    font-family: 'Roboto', 'Roboto Light', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif,
       'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-size: 16px;
@@ -29,6 +29,12 @@ export const baseStyles = injectGlobal`
   }
   body {
     overflow-x: hidden;
+  }
+
+  @media (max-width: 1024px) {
+    .hiddenMobile {
+      display: none;
+    }
   }
 
   .visibleMobile {
@@ -124,62 +130,25 @@ export const baseStyles = injectGlobal`
     display: contents;
   }
 
-  /* Header section ends here */
-  .sidebarTitle {
-    /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); */
-    background-color: #f8f8f8;
-    padding: 18px 16px;
-    font-family: 'Roboto';
-    font-size: 18px;
-    font-weight: 600;
-    color: #001934;
-    display: flex;
-    align-items: center;
-  }
-
-  .sideBarShow {
-    display: none;
-  }
-
-  .sidebarTitle a {
-    color: #001934;
-  }
-
   .gitBtn {
     height: 30px;
     min-height: 30px;
     display: flex;
     align-items: center;
-  }
 
-  .gitBtn img {
-    width: 15px;
-    display: inline-block;
-    margin-right: 5px;
+    & img {
+      width: 15px;
+      display: inline-block;
+      margin-right: 5px;
+    }
   }
 
   .addPaddTopBottom {
-    padding: 30px 0;
-  }
-
-  .smallContent {
-    display: block;
-    margin: 0px;
-    padding: 0px;
-    color: #6e6e6e;
-  }
-
-  .smallContent span {
-    font-size: 12px;
-    line-height: 1.625;
-    font-weight: 400;
+    padding-top: 30px;
+    padding-bottom: 30px;
   }
 
   /* **************************** */
-
-  
-
-  /* tables.css */
   table {
     padding: 0;
     border-collapse: collapse;
@@ -219,7 +188,6 @@ export const baseStyles = injectGlobal`
   table tr td :last-child {
     margin-bottom: 0;
   }
-  /* end - tables.css */
 
   /* Image styling */
   img {
@@ -239,52 +207,62 @@ export const baseStyles = injectGlobal`
     align-items: center;
   }
 
-  .heading1 {
-    font-size: 26px;
-    font-weight: 800;
+  .heading1, .heading2, .heading3, .heading4, .heading5, .heading6 {
     line-height: 1.5;
     margin-bottom: 16px;
     margin-top: 32px;
+  }
+
+  .heading1 {
+    font-size: 26px;
+    font-weight: 700;
   }
 
   .heading2 {
     font-size: 24px;
     font-weight: 700;
-    line-height: 1.5;
-    margin-bottom: 16px;
-    margin-top: 32px;
   }
 
   .heading3 {
     font-size: 20px;
     font-weight: 600;
-    line-height: 1.5;
-    margin-bottom: 16px;
-    margin-top: 32px;
   }
 
   .heading4 {
     font-size: 18px;
     font-weight: 500;
-    line-height: 1.5;
-    margin-bottom: 16px;
-    margin-top: 32px;
   }
 
   .heading5 {
     font-size: 16px;
     font-weight: 400;
-    line-height: 1.5;
-    margin-bottom: 16px;
-    margin-top: 32px;
   }
 
   .heading6 {
     font-size: 14px;
     font-weight: 400;
-    line-height: 1.5;
-    margin-bottom: 16px;
-    margin-top: 32px;
+    
+  }
+
+  @media (max-width: 767px) {
+    .heading1 {
+      font-size: 24px;
+    }
+    .heading2 {
+      font-size: 22px;
+    }
+    .heading3 {
+      font-size: 18px;
+    }
+    .heading4 {
+      font-size: 16px;
+    }
+    .heading5 {
+      font-size: 14px;
+    }
+    .heading6 {
+      font-size: 12px;
+    }
   }
 
   .paragraph {
@@ -297,12 +275,6 @@ export const baseStyles = injectGlobal`
     margin: 0px;
     padding: 16px;
     overflow: auto;
-  }
-
-  @media (max-width: 1024px) {
-    .hiddenMobile {
-      display: none;
-    }
   }
 
   @media (max-width: 767px) {

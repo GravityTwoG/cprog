@@ -4,22 +4,21 @@ import { Link } from "./Link"
 import { useNavigationArray } from "./NavigationProvider"
 
 export const StyledNextPrevious = styled("div")`
-  margin: 0px;
+  margin: 1.5rem 0;
   padding: 0px;
   width: auto;
-  display: flex;
-  align-items: stretch;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-auto-rows: 1fr;
+  grid-gap: 1.5rem;
 
   .previousBtn,
   .nextBtn {
-    margin: 1.5rem 0.5rem 1.5rem;
     max-height: 125px;
     padding: 0px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex: 1 1 calc(50% - 1rem);
     min-width: min-content;
     cursor: pointer;
     -moz-box-align: center;
@@ -27,7 +26,6 @@ export const StyledNextPrevious = styled("div")`
     -moz-box-orient: horizontal;
     position: relative;
 
-    place-self: stretch;
     border-radius: 3px;
     border: 1px solid ${({ theme }) => theme.colors.deco};
     text-decoration: none;
@@ -65,6 +63,7 @@ export const StyledNextPrevious = styled("div")`
     flex: 1 1 0%;
     padding: 16px;
     max-height: 100%;
+    align-self: flex-start;
   }
   .preRightWrapper {
     text-align: right;
@@ -75,6 +74,15 @@ export const StyledNextPrevious = styled("div")`
 
   .smallContent {
     color: ${({ theme }) => theme.colors.text};
+    display: block;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .smallContent span {
+    font-size: 12px;
+    line-height: 1.625;
+    font-weight: 400;
   }
 
   .nextPreviousTitle {
@@ -90,18 +98,6 @@ export const StyledNextPrevious = styled("div")`
     font-size: 16px;
     line-height: 1.5;
     font-weight: 500;
-  }
-
-  @media (max-width: 678px) {
-    .previousBtn,
-    .nextBtn {
-      flex-basis: 100%;
-      margin-left: 0;
-      margin-right: 0;
-    }
-    .previousBtn ~ .nextBtn {
-      margin-top: 0;
-    }
   }
 `
 

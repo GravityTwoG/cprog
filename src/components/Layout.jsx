@@ -2,7 +2,6 @@ import React from "react"
 import styled from "@emotion/styled"
 import { MDXProvider } from "@mdx-js/react"
 
-import config from "../../config.js"
 import { mdxComponents } from "./mdxComponents"
 import { Footer } from "./Footer.jsx"
 import { Sidebar } from "./Sidebar"
@@ -75,13 +74,6 @@ export const Layout = ({ children, location }) => {
         <LeftSideBar className={"hiddenMobile"}>
           <Sidebar location={location} style={{ top: "70px" }} />
         </LeftSideBar>
-
-        {config.sidebar.title ? (
-          <div
-            className={"sidebarTitle sideBarShow"}
-            dangerouslySetInnerHTML={{ __html: config.sidebar.title }}
-          />
-        ) : null}
 
         <Content>
           <MaxWidth>{children}</MaxWidth>
