@@ -33,7 +33,7 @@ export const Footer = () => (
   </PaddingWrapper>
 )
 
-const GithubLink = styled.a`
+const GithubLink = styled(Link)`
   height: 32px;
   border-radius: 4px;
   padding: 6px 8px;
@@ -51,9 +51,11 @@ const GithubLink = styled.a`
 
   &[data-is-dark="true"]:hover {
     background-color: rgba(255, 255, 255, 0.1);
+    color: inherit;
   }
   &[data-is-dark="false"]:hover {
     background-color: rgba(0, 0, 0, 0.1);
+    color: inherit;
   }
 
   & > img {
@@ -71,7 +73,7 @@ const GithubProfile = () => {
       <GithubLink
         target="_blank"
         rel="canonical"
-        href={config.author.githubUrl}
+        to={config.author.githubUrl}
         data-is-dark={isDarkThemeActive}
       >
         <img src={GithubIcon} alt="github-icon" />
