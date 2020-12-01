@@ -59,14 +59,14 @@ export const ListItem = ({ className, active, level, ...props }) => {
 
 export const StyledSidebar = styled("aside")`
   width: 100%;
-  height: 100vh;
-  position: fixed;
+  height: calc(100vh - 70px);
   padding-left: 0px;
   position: -webkit-sticky;
   position: -moz-sticky;
   position: sticky;
   top: 0;
   padding-right: 0;
+  overflow: auto;
 
   .firstLevel > ul > .item {
     margin-left: 0 !important;

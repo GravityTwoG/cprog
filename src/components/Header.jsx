@@ -96,7 +96,6 @@ const StyledMobileNavbar = styled.div`
 
     &[data-is-open="true"] {
       transform: translateX(0%);
-      overflow-y: auto;
     }
   }
 `
@@ -308,7 +307,10 @@ export const Header = ({ location }) => {
           </li>
         </StyledList>
 
-        <Sidebar location={location} />
+        <Sidebar
+          location={location}
+          style={{ maxHeight: "calc(100% - 60px)" }}
+        />
       </StyledMobileNavbar>
     </HeaderContainer>
   )
