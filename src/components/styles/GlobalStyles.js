@@ -1,13 +1,23 @@
 import { injectGlobal } from "emotion"
 
 export const baseStyles = injectGlobal`
-  @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap');
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-display: swap;
   }
+  html, body {
+    font-size: 16px;
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: 'Roboto', 'Roboto Light', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif,
+      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    overflow-x: hidden;
+  }
+
   ::-webkit-input-placeholder {
     /* Edge */
     color: #c2c2c2;
@@ -18,17 +28,6 @@ export const baseStyles = injectGlobal`
   }
   ::placeholder {
     color: #c2c2c2;
-  }
-  html,
-  body {
-    font-family: 'Roboto', 'Roboto Light', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif,
-      'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-    font-size: 16px;
-    scroll-behavior: smooth;
-  }
-  body {
-    overflow-x: hidden;
   }
 
   @media (max-width: 1024px) {
