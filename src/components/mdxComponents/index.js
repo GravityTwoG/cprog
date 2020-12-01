@@ -4,6 +4,8 @@ import { Grid, Row, Col } from "react-flexbox-grid"
 
 import CodeBlock from "./codeBlock"
 import AnchorTag from "./anchor"
+import { Smile } from "./Icons/Smile"
+import { YinAndYang } from "./Icons/YinAndYang"
 
 const StyledPre = styled("pre")`
   padding: 16px 16px;
@@ -13,6 +15,10 @@ const StyledPre = styled("pre")`
   @media (max-width: 768px) {
     padding: 8px 8px;
   }
+`
+
+const StyledImage = styled.img`
+  background-color: #fff;
 `
 
 const StyledTableWrapper = styled.div`
@@ -92,7 +98,9 @@ export const mdxComponents = {
   Grid: StyledGrid,
   Row,
   Col,
-  // TODO add `img`
+  img: StyledImage,
+  Smile,
+  YinAndYang,
   // TODO add `blockquote`
   // TODO add `ul`
   // TODO add `li`
