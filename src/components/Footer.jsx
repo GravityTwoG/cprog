@@ -33,29 +33,25 @@ export const Footer = () => (
   </PaddingWrapper>
 )
 
-const GithubLink = styled(Link)`
+const GithubLink = styled.span`
   height: 32px;
   border-radius: 4px;
   padding: 6px 8px;
   display: inline-flex;
   align-items: center;
-  color: inherit;
   font-size: 16px;
   font-weight: 500;
   letter-spacing: 0.03em;
   line-height: 1;
   vertical-align: middle;
-  cursor: pointer;
   background-color: rgba(0, 0, 0, 0);
   transition: background-color 0.3s linear;
 
   &[data-is-dark="true"]:hover {
     background-color: rgba(255, 255, 255, 0.1);
-    color: inherit;
   }
   &[data-is-dark="false"]:hover {
     background-color: rgba(0, 0, 0, 0.1);
-    color: inherit;
   }
 
   & > img {
@@ -70,15 +66,17 @@ const GithubProfile = () => {
   return (
     <StyledText>
       <strong style={{ marginRight: ".8em" }}>Разработано</strong>
-      <GithubLink
+      <Link
         target="_blank"
         rel="canonical"
         to={config.author.githubUrl}
-        data-is-dark={isDarkThemeActive}
+        style={{ color: "inherit" }}
       >
-        <img src={GithubIcon} alt="github-icon" />
-        <span>{config.author.githubNickname}</span>
-      </GithubLink>
+        <GithubLink data-is-dark={isDarkThemeActive}>
+          <img src={GithubIcon} alt="github-icon" />
+          <span>{config.author.githubNickname}</span>
+        </GithubLink>
+      </Link>
     </StyledText>
   )
 }
