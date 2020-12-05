@@ -30,18 +30,6 @@ export const baseStyles = injectGlobal`
     color: #c2c2c2;
   }
 
-  @media (max-width: 1024px) {
-    .hiddenMobile {
-      display: none;
-    }
-  }
-
-  .visibleMobile {
-    display: none;
-  }
-  .visibleMobileView {
-    display: none !important;
-  }
   .video-responsive {
     position: relative;
     padding-bottom: 56.2%;
@@ -279,9 +267,6 @@ export const baseStyles = injectGlobal`
   }
 
   @media (max-width: 767px) {
-    .visibleMobileView {
-      display: block !important;
-    }
     .socialWrapper {
       position: absolute;
       right: 10px;
@@ -320,11 +305,6 @@ export const baseStyles = injectGlobal`
 
     .gitBtn {
       display: inline-block;
-    }
-
-    .mobileView {
-      text-align: left !important;
-      padding-left: 0 !important;
     }
   }
 

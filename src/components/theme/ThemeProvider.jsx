@@ -4,6 +4,7 @@ import { Global } from "@emotion/core"
 
 import { lightTheme, darkTheme } from "./theme"
 import { baseStyles } from "../styles/GlobalStyles"
+import { mediaStyles } from "../styles/MediaStyles"
 
 const ThemeContext = React.createContext({
   isDarkThemeActive: false,
@@ -50,6 +51,7 @@ export class ThemeProvider extends React.Component {
         value={{ isDarkThemeActive, toggleActiveTheme: this.toggleActiveTheme }}
       >
         <EmotionThemeProvider theme={currentActiveTheme}>
+          <Global styles={mediaStyles} />
           <Global styles={baseStyles} />
           {children}
         </EmotionThemeProvider>
