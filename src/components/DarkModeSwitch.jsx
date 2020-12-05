@@ -51,7 +51,7 @@ const StyledSwitch = styled("div")`
     margin: auto 0;
     -webkit-transition: 0.4s;
     transition: 0.4s;
-    box-shadow: 0 0px 15px #2020203d;
+    box-shadow: 0 0px 5px rgba(0,0,0,0.15);
     background: white url(${NightImage});
     background-repeat: no-repeat;
     background-position: center;
@@ -88,11 +88,10 @@ export const DarkModeSwitch = ({ ...props }) => {
       <label id="switch" className="switch">
         <input
           type="checkbox"
-          id="slider"
           onChange={toggleActiveTheme}
           checked={isDarkThemeActive ? false : true}
         />
-        <span className="slider round"></span>
+        <span className="slider round"/>
       </label>
     </StyledSwitch>
   )

@@ -184,8 +184,9 @@ export const Header = ({ location }) => {
         <ul
           className="socialWrapper visibleMobileView"
           dangerouslySetInnerHTML={{ __html: config.header.social }}
-        ></ul>
+        />
       ) : null}
+
       <MLAuto>
         <StyledList className="styled-list">
           {headerLinks.map((link, key) => {
@@ -220,7 +221,7 @@ export const Header = ({ location }) => {
               <ul
                 className="socialWrapper"
                 dangerouslySetInnerHTML={{ __html: config.header.social }}
-              ></ul>
+              />
             </li>
           ) : null}
           {githubUrl !== "" ? (
@@ -288,7 +289,7 @@ export const Header = ({ location }) => {
               <ul
                 className="socialWrapper"
                 dangerouslySetInnerHTML={{ __html: config.header.social }}
-              ></ul>
+              />
             </li>
           ) : null}
           {githubUrl !== "" ? (
@@ -302,9 +303,6 @@ export const Header = ({ location }) => {
               </GitHubButton>
             </li>
           ) : null}
-          <li>
-            <DarkModeSwitch />
-          </li>
         </StyledList>
 
         <Sidebar
@@ -350,7 +348,7 @@ const StyledHeaderContent = styled.div`
   }
 
   @media (max-width: 767px) {
-    & .styled-list {
+    & .styled-list .githubBtn {
       display: none;
     }
   }
