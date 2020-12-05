@@ -4,8 +4,7 @@ import { Grid, Row, Col } from "react-flexbox-grid"
 
 import CodeBlock from "./codeBlock"
 import AnchorTag from "./anchor"
-import { Smile } from "./Icons/Smile"
-import { YinAndYang } from "./Icons/YinAndYang"
+import { Icon } from "./Icons"
 
 const StyledPre = styled("pre")`
   padding: 16px 16px;
@@ -99,8 +98,7 @@ export const mdxComponents = {
   Row,
   Col,
   img: StyledImage,
-  Smile,
-  YinAndYang,
+  Icon,
   // TODO add `blockquote`
   // TODO add `ul`
   // TODO add `li`
