@@ -1,6 +1,6 @@
 import { injectGlobal } from "emotion"
 
-export const baseStyles = injectGlobal`
+export const baseStyles = injectGlobal`        
   * {
     margin: 0;
     padding: 0;
@@ -15,6 +15,7 @@ export const baseStyles = injectGlobal`
     font-family: 'Roboto', 'Roboto Light', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif,
       'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+    font-weight: 400;
     overflow-x: hidden;
   }
 

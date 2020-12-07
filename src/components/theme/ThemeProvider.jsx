@@ -3,6 +3,7 @@ import { ThemeProvider as EmotionThemeProvider } from "emotion-theming"
 import { Global } from "@emotion/core"
 
 import { lightTheme, darkTheme } from "./theme"
+import "../../fonts/fonts.css"
 import { baseStyles } from "../styles/GlobalStyles"
 import { mediaStyles } from "../styles/MediaStyles"
 

@@ -35,14 +35,6 @@ const plugins = [
     },
   },
   {
-    resolve: "gatsby-plugin-web-font-loader",
-    options: {
-      google: {
-        families: ["Roboto:400,500,700"],
-      },
-    },
-  },
-  {
     resolve: "gatsby-plugin-mdx",
     options: {
       extensions: [".md", ".mdx"],
