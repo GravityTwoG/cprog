@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    ["@emotion",
+      {
+        "sourceMap": true,
+        "autoLabel": "dev-only",
+        "labelFormat": "[local]",
+        "cssPropOptimization": true
+      }
+    ]
+  ],
+  "presets": [
+    [
+      "babel-preset-gatsby"
+    ]
+  ]
+}
