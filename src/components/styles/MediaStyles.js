@@ -1,4 +1,4 @@
-import { injectGlobal } from "emotion"
+import { injectGlobal } from "@emotion/css"
 
 export const mediaStyles = injectGlobal`        
   @media (max-width: 1024px) {

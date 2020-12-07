@@ -1,6 +1,5 @@
 import React, { useContext } from "react"
-import { ThemeProvider as EmotionThemeProvider } from "emotion-theming"
-import { Global } from "@emotion/core"
+import { ThemeProvider as EmotionThemeProvider, Global } from "@emotion/react"
 
 import { lightTheme, darkTheme } from "./theme"
 import "../../fonts/fonts.css"
