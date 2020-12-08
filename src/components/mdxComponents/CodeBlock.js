@@ -1,35 +1,28 @@
-import * as React from "react"
-import Highlight, { defaultProps } from "prism-react-renderer"
-import prismTheme from "prism-react-renderer/themes/vsDark"
+import React from "react"
+import styled from "@emotion/styled"
+import Highlight, { Prism } from "prism-react-renderer"
+import prismTheme from "prism-react-renderer/themes/nightOwl"
 
-/** Removes the last token from a code example if it's empty. */
-function cleanTokens(tokens) {
-  const tokensLength = tokens.length
+const StyledPre = styled.pre`
+  position: relative;
+`
 
-  if (tokensLength === 0) {
-    return tokens
-  }
-  const lastToken = tokens[tokensLength - 1]
+export const CodeBlock = ({ children: exampleCode, ...props }) => {
+  const language = props.className ? props.className.replace(/language-/, '') : ""
 
-  if (lastToken.length === 1 && lastToken[0].empty) {
-    return tokens.slice(0, tokensLength - 1)
-  }
-  return tokens
-}
-
-const CodeBlock = ({ children: exampleCode, ...props }) => {
   return (
     <Highlight
-      {...defaultProps}
+      Prism={Prism}
       code={exampleCode}
-      language="javascript"
+      language={language}
       theme={prismTheme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className + " pre"} style={style} p={3}>
+        <StyledPre className={className + " pre"} style={style} p={3}>
+          <CopyButton string={exampleCode} />
+
           {cleanTokens(tokens).map((line, i) => {
             let lineClass = {}
-
             let isDiff = false
 
             if (
@@ -119,10 +112,78 @@ const CodeBlock = ({ children: exampleCode, ...props }) => {
               </div>
             )
           })}
-        </pre>
+        </StyledPre>
       )}
     </Highlight>
   )
 }
 
-export default CodeBlock
+/** Removes the last token from a code example if it's empty. */
+function cleanTokens(tokens) {
+  const tokensLength = tokens.length
+
+  if (tokensLength === 0) {
+    return tokens
+  }
+  const lastToken = tokens[tokensLength - 1]
+
+  if (lastToken.length === 1 && lastToken[0].empty) {
+    return tokens.slice(0, tokensLength - 1)
+  }
+  return tokens
+}
+
+const StyledCopyButton = styled.button`
+  margin: 8px;
+  padding: 8px 12px;
+  background-color: #054e7e;
+  border-radius: 5px;
+  
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1;
+  
+  border: none;
+  box-shadow: none;
+  text-decoration: none;
+  cursor: pointer;
+  
+  font-size: 14px;
+  font-family: inherit;
+  line-height: 1;
+  color: #E2E8F0;
+`
+
+const copyButtonText = {
+  copied: 'Скопировано',
+  copy: 'Копировать'
+}
+
+const CopyButton = ({ string }) => {
+  const [isCopied, setIsCopied] = React.useState(false)
+
+  return (
+    <StyledCopyButton
+      onClick={() => {
+        copyToClipboard(string)
+        setIsCopied(true)
+        setTimeout(() => setIsCopied(false), 3000)
+      }}
+    >
+      {isCopied ? copyButtonText.copied : copyButtonText.copy}
+    </StyledCopyButton>
+  )
+}
+
+function copyToClipboard(str) {
+  const el = document.createElement("textarea")
+  el.value = str
+  el.setAttribute("readonly", "")
+  el.style.position = "absolute"
+  el.style.left = "-9999px"
+  document.body.appendChild(el)
+  el.select()
+  document.execCommand("copy")
+  document.body.removeChild(el)
+}

@@ -2,19 +2,10 @@ import React from "react"
 import styled from "@emotion/styled"
 import { Grid, Row, Col } from "react-flexbox-grid"
 
-import CodeBlock from "./codeBlock"
+import { CodeBlock } from "./CodeBlock"
+import { Pre } from "./Pre"
 import AnchorTag from "./anchor"
 import { Icon } from "./Icons"
-
-const StyledPre = styled("pre")`
-  padding: 16px 16px;
-  background: ${props => props.theme.colors.preFormattedText};
-  border-radius: 5px;
-
-  @media (max-width: 768px) {
-    padding: 8px 8px;
-  }
-`
 
 const StyledImage = styled.img`
   background-color: #fff;
@@ -91,7 +82,7 @@ export const mdxComponents = {
     </h6>
   ),
   p: props => <p className="paragraph" {...props} />,
-  pre: props => <StyledPre {...props} />,
+  pre: Pre,
   code: CodeBlock,
   a: AnchorTag,
   Grid: StyledGrid,
