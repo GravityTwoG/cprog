@@ -4,7 +4,7 @@ import { Grid, Row, Col } from "react-flexbox-grid"
 
 import { CodeBlock } from "./CodeBlock"
 import { Pre } from "./Pre"
-import AnchorTag from "./anchor"
+import { AnchorTag } from "./Anchor"
 import { Icon } from "./Icons"
 
 const StyledImage = styled.img`

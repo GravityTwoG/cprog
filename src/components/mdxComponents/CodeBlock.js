@@ -3,8 +3,23 @@ import styled from "@emotion/styled"
 import Highlight, { Prism } from "prism-react-renderer"
 import prismTheme from "prism-react-renderer/themes/nightOwl"
 
-const StyledPre = styled.pre`
+const StyledCode = styled.div`
+  padding: 16px;
   position: relative;
+  font-size: inherit;
+  overflow: auto;
+`
+
+const StyledHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 6px 6px 10px;
+  background-color: ${({theme}) => theme.colors.accent};
+  
+  & > span {
+    font-size: 24px;
+  }
 `
 
 export const CodeBlock = ({ children: exampleCode, ...props }) => {
@@ -18,9 +33,13 @@ export const CodeBlock = ({ children: exampleCode, ...props }) => {
       theme={prismTheme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <StyledPre className={className + " pre"} style={style} p={3}>
+        <>
+        <StyledHeader>
+          <span>{language}</span>
           <CopyButton string={exampleCode} />
+        </StyledHeader>
 
+        <StyledCode className={className} style={style} p={3}>
           {cleanTokens(tokens).map((line, i) => {
             let lineClass = {}
             let isDiff = false
@@ -112,8 +131,9 @@ export const CodeBlock = ({ children: exampleCode, ...props }) => {
               </div>
             )
           })}
-        </StyledPre>
-      )}
+        </StyledCode>
+        </>
+        )}
     </Highlight>
   )
 }
@@ -134,15 +154,9 @@ function cleanTokens(tokens) {
 }
 
 const StyledCopyButton = styled.button`
-  margin: 8px;
   padding: 8px 12px;
   background-color: #054e7e;
   border-radius: 5px;
-  
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: 1;
   
   border: none;
   box-shadow: none;
@@ -168,7 +182,7 @@ const CopyButton = ({ string }) => {
       onClick={() => {
         copyToClipboard(string)
         setIsCopied(true)
-        setTimeout(() => setIsCopied(false), 3000)
+        setTimeout(() => setIsCopied(false), 1500)
       }}
     >
       {isCopied ? copyButtonText.copied : copyButtonText.copy}

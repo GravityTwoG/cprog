@@ -1,6 +1,6 @@
 import React from "react"
 
-const AnchorTag = ({ children: link, ...props }) => {
+export const AnchorTag = ({ children: link, ...props }) => {
   if (link) {
     return (
       <a href={props.href} target="_blank" rel="noopener noreferrer">
@@ -10,5 +10,3 @@ const AnchorTag = ({ children: link, ...props }) => {
   }
   return null
 }
-
-export default AnchorTag

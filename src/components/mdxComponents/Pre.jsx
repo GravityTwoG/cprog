@@ -2,25 +2,32 @@ import React from "react"
 import styled from "@emotion/styled"
 
 const StyledPre = styled("pre")`
-  padding: 16px 16px;
+  padding: 16px;
   background: ${props => props.theme.colors.preFormattedText};
   border-radius: 5px;
   overflow: auto;
   
-  &[data-hide-paddings="true"] {
+  &[data-is-codeblock="true"] {
     padding: 0;
+
+    @media (max-width: 520px) {
+      margin: 0 -25px;
+      width: calc(100% + 50px);
+      overflow: initial;
+    }
   }
 
   @media (max-width: 768px) {
-    padding: 8px 8px;
+    padding: 8px;
   }
+  
 `
 
 export const Pre = (props) => {
-  let hidePaddings = false
+  let isCodeBlock = false
   if (props.children?.props?.mdxType === 'code') {
-    hidePaddings = true
+    isCodeBlock = true
   }
 
-  return <StyledPre {...props} data-hide-paddings={hidePaddings} />
+  return <StyledPre {...props} data-is-codeblock={isCodeBlock} />
 }
