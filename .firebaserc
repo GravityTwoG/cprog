@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "math-ege-interactive"
+  },
+  "targets": {
+    "math-ege-interactive": {
+      "hosting": {
+        "main": [
+          "cprogg"
+        ]
+      }
+    }
+  }
+}

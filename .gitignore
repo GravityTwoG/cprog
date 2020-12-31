@@ -70,3 +70,7 @@ yarn-error.log
 
 # IDE
 .idea
+
+# firebase
+.firebase/
+.firebaserc
