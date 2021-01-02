@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "cprog-book",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Book about programming on C/C++",
   "version": "0.1.0",
   "license": "0BSD",
   "scripts": {
@@ -19,7 +19,7 @@
     "@mdx-js/mdx": "^1.6.19",
     "@mdx-js/react": "^1.6.19",
     "@svgr/webpack": "^5.4.0",
-    "gatsby": "^2.24.85",
+    "gatsby": "^2.29.0",
     "gatsby-plugin-manifest": "^2.5.2",
     "gatsby-plugin-mdx": "^1.2.52",
     "gatsby-plugin-react-helmet": "^3.3.14",
