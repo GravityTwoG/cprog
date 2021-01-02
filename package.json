@@ -26,6 +26,7 @@
     "gatsby-plugin-sharp": "^2.6.43",
     "gatsby-plugin-svgr": "^2.0.2",
     "gatsby-remark-images": "^3.3.40",
+    "gatsby-remark-katex": "^3.7.0",
     "gatsby-remark-relative-images": "^2.0.2",
     "gatsby-source-filesystem": "^2.3.37",
     "prism-react-renderer": "^1.1.1",
@@ -34,7 +35,9 @@
     "react-feather": "^2.0.8",
     "react-flexbox-grid": "^2.1.2",
     "react-github-btn": "^1.2.0",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "remark-html-katex": "^3.0.0",
+    "remark-math": "^3.0.1"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.1.2",

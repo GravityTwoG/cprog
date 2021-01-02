@@ -8,6 +8,7 @@ import config from "../../config"
 import { Link } from "../components/Link"
 import { NextPrevious } from "../components/NextPrevious"
 import gitHub from "../images/github.svg"
+import "katex/dist/katex.min.css"
 
 export const pageQuery = graphql`
   query BookQuery($slug: String!) {
