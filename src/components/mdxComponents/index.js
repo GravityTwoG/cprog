@@ -12,12 +12,22 @@ const StyledImage = styled.img`
 `
 
 const StyledTableWrapper = styled.div`
-  max-width: 100%;
-  width: 100%;
+  display: flex;
+  margin: 0 -60px;
+  width: calc(100% + 120px);
   overflow-x: auto;
 
-  table {
-    max-width: 100%;
+  & > div {
+    flex: 0 0 60px;
+  }
+
+  @media only screen and (max-width: 520px) {
+    margin: 0 -25px;
+    width: calc(100% + 50px);
+
+    & > div {
+      flex: 0 0 25px;
+    }
   }
 `
 
@@ -95,7 +105,7 @@ export const mdxComponents = {
   // TODO add `li`
   table: props => (
     <StyledTableWrapper>
-      <table {...props} />
+      <div/><table {...props} /><div/>
     </StyledTableWrapper>
   ),
 }

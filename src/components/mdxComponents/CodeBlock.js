@@ -14,11 +14,12 @@ const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 6px 6px 6px 10px;
+  padding-left: 10px;
   background-color: ${({theme}) => theme.colors.accent};
   
   & > span {
-    font-size: 24px;
+    font-size: 20px;
+    color: #fff;
   }
 `
 
@@ -155,8 +156,8 @@ function cleanTokens(tokens) {
 
 const StyledCopyButton = styled.button`
   padding: 8px 12px;
-  background-color: #054e7e;
-  border-radius: 5px;
+  background-color: #511190;
+  border-radius: 5px 5px 0px 5px;
   
   border: none;
   box-shadow: none;
