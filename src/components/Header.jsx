@@ -100,13 +100,14 @@ const StyledMobileNavbar = styled.div`
   }
 `
 const StyledList = styled.ul`
-  margin-top: 5px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  margin-left: auto;
 
   & > li {
     list-style: none;
+    display: inline-block;
   }
 `
 
@@ -187,7 +188,6 @@ export const Header = ({ location }) => {
         />
       ) : null}
 
-      <MLAuto>
         <StyledList className="styled-list">
           {headerLinks.map((link, key) => {
             if (link.link !== "" && link.text !== "") {
@@ -225,7 +225,7 @@ export const Header = ({ location }) => {
             </li>
           ) : null}
           {githubUrl !== "" ? (
-            <li className={"githubBtn"}>
+            <li>
               <GitHubButton
                 href={githubUrl}
                 data-show-count="true"
@@ -235,11 +235,10 @@ export const Header = ({ location }) => {
               </GitHubButton>
             </li>
           ) : null}
-          <li>
+          <li style={{marginLeft: '16px'}}>
             <DarkModeSwitch />
           </li>
         </StyledList>
-      </MLAuto>
 
       <MLAuto>
         <StyledNavbarToggler

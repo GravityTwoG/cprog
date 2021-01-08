@@ -1,98 +1,97 @@
 import React from "react"
 import styled from "@emotion/styled"
 
-import NightImage from "../images/night.png"
-import DayImage from "../images/day.png"
 import { useThemeContext } from "./theme/ThemeProvider"
 
-const StyledSwitch = styled("div")`
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  padding: 0 20px 0 25px;
-
-  /* The switch - the box around the slider */
-  .switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 20px;
-  }
-
-  /* Hide default HTML checkbox */
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-
-  /* The slider */
-  .slider {
+const StyledSwitch = styled.label`
+  display: inline-block;
+  position: relative;
+  width: 58px;
+  height: 30px;
+  margin: 0 auto;
+  border-radius: 16px;
+  border: 2px solid var(--accentColor);
+  overflow: hidden;
+  
+  & > input {
+    width: 100%;
+    height: 100%;
     position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-  }
-
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 30px;
-    width: 30px;
+    top: 0px;
     left: 0px;
-    bottom: 4px;
-    top: 0;
-    bottom: 0;
-    margin: auto 0;
-    -webkit-transition: 0.4s;
-    transition: 0.4s;
-    box-shadow: 0 0px 5px rgba(0,0,0,0.15);
-    background: white url(${NightImage});
-    background-repeat: no-repeat;
-    background-position: center;
+    right: 0px;
+    bottom: 0px;
+    margin: 0px;
+    cursor: pointer;
+    opacity: 0;
+    z-index: 2;
   }
-
-  input:checked + .slider {
-    background: linear-gradient(to right, #fefb72, #f0bb31);
+  
+  & > span {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    overflow: hidden;
+    opacity: 1;
+    background-color: #fff;
+    box-shadow: 0px 2px 5px #d9d9d9;
+    border-radius: 4px;
+    transition: 0.2s ease background-color, 0.2s ease opacity;
   }
-
-  input:checked + .slider:before {
-    -webkit-transform: translateX(24px);
-    -ms-transform: translateX(24px);
-    transform: translateX(24px);
-    background: white url(${DayImage});
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-
-  .slider.round:before {
+  
+  & > span:before, & > span:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 24px;
+    height: 24px;
     border-radius: 50%;
+    transition: 0.5s ease transform, 0.2s ease background-color;
+  }
+
+  & span:before {
+    background-color: #fff;
+    transform: translate(-100%,-100%);
+    z-index: 1;
+    transition: transform 0.8s ease, background-color 0.2s ease;
+  }
+  & span:after {
+    background-color: #f0bb31;
+    transform: translate(1px, -50%);
+    z-index: 0;
+  }
+
+  & input:checked + span {
+    background-color: #000;
+  }
+  & input:active + span {
+    opacity: 0.5;
+  }
+
+  & input:checked + span:before {
+    background-color: #000;
+    transform: translate(20px, -70%);
+  }
+
+  & input:checked + span:after {
+    background-color: #bdbdbd;
+    transform: translate(29px, -50%);
   }
 `
 
 export const DarkModeSwitch = ({ ...props }) => {
-  const [toggleActiveTheme, isDarkThemeActive] = useThemeContext()
+  const [toggleActiveTheme, isDark] = useThemeContext()
 
-  return (
-    <StyledSwitch {...props}>
-      <label id="switch" className="switch">
-        <input
-          type="checkbox"
-          onChange={toggleActiveTheme}
-          checked={isDarkThemeActive ? false : true}
-        />
-        <span className="slider round"/>
-      </label>
-    </StyledSwitch>
+    return (
+      <StyledSwitch
+        {...props}
+        title={isDark ? "Включить светлую тему" : "Включить тёмную тему"}
+        aria-label={isDark ? "Включить светлую тему" : "Включить тёмную тему"}
+      >
+        <input type="checkbox" onChange={toggleActiveTheme} checked={isDark}/>
+        <span/>
+      </StyledSwitch>
   )
-}
+};

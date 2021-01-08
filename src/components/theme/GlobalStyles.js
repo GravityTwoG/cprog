@@ -192,18 +192,6 @@ export const baseStyles = injectGlobal`
     max-width: 100%;
   }
   /* end image */
-  .githubBtn {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    padding: 10px 0px;
-    padding-left: 15px;
-    max-height: 40px;
-  }
-  .githubBtn span span {
-    display: flex;
-    align-items: center;
-  }
 
   .heading1, .heading2, .heading3, .heading4, .heading5, .heading6 {
     line-height: 1.5;
@@ -326,9 +314,6 @@ export const baseStyles = injectGlobal`
     .navBarHeader {
       min-width: 240px;
       flex: initial;
-    }
-    .githubBtn {
-      padding: 10px 10px;
     }
     .divider {
       margin: 0 5px;
