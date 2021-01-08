@@ -11,7 +11,7 @@ import { GithubProfile } from "./GithubProfile"
 
 const StyledFooter = styled.footer`
   padding: 1rem 0;
-  border-top: 1px solid ${({ theme }) => theme.colors.deco};
+  border-top: 1px solid var(--decoColor);
 `
 
 export const Footer = () => (

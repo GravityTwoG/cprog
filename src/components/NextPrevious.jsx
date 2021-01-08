@@ -27,25 +27,25 @@ export const StyledNextPrevious = styled("div")`
     position: relative;
 
     border-radius: 3px;
-    border: 1px solid ${({ theme }) => theme.colors.deco};
+    border: 1px solid var(--decoColor);
     text-decoration: none;
-    background-color: ${props => props.theme.colors.background};
-    color: ${props => props.theme.colors.text};
+    background-color: var(--backgroundColor);
+    color: var(--textColor);
 
     transition: border 200ms ease, color 200ms ease;
-    box-shadow: ${({ theme }) => theme.boxShadow};
+    box-shadow: var(--boxShadow);
   }
 
   .nextBtn:hover,
   .previousBtn:hover {
     text-decoration: none;
-    border: 1px solid ${({ theme }) => theme.colors.link};
-    color: ${({ theme }) => theme.colors.link};
+    border: 1px solid var(--linkColor);
+    color: var(--linkColor);
   }
 
   .nextBtn:hover .arrow,
   .previousBtn:hover .arrow {
-    color: ${({ theme }) => theme.colors.link};
+    color: var(--linkColor);
   }
 
   .arrow {
@@ -73,7 +73,7 @@ export const StyledNextPrevious = styled("div")`
   }
 
   .smallContent {
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--textColor);
     display: block;
     margin: 0px;
     padding: 0px;

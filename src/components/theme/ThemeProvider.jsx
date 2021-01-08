@@ -1,10 +1,9 @@
 import React, { useContext } from "react"
-import { ThemeProvider as EmotionThemeProvider, Global } from "@emotion/react"
+import { Global } from "@emotion/react"
 
-import { lightTheme, darkTheme } from "./theme"
 import "../../fonts/fonts.css"
-import { baseStyles } from "../styles/GlobalStyles"
-import { mediaStyles } from "../styles/MediaStyles"
+import { baseStyles } from "./GlobalStyles"
+import { mediaStyles } from "./MediaStyles"
 
 const ThemeContext = React.createContext({
   isDarkThemeActive: false,
@@ -24,19 +23,25 @@ export class ThemeProvider extends React.Component {
     const isDarkThemeActive = JSON.parse(
       window.localStorage.getItem("isDarkThemeActive")
     )
-
     this.setState({ isDarkThemeActive })
+    document.documentElement.setAttribute('data-theme', isDarkThemeActive ? 'dark' : 'light');
   }
 
   toggleActiveTheme = () => {
-    this.setState(prevState => ({
-      isDarkThemeActive: !prevState.isDarkThemeActive,
-    }))
+    this.setState(prevState => {
 
-    window.localStorage.setItem(
-      "isDarkThemeActive",
-      JSON.stringify(!this.state.isDarkThemeActive)
-    )
+      window.localStorage.setItem(
+        "isDarkThemeActive",
+        JSON.stringify(!prevState.isDarkThemeActive)
+      )
+      document.documentElement.setAttribute('data-theme', !prevState.isDarkThemeActive ? 'dark' : 'light');
+
+      return {
+        isDarkThemeActive: !prevState.isDarkThemeActive
+      }
+    })
+
+
   }
 
   render() {
@@ -44,17 +49,13 @@ export class ThemeProvider extends React.Component {
 
     const { isDarkThemeActive } = this.state
 
-    const currentActiveTheme = isDarkThemeActive ? darkTheme : lightTheme
-
     return (
       <ThemeContext.Provider
         value={{ isDarkThemeActive, toggleActiveTheme: this.toggleActiveTheme }}
       >
-        <EmotionThemeProvider theme={currentActiveTheme}>
           <Global styles={mediaStyles} />
           <Global styles={baseStyles} />
           {children}
-        </EmotionThemeProvider>
       </ThemeContext.Provider>
     )
   }

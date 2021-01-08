@@ -15,7 +15,7 @@ const StyledHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   padding-left: 10px;
-  background-color: ${({theme}) => theme.colors.accent};
+  background-color: var(--accentColor);
   
   & > span {
     font-size: 20px;

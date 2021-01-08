@@ -3,7 +3,7 @@ import styled from "@emotion/styled"
 
 const StyledPre = styled("pre")`
   padding: 16px;
-  background: ${props => props.theme.colors.preFormattedText};
+  background: var(--preFormattedTextColor);
   border-radius: 5px;
   overflow: auto;
   

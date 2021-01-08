@@ -6,7 +6,6 @@ import { StyledText } from "./StyledText"
 import { Link } from "./Link"
 import GithubIcon from "../images/github.svg"
 
-
 const GithubLink = styled.span`
   height: 32px;
   border-radius: 4px;

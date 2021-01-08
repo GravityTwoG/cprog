@@ -131,7 +131,7 @@ export const PaddingWrapper = styled.div`
 
 export const StyledMainWrapper = styled.div`
   max-width: 100%;
-  color: ${props => props.theme.colors.text};
+  color: var(--textColor);
   overflow: hidden;
   padding: 0 60px;
 
@@ -160,7 +160,7 @@ export const StyledMainWrapper = styled.div`
 
   a {
     transition: color 0.15s;
-    color: ${props => props.theme.colors.link};
+    color: var(--linkColor);
   }
 
   code {
@@ -170,7 +170,7 @@ export const StyledMainWrapper = styled.div`
     padding: 2px 6px;
     font-size: 0.9375em;
 
-    background: ${props => props.theme.colors.background};
+    background: var(--backgroundColor);
   }
 `
 
@@ -182,7 +182,7 @@ const StyledTitleWrapper = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   padding-bottom: 20px;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.deco};
+  border-bottom: 1px solid var(--decoColor);
 `
 
 export const StyledHeading = styled("h1")`
@@ -191,11 +191,10 @@ export const StyledHeading = styled("h1")`
   font-size: 32px;
   line-height: 1.5;
   font-weight: 500;
-  border-left: 2px solid ${props => props.theme.colors.accent};
+  border-left: 2px solid var(--accentColor);
   padding: 0 16px;
   margin-top: 0;
-  padding-top: 0;
-  color: ${props => props.theme.colors.heading};
+  color: var(--headingColor);
 
   @media (max-width: 767px) {
     font-size: 28px;

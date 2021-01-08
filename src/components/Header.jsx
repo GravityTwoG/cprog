@@ -38,7 +38,7 @@ const StyledNavbarToggler = styled.div`
     width: 70%;
     height: 4px;
     border-radius: 2px;
-    background: ${({ theme }) => theme.colors.accent};
+    background: var(--accentColor);
     pointer-events: none;
     position: absolute;
     top: 50%;
@@ -82,13 +82,13 @@ const StyledMobileNavbar = styled.div`
     max-height: 100vh;
     width: 431px;
     height: 100vh;
-    background: ${({ theme }) => theme.colors.background};
+    background: var(--backgroundColor);
     position: fixed;
     top: 0px;
     right: 0%;
     z-index: -1;
     padding-top: 70px;
-    box-shadow: ${({ theme }) => theme.boxShadow};
+    box-shadow: var(--boxShadow);
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
     transform: translateX(100%);
@@ -111,7 +111,7 @@ const StyledList = styled.ul`
 `
 
 const StyledHeaderTitle = styled("div")`
-  color: ${({ theme }) => theme.colors.text};
+  color: var(-textColor);
 `
 
 export const Header = ({ location }) => {
@@ -325,8 +325,8 @@ const StyledHeaderBG = styled.div`
   top: 0;
   left: 0;
   z-index: 0;
-  background-color: ${({ theme }) => theme.colors.background};
-  box-shadow: ${({ theme }) => theme.boxShadow};
+  background-color: var(--backgroundColor);
+  box-shadow: var(--boxShadow);
 `
 
 const StyledHeaderContent = styled.div`

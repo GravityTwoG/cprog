@@ -12,12 +12,11 @@ export const Sidebar = styled("aside")`
   overflow: auto;
   position: fixed;
   padding-left: 24px;
-  position: -webkit-sticky;
-  position: -moz-sticky;
+  position: sticky;
   position: sticky;
   top: 0;
 
-  background: ${props => props.theme.colors.background};
+  background: var(--backgroundColor);
 
   .rightSideTitle {
     font-size: 10px;
@@ -29,7 +28,7 @@ export const Sidebar = styled("aside")`
     border-left: 1px solid #e6ecf1;
     border-left-color: rgb(230, 236, 241);
 
-    color: ${props => props.theme.colors.text};
+    color: var(--textColor);
   }
 
   .rightSideBarUL {
@@ -48,7 +47,7 @@ export const Sidebar = styled("aside")`
     line-height: 1.5;
     padding: 7px 24px 7px 16px;
 
-    color: ${props => props.theme.colors.text};
+    color: var(--textColor);
   }
 
   @media only screen and (max-width: 50rem) {
@@ -69,13 +68,13 @@ const StyledListItem = styled("li")`
     position: relative;
 
     &:hover {
-      color: ${({ theme }) => theme.colors.accent} !important;
+      color: var(--accentColor) !important;
     }
 
     ${props =>
       props.active
         ? `
-      color: ${({ theme }) => theme.colors.accent};
+      color: var(--accentColor);
       border-color: rgb(230,236,241) !important;
       border-style: solid none solid solid;
       border-width: 1px 0px 1px 1px;

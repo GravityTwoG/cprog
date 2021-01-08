@@ -10,19 +10,19 @@ export const ChapterHeading = styled(p => (
 
 export const StyledListItem = styled("li")`
   list-style: none;
-  border-left: 1px solid ${({ theme }) => theme.colors.deco};
+  border-left: 1px solid var(--decoColor);
   & .tree-node-title {
     display: flex;
     align-items: center;
   }
   .tree-node-title:hover > a,
   .tree-node-title:hover > .chapter-heading {
-    color: ${({ theme }) => theme?.colors?.accent};
+    color: var(--accentColor);
   }
 
   &.active a:hover,
   &.active .chapter-heading:hover {
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--textColor);
   }
 
   &.active > .tree-node-title {
@@ -37,7 +37,7 @@ export const StyledListItem = styled("li")`
   a,
   .chapter-heading {
     flex-grow: 1;
-    color: ${({ theme }) => theme.colors.text};
+    color: var(--textColor);
     text-decoration: none;
     font-weight: ${({ level }) => (level === 0 ? 700 : 500)};
     font-size: 14px;
@@ -61,8 +61,7 @@ export const StyledSidebar = styled("aside")`
   width: 100%;
   height: calc(100vh - 70px);
   padding-left: 0px;
-  position: -webkit-sticky;
-  position: -moz-sticky;
+  position: sticky;
   position: sticky;
   top: 0;
   padding-right: 0;
