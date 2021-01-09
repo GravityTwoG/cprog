@@ -1,6 +1,5 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { Grid, Row, Col } from "react-flexbox-grid"
 
 import { CodeBlock } from "./CodeBlock"
 import { Pre } from "./Pre"
@@ -29,11 +28,6 @@ const StyledTableWrapper = styled.div`
       flex: 0 0 25px;
     }
   }
-`
-
-const StyledGrid = styled(Grid)`
-  padding-left: 0;
-  padding-right: 0;
 `
 
 export const mdxComponents = {
@@ -95,9 +89,6 @@ export const mdxComponents = {
   pre: Pre,
   code: CodeBlock,
   a: AnchorTag,
-  Grid: StyledGrid,
-  Row,
-  Col,
   img: StyledImage,
   Icon,
   // TODO add `blockquote`
