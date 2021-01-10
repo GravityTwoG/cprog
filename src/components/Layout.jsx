@@ -4,9 +4,13 @@ import { MDXProvider } from "@mdx-js/react"
 
 import { mdxComponents } from "./mdxComponents"
 import { Footer } from "./Footer.jsx"
-import { Sidebar } from "./Sidebar"
-import { RightSidebar } from "./RightSidebar"
-import { Header } from "./Header.jsx"
+import config from "../../config"
+import { Logo } from "./Logo"
+import { Link } from "./Link"
+
+const Header = React.lazy(() => import("./Header").then(module => ({ default: module.Header })))
+const Sidebar = React.lazy(() => import("./Sidebar").then(module => ({ default: module.Sidebar })))
+const RightSidebar = React.lazy(() => import("./RightSidebar").then(module => ({ default: module.RightSidebar })))
 
 const Wrapper = styled("div")`
   display: flex;
@@ -58,6 +62,12 @@ const LeftSideBar = styled.div`
   flex: 1 1 300px;
   z-index: 0;
   box-shadow: var(--boxShadow);
+  
+  & > .navBarBrand {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+  }
 `
 
 const RightSideBarWidth = styled("div")`
@@ -66,13 +76,34 @@ const RightSideBarWidth = styled("div")`
 `
 
 export const Layout = ({ children, location }) => {
+  const isSSR = typeof window === "undefined"
+  const finalLogoLink = config.header.logoLink !== "" ? config.header.logoLink : "/"
   return (
     <MDXProvider components={mdxComponents}>
-      <Header location={location} />
+      {!isSSR && (
+        <React.Suspense fallback={<div style={{height: '70px'}}/>}>
+          <Header location={location} />
+        </React.Suspense>
+      )}
 
       <Wrapper>
         <LeftSideBar className={"hiddenMobile"}>
-          <Sidebar location={location} style={{ top: "70px" }} />
+          <Link
+            to={finalLogoLink}
+            className={"navBarBrand"}
+            aria-label={config.siteMetadata.title}
+            title={config.siteMetadata.title}
+          >
+            <Logo />
+          </Link>
+          {!isSSR && (
+            <React.Suspense fallback={<div />}>
+              <Sidebar
+                location={location}
+                style={{ top: "70px" }}
+              />
+            </React.Suspense>
+          )}
         </LeftSideBar>
 
         <Content>
@@ -83,7 +114,11 @@ export const Layout = ({ children, location }) => {
         </Content>
 
         <RightSideBarWidth className={"hiddenMobile rightSidebar"}>
-          <RightSidebar location={location} />
+          {!isSSR && (
+            <React.Suspense fallback={<div />}>
+              <RightSidebar location={location} />
+            </React.Suspense>
+          )}
         </RightSideBarWidth>
       </Wrapper>
     </MDXProvider>
