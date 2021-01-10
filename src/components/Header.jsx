@@ -6,8 +6,9 @@ import styled from "@emotion/styled"
 
 import GitHubButton from "react-github-btn"
 import { DarkModeSwitch } from "./DarkModeSwitch"
+import {Sidebar} from "./Sidebar"
 import { Link } from "./Link"
-import { Sidebar } from "./Sidebar"
+
 import { Logo } from "./Logo.jsx"
 
 const help = require("../images/help.svg")
@@ -32,7 +33,16 @@ const StyledNavbarToggler = styled.div`
   position: relative;
   cursor: pointer;
   z-index: 2;
-
+  transition: background-color 0.3s linear;
+  
+  &:hover {
+    background-color: rgba(25,25,25, 0.2);
+    
+    html[data-theme="dark"] & {
+      background-color: rgba(119,119,119, 0.4);
+    }
+  }
+  
   & > .iconBar {
     display: block;
     width: 70%;
@@ -123,10 +133,6 @@ export const Header = ({ location }) => {
           headerTitle
           githubUrl
           helpUrl
-          logo {
-            link
-            image
-          }
           headerLinks {
             link
             text
@@ -138,11 +144,11 @@ export const Header = ({ location }) => {
 
   const {
     site: {
-      siteMetadata: { headerTitle, githubUrl, helpUrl, logo, headerLinks },
+      siteMetadata: { headerTitle, githubUrl, helpUrl, headerLinks },
     },
   } = data
 
-  const finalLogoLink = logo.link !== "" ? logo.link : "/"
+  const finalLogoLink = config.header.logoLink !== "" ? config.header.logoLink : "/"
   const [, isDarkThemeActive] = useThemeContext()
 
   const burgerButtonRef = useRef(null)

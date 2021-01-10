@@ -1,7 +1,15 @@
 import { injectGlobal } from "@emotion/css"
 import { darkTheme, lightTheme } from "./theme"
 
-export const baseStyles = injectGlobal`        
+export const baseStyles = injectGlobal`
+  :root {
+      ${lightTheme}
+  }
+
+  [data-theme="dark"] {
+      ${darkTheme}
+  }  
+    
   * {
     margin: 0;
     padding: 0;
@@ -17,15 +25,8 @@ export const baseStyles = injectGlobal`
       'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif,
       'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
     font-weight: 400;
+    background-color: var(--backgroundColor);
     overflow-x: hidden;
-  }
-  
-  :root {
-    ${lightTheme}
-  }
-  
-  [data-theme="dark"] {
-    ${darkTheme}
   }
 
   ::-webkit-input-placeholder {
