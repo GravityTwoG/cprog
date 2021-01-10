@@ -15,7 +15,7 @@ const StyledTableWrapper = styled.div`
   margin: 0 -60px;
   width: calc(100% + 120px);
   overflow-x: auto;
-
+  
   & > div {
     flex: 0 0 60px;
   }
@@ -27,6 +27,50 @@ const StyledTableWrapper = styled.div`
     & > div {
       flex: 0 0 25px;
     }
+  }
+
+  table {
+    padding: 0;
+    border-collapse: collapse;
+  }
+
+  table tr {
+    border-top: 1px solid #cccccc;
+    margin: 0;
+    padding: 0;
+  }
+
+  table tr:nth-child(2n) {
+    background-color: #f8f8f8;
+
+    html[data-theme="dark"] & {
+      background-color: #001523;
+    }
+  }
+
+  table tr th {
+    font-weight: bold;
+    border: 1px solid #cccccc;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+  }
+
+  table tr td {
+    border: 1px solid #cccccc;
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+  }
+
+  table tr th :first-child,
+  table tr td :first-child {
+    margin-top: 0;
+  }
+
+  table tr th :last-child,
+  table tr td :last-child {
+    margin-bottom: 0;
   }
 `
 

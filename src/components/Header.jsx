@@ -112,7 +112,7 @@ const StyledList = styled.ul`
 `
 
 const StyledHeaderTitle = styled("div")`
-  color: var(-textColor);
+  color: var(--textColor);
 `
 
 export const Header = ({ location }) => {
@@ -172,7 +172,12 @@ export const Header = ({ location }) => {
   return (
     <HeaderContainer>
       <StyledNavbarHeader>
-        <Link to={finalLogoLink} className={"navBarBrand"}>
+        <Link
+          to={finalLogoLink}
+          className={"navBarBrand"}
+          aria-label={config.siteMetadata.title}
+          title={config.siteMetadata.title}
+        >
           <Logo />
         </Link>
         <StyledHeaderTitle
@@ -244,6 +249,8 @@ export const Header = ({ location }) => {
         <StyledNavbarToggler
           onClick={toggleNavbar}
           role="button"
+          aria-label="Меню"
+          title="Меню"
           ref={burgerButtonRef}
           isDarkThemeActive={isDarkThemeActive}
           data-is-open="false"
@@ -291,22 +298,11 @@ export const Header = ({ location }) => {
               />
             </li>
           ) : null}
-          {githubUrl !== "" ? (
-            <li className={"githubBtn"}>
-              <GitHubButton
-                href={githubUrl}
-                data-show-count="true"
-                aria-label="Star on GitHub"
-              >
-                Star
-              </GitHubButton>
-            </li>
-          ) : null}
         </StyledList>
 
         <Sidebar
           location={location}
-          style={{ maxHeight: "calc(100% - 60px)" }}
+          style={{ maxHeight: "100%" }}
         />
       </StyledMobileNavbar>
     </HeaderContainer>

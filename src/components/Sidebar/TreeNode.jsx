@@ -17,7 +17,7 @@ const ArrowButton = styled.button`
   & > svg {
     width: 20px;
     height: 20px;
-    fill: ${({ theme }) => (theme.isDark ? "#fff" : "#000")};
+    fill: var(--textColor);
     transform: rotate(0deg);
     transform-origin: center;
     transition: transform 0.15s linear;

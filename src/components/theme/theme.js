@@ -4,7 +4,6 @@ const baseTheme = {
 
 const light = {
   ...baseTheme,
-  isDark: false,
   backgroundColor: "#fff",
   headingColor: "#000",
   textColor: "#3B454E",
@@ -16,7 +15,6 @@ const light = {
 
 const dark = {
   ...baseTheme,
-  isDark: true,
   backgroundColor: "#2a2b2d",
   headingColor: "#fff",
   textColor: "#fafafa",

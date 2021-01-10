@@ -2,17 +2,20 @@
     font-family: "Roboto";
     font-weight: 400;
     font-style: normal;
-    src: local('Roboto'), local('Roboto-Regular'), url("./roboto-v20-latin_cyrillic-regular.woff2");
+    src: url("./roboto-v20-latin_cyrillic-regular.woff2");
+    font-display: swap;
 }
 @font-face {
     font-family: "Roboto";
     font-weight: 500;
     font-style: normal;
-    src: local('Roboto Medium'), local('Roboto-Medium'), url("./roboto-v20-latin_cyrillic-500.woff2");
+    src: url("./roboto-v20-latin_cyrillic-500.woff2");
+    font-display: swap;
 }
 @font-face {
     font-family: "Roboto";
     font-weight: 700;
     font-style: normal;
-    src: local('Roboto Bold'), local('Roboto-Bold'), url("./roboto-v20-latin_cyrillic-700.woff2");
+    src: url("./roboto-v20-latin_cyrillic-700.woff2");
+    font-display: swap;
 }
