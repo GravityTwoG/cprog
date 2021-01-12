@@ -1,9 +1,6 @@
 import React, { useContext } from "react"
-import { Global } from "@emotion/react"
 
 import "../../fonts/fonts.css"
-import { baseStyles } from "./GlobalStyles"
-import { mediaStyles } from "./MediaStyles"
 
 const ThemeContext = React.createContext({
   isDarkThemeActive: false,
@@ -53,8 +50,6 @@ export class ThemeProvider extends React.Component {
       <ThemeContext.Provider
         value={{ isDarkThemeActive, toggleActiveTheme: this.toggleActiveTheme }}
       >
-          <Global styles={mediaStyles} />
-          <Global styles={baseStyles} />
           {children}
       </ThemeContext.Provider>
     )

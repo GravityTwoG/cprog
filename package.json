@@ -23,6 +23,7 @@
     "gatsby-plugin-manifest": "^2.5.2",
     "gatsby-plugin-mdx": "^1.2.52",
     "gatsby-plugin-react-helmet": "^3.3.14",
+    "gatsby-plugin-sass": "^3.0.0",
     "gatsby-plugin-sharp": "^2.6.43",
     "gatsby-plugin-svgr": "^2.0.2",
     "gatsby-remark-images": "^3.3.40",
@@ -36,7 +37,8 @@
     "react-github-btn": "^1.2.0",
     "react-helmet": "^6.1.0",
     "remark-html-katex": "^3.0.0",
-    "remark-math": "^3.0.1"
+    "remark-math": "^3.0.1",
+    "sass": "^1.32.4"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.1.2",

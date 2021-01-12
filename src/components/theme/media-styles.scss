@@ -1,0 +1,80 @@
+
+@media (max-width: 1024px) {
+  .hiddenMobile {
+    display: none;
+  }
+}
+
+.visibleMobile {
+  display: none;
+}
+.visibleMobileView {
+  display: none !important;
+}
+
+@media (max-width: 767px) {
+  .visibleMobileView {
+    display: block !important;
+  }
+  .mobileView {
+    text-align: left !important;
+    padding-left: 0 !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .navBarBrand {
+    font-size: 22px;
+  }
+  .navBarHeader {
+    min-width: 240px;
+    flex: initial;
+  }
+  .divider {
+    margin: 0 5px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .socialWrapper {
+    position: absolute;
+    right: 10px;
+    top: 29px;
+  }
+  .headerTitle {
+    padding-right: 50px;
+    font-size: 16px;
+  }
+  .navBarBrand {
+    min-height: 40px;
+  }
+  .navBarBrand img {
+    margin-right: 8px;
+  }
+
+  hr {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .navBarHeader {
+    display: flex;
+    min-width: auto;
+    padding-right: 0;
+    align-items: center;
+  }
+
+  .navBarBrand {
+    font-size: 20px;
+    padding: 0 0;
+    padding-left: 0;
+    flex: initial;
+    padding-right: 15px;
+  }
+
+  .gitBtn {
+    display: inline-block;
+  }
+}
+

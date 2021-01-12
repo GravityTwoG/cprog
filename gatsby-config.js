@@ -6,6 +6,7 @@
 const config = require("./config")
 
 const plugins = [
+  "gatsby-plugin-sass",
   "gatsby-plugin-sharp",
   {
     resolve: "gatsby-plugin-svgr",
