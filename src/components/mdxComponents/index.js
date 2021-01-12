@@ -40,7 +40,7 @@ const StyledTableWrapper = styled.div`
     padding: 0;
   }
 
-  table tr:nth-child(2n) {
+  table tr:nth-of-type(2n) {
     background-color: #f8f8f8;
 
     html[data-theme="dark"] & {
@@ -63,8 +63,8 @@ const StyledTableWrapper = styled.div`
     padding: 6px 13px;
   }
 
-  table tr th :first-child,
-  table tr td :first-child {
+  table tr th :first-of-type,
+  table tr td :first-of-type {
     margin-top: 0;
   }
 
