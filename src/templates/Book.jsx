@@ -8,7 +8,6 @@ import config from "../../config"
 import { Link } from "../components/Link"
 import { NextPrevious } from "../components/NextPrevious"
 import gitHub from "../images/github.svg"
-import "katex/dist/katex.min.css"
 
 export const pageQuery = graphql`
   query BookQuery($slug: String!) {
@@ -38,6 +37,10 @@ export const pageQuery = graphql`
 `
 
 const BookTemplate = props => {
+  React.useEffect(() => {
+    (async () => {await import("katex/dist/katex.min.css")})()
+  }, [])
+
   if (!props.data) {
     return null
   }
