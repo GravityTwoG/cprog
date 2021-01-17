@@ -1,4 +1,7 @@
 const path = require("path")
+const {setFieldsOnGraphQLNodeType} = require("./navigation")
+
+module.exports.setFieldsOnGraphQLNodeType = setFieldsOnGraphQLNodeType
 
 // Create slug and title fields for each file
 module.exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -55,3 +58,4 @@ module.exports.createPages = async ({ graphql, actions }) => {
     })
   })
 }
+

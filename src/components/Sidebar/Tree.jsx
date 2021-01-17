@@ -1,6 +1,6 @@
 import React from "react"
 import config from "../../../config"
-import { useNavigationTree } from "../NavigationProvider"
+import { useNavigationTree } from "../useNavigationTree"
 
 import { TreeNode } from "./TreeNode"
 

@@ -1,13 +1,10 @@
 const React = require("react")
 const { Layout } = require("./src/components/Layout")
-const { NavigationProvider } = require("./src/components/NavigationProvider")
 const { ThemeProvider } = require("./src/components/theme/ThemeProvider")
 
 exports.wrapRootElement = ({ element }) => {
   return (
-    <NavigationProvider>
-      <ThemeProvider>{element}</ThemeProvider>
-    </NavigationProvider>
+    <ThemeProvider>{element}</ThemeProvider>
   )
 }
 exports.wrapPageElement = ({ element, props }) => {
