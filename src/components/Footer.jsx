@@ -20,7 +20,7 @@ export const Footer = () => (
       <StyledText>
         <p className="paragraph">
           <strong>Все материалы взяты с сайта </strong>
-          <Link to="http://ermak.cs.nstu.ru/cprog/html/">
+          <Link to="http://ermak.cs.nstu.ru/cprog/html/" rel="noreferrer noopener">
             ermak.cs.nstu.ru/cprog/html
             <ExternalLink size={14} style={{ marginLeft: "0.3rem" }} />
           </Link>

@@ -41,7 +41,7 @@ const StyledTitleWrapper = styled.div`
   border-bottom: 1px solid var(--decoColor);
 `
 
-export const StyledHeading = styled("h1")`
+const StyledHeading = styled.h1`
   max-width: 100%;
   flex: 1;
   font-size: 32px;
@@ -60,7 +60,7 @@ export const StyledHeading = styled("h1")`
   }
 `
 
-export const Edit = styled("div")`
+const Edit = styled.div`
   margin: 0.5rem 0 0.5rem 0.5rem;
   a {
     width: 150px;
@@ -129,11 +129,8 @@ const BookTemplate = props => {
 
   // meta tags
   const metaTitle = mdx.frontmatter.metaTitle
-
   const metaDescription = mdx.frontmatter.metaDescription
-
   let canonicalUrl = config.gatsby.siteUrl
-
   canonicalUrl =
     config.gatsby.pathPrefix !== "/"
       ? canonicalUrl + config.gatsby.pathPrefix

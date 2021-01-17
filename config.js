@@ -30,7 +30,7 @@ const config = {
   },
   siteMetadata: {
     title: "Cprog",
-    description: "",
+    description: "Си/Си++. От дилетанта до профессионала",
     ogImage: "",
     favicon: "",
     docsLocation: "https://github.com/GravityTwoG/cprog/blob/master/content",

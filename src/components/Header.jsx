@@ -13,20 +13,17 @@ import { Logo } from "./Logo.jsx"
 
 const help = require("../images/help.svg")
 
-const MLAuto = styled.div`
-  margin-left: auto;
-`
-
 const StyledNavbarHeader = styled.header`
   display: flex;
   align-items: center;
   flex-grow: 0;
 `
 
-const StyledNavbarToggler = styled.div`
+const StyledNavbarToggle = styled.div`
+  margin-left: auto;
   display: none;
   background: transparent;
-  border: 0px solid #fff;
+  border: 0 solid #fff;
   border-radius: 4px;
   width: 36px;
   height: 36px;
@@ -192,14 +189,7 @@ export const Header = ({ location }) => {
         />
       </StyledNavbarHeader>
 
-      {config.header.social ? (
-        <ul
-          className="socialWrapper visibleMobileView"
-          dangerouslySetInnerHTML={{ __html: config.header.social }}
-        />
-      ) : null}
-
-        <StyledList className="styled-list">
+      <StyledList className="styled-list">
           {headerLinks.map((link, key) => {
             if (link.link !== "" && link.text !== "") {
               return (
@@ -249,23 +239,21 @@ export const Header = ({ location }) => {
           <li style={{marginLeft: '16px'}}>
             <DarkModeSwitch />
           </li>
-        </StyledList>
+      </StyledList>
 
-      <MLAuto>
-        <StyledNavbarToggler
-          onClick={toggleNavbar}
-          role="button"
-          aria-label="Меню"
-          title="Меню"
-          ref={burgerButtonRef}
-          isDarkThemeActive={isDarkThemeActive}
-          data-is-open="false"
-        >
-          <span className="iconBar" />
-          <span className="iconBar" />
-          <span className="iconBar" />
-        </StyledNavbarToggler>
-      </MLAuto>
+      <StyledNavbarToggle
+        onClick={toggleNavbar}
+        role="button"
+        aria-label="Меню"
+        title="Меню"
+        ref={burgerButtonRef}
+        isDarkThemeActive={isDarkThemeActive}
+        data-is-open="false"
+      >
+        <span className="iconBar" />
+        <span className="iconBar" />
+        <span className="iconBar" />
+      </StyledNavbarToggle>
 
       <StyledMobileNavbar ref={navbarRef} data-is-open="false">
         <StyledList>
@@ -293,15 +281,6 @@ export const Header = ({ location }) => {
               <a href={helpUrl}>
                 <img src={help} alt={"Help icon"} />
               </a>
-            </li>
-          ) : null}
-
-          {config.header.social ? (
-            <li className={"hiddenMobile"}>
-              <ul
-                className="socialWrapper"
-                dangerouslySetInnerHTML={{ __html: config.header.social }}
-              />
             </li>
           ) : null}
         </StyledList>
