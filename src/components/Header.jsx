@@ -54,7 +54,7 @@ const StyledNavbarToggler = styled.div`
     top: 50%;
     left: 50%;
     z-index: 1;
-    transition: transform 0.2s ease-in-out, rotate 0.2s ease-in-out;
+    transition: transform 0.3s ease-in-out, rotate 0.3s ease-in-out;
     transform: translate(-50%, -50%) rotate(0deg);
 
     &:nth-of-type(1) {
@@ -341,11 +341,11 @@ const StyledHeaderContent = styled.div`
   left: 0;
   z-index: 1;
   transition: transform 0.3s ease-in-out;
-  transform: translateY(0%);
-  will-change: translateY;
+  transform: translate(0%, 0%);
+  will-change: translate;
 
   &[data-is-hidden="true"] {
-    transform: translateY(-100%);
+    transform: translate(0%, -100%);
   }
 
   @media (max-width: 767px) {

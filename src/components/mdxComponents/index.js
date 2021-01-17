@@ -5,73 +5,24 @@ import { CodeBlock } from "./CodeBlock"
 import { Pre } from "./Pre"
 import { AnchorTag } from "./Anchor"
 import { Icon } from "./Icons"
+import { Table } from "./Table";
 
 const StyledImage = styled.img`
   background-color: #fff;
 `
 
-const StyledTableWrapper = styled.div`
-  display: flex;
-  margin: 0 -60px;
-  width: calc(100% + 120px);
-  overflow-x: auto;
-  
-  & > div {
-    flex: 0 0 60px;
-  }
+const StyledUL = styled.ul`
+    -webkit-padding-start: 40px;
+    -moz-padding-start: 40px;
+    -o-padding-start: 40px;
+    margin: 24px 0px;
+    padding: 0px 0px 0px 2em;
 
-  @media only screen and (max-width: 520px) {
-    margin: 0 -25px;
-    width: calc(100% + 50px);
-
-    & > div {
-      flex: 0 0 25px;
+    li {
+      font-size: 16px;
+      line-height: 1.8;
+      font-weight: 400;
     }
-  }
-
-  table {
-    padding: 0;
-    border-collapse: collapse;
-  }
-
-  table tr {
-    border-top: 1px solid #cccccc;
-    margin: 0;
-    padding: 0;
-  }
-
-  table tr:nth-of-type(2n) {
-    background-color: #f8f8f8;
-
-    html[data-theme="dark"] & {
-      background-color: #001523;
-    }
-  }
-
-  table tr th {
-    font-weight: bold;
-    border: 1px solid #cccccc;
-    text-align: left;
-    margin: 0;
-    padding: 6px 13px;
-  }
-
-  table tr td {
-    border: 1px solid #cccccc;
-    text-align: left;
-    margin: 0;
-    padding: 6px 13px;
-  }
-
-  table tr th :first-of-type,
-  table tr td :first-of-type {
-    margin-top: 0;
-  }
-
-  table tr th :last-child,
-  table tr td :last-child {
-    margin-bottom: 0;
-  }
 `
 
 export const mdxComponents = {
@@ -136,11 +87,6 @@ export const mdxComponents = {
   img: StyledImage,
   Icon,
   // TODO add `blockquote`
-  // TODO add `ul`
-  // TODO add `li`
-  table: props => (
-    <StyledTableWrapper>
-      <div/><table {...props} /><div/>
-    </StyledTableWrapper>
-  ),
+  table: Table,
+  ul: StyledUL
 }

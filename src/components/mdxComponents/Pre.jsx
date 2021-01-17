@@ -9,12 +9,6 @@ const StyledPre = styled("pre")`
   
   &[data-is-codeblock="true"] {
     padding: 0;
-
-    @media (max-width: 520px) {
-      margin: 0 -25px;
-      width: calc(100% + 50px);
-      overflow: initial;
-    }
   }
 
   @media (max-width: 768px) {

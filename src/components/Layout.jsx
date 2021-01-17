@@ -51,7 +51,7 @@ const MaxWidth = styled("div")`
   width: 100%;
   max-width: 100%;
   @media only screen and (min-width: 1279px) {
-    max-width: 900px;
+    max-width: 1000px;
     position: relative;
   }
 `
@@ -71,8 +71,12 @@ const LeftSideBar = styled.div`
 `
 
 const RightSideBarWidth = styled("div")`
-  width: 224px;
+  width: 420px;
   flex: 0.2 1 auto;
+  
+  @media (max-width: 1366px) {
+    display: none;
+  }
 `
 
 export const Layout = ({ children, location }) => {

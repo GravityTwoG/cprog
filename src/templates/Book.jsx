@@ -11,6 +11,79 @@ import gitHub from "../images/github.svg"
 import "../components/theme/global-styles.scss"
 import "../components/theme/media-styles.scss"
 
+export const PaddingWrapper = styled.div`
+  padding: 0 60px;
+
+  @media (max-width: 520px) {
+    padding: 0 16px;
+  }
+  
+  &.main {
+    max-width: 100%;
+    color: var(--textColor);
+    overflow: hidden;
+
+    & a {
+      transition: color 0.15s;
+      color: var(--linkColor);
+    }
+  }
+`
+
+const StyledTitleWrapper = styled.div`
+  margin-bottom: 20px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--decoColor);
+`
+
+export const StyledHeading = styled("h1")`
+  max-width: 100%;
+  flex: 1;
+  font-size: 32px;
+  line-height: 1.5;
+  font-weight: 500;
+  border-left: 2px solid var(--accentColor);
+  padding: 0 16px;
+  margin-top: 0;
+  color: var(--headingColor);
+
+  @media (max-width: 767px) {
+    font-size: 28px;
+  }
+  @media (max-width: 576px) {
+    font-size: 24px;
+  }
+`
+
+export const Edit = styled("div")`
+  margin: 0.5rem 0 0.5rem 0.5rem;
+  a {
+    width: 150px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1em;
+    text-decoration: none;
+    color: rgb(36, 42, 49);
+    padding: 5px 16px;
+
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgb(211, 220, 228);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 0.2s ease-out 0s;
+    box-shadow: rgba(116, 129, 141, 0.1) 0px 1px 1px 0px;
+    &:hover {
+      background-color: rgb(245, 247, 249);
+      color: rgb(36, 42, 49);
+    }
+  }
+`
+
 export const pageQuery = graphql`
   query BookQuery($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
@@ -92,6 +165,7 @@ const BookTemplate = props => {
         />
         <link rel="canonical" href={canonicalUrl} />
       </Helmet>
+
       <PaddingWrapper className="addPaddTopBottom">
         <NextPrevious mdx={mdx} />
       </PaddingWrapper>
@@ -113,9 +187,9 @@ const BookTemplate = props => {
         </StyledTitleWrapper>
       </PaddingWrapper>
 
-      <StyledMainWrapper>
+      <PaddingWrapper className="main">
         <MDXRenderer>{mdx.body}</MDXRenderer>
-      </StyledMainWrapper>
+      </PaddingWrapper>
 
       <PaddingWrapper className={"addPaddTopBottom"}>
         <NextPrevious mdx={mdx} />
@@ -125,110 +199,3 @@ const BookTemplate = props => {
 }
 
 export default BookTemplate
-
-export const PaddingWrapper = styled.div`
-  padding: 0 60px;
-
-  @media only screen and (max-width: 520px) {
-    padding: 0 25px;
-  }
-`
-
-export const StyledMainWrapper = styled.div`
-  max-width: 100%;
-  color: var(--textColor);
-  overflow: hidden;
-  padding: 0 60px;
-
-  @media (max-width: 1440px) {
-    max-width: 100%;
-  }
-
-  @media only screen and (max-width: 520px) {
-    padding: 0 25px;
-  }
-
-  ul,
-  ol {
-    -webkit-padding-start: 40px;
-    -moz-padding-start: 40px;
-    -o-padding-start: 40px;
-    margin: 24px 0px;
-    padding: 0px 0px 0px 2em;
-
-    li {
-      font-size: 16px;
-      line-height: 1.8;
-      font-weight: 400;
-    }
-  }
-
-  a {
-    transition: color 0.15s;
-    color: var(--linkColor);
-  }
-
-  code {
-    max-width: 100%;
-    border: 1px solid #ede7f3;
-    border-radius: 4px;
-    padding: 2px 6px;
-    font-size: 0.9375em;
-
-    background: var(--backgroundColor);
-  }
-`
-
-const StyledTitleWrapper = styled.div`
-  margin-bottom: 20px;
-  max-width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--decoColor);
-`
-
-export const StyledHeading = styled("h1")`
-  max-width: 100%;
-  flex: 1;
-  font-size: 32px;
-  line-height: 1.5;
-  font-weight: 500;
-  border-left: 2px solid var(--accentColor);
-  padding: 0 16px;
-  margin-top: 0;
-  color: var(--headingColor);
-
-  @media (max-width: 767px) {
-    font-size: 28px;
-  }
-  @media (max-width: 576px) {
-    font-size: 24px;
-  }
-`
-
-export const Edit = styled("div")`
-  margin: 0.5rem 0 0.5rem 0.5rem;
-  a {
-    width: 150px;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1em;
-    text-decoration: none;
-    color: rgb(36, 42, 49);
-    padding: 5px 16px;
-
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(211, 220, 228);
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all 0.2s ease-out 0s;
-    box-shadow: rgba(116, 129, 141, 0.1) 0px 1px 1px 0px;
-    &:hover {
-      background-color: rgb(245, 247, 249);
-      color: rgb(36, 42, 49);
-    }
-  }
-`
