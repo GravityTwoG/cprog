@@ -34,11 +34,14 @@ const StyledTitleWrapper = styled.div`
   margin-bottom: 20px;
   max-width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
   padding-bottom: 20px;
   border-bottom: 1px solid var(--decoColor);
+  
+  & > div {
+    margin-top: 16px;
+    align-self: flex-end;
+  }
 `
 
 const StyledHeading = styled.h1`
@@ -56,14 +59,13 @@ const StyledHeading = styled.h1`
     font-size: 28px;
   }
   @media (max-width: 576px) {
-    font-size: 24px;
+    font-size: 20px;
   }
 `
 
-const Edit = styled.div`
-  margin: 0.5rem 0 0.5rem 0.5rem;
+const GitBtn = styled.span`
+  margin: 0.5rem 0 0 0.5rem;
   a {
-    width: 150px;
     font-size: 14px;
     font-weight: 500;
     line-height: 1em;
@@ -106,6 +108,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         docsLocation
+        githubUrl
       }
     }
   }
@@ -123,7 +126,7 @@ const BookTemplate = props => {
   const {
     mdx,
     site: {
-      siteMetadata: { docsLocation },
+      siteMetadata: { docsLocation, githubUrl },
     },
   } = props.data
 
@@ -170,17 +173,33 @@ const BookTemplate = props => {
       <PaddingWrapper>
         <StyledTitleWrapper className={"titleWrapper"}>
           <StyledHeading>{mdx.fields.title}</StyledHeading>
-          <Edit className={"mobileView"}>
-            {docsLocation && (
-              <Link
-                className={"gitBtn"}
-                target="_blank"
-                to={`${docsLocation}/${mdx.parent.relativePath}`}
-              >
-                <img src={gitHub} alt={"Github logo"} /> Edit on GitHub
-              </Link>
+          <div>
+            {githubUrl && (
+              <GitBtn>
+                <Link
+                  className={"gitBtn"}
+                  target="_blank"
+                  to={githubUrl}
+                  rel="noopener"
+                  aria-label="Star on GitHub"
+                >
+                  <img src={gitHub} alt={"Github logo"} /> Star
+                </Link>
+              </GitBtn>
             )}
-          </Edit>
+            {docsLocation && (
+              <GitBtn>
+                <Link
+                  className={"gitBtn"}
+                  target="_blank"
+                  to={`${docsLocation}/${mdx.parent.relativePath}`}
+                  rel="noopener"
+                >
+                  <img src={gitHub} alt={"Github logo"} /> Edit on GitHub
+                </Link>
+              </GitBtn>
+            )}
+          </div>
         </StyledTitleWrapper>
       </PaddingWrapper>
 

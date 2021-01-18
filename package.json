@@ -36,7 +36,6 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-feather": "^2.0.8",
-    "react-github-btn": "^1.2.0",
     "react-helmet": "^6.1.0",
     "remark-html-katex": "^3.0.0",
     "remark-math": "^3.0.1",

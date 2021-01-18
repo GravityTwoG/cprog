@@ -85,7 +85,7 @@ export const Layout = ({ children, location }) => {
   return (
     <MDXProvider components={mdxComponents}>
       {!isSSR && (
-        <React.Suspense fallback={<div style={{height: '70px'}}/>}>
+        <React.Suspense fallback={<div style={{height: '70px', width: '100%'}}/>}>
           <Header location={location} />
         </React.Suspense>
       )}

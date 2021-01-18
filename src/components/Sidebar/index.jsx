@@ -16,13 +16,12 @@ export const Sidebar = ({ location, ...props }) => {
       ) : null}
       <ul className={"sideBarUL"}>
         <Tree location={location} />
-
         {config.sidebar.links && config.sidebar.links.length > 0 && <Divider />}
 
         {config.sidebar.links.map((link, key) => {
           if (link.link !== "" && link.text !== "") {
             return (
-              <ListItem key={key} to={link.link}>
+              <ListItem key={key} to={link.link} rel="noopener">
                 {link.text}
                 <ExternalLink size={14} style={{ marginLeft: "5px" }} />
               </ListItem>

@@ -4,7 +4,6 @@ import config from "../../config.js"
 import { useThemeContext } from "./theme/ThemeProvider.jsx"
 import styled from "@emotion/styled"
 
-import GitHubButton from "react-github-btn"
 import { DarkModeSwitch } from "./DarkModeSwitch"
 import {Sidebar} from "./Sidebar"
 import { Link } from "./Link"
@@ -141,7 +140,7 @@ export const Header = ({ location }) => {
 
   const {
     site: {
-      siteMetadata: { headerTitle, githubUrl, helpUrl, headerLinks },
+      siteMetadata: { headerTitle, helpUrl, headerLinks },
     },
   } = data
 
@@ -225,17 +224,7 @@ export const Header = ({ location }) => {
               />
             </li>
           ) : null}
-          {githubUrl !== "" ? (
-            <li>
-              <GitHubButton
-                href={githubUrl}
-                data-show-count="true"
-                aria-label="Star on GitHub"
-              >
-                Star
-              </GitHubButton>
-            </li>
-          ) : null}
+
           <li style={{marginLeft: '16px'}}>
             <DarkModeSwitch />
           </li>
