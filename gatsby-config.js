@@ -48,6 +48,13 @@ const plugins = [
             linkImagesToOriginal: false,
           },
         },
+        {
+          resolve:"gatsby-remark-prismjs",
+          options: {
+            classPrefix: "language-",
+            inlineCodeMarker: null,
+          }
+        }
       ],
       remarkPlugins: [
         require('remark-math'),

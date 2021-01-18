@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled"
 
-import { CodeBlock } from "./CodeBlock"
 import { Pre } from "./Pre"
 import { AnchorTag } from "./Anchor"
 import { Icon } from "./Icons"
@@ -82,7 +81,6 @@ export const mdxComponents = {
   ),
   p: props => <p className="paragraph" {...props} />,
   pre: Pre,
-  code: CodeBlock,
   a: AnchorTag,
   img: StyledImage,
   Icon,

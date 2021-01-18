@@ -1,5 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled"
+import { CodeBlock } from "./CodeBlock";
 
 const StyledPre = styled("pre")`
   padding: 16px;
@@ -7,10 +8,6 @@ const StyledPre = styled("pre")`
   border-radius: 5px;
   overflow: auto;
   
-  &[data-is-codeblock="true"] {
-    padding: 0;
-  }
-
   @media (max-width: 768px) {
     padding: 8px;
   }
@@ -18,10 +15,8 @@ const StyledPre = styled("pre")`
 `
 
 export const Pre = (props) => {
-  let isCodeBlock = false
   if (props.children?.props?.mdxType === 'code') {
-    isCodeBlock = true
+    return <CodeBlock {...props}/>
   }
-
-  return <StyledPre {...props} data-is-codeblock={isCodeBlock} />
+  return <StyledPre {...props}/>
 }
