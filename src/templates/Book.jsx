@@ -5,9 +5,9 @@ import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 import styled from "@emotion/styled"
 import config from "../../config"
 
-import { Link } from "../components/Link"
 import { NextPrevious } from "../components/NextPrevious"
-import gitHub from "../images/github.svg"
+import { GithubButton } from "../components/GithubButton"
+
 import "../components/theme/global-styles.scss"
 import "../components/theme/media-styles.scss"
 
@@ -35,11 +35,11 @@ const StyledTitleWrapper = styled.div`
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  padding-bottom: 20px;
+  padding-bottom: 12px;
   border-bottom: 1px solid var(--decoColor);
   
   & > div {
-    margin-top: 16px;
+    margin-top: 12px;
     align-self: flex-end;
   }
 `
@@ -60,29 +60,6 @@ const StyledHeading = styled.h1`
   }
   @media (max-width: 576px) {
     font-size: 20px;
-  }
-`
-
-const GitBtn = styled.span`
-  margin: 0.5rem 0 0 0.5rem;
-  a {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1em;
-    text-decoration: none;
-    color: rgb(36, 42, 49);
-    padding: 5px 16px;
-
-    background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(211, 220, 228);
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all 0.2s ease-out 0s;
-    box-shadow: rgba(116, 129, 141, 0.1) 0px 1px 1px 0px;
-    &:hover {
-      background-color: rgb(245, 247, 249);
-      color: rgb(36, 42, 49);
-    }
   }
 `
 
@@ -175,29 +152,17 @@ const BookTemplate = props => {
           <StyledHeading>{mdx.fields.title}</StyledHeading>
           <div>
             {githubUrl && (
-              <GitBtn>
-                <Link
-                  className={"gitBtn"}
-                  target="_blank"
-                  to={githubUrl}
-                  rel="noopener"
-                  aria-label="Star on GitHub"
-                >
-                  <img src={gitHub} alt={"Github logo"} /> Star
-                </Link>
-              </GitBtn>
+              <GithubButton
+                to={githubUrl}
+                aria-label="Star on GitHub"
+              >
+                Star
+              </GithubButton>
             )}
             {docsLocation && (
-              <GitBtn>
-                <Link
-                  className={"gitBtn"}
-                  target="_blank"
-                  to={`${docsLocation}/${mdx.parent.relativePath}`}
-                  rel="noopener"
-                >
-                  <img src={gitHub} alt={"Github logo"} /> Edit on GitHub
-                </Link>
-              </GitBtn>
+              <GithubButton to={`${docsLocation}/${mdx.parent.relativePath}`}>
+                Edit on GitHub
+              </GithubButton>
             )}
           </div>
         </StyledTitleWrapper>
