@@ -6,6 +6,8 @@ const StyledTableWrapper = styled.div`
   margin: 0 -60px;
   width: calc(100% + 120px);
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
   
   & > div {
     flex: 0 0 60px;

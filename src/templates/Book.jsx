@@ -47,7 +47,7 @@ const StyledTitleWrapper = styled.div`
 const StyledHeading = styled.h1`
   max-width: 100%;
   flex: 1;
-  font-size: 32px;
+  font-size: 28px;
   line-height: 1.5;
   font-weight: 500;
   border-left: 2px solid var(--accentColor);

@@ -1,46 +1,74 @@
 import React, { useEffect, useRef } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import styled from "@emotion/styled"
 import config from "../../config.js"
 import { useThemeContext } from "./theme/ThemeProvider.jsx"
-import styled from "@emotion/styled"
 
 import { DarkModeSwitch } from "./DarkModeSwitch"
 import {Sidebar} from "./Sidebar"
 import { Link } from "./Link"
-
 import { Logo } from "./Logo.jsx"
+
 
 const help = require("../images/help.svg")
 
-const StyledNavbarHeader = styled.header`
+const StyledHeader = styled.header`
+  width: 100%;
+  height: 70px;
+  padding: 15px;
   display: flex;
   align-items: center;
-  flex-grow: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: transform 0.3s ease-in-out;
+  transform: translate(0%, 0%);
+  will-change: translate;
+
+  &[data-is-hidden="true"] {
+    transform: translate(0%, -100%);
+  }
+
+  @media (max-width: 767px) {
+    & .styled-list .githubBtn {
+      display: none;
+    }
+  }
 `
 
-const StyledNavbarToggle = styled.div`
-  margin-left: auto;
+const StyledHeaderBG = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  background-color: var(--backgroundColor);
+  box-shadow: var(--boxShadow);
+`
+
+const BurgerButton = styled.button`
   display: none;
-  background: transparent;
   border: 0 solid #fff;
   border-radius: 4px;
   width: 36px;
   height: 36px;
   position: relative;
+  outline: none;
   cursor: pointer;
   z-index: 2;
-  transition: background-color 0.3s linear;
+  background-color: rgba(255, 255, 255, 0);
+  transition: background-color 0.2s linear;
   
-  &:hover {
+  &:hover, &:focus, &:focus-within, &:focus-visible {
     background-color: rgba(25,25,25, 0.2);
-    
     html[data-theme="dark"] & {
       background-color: rgba(119,119,119, 0.4);
     }
   }
   
-  & > .iconBar {
-    display: block;
+  & > div {
     width: 70%;
     height: 4px;
     border-radius: 2px;
@@ -64,7 +92,7 @@ const StyledNavbarToggle = styled.div`
     }
   }
 
-  &[data-is-open="true"] > .iconBar {
+  &[data-is-open="true"] > div {
     &:nth-of-type(1) {
       transform: translate(-50%, -50%) rotate(-45deg);
     }
@@ -76,7 +104,7 @@ const StyledNavbarToggle = styled.div`
     }
   }
   @media (max-width: 1024px) {
-    display: block;
+    display: inline-block;
   }
 `
 
@@ -90,18 +118,18 @@ const StyledMobileNavbar = styled.div`
     height: 100vh;
     background: var(--backgroundColor);
     position: fixed;
-    top: 0px;
-    right: 0%;
+    top: 0;
+    right: 0;
     z-index: -1;
     padding-top: 70px;
     box-shadow: var(--boxShadow);
     overflow: hidden;
     transition: transform 0.3s ease-in-out;
-    transform: translateX(100%);
-    will-change: translateX;
+    transform: translate(100%);
+    will-change: transform;
 
     &[data-is-open="true"] {
-      transform: translateX(0%);
+      transform: translate(0%);
     }
   }
 `
@@ -110,10 +138,8 @@ const StyledList = styled.ul`
   align-items: center;
   flex-wrap: wrap;
   margin-left: auto;
-
   & > li {
     list-style: none;
-    display: inline-block;
   }
 `
 
@@ -171,66 +197,74 @@ export const Header = ({ location }) => {
     closeNavbar()
   }, [location.pathname])
 
+  const headerRef = useRef(null)
+  useEffect(() => {
+    let prevScrollPos = window.pageYOffset
+    function onScroll() {
+      const currentScrollPos = window.pageYOffset
+      headerRef.current.dataset.isHidden = currentScrollPos > 70 && currentScrollPos > prevScrollPos;
+      prevScrollPos = currentScrollPos
+    }
+    window.addEventListener("scroll", onScroll)
+    return () => window.removeEventListener("scroll", onScroll)
+  }, [])
+
   return (
-    <HeaderContainer>
-      <StyledNavbarHeader>
-        <Link
-          to={finalLogoLink}
-          className={"navBarBrand"}
-          aria-label={config.siteMetadata.title}
-          title={config.siteMetadata.title}
-        >
-          <Logo />
-        </Link>
+    <StyledHeader ref={headerRef} data-is-hidden="false">
+      <StyledHeaderBG />
+      <Link
+        to={finalLogoLink}
+        className={"navBarBrand"}
+        aria-label={config.siteMetadata.title}
+        title={config.siteMetadata.title}
+      >
+        <Logo />
         <StyledHeaderTitle
           className={"headerTitle displayInline"}
           dangerouslySetInnerHTML={{ __html: headerTitle }}
         />
-      </StyledNavbarHeader>
+      </Link>
 
       <StyledList className="styled-list">
-          {headerLinks.map((link, key) => {
-            if (link.link !== "" && link.text !== "") {
-              return (
-                <li key={key}>
-                  {
-                    // eslint-disable-next-line jsx-a11y/control-has-associated-label
-                    <a
-                      className="sidebarLink"
-                      href={link.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      dangerouslySetInnerHTML={{ __html: link.text }}
-                    />
-                  }
-                </li>
-              )
-            }
-            return null
-          })}
-          {helpUrl !== "" ? (
-            <li>
-              <a href={helpUrl}>
-                <img src={help} alt={"Help icon"} />
-              </a>
-            </li>
-          ) : null}
-
-          {config.header.social ? (
-            <li className={"hiddenMobile"}>
-              <ul
-                className="socialWrapper"
-                dangerouslySetInnerHTML={{ __html: config.header.social }}
-              />
-            </li>
-          ) : null}
-
-          <li style={{marginLeft: '16px'}}>
-            <DarkModeSwitch />
+        {headerLinks.map((link, key) => {
+          if (link.link && link.text) {
+            return (
+              <li key={key}>
+                {
+                  // eslint-disable-next-line jsx-a11y/control-has-associated-label
+                  <a
+                    className="sidebarLink"
+                    href={link.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    dangerouslySetInnerHTML={{ __html: link.text }}
+                  />
+                }
+              </li>
+            )
+          }
+          return null
+        })}
+        {helpUrl ? (
+          <li>
+            <a href={helpUrl}>
+              <img src={help} alt={"Help icon"} />
+            </a>
           </li>
+        ) : null}
+
+        {config.header.social ? (
+          <li className={"hiddenMobile"}>
+            <ul
+              className="socialWrapper"
+              dangerouslySetInnerHTML={{ __html: config.header.social }}
+            />
+          </li>
+        ) : null}
       </StyledList>
 
-      <StyledNavbarToggle
+      <DarkModeSwitch style={{margin: '0 16px 0 auto'}}/>
+      <BurgerButton
         onClick={toggleNavbar}
         role="button"
         aria-label="Меню"
@@ -239,10 +273,8 @@ export const Header = ({ location }) => {
         isDarkThemeActive={isDarkThemeActive}
         data-is-open="false"
       >
-        <span className="iconBar" />
-        <span className="iconBar" />
-        <span className="iconBar" />
-      </StyledNavbarToggle>
+        <div /><div /><div />
+      </BurgerButton>
 
       <StyledMobileNavbar ref={navbarRef} data-is-open="false">
         <StyledList>
@@ -279,76 +311,6 @@ export const Header = ({ location }) => {
           style={{ maxHeight: "100%" }}
         />
       </StyledMobileNavbar>
-    </HeaderContainer>
-  )
-}
-
-const StyledHeader = styled.header`
-  height: 70px;
-`
-
-const StyledHeaderBG = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
-  background-color: var(--backgroundColor);
-  box-shadow: var(--boxShadow);
-`
-
-const StyledHeaderContent = styled.div`
-  width: 100%;
-  height: 70px;
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  transition: transform 0.3s ease-in-out;
-  transform: translate(0%, 0%);
-  will-change: translate;
-
-  &[data-is-hidden="true"] {
-    transform: translate(0%, -100%);
-  }
-
-  @media (max-width: 767px) {
-    & .styled-list .githubBtn {
-      display: none;
-    }
-  }
-`
-
-const HeaderContainer = ({ children }) => {
-  const headerRef = useRef(null)
-  useEffect(() => {
-    let prevScrollpos = window.pageYOffset
-
-    function onScroll() {
-      const currentScrollPos = window.pageYOffset
-      if (currentScrollPos > 70 && currentScrollPos > prevScrollpos) {
-        headerRef.current.dataset.isHidden = true
-      } else {
-        headerRef.current.dataset.isHidden = false
-      }
-
-      prevScrollpos = currentScrollPos
-    }
-
-    window.addEventListener("scroll", onScroll)
-    return () => window.removeEventListener("scroll", onScroll)
-  }, [])
-
-  return (
-    <StyledHeader>
-      <StyledHeaderContent ref={headerRef} data-is-hidden="false">
-        <StyledHeaderBG />
-        {children}
-      </StyledHeaderContent>
     </StyledHeader>
   )
 }

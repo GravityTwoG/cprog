@@ -57,20 +57,24 @@ export const ListItem = ({ className, active, level, ...props }) => {
   )
 }
 
-export const StyledSidebar = styled("aside")`
+export const StyledSidebar = styled.aside`
   width: 100%;
   height: calc(100vh - 70px);
-  padding-left: 0px;
-  position: sticky;
+  padding-left: 0;
   position: sticky;
   top: 0;
   padding-right: 0;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 
   .firstLevel > ul > .item {
     margin-left: 0 !important;
+    border: none;
   }
-
+  .sideBarUL > li {
+    border: none;
+  }
   .sideBarUL li {
     list-style-type: none;
     width: auto;
@@ -80,7 +84,7 @@ export const StyledSidebar = styled("aside")`
     font-weight: 500;
     line-height: 1.5;
     border-style: solid none solid solid;
-    border-width: 1px 0px 1px 1px;
+    border-width: 1px 0 1px 1px;
     border-color: transparent currentcolor transparent transparent;
   }
   .sideBarUL .item {
@@ -99,10 +103,9 @@ export const StyledSidebar = styled("aside")`
   }
 
   .sidebarTitle {
-    /* box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16); */
     background-color: #f8f8f8;
     padding: 18px 16px;
-    font-family: "Roboto";
+    font-family: "Roboto", sans-serif;
     font-size: 18px;
     font-weight: 600;
     color: #001934;
@@ -116,7 +119,6 @@ export const StyledSidebar = styled("aside")`
 
   @media only screen and (max-width: 1023px) {
     width: 100%;
-    /* position: relative; */
     height: 100vh;
   }
 

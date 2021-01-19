@@ -14,22 +14,24 @@ export const Sidebar = ({ location, ...props }) => {
           dangerouslySetInnerHTML={{ __html: config.sidebar.title }}
         />
       ) : null}
-      <ul className={"sideBarUL"}>
-        <Tree location={location} />
-        {config.sidebar.links && config.sidebar.links.length > 0 && <Divider />}
+      <nav>
+        <ul className={"sideBarUL"}>
+          <Tree location={location} />
+          {config.sidebar.links && config.sidebar.links.length > 0 && <Divider />}
 
-        {config.sidebar.links.map((link, key) => {
-          if (link.link !== "" && link.text !== "") {
-            return (
-              <ListItem key={key} to={link.link} rel="noopener">
-                {link.text}
-                <ExternalLink size={14} style={{ marginLeft: "5px" }} />
-              </ListItem>
-            )
-          }
-          return null
-        })}
-      </ul>
+          {config.sidebar.links.map((link, key) => {
+            if (link.link && link.text) {
+              return (
+                <ListItem key={key} to={link.link} rel="noopener">
+                  {link.text}
+                  <ExternalLink size={14} style={{ marginLeft: "5px" }} />
+                </ListItem>
+              )
+            }
+            return null
+          })}
+        </ul>
+      </nav>
     </StyledSidebar>
   )
 }

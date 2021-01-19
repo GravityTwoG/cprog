@@ -58,8 +58,8 @@ const MaxWidth = styled("div")`
 
 const LeftSideBar = styled.div`
   max-width: 390px;
-  min-width: 300px;
-  flex: 1 1 300px;
+  min-width: 320px;
+  flex: 1 1 320px;
   z-index: 0;
   box-shadow: var(--boxShadow);
   
@@ -74,7 +74,7 @@ const RightSideBarWidth = styled("div")`
   width: 420px;
   flex: 0.2 1 auto;
   
-  @media (max-width: 1366px) {
+  @media (max-width: 1440px) {
     display: none;
   }
 `
@@ -84,11 +84,13 @@ export const Layout = ({ children, location }) => {
   const finalLogoLink = config.header.logoLink !== "" ? config.header.logoLink : "/"
   return (
     <MDXProvider components={mdxComponents}>
-      {!isSSR && (
-        <React.Suspense fallback={<div style={{height: '70px', width: '100%'}}/>}>
-          <Header location={location} />
-        </React.Suspense>
-      )}
+      <div style={{height: '70px', width: '100%'}}>
+        {!isSSR && (
+          <React.Suspense fallback={''}>
+            <Header location={location} />
+          </React.Suspense>
+        )}
+      </div>
 
       <Wrapper>
         <LeftSideBar className={"hiddenMobile"}>

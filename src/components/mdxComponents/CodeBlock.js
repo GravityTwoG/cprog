@@ -7,7 +7,9 @@ const StyledDiv = styled.div`
   border-radius: 5px;
   
   & > pre {
-    overflow: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
     padding: 16px;
     background-color: #011627!important;
   }

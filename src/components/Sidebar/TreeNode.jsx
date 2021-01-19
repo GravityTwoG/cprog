@@ -60,7 +60,8 @@ export const TreeNode = React.memo(
           {title && hasChildren && !config.sidebar.frontLine ? (
             <ArrowButton
               onClick={collapse}
-              aria-label="collapse"
+              aria-label={isCollapsed ? "Развернуть" : "Свернуть"}
+              title={isCollapsed ? "Развернуть" : "Свернуть"}
               data-is-active={active}
               data-is-collapsed={isCollapsed}
             >
