@@ -3,13 +3,9 @@ import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 import styled from "@emotion/styled"
-import config from "../../config"
 
 import { NextPrevious } from "../components/NextPrevious"
 import { GithubButton } from "../components/GithubButton"
-
-import "../components/theme/global-styles.scss"
-import "../components/theme/media-styles.scss"
 
 export const PaddingWrapper = styled.div`
   padding: 0 60px;
@@ -110,37 +106,21 @@ const BookTemplate = props => {
   // meta tags
   const metaTitle = mdx.frontmatter.metaTitle
   const metaDescription = mdx.frontmatter.metaDescription
-  let canonicalUrl = config.gatsby.siteUrl
-  canonicalUrl =
-    config.gatsby.pathPrefix !== "/"
-      ? canonicalUrl + config.gatsby.pathPrefix
-      : canonicalUrl
-  canonicalUrl = canonicalUrl + mdx.fields.slug
 
   return (
     <>
-      <Helmet>
-        {metaTitle ? <title>{metaTitle}</title> : null}
-        {metaTitle ? <meta name="title" content={metaTitle} /> : null}
-        {metaDescription ? (
-          <meta name="description" content={metaDescription} />
-        ) : null}
-        {metaTitle ? <meta property="og:title" content={metaTitle} /> : null}
-        {metaDescription ? (
-          <meta property="og:description" content={metaDescription} />
-        ) : null}
-        {metaTitle ? (
-          <meta property="twitter:title" content={metaTitle} />
-        ) : null}
-        {metaDescription ? (
-          <meta property="twitter:description" content={metaDescription} />
-        ) : null}
-        {/* Google Search Console verification */}
-        <meta
-          name="google-site-verification"
-          content="e8ODwZKRJ5H_TiNsq-70JsUkCkCiXRtvC6IMNJayTN8"
-        />
-        <link rel="canonical" href={canonicalUrl} />
+      <Helmet
+        title={metaTitle}
+        htmlAttributes={{lang: "ru"}}
+        meta={[
+          { name: "title", content: metaTitle },
+          { name: "og:title", content: metaTitle },
+          { name: "twitter:title", content: metaTitle },
+          { name: "description", content: metaDescription },
+          { name: "og:description", content: metaDescription },
+          { name: "twitter:description", content: metaDescription },
+          { name: "google-site-verification", content: "e8ODwZKRJ5H_TiNsq-70JsUkCkCiXRtvC6IMNJayTN8" },
+          ]}>
       </Helmet>
 
       <PaddingWrapper className="addPaddTopBottom">

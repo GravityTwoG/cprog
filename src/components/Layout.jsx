@@ -8,9 +8,13 @@ import config from "../../config"
 import { Logo } from "./Logo"
 import { Link } from "./Link"
 
+import "./theme/global-styles.scss"
+import "./theme/media-styles.scss"
+
 const Header = React.lazy(() => import("./Header").then(module => ({ default: module.Header })))
 const Sidebar = React.lazy(() => import("./Sidebar").then(module => ({ default: module.Sidebar })))
 const RightSidebar = React.lazy(() => import("./RightSidebar").then(module => ({ default: module.RightSidebar })))
+
 
 const Wrapper = styled("div")`
   display: flex;
