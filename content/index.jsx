@@ -29,7 +29,7 @@ const Flex = styled.div`
   display: flex;
   align-content: stretch;
   flex-wrap: wrap;
-  margin: 16px 0px 32px;
+  margin: 16px 0 32px;
   
   &.jc-center {
     justify-content: center;
@@ -37,10 +37,15 @@ const Flex = styled.div`
   
   & > .poem {
     flex: 1 1 290px;
-    max-width: 300px;
+    max-width: 400px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+  }
+  @media (max-width: 768px) {
+    & > .poem + img {
+      max-width: 100%;
+    }
   }
   
   & > figure {
