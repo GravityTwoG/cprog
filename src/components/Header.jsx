@@ -23,11 +23,11 @@ const StyledHeader = styled.header`
   left: 0;
   z-index: 1;
   transition: transform 0.3s ease-in-out;
-  transform: translate(0%, 0%);
-  will-change: translate;
+  transform: translate(0%, 0%) rotateZ(0);
+  will-change: transform;
 
   &[data-is-hidden="true"] {
-    transform: translate(0%, -100%);
+    transform: translate(0%, -100%) rotateZ(0);
   }
 
   @media (max-width: 767px) {
@@ -110,27 +110,27 @@ const BurgerButton = styled.button`
 
 const StyledMobileNavbar = styled.div`
   display: none;
+  max-width: 100%;
+  max-height: 100vh;
+  width: 431px;
+  height: 100vh;
+  background: var(--backgroundColor);
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  padding-top: 70px;
+  box-shadow: var(--boxShadow);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+  transform: translate(100%) rotateZ(0);
+  will-change: transform;
+
+  &[data-is-open="true"] {
+    transform: translate(0%) rotateZ(0);
+  }
   @media (max-width: 1024px) {
     display: block;
-    max-width: 100%;
-    max-height: 100vh;
-    width: 431px;
-    height: 100vh;
-    background: var(--backgroundColor);
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: -1;
-    padding-top: 70px;
-    box-shadow: var(--boxShadow);
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
-    transform: translate(100%);
-    will-change: transform;
-
-    &[data-is-open="true"] {
-      transform: translate(0%);
-    }
   }
 `
 const StyledList = styled.ul`
