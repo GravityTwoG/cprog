@@ -36,22 +36,16 @@ const config = {
     docsLocation: "https://github.com/GravityTwoG/cprog/blob/master/content",
   },
   pwa: {
-    enabled: false, // disabling this will also remove the existing service worker.
+    enabled: true, // disabling this will also remove the existing service worker.
     manifest: {
       name: "Cprog",
       short_name: "Cprog",
       start_url: "/",
-      background_color: "#3884ff",
-      theme_color: "#3884ff",
+      background_color: "#fff",
+      theme_color: "#fff",
       display: "standalone",
       crossOrigin: "use-credentials",
-      icons: [
-        {
-          src: "src/pwa-512.png",
-          sizes: `512x512`,
-          type: `image/png`,
-        },
-      ],
+      icon: `src/images/favicon.svg`,
     },
   },
 }

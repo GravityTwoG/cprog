@@ -1,8 +1,3 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.com/docs/gatsby-config/
- */
 const config = require("./config")
 
 const plugins = [
@@ -13,18 +8,6 @@ const plugins = [
     options: {
       prettier: true,
       svgo: false,
-    },
-  },
-  {
-    resolve: `gatsby-plugin-manifest`,
-    options: {
-      name: `cprog book`,
-      short_name: `cprog`,
-      start_url: `/`,
-      background_color: `#663399`,
-      theme_color: `#663399`,
-      display: `minimal-ui`,
-      icon: `src/images/favicon.svg`,
     },
   },
   "gatsby-plugin-react-helmet",
@@ -63,6 +46,22 @@ const plugins = [
     },
   },
 ]
+
+// check and add pwa functionality
+if (config.pwa && config.pwa.enabled && config.pwa.manifest) {
+  plugins.push({
+    resolve: `gatsby-plugin-manifest`,
+    options: { ...config.pwa.manifest },
+  });
+  plugins.push({
+    resolve: 'gatsby-plugin-offline',
+    options: {
+      appendScript: 'src/sw.js'
+    },
+  });
+} else {
+  plugins.push('gatsby-plugin-remove-serviceworker');
+}
 
 module.exports = {
   pathPrefix: config.gatsby.pathPrefix,
