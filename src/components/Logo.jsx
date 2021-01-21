@@ -8,10 +8,10 @@ const StyledLogo = styled(LogoSVG)`
   height: 46px;
 
   & > path:nth-of-type(2) {
-    animation: op 3s ease-in-out 0.2s infinite;
+    //animation: op 3s ease-in-out 0.2s infinite;
   }
   & > path:nth-of-type(3) {
-    animation: op 3s ease-in-out 0.4s infinite;
+    //animation: op 3s ease-in-out 0.4s infinite;
   }
 
   @keyframes op {

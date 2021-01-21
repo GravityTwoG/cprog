@@ -6,6 +6,10 @@ const StyledDiv = styled.div`
   overflow: hidden;
   border-radius: 5px;
   
+  @media (max-width: 767px) {
+    font-size: 14px;
+  }
+  
   & > pre {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
