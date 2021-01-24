@@ -31,6 +31,7 @@ const StyledTableWrapper = styled.div`
     border-top: 1px solid #cccccc;
     margin: 0;
     padding: 0;
+    background: var(--backgroundColor);
   }
 
   table tr:nth-of-type(2n) {

@@ -37,7 +37,7 @@ const Wrapper = styled("div")`
   }
 `
 
-const Content = styled("main")`
+const Content = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,9 +45,6 @@ const Content = styled("main")`
   overflow: hidden;
   background: var(--backgroundColor);
   min-height: calc(100vh - 70px);
-  table tr {
-    background: var(--backgroundColor);
-  }
 `
 
 const MaxWidth = styled("div")`

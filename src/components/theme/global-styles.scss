@@ -70,6 +70,20 @@ a:hover {
   text-decoration: none;
 }
 
+.paragraph {
+  margin: 16px 0 32px;
+  line-height: 1.625;
+}
+
+.pre {
+  font-size: 14px;
+  margin: 0;
+  padding: 16px;
+  overflow: auto;
+  max-width: 100%;
+  min-width: min-content;
+}
+
 .displayInline {
   display: inline-block;
 }
@@ -98,24 +112,6 @@ a:hover {
   opacity: 0.8;
 }
 
-/* Header section starts here */
-.navBarHeader {
-  min-width: 335px;
-  padding-right: 20px;
-  display: flex;
-  align-items: center;
-}
-.navBarBrand {
-  padding: 0px 0px;
-  display: flex;
-  align-items: center;
-}
-
-.navBarBrand img {
-  width: 120px;
-  margin-right: 6px;
-  display: inline-block;
-}
 pre {
   border: 0 !important;
   background-color: rgb(245, 247, 249); /* !important; */
@@ -126,7 +122,10 @@ blockquote {
   margin: 0px 0px 24px;
   padding: 0px 0px 0px 12px;
   border-left: 4px solid rgb(230, 236, 241);
-  border-color: rgb(230, 236, 241);
+}
+
+ol  {
+  padding-inline-start: 2em;
 }
 
 .socialWrapper {
@@ -200,7 +199,6 @@ img {
 .heading6 {
   font-size: 14px;
   font-weight: 400;
-
 }
 
 @media (max-width: 767px) {
@@ -223,21 +221,3 @@ img {
     font-size: 12px;
   }
 }
-
-.paragraph {
-  margin: 16px 0px 32px;
-  line-height: 1.625;
-}
-
-.pre {
-  font-size: 14px;
-  margin: 0px;
-  padding: 16px;
-  overflow: auto;
-  max-width: 100%;
-  min-width: min-content;
-}
-
-
-
-

@@ -1,6 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 import "prismjs/themes/prism-tomorrow.css"
+import "./code-block.scss"
 
 const StyledDiv = styled.div`
   overflow: hidden;
@@ -50,7 +51,7 @@ export const CodeBlock = ({children, ...props}) => {
 const StyledCopyButton = styled.button`
   padding: 8px 12px;
   background-color: #511190;
-  border-radius: 5px 5px 0px 5px;
+  border-radius: 5px 5px 0 5px;
   
   border: none;
   box-shadow: none;
