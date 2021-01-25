@@ -88,10 +88,6 @@ export const pageQuery = graphql`
 `
 
 const BookTemplate = props => {
-  React.useEffect(() => {
-    import("katex/dist/katex.min.css").catch(e => console.log(e.message))
-  }, [])
-
   if (!props.data) {
     return null
   }
