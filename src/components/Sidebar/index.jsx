@@ -4,18 +4,9 @@ import config from "../../../config"
 import { ExternalLink } from "react-feather"
 import { Tree } from "./Tree"
 import { Divider, ListItem, StyledSidebar } from "./items.jsx"
-import {graphql, useStaticQuery} from "gatsby";
-import {StyledText} from "../StyledText";
+import {PwaWidget} from "../PwaWidget";
 
 export const Sidebar = ({ location, ...props }) => {
-  const data = useStaticQuery(graphql`
-    query SidebarQuery {
-      site {
-        buildTime
-      }
-    }
-  `)
-  const buildDate = formatDate(data.site.buildTime)
   return (
     <StyledSidebar {...props}>
       {config.sidebar.title ? (
@@ -42,25 +33,7 @@ export const Sidebar = ({ location, ...props }) => {
           })}
         </ul>
       </nav>
-      <div style={{padding: "16px 16px 16px 32px"}}>
-        <StyledText>Последнее обновление:</StyledText>
-        <StyledText>{buildDate}</StyledText>
-      </div>
+      <PwaWidget/>
     </StyledSidebar>
   )
-}
-
-function formatDate(dateString) {
-  const date = new Date(dateString);
-  const utcDate = new Date(date.toLocaleString("en-EU", {timeZone: 'UTC'}))
-  const day = utcDate.getDate();
-  const month = utcDate.getMonth() + 1;
-  const year = utcDate.getFullYear();
-  let hours = utcDate.getHours()
-  let minutes = utcDate.getMinutes();
-  let seconds = utcDate.getSeconds()
-  if (hours < 10) hours = `0${hours}`;
-  if (minutes < 10) minutes = `0${minutes}`;
-  if (seconds < 10) seconds = `0${seconds}`;
-  return `${day}:${month < 10 ? "0"+month : month}:${year} ${hours}:${minutes}:${seconds}`
 }
