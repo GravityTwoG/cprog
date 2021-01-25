@@ -1,14 +1,14 @@
 import React, { useEffect, useRef } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import styled from "@emotion/styled"
-import config from "../../config.js"
-import { useThemeContext } from "./theme/ThemeProvider.jsx"
+import config from "../../config"
+import { useThemeContext } from "./theme/ThemeProvider"
 
 import { DarkModeSwitch } from "./DarkModeSwitch"
 import {Sidebar} from "./Sidebar"
 import { Link } from "./Link"
 import { Logo } from "./Logo.jsx"
-import { BurgerButton } from "./ButgerButton.jsx";
+import { BurgerButton } from "./BurgerButton";
 
 const help = require("../images/help.svg")
 

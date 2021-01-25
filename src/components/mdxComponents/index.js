@@ -10,6 +10,12 @@ const StyledImage = styled.img`
   background-color: #fff;
 `
 
+const StyledCode = styled.code`
+  html *:not(pre) > & {
+    padding: 0.2em .3em!important;
+  }
+`
+
 const StyledUL = styled.ul`
     -webkit-padding-start: 40px;
     -moz-padding-start: 40px;
@@ -81,6 +87,7 @@ export const mdxComponents = {
   ),
   p: props => <p className="paragraph" {...props} />,
   pre: Pre,
+  code: StyledCode,
   a: AnchorTag,
   img: StyledImage,
   Icon,
