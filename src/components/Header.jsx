@@ -139,9 +139,11 @@ export const Header = ({ location }) => {
   }
 
   useEffect(() => {
-    navbarRef.current.dataset.isOpen = "false"
-    burgerButtonRef.current.dataset.isOpen = "false"
-    document.body.style.overflow = "auto"
+    if (navbarRef.current && burgerButtonRef.current) {
+      navbarRef.current.dataset.isOpen = "false"
+      burgerButtonRef.current.dataset.isOpen = "false"
+      document.body.style.overflow = "auto"
+    }
   }, [location.pathname])
 
   const headerRef = useRef(null)
