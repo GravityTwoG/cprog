@@ -65,12 +65,13 @@ const StyledMobileNavbar = styled.div`
     padding-top: 70px;
     box-shadow: var(--boxShadow);
     overflow: hidden;
-    transition: transform 0.2s ease-in-out, visibility 0.2s linear;
+    transition: transform 0.2s ease, visibility 0.2s ease;
     transform: translate(100%) rotateZ(0);
     will-change: transform;
     visibility: hidden;
     content-visibility: auto;
-    contain-intrinsic-size: 0 100vh;
+    contain-intrinsic-size: 100vh;
+    contain: layout paint;
 
     &[data-is-open="true"] {
       transform: translate(0%) rotateZ(0);
@@ -179,7 +180,7 @@ export const Header = ({ location }) => {
       >
         <Logo />
         <StyledHeaderTitle
-          className={"headerTitle displayInline"}
+          className={"headerTitle"}
           dangerouslySetInnerHTML={{ __html: headerTitle }}
         />
       </Link>

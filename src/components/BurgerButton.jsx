@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "@emotion/styled";
+import React from "react"
+import styled from "@emotion/styled"
 
 const StyledButton = styled.button`
   display: none;
@@ -12,15 +12,18 @@ const StyledButton = styled.button`
   cursor: pointer;
   z-index: 2;
   background-color: rgba(255, 255, 255, 0);
-  transition: background-color 0.2s linear;
-  
-  &:hover, &:focus, &:focus-within, &:focus-visible {
-    background-color: rgba(25,25,25, 0.2);
+  transition: background-color 0.2s ease;
+
+  &:hover,
+  &:focus,
+  &:focus-within,
+  &:focus-visible {
+    background-color: rgba(25, 25, 25, 0.2);
     html[data-theme="dark"] & {
-      background-color: rgba(119,119,119, 0.4);
+      background-color: rgba(119, 119, 119, 0.4);
     }
   }
-  
+
   & > div {
     width: 70%;
     height: 4px;
@@ -31,7 +34,7 @@ const StyledButton = styled.button`
     top: 50%;
     left: 50%;
     z-index: 1;
-    transition: transform 0.3s ease-in-out, rotate 0.3s ease-in-out;
+    transition: transform 0.2s ease, rotate 0.2s ease;
     transform: translate(-50%, -50%) rotate(0deg);
 
     &:nth-of-type(1) {
@@ -61,7 +64,10 @@ const StyledButton = styled.button`
   }
 `
 
-export const BurgerButton = React.forwardRef((props, ref) =>
+export const BurgerButton = React.forwardRef((props, ref) => (
   <StyledButton ref={ref} {...props}>
-    <div /><div /><div />
-  </StyledButton>)
+    <div />
+    <div />
+    <div />
+  </StyledButton>
+))

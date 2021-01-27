@@ -1,12 +1,11 @@
-
 :root {
   --accentColor: #3884ff;
   --backgroundColor: #fff;
   --headingColor: #000;
-  --textColor: #3B454E;
+  --textColor: #3b454e;
   --preFormattedTextColor: rgb(245, 247, 249);
   --linkColor: #3884ff;
-  --decoColor: rgb(230,236,241);
+  --decoColor: rgb(230, 236, 241);
   --boxShadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
 }
 
@@ -27,17 +26,21 @@
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
-html, body {
+html,
+body {
   font-size: 16px;
   scroll-behavior: smooth;
 }
 body {
-  font-family: 'Roboto', 'Roboto Light', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-family: Arial, sans-serif;
   font-weight: 400;
   background-color: var(--backgroundColor);
   overflow-x: hidden;
+}
+
+.fonts-loaded body {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
 }
 
 ::-webkit-input-placeholder {
@@ -75,25 +78,6 @@ a:hover {
   line-height: 1.625;
 }
 
-.pre {
-  font-size: 14px;
-  margin: 0;
-  padding: 16px;
-  overflow: auto;
-  max-width: 100%;
-  min-width: min-content;
-}
-
-.displayInline {
-  display: inline-block;
-}
-
-.divider {
-  height: 30px;
-  margin: 0 15px;
-  border-right: 1px solid rgba(255, 255, 255, 0.3);
-}
-
 .headerTitle {
   height: auto;
   font-size: 22px;
@@ -102,6 +86,7 @@ a:hover {
   color: #000;
   margin-top: 16px;
   text-transform: uppercase;
+  display: inline-block;
 }
 .headerTitle a {
   color: #000;
@@ -114,7 +99,7 @@ a:hover {
 
 pre {
   border: 0 !important;
-  background-color: rgb(245, 247, 249); /* !important; */
+  background-color: rgb(245, 247, 249);
 }
 
 blockquote {
@@ -124,7 +109,7 @@ blockquote {
   border-left: 4px solid rgb(230, 236, 241);
 }
 
-ol  {
+ol {
   padding-inline-start: 2em;
 }
 
@@ -139,33 +124,21 @@ ol  {
   display: contents;
 }
 
-.gitBtn {
-  height: 30px;
-  min-height: 30px;
-  display: flex;
-  align-items: center;
-
-  & img {
-    width: 15px;
-    display: inline-block;
-    margin-right: 5px;
-  }
-}
-
 .addPaddTopBottom {
   padding-top: 30px;
   padding-bottom: 30px;
 }
 
-/* **************************** */
-
-/* Image styling */
 img {
   max-width: 100%;
 }
-/* end image */
 
-.heading1, .heading2, .heading3, .heading4, .heading5, .heading6 {
+.heading1,
+.heading2,
+.heading3,
+.heading4,
+.heading5,
+.heading6 {
   line-height: 1.5;
   margin-bottom: 16px;
   margin-top: 16px;

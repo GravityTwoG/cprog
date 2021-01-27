@@ -1,7 +1,5 @@
 import React, { useContext } from "react"
 
-import "../../fonts/fonts.css"
-
 const ThemeContext = React.createContext({
   isDarkThemeActive: false,
   toggleActiveTheme: () => {},
@@ -21,36 +19,34 @@ export class ThemeProvider extends React.Component {
       window.localStorage.getItem("isDarkThemeActive")
     )
     this.setState({ isDarkThemeActive })
-    document.documentElement.setAttribute('data-theme', isDarkThemeActive ? 'dark' : 'light');
+    document.documentElement.setAttribute(
+      "data-theme",
+      isDarkThemeActive ? "dark" : "light"
+    )
   }
 
   toggleActiveTheme = () => {
-    this.setState(prevState => {
-
-      window.localStorage.setItem(
-        "isDarkThemeActive",
-        JSON.stringify(!prevState.isDarkThemeActive)
-      )
-      document.documentElement.setAttribute('data-theme', !prevState.isDarkThemeActive ? 'dark' : 'light');
-
-      return {
-        isDarkThemeActive: !prevState.isDarkThemeActive
-      }
-    })
-
-
+    window.localStorage.setItem(
+      "isDarkThemeActive",
+      JSON.stringify(!this.state.isDarkThemeActive)
+    )
+    document.documentElement.setAttribute(
+      "data-theme",
+      !this.state.isDarkThemeActive ? "dark" : "light"
+    )
+    this.setState(prevState => ({
+      isDarkThemeActive: !prevState.isDarkThemeActive,
+    }))
   }
 
   render() {
-    const { children } = this.props
-
     const { isDarkThemeActive } = this.state
 
     return (
       <ThemeContext.Provider
         value={{ isDarkThemeActive, toggleActiveTheme: this.toggleActiveTheme }}
       >
-          {children}
+        {this.props.children}
       </ThemeContext.Provider>
     )
   }
@@ -58,6 +54,5 @@ export class ThemeProvider extends React.Component {
 
 export const useThemeContext = () => {
   const { toggleActiveTheme, isDarkThemeActive } = useContext(ThemeContext)
-
   return [toggleActiveTheme, isDarkThemeActive]
 }

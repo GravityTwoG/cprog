@@ -13,7 +13,7 @@ export const PaddingWrapper = styled.div`
   @media (max-width: 520px) {
     padding: 0 16px;
   }
-  
+
   &.main {
     max-width: 100%;
     color: var(--textColor);
@@ -33,7 +33,7 @@ const StyledTitleWrapper = styled.div`
   flex-direction: column;
   padding-bottom: 12px;
   border-bottom: 1px solid var(--decoColor);
-  
+
   & > div {
     margin-top: 12px;
     align-self: flex-end;
@@ -107,7 +107,6 @@ const BookTemplate = props => {
     <>
       <Helmet
         title={metaTitle}
-        htmlAttributes={{lang: "ru"}}
         meta={[
           { name: "title", content: metaTitle },
           { name: "og:title", content: metaTitle },
@@ -115,9 +114,12 @@ const BookTemplate = props => {
           { name: "description", content: metaDescription },
           { name: "og:description", content: metaDescription },
           { name: "twitter:description", content: metaDescription },
-          { name: "google-site-verification", content: "e8ODwZKRJ5H_TiNsq-70JsUkCkCiXRtvC6IMNJayTN8" },
-          ]}>
-      </Helmet>
+          {
+            name: "google-site-verification",
+            content: "e8ODwZKRJ5H_TiNsq-70JsUkCkCiXRtvC6IMNJayTN8",
+          },
+        ]}
+      ></Helmet>
 
       <PaddingWrapper className="addPaddTopBottom">
         <NextPrevious mdx={mdx} />
@@ -128,10 +130,7 @@ const BookTemplate = props => {
           <StyledHeading>{mdx.fields.title}</StyledHeading>
           <div>
             {githubUrl && (
-              <GithubButton
-                to={githubUrl}
-                aria-label="Star on GitHub"
-              >
+              <GithubButton to={githubUrl} aria-label="Star on GitHub">
                 Star
               </GithubButton>
             )}

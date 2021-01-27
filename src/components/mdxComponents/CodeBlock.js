@@ -6,17 +6,17 @@ import "./code-block.scss"
 const StyledDiv = styled.div`
   overflow: hidden;
   border-radius: 5px;
-  
+
   @media (max-width: 767px) {
     font-size: 14px;
   }
-  
+
   & > pre {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
     padding: 16px;
-    background-color: #011627!important;
+    background-color: #011627 !important;
   }
 `
 
@@ -27,15 +27,17 @@ const StyledHeader = styled.div`
   padding-left: 10px;
   background-color: var(--accentColor);
   height: 30px;
-  
+
   & > span {
     font-size: 20px;
     color: #fff;
   }
 `
 
-export const CodeBlock = ({children, ...props}) => {
-  const language = props.className ? props.className.replace(/language-/, '') : ""
+export const CodeBlock = ({ children, ...props }) => {
+  const language = props.className
+    ? props.className.replace(/language-/, "")
+    : ""
 
   return (
     <StyledDiv {...props}>
@@ -52,21 +54,21 @@ const StyledCopyButton = styled.button`
   padding: 8px 12px;
   background-color: #511190;
   border-radius: 5px 5px 0 5px;
-  
+
   border: none;
   box-shadow: none;
   text-decoration: none;
   cursor: pointer;
-  
+
   font-size: 14px;
   font-family: inherit;
   line-height: 1;
-  color: #E2E8F0;
+  color: #e2e8f0;
 `
 
 const copyButtonText = {
-  copied: 'Скопировано',
-  copy: 'Копировать'
+  copied: "Скопировано",
+  copy: "Копировать",
 }
 
 const CopyButton = ({ string }) => {

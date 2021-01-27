@@ -8,9 +8,6 @@ import config from "../../config"
 import { Logo } from "./Logo"
 import { Link } from "./Link"
 
-import "./theme/global-styles.scss"
-import "./theme/media-styles.scss"
-
 const Header = React.lazy(() =>
   import("./Header").then(module => ({ default: module.Header }))
 )
@@ -103,7 +100,7 @@ export const Layout = ({ children, location }) => {
         <LeftSideBar className={"hiddenMobile"}>
           <Link
             to={finalLogoLink}
-            className={"navBarBrand"}
+            className="navBarBrand"
             aria-label={config.siteMetadata.title}
             title={config.siteMetadata.title}
           >
