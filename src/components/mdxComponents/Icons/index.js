@@ -1,21 +1,23 @@
-import React  from  'react'
+import React from "react"
 
-import { Smile } from './Smile'
-import { Story } from './Story'
-import { YinAndYang } from './YinAndYang'
+import { Smile } from "./Smile"
+import { Story } from "./Story"
+import { YinAndYang } from "./YinAndYang"
+import { Science } from "./Science"
 
 const icons = {
   Smile,
   Story,
-  YinAndYang
+  YinAndYang,
+  Science,
 }
 
-export const Icon = ({name}) => {
+export const Icon = ({ name }) => {
   const TargetIcon = icons[name]
 
   if (TargetIcon) {
     return <TargetIcon />
   }
 
-  return ' Icon '
+  return " Icon "
 }

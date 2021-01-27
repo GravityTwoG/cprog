@@ -110,7 +110,7 @@ blockquote {
 }
 
 ol {
-  padding-inline-start: 2em;
+  padding-inline-start: 1.3em;
 }
 
 .socialWrapper {
@@ -193,4 +193,14 @@ img {
   .heading6 {
     font-size: 12px;
   }
+}
+
+.tal {
+  text-align: left;
+}
+.tar {
+  text-align: right;
+}
+.tac {
+  text-align: center;
 }

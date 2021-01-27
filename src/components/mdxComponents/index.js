@@ -4,7 +4,7 @@ import styled from "@emotion/styled"
 import { Pre } from "./Pre"
 import { AnchorTag } from "./Anchor"
 import { Icon } from "./Icons"
-import { Table } from "./Table";
+import { Table } from "./Table"
 
 const StyledImage = styled.img`
   background-color: #fff;
@@ -12,22 +12,37 @@ const StyledImage = styled.img`
 
 const StyledCode = styled.code`
   html *:not(pre) > & {
-    padding: 0.2em .3em!important;
+    padding: 0.2em 0.3em !important;
+  }
+`
+
+const StyledFlex = styled.div`
+  display: flex;
+
+  &.ais {
+    align-items: stretch;
+  }
+  &.fxww {
+    flex-wrap: wrap;
+  }
+
+  &.fc2 > * {
+    width: 50%;
+  }
+  &.flex-childs > * {
+    flex: 1 0 auto;
   }
 `
 
 const StyledUL = styled.ul`
-    -webkit-padding-start: 40px;
-    -moz-padding-start: 40px;
-    -o-padding-start: 40px;
-    margin: 24px 0px;
-    padding: 0px 0px 0px 2em;
+  margin: 24px 0px;
+  padding-inline-start: 1.3em;
 
-    li {
-      font-size: 16px;
-      line-height: 1.8;
-      font-weight: 400;
-    }
+  li {
+    font-size: 16px;
+    line-height: 1.8;
+    font-weight: 400;
+  }
 `
 
 export const mdxComponents = {
@@ -93,5 +108,6 @@ export const mdxComponents = {
   Icon,
   // TODO add `blockquote`
   table: Table,
-  ul: StyledUL
+  ul: StyledUL,
+  Flex: StyledFlex,
 }
