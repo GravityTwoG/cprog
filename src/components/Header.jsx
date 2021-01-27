@@ -1,15 +1,15 @@
 import React, { useEffect, useRef } from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import styled from "@emotion/styled"
-import config from "../../config"
+import { useStaticQuery, graphql } from "gatsby"
 import { useThemeContext } from "./theme/ThemeProvider"
 
 import { DarkModeSwitch } from "./DarkModeSwitch"
-import {Sidebar} from "./Sidebar"
+import { Sidebar } from "./Sidebar"
 import { Link } from "./Link"
 import { Logo } from "./Logo.jsx"
-import { BurgerButton } from "./BurgerButton";
+import { BurgerButton } from "./BurgerButton"
 
+import config from "../../config"
 const help = require("../images/help.svg")
 
 const StyledHeader = styled.header`
@@ -50,7 +50,7 @@ const StyledHeaderBG = styled.div`
 
 const StyledMobileNavbar = styled.div`
   display: none;
-  
+
   @media (max-width: 1024px) {
     display: block;
     max-width: 100%;
@@ -65,10 +65,12 @@ const StyledMobileNavbar = styled.div`
     padding-top: 70px;
     box-shadow: var(--boxShadow);
     overflow: hidden;
-    transition: transform 0.3s ease-in-out, visibility 0.3s linear ;
+    transition: transform 0.2s ease-in-out, visibility 0.2s linear;
     transform: translate(100%) rotateZ(0);
     will-change: transform;
     visibility: hidden;
+    content-visibility: auto;
+    contain-intrinsic-size: 0 100vh;
 
     &[data-is-open="true"] {
       transform: translate(0%) rotateZ(0);
@@ -114,7 +116,8 @@ export const Header = ({ location }) => {
     },
   } = data
 
-  const finalLogoLink = config.header.logoLink !== "" ? config.header.logoLink : "/"
+  const finalLogoLink =
+    config.header.logoLink !== "" ? config.header.logoLink : "/"
   const [, isDarkThemeActive] = useThemeContext()
 
   const burgerButtonRef = useRef(null)
@@ -132,6 +135,7 @@ export const Header = ({ location }) => {
       document.body.style.overflow = "hidden"
     }
   }
+
   useEffect(() => {
     navbarRef.current.dataset.isOpen = "false"
     burgerButtonRef.current.dataset.isOpen = "false"
@@ -143,13 +147,14 @@ export const Header = ({ location }) => {
     let prevScrollPos = window.pageYOffset
     function onScroll() {
       const currentScrollPos = window.pageYOffset
-      headerRef.current.dataset.isHidden = currentScrollPos > 70 && currentScrollPos > prevScrollPos;
+      headerRef.current.dataset.isHidden =
+        currentScrollPos > 70 && currentScrollPos > prevScrollPos
       prevScrollPos = currentScrollPos
     }
 
     function onKeyUp(event) {
       const isOpen = navbarRef.current.dataset.isOpen
-      if (event.code === 'Escape' && isOpen === "true") {
+      if (event.code === "Escape" && isOpen === "true") {
         navbarRef.current.dataset.isOpen = "false"
         burgerButtonRef.current.dataset.isOpen = "false"
         document.body.style.overflow = "auto"
@@ -157,7 +162,7 @@ export const Header = ({ location }) => {
     }
 
     window.addEventListener("scroll", onScroll)
-    window.addEventListener('keyup', onKeyUp);
+    window.addEventListener("keyup", onKeyUp)
     return () => {
       window.removeEventListener("scroll", onScroll)
       window.removeEventListener("keyup", onKeyUp)
@@ -199,25 +204,25 @@ export const Header = ({ location }) => {
           }
           return null
         })}
-        {helpUrl ? (
+        {helpUrl && (
           <li>
             <a href={helpUrl}>
               <img src={help} alt={"Help icon"} />
             </a>
           </li>
-        ) : null}
+        )}
 
-        {config.header.social ? (
+        {config.header.social && (
           <li className={"hiddenMobile"}>
             <ul
               className="socialWrapper"
               dangerouslySetInnerHTML={{ __html: config.header.social }}
             />
           </li>
-        ) : null}
+        )}
       </StyledList>
 
-      <DarkModeSwitch style={{margin: '0 16px 0 auto'}}/>
+      <DarkModeSwitch style={{ margin: "0 16px 0 auto" }} />
       <BurgerButton
         onClick={toggleNavbar}
         role="button"
@@ -249,19 +254,16 @@ export const Header = ({ location }) => {
             }
             return null
           })}
-          {helpUrl ? (
+          {helpUrl && (
             <li>
               <a href={helpUrl}>
                 <img src={help} alt={"Help icon"} />
               </a>
             </li>
-          ) : null}
+          )}
         </StyledList>
 
-        <Sidebar
-          location={location}
-          style={{ maxHeight: "100%" }}
-        />
+        <Sidebar location={location} style={{ maxHeight: "100%" }} />
       </StyledMobileNavbar>
     </StyledHeader>
   )

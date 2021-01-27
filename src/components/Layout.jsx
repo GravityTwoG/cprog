@@ -11,10 +11,15 @@ import { Link } from "./Link"
 import "./theme/global-styles.scss"
 import "./theme/media-styles.scss"
 
-const Header = React.lazy(() => import("./Header").then(module => ({ default: module.Header })))
-const Sidebar = React.lazy(() => import("./Sidebar").then(module => ({ default: module.Sidebar })))
-const RightSidebar = React.lazy(() => import("./RightSidebar").then(module => ({ default: module.RightSidebar })))
-
+const Header = React.lazy(() =>
+  import("./Header").then(module => ({ default: module.Header }))
+)
+const Sidebar = React.lazy(() =>
+  import("./Sidebar").then(module => ({ default: module.Sidebar }))
+)
+const RightSidebar = React.lazy(() =>
+  import("./RightSidebar").then(module => ({ default: module.RightSidebar }))
+)
 
 const Wrapper = styled("div")`
   display: flex;
@@ -63,7 +68,7 @@ const LeftSideBar = styled.div`
   flex: 1 1 320px;
   z-index: 0;
   box-shadow: var(--boxShadow);
-  
+
   & > .navBarBrand {
     position: fixed;
     top: 15px;
@@ -74,7 +79,7 @@ const LeftSideBar = styled.div`
 const RightSideBarWidth = styled("div")`
   width: 420px;
   flex: 0.2 1 auto;
-  
+
   @media (max-width: 1440px) {
     display: none;
   }
@@ -82,12 +87,13 @@ const RightSideBarWidth = styled("div")`
 
 export const Layout = ({ children, location }) => {
   const isSSR = typeof window === "undefined"
-  const finalLogoLink = config.header.logoLink !== "" ? config.header.logoLink : "/"
+  const finalLogoLink =
+    config.header.logoLink !== "" ? config.header.logoLink : "/"
   return (
     <MDXProvider components={mdxComponents}>
-      <div style={{height: '70px', width: '100%'}}>
+      <div style={{ height: "70px", width: "100%" }}>
         {!isSSR && (
-          <React.Suspense fallback={''}>
+          <React.Suspense fallback={""}>
             <Header location={location} />
           </React.Suspense>
         )}
@@ -105,10 +111,7 @@ export const Layout = ({ children, location }) => {
           </Link>
           {!isSSR && (
             <React.Suspense fallback={<div />}>
-              <Sidebar
-                location={location}
-                style={{ top: "70px" }}
-              />
+              <Sidebar location={location} style={{ top: "70px" }} />
             </React.Suspense>
           )}
         </LeftSideBar>

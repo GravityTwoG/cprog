@@ -1,24 +1,27 @@
 import React from "react"
-import config from "../../../config"
 
 import { ExternalLink } from "react-feather"
 import { Tree } from "./Tree"
 import { Divider, ListItem, StyledSidebar } from "./items.jsx"
-import {PwaWidget} from "../PwaWidget";
+import { PwaWidget } from "../PwaWidget"
+import config from "../../../config"
 
 export const Sidebar = ({ location, ...props }) => {
   return (
     <StyledSidebar {...props}>
-      {config.sidebar.title ? (
+      {config.sidebar.title && (
         <div
           className={"sidebarTitle hiddenMobile"}
           dangerouslySetInnerHTML={{ __html: config.sidebar.title }}
         />
-      ) : null}
+      )}
+
       <nav>
-        <ul className={"sideBarUL"}>
+        <ul className="sideBarUL">
           <Tree location={location} />
-          {config.sidebar.links && config.sidebar.links.length > 0 && <Divider />}
+          {config.sidebar.links && config.sidebar.links.length > 0 && (
+            <Divider />
+          )}
 
           {config.sidebar.links.map((link, key) => {
             if (link.link && link.text) {
@@ -33,7 +36,8 @@ export const Sidebar = ({ location, ...props }) => {
           })}
         </ul>
       </nav>
-      <PwaWidget/>
+
+      <PwaWidget />
     </StyledSidebar>
   )
 }

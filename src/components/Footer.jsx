@@ -12,6 +12,8 @@ import { GithubProfile } from "./GithubProfile"
 const StyledFooter = styled.footer`
   padding: 1rem 0;
   border-top: 1px solid var(--decoColor);
+  content-visibility: auto;
+  contain-intrinsic-size: 0 175x;
 `
 
 export const Footer = () => (
@@ -28,7 +30,10 @@ export const Footer = () => (
       </StyledText>
 
       {config.author?.githubUrl && config.author?.githubUrl ? (
-        <GithubProfile url={config.author.githubUrl} nickname={config.author.githubNickname}/>
+        <GithubProfile
+          url={config.author.githubUrl}
+          nickname={config.author.githubNickname}
+        />
       ) : null}
     </StyledFooter>
   </PaddingWrapper>
