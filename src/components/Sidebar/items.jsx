@@ -8,17 +8,9 @@ export const ChapterHeading = styled(p => (
   cursor: pointer;
 `
 
-export const StyledListItem = styled("li")`
+export const StyledListItem = styled.li`
   list-style: none;
   border-left: 1px solid var(--decoColor);
-  & .tree-node-title {
-    display: flex;
-    align-items: center;
-  }
-  .tree-node-title:hover > a,
-  .tree-node-title:hover > .chapter-heading {
-    color: var(--accentColor);
-  }
 
   &.active a:hover,
   &.active .chapter-heading:hover {

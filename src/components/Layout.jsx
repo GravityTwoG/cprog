@@ -23,15 +23,6 @@ const Wrapper = styled("div")`
   justify-content: space-between;
   background: var(--backgroundColor);
 
-  .sideBarUL li a {
-    color: var(--textColor);
-  }
-
-  .sideBarUL .item > a:hover {
-    background-color: var(--accentColor);
-    color: #fff !important;
-  }
-
   @media (max-width: 1023px) {
     .rightSidebar {
       display: none;

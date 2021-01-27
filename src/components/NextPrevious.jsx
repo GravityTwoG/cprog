@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "@emotion/styled"
-import { Link } from "./Link"
+import { Link } from "gatsby"
 import { useNavigationArray } from "./useNavigationArray"
 
 export const StyledNextPrevious = styled("div")`
@@ -21,9 +21,6 @@ export const StyledNextPrevious = styled("div")`
     align-items: center;
     min-width: min-content;
     cursor: pointer;
-    -moz-box-align: center;
-    -moz-box-direction: normal;
-    -moz-box-orient: horizontal;
     position: relative;
 
     border-radius: 3px;
@@ -32,14 +29,13 @@ export const StyledNextPrevious = styled("div")`
     background-color: var(--backgroundColor);
     color: var(--textColor);
 
-    transition: border 200ms ease, color 200ms ease;
+    transition: border-color 200ms ease, color 200ms ease;
     box-shadow: var(--boxShadow);
   }
 
   .nextBtn:hover,
   .previousBtn:hover {
-    text-decoration: none;
-    border: 1px solid var(--linkColor);
+    border-color: var(--linkColor);
     color: var(--linkColor);
   }
 
@@ -54,7 +50,7 @@ export const StyledNextPrevious = styled("div")`
     color: rgb(157, 170, 182);
     flex: 0 0 auto;
     font-size: 24px;
-    transition: color 200ms ease 0s;
+    transition: color 200ms ease;
     padding: 16px;
   }
 
