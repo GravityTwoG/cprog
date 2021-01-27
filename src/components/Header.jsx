@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react"
 import styled from "@emotion/styled"
 import { useStaticQuery, graphql } from "gatsby"
+import { useMediaQuery } from "./useMediaQuery"
 import { useThemeContext } from "./theme/ThemeProvider"
 
 import { DarkModeSwitch } from "./DarkModeSwitch"
@@ -170,6 +171,8 @@ export const Header = ({ location }) => {
     }
   }, [])
 
+  const isPhoneOrTablet = useMediaQuery("(max-width: 1023px)")
+
   return (
     <StyledHeader ref={headerRef} data-is-hidden="false">
       <StyledHeaderBG />
@@ -224,48 +227,52 @@ export const Header = ({ location }) => {
       </StyledList>
 
       <DarkModeSwitch style={{ margin: "0 16px 0 auto" }} />
-      <BurgerButton
-        onClick={toggleNavbar}
-        role="button"
-        aria-label="Меню"
-        title="Меню"
-        ref={burgerButtonRef}
-        isDarkThemeActive={isDarkThemeActive}
-        data-is-open="false"
-      />
+      {isPhoneOrTablet && (
+        <BurgerButton
+          onClick={toggleNavbar}
+          role="button"
+          aria-label="Меню"
+          title="Меню"
+          ref={burgerButtonRef}
+          isDarkThemeActive={isDarkThemeActive}
+          data-is-open="false"
+        />
+      )}
 
-      <StyledMobileNavbar ref={navbarRef} data-is-open="false">
-        <StyledList>
-          {headerLinks.map((link, key) => {
-            if (link.link && link.text) {
-              return (
-                <li key={key}>
-                  {
-                    // eslint-disable-next-line jsx-a11y/control-has-associated-label
-                    <a
-                      className="sidebarLink"
-                      href={link.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      dangerouslySetInnerHTML={{ __html: link.text }}
-                    />
-                  }
-                </li>
-              )
-            }
-            return null
-          })}
-          {helpUrl && (
-            <li>
-              <a href={helpUrl}>
-                <img src={help} alt={"Help icon"} />
-              </a>
-            </li>
-          )}
-        </StyledList>
+      {isPhoneOrTablet && (
+        <StyledMobileNavbar ref={navbarRef} data-is-open="false">
+          <StyledList>
+            {headerLinks.map((link, key) => {
+              if (link.link && link.text) {
+                return (
+                  <li key={key}>
+                    {
+                      // eslint-disable-next-line jsx-a11y/control-has-associated-label
+                      <a
+                        className="sidebarLink"
+                        href={link.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        dangerouslySetInnerHTML={{ __html: link.text }}
+                      />
+                    }
+                  </li>
+                )
+              }
+              return null
+            })}
+            {helpUrl && (
+              <li>
+                <a href={helpUrl}>
+                  <img src={help} alt={"Help icon"} />
+                </a>
+              </li>
+            )}
+          </StyledList>
 
-        <Sidebar location={location} style={{ maxHeight: "100%" }} />
-      </StyledMobileNavbar>
+          <Sidebar location={location} style={{ maxHeight: "100%" }} />
+        </StyledMobileNavbar>
+      )}
     </StyledHeader>
   )
 }

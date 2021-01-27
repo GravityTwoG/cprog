@@ -3,6 +3,8 @@ import styled from "@emotion/styled"
 import { MDXProvider } from "@mdx-js/react"
 
 import { mdxComponents } from "./mdxComponents"
+import { useMediaQuery } from "./useMediaQuery"
+
 import { Footer } from "./Footer.jsx"
 import config from "../../config"
 import { Logo } from "./Logo"
@@ -22,12 +24,6 @@ const Wrapper = styled("div")`
   display: flex;
   justify-content: space-between;
   background: var(--backgroundColor);
-
-  @media (max-width: 1023px) {
-    .rightSidebar {
-      display: none;
-    }
-  }
 `
 
 const Content = styled.main`
@@ -68,7 +64,7 @@ const RightSideBarWidth = styled("div")`
   width: 420px;
   flex: 0.2 1 auto;
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1439px) {
     display: none;
   }
 `
@@ -77,6 +73,9 @@ export const Layout = ({ children, location }) => {
   const isSSR = typeof window === "undefined"
   const finalLogoLink =
     config.header.logoLink !== "" ? config.header.logoLink : "/"
+
+  const isPhoneOrTablet = useMediaQuery("(max-width: 1023px)")
+  const isDesktop = useMediaQuery("(min-width: 1440px)")
   return (
     <MDXProvider components={mdxComponents}>
       <div style={{ height: "70px", width: "100%" }}>
@@ -88,21 +87,23 @@ export const Layout = ({ children, location }) => {
       </div>
 
       <Wrapper>
-        <LeftSideBar className={"hiddenMobile"}>
-          <Link
-            to={finalLogoLink}
-            className="navBarBrand"
-            aria-label={config.siteMetadata.title}
-            title={config.siteMetadata.title}
-          >
-            <Logo />
-          </Link>
-          {!isSSR && (
-            <React.Suspense fallback={<div />}>
-              <Sidebar location={location} style={{ top: "70px" }} />
-            </React.Suspense>
-          )}
-        </LeftSideBar>
+        {!isPhoneOrTablet && (
+          <LeftSideBar className={"hiddenMobile"}>
+            <Link
+              to={finalLogoLink}
+              className="navBarBrand"
+              aria-label={config.siteMetadata.title}
+              title={config.siteMetadata.title}
+            >
+              <Logo />
+            </Link>
+            {!isSSR && (
+              <React.Suspense fallback={<div />}>
+                <Sidebar location={location} style={{ top: "70px" }} />
+              </React.Suspense>
+            )}
+          </LeftSideBar>
+        )}
 
         <Content>
           <MaxWidth>{children}</MaxWidth>
@@ -111,13 +112,15 @@ export const Layout = ({ children, location }) => {
           </MaxWidth>
         </Content>
 
-        <RightSideBarWidth className={"hiddenMobile rightSidebar"}>
-          {!isSSR && (
-            <React.Suspense fallback={<div />}>
-              <RightSidebar location={location} />
-            </React.Suspense>
-          )}
-        </RightSideBarWidth>
+        {isDesktop && (
+          <RightSideBarWidth className={"rightSidebar"}>
+            {!isSSR && (
+              <React.Suspense fallback={<div />}>
+                <RightSidebar location={location} />
+              </React.Suspense>
+            )}
+          </RightSideBarWidth>
+        )}
       </Wrapper>
     </MDXProvider>
   )
