@@ -45,6 +45,7 @@ const plugins = [
       ],
     },
   },
+  `gatsby-plugin-preact`
 ]
 
 // check and add pwa functionality
