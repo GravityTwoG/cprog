@@ -48,29 +48,29 @@ export default function HTML(props) {
           rel="stylesheet"
           href={withPrefix("/global-styles.css")}
         />
-        <link
-          rel="preload"
-          href={withPrefix("/fonts/roboto-latin-cyrillic-regular.woff2")}
-          as="font"
-          type="font/woff2"
-        />
-        <link
-          rel="preload"
-          href={withPrefix("/fonts/roboto-latin-cyrillic-500.woff2")}
-          as="font"
-          type="font/woff2"
-        />
-        <link
-          rel="preload"
-          href={withPrefix("/fonts/roboto-latin-cyrillic-700.woff2")}
-          as="font"
-          type="font/woff2"
-        />
-        <link
-          type="text/css"
-          rel="stylesheet"
-          href={withPrefix("/fonts/fonts.css")}
-        />
+        <style dangerouslySetInnerHTML={{__html: `
+          @font-face {
+            font-family: Roboto;
+            font-weight: 400;
+            font-style: normal;
+            src: url('/roboto-latin-cyrillic-regular.woff2') format('woff2');
+            font-display: fallback;
+          }
+          @font-face {
+            font-family: Roboto;
+            font-weight: 500;
+            font-style: normal;
+            src: url('/roboto-latin-cyrillic-500.woff2') format('woff2');
+            font-display: fallback;
+          }
+          @font-face {
+            font-family: Roboto;
+            font-weight: 700;
+            font-style: normal;
+            src: url('/roboto-latin-cyrillic-700.woff2') format('woff2');
+            font-display: fallback;
+          }
+        `}}/>
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>

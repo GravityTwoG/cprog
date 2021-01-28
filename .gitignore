@@ -57,7 +57,7 @@ typings/
 # gatsby files
 .cache/
 public
-.linaria-cache
+.linaria-cache/
 
 # Mac files
 .DS_Store
