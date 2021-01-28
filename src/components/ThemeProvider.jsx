@@ -15,28 +15,28 @@ export class ThemeProvider extends React.Component {
   }
 
   retrieveActiveTheme = () => {
-    const isDarkThemeActive = JSON.parse(
-      window.localStorage.getItem("isDarkThemeActive")
-    )
-    this.setState({ isDarkThemeActive })
-    document.documentElement.setAttribute(
-      "data-theme",
-      isDarkThemeActive ? "dark" : "light"
-    )
+    const isDarkThemeActive = window.localStorage.getItem("isDarkThemeActive") === 'true'
+    this.setState({ isDarkThemeActive }, () => {
+      document.documentElement.setAttribute(
+        "data-theme",
+        isDarkThemeActive ? "dark" : "light"
+      )
+    })
   }
 
   toggleActiveTheme = () => {
-    window.localStorage.setItem(
-      "isDarkThemeActive",
-      JSON.stringify(!this.state.isDarkThemeActive)
-    )
-    document.documentElement.setAttribute(
-      "data-theme",
-      !this.state.isDarkThemeActive ? "dark" : "light"
-    )
     this.setState(prevState => ({
       isDarkThemeActive: !prevState.isDarkThemeActive,
-    }))
+    }), () => {
+      window.localStorage.setItem(
+        "isDarkThemeActive",
+        this.state.isDarkThemeActive ? 'true' : 'false'
+      )
+      document.documentElement.setAttribute(
+        "data-theme",
+        this.state.isDarkThemeActive ? "dark" : "light"
+      )
+    })
   }
 
   render() {

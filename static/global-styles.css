@@ -32,15 +32,10 @@ body {
   scroll-behavior: smooth;
 }
 body {
-  font-family: Arial, sans-serif;
+  font-family: Roboto, Arial, sans-serif;
   font-weight: 400;
   background-color: var(--backgroundColor);
   overflow-x: hidden;
-}
-
-.fonts-loaded body {
-  font-family: Roboto, sans-serif;
-  font-weight: 400;
 }
 
 ::-webkit-input-placeholder {
@@ -172,27 +167,6 @@ img {
 .heading6 {
   font-size: 14px;
   font-weight: 400;
-}
-
-@media (max-width: 767px) {
-  .heading1 {
-    font-size: 24px;
-  }
-  .heading2 {
-    font-size: 22px;
-  }
-  .heading3 {
-    font-size: 18px;
-  }
-  .heading4 {
-    font-size: 16px;
-  }
-  .heading5 {
-    font-size: 14px;
-  }
-  .heading6 {
-    font-size: 12px;
-  }
 }
 
 .tal {

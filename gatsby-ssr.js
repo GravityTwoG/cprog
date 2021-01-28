@@ -1,6 +1,6 @@
 const React = require("react")
 const { Layout } = require("./src/components/Layout")
-const { ThemeProvider } = require("./src/components/theme/ThemeProvider")
+const { ThemeProvider } = require("./src/components/ThemeProvider")
 
 exports.wrapRootElement = ({ element }) => {
   return (

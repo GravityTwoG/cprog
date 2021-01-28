@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react"
 import styled from "@emotion/styled"
 import { useStaticQuery, graphql } from "gatsby"
 import { useMediaQuery } from "./useMediaQuery"
-import { useThemeContext } from "./theme/ThemeProvider"
+import { useThemeContext } from "./ThemeProvider"
 
 import { DarkModeSwitch } from "./DarkModeSwitch"
 import { Sidebar } from "./Sidebar"

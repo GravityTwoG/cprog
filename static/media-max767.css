@@ -1,0 +1,61 @@
+@media (max-width: 767px) {
+  .visibleMobileView {
+    display: block !important;
+  }
+  .mobileView {
+    text-align: left !important;
+    padding-left: 0 !important;
+  }
+  .socialWrapper {
+    position: absolute;
+    right: 10px;
+    top: 29px;
+  }
+  .headerTitle {
+    padding-right: 50px;
+    font-size: 16px;
+  }
+  .navBarBrand {
+    min-height: 40px;
+  }
+  .navBarBrand img {
+    margin-right: 8px;
+  }
+
+  hr {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  .navBarHeader {
+    display: flex;
+    min-width: auto;
+    padding-right: 0;
+    align-items: center;
+  }
+
+  .navBarBrand {
+    font-size: 20px;
+    padding: 0 15px 0 0;
+    flex: initial;
+  }
+
+  .heading1 {
+    font-size: 24px;
+  }
+  .heading2 {
+    font-size: 22px;
+  }
+  .heading3 {
+    font-size: 18px;
+  }
+  .heading4 {
+    font-size: 16px;
+  }
+  .heading5 {
+    font-size: 14px;
+  }
+  .heading6 {
+    font-size: 12px;
+  }
+}

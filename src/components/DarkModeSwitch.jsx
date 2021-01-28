@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "@emotion/styled"
 
-import { useThemeContext } from "./theme/ThemeProvider"
+import { useThemeContext } from "./ThemeProvider"
 
 const StyledSwitch = styled.label`
   display: inline-block;
@@ -58,6 +58,7 @@ const StyledSwitch = styled.label`
     height: 22px;
     border-radius: 50%;
     transition: 0.5s ease transform, 0.2s ease background-color;
+    will-change: transform, background-color;
   }
 
   & .switch-circle:after {

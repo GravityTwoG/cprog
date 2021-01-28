@@ -1,0 +1,9 @@
+@media (min-width: 768px) and (max-width: 991px) {
+  .navBarBrand {
+    font-size: 22px;
+  }
+  .navBarHeader {
+    min-width: 240px;
+    flex: initial;
+  }
+}
