@@ -39,10 +39,6 @@ const plugins = [
           }
         }
       ],
-      remarkPlugins: [
-        require('remark-math'),
-        require('remark-html-katex'),
-      ],
     },
   },
   'gatsby-plugin-preact',
