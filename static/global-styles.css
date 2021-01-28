@@ -2,7 +2,7 @@
   --accentColor: #3884ff;
   --backgroundColor: #fff;
   --headingColor: #000;
-  --textColor: #3b454e;
+  --textColor: #333;
   --preFormattedTextColor: rgb(245, 247, 249);
   --linkColor: #3884ff;
   --decoColor: rgb(230, 236, 241);
@@ -61,11 +61,12 @@ body {
 }
 
 a {
+  color: var(--textColor);
   transition: color 0.15s;
   text-decoration: none;
 }
 a:hover {
-  text-decoration: none;
+  color: #ff6975;
 }
 
 .paragraph {

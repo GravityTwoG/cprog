@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "@emotion/styled"
+import { styled } from '@linaria/react';
 
 import { ChapterHeading } from "./items"
 import OpenedSvg from "../../images/opened"
@@ -10,8 +10,13 @@ import config from "../../../config"
 const StyledDiv = styled.div`
   display: flex;
   align-items: center;
+  
+  & > .chapter-heading,
+  & > span {
+    flex: 1;
+  }
 
-  &:hover > a,
+  &:hover > span > a,
   &:hover > .chapter-heading {
     color: var(--accentColor);
     & + button > svg {

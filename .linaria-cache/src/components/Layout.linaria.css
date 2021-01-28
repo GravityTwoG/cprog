@@ -1,0 +1,5 @@
+.w1uvvved{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-webkit-justify-content:space-between;-ms-flex-pack:justify;justify-content:space-between;background:var(--backgroundColor);}
+.cf6j3st{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-flex:1 1 100%;-ms-flex:1 1 100%;flex:1 1 100%;overflow:hidden;background:var(--backgroundColor);min-height:calc(100vh - 70px);}
+.m1xt5zl4{-webkit-flex:1;-ms-flex:1;flex:1;width:100%;max-width:100%;}@media only screen and (min-width:1279px){.m1xt5zl4{max-width:1000px;position:relative;}}
+.lgrfis2{max-width:390px;min-width:320px;-webkit-flex:1 1 320px;-ms-flex:1 1 320px;flex:1 1 320px;z-index:0;box-shadow:var(--boxShadow);}.lgrfis2 > .navBarBrand{position:fixed;top:15px;left:15px;}
+.r1frb7q7{width:420px;-webkit-flex:0.2 1 auto;-ms-flex:0.2 1 auto;flex:0.2 1 auto;}@media (max-width:1439px){.r1frb7q7{display:none;}}

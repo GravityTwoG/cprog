@@ -1,4 +1,4 @@
-import styled from "@emotion/styled"
+import { styled } from '@linaria/react';
 import React from "react"
 
 export const ChapterHeading = styled(p => (
@@ -12,29 +12,32 @@ export const StyledListItem = styled.li`
   list-style: none;
   border-left: 1px solid var(--decoColor);
 
-  &.active a:hover,
-  &.active .chapter-heading:hover {
-    color: var(--textColor);
+  &.active:hover a,
+  &.active:hover .chapter-heading:hover {
+    color: #fff;
   }
 
   &.active > .tree-node-title {
-    background-color: #3884ff;
-
-    & > a,
-    & > .chapter-heading {
-      color: #fff;
-    }
+    background-color: var(--accentColor);
+  }
+  &.active > .tree-node-title > span > a {
+    color: #fff;
   }
 
-  a,
-  .chapter-heading {
-    flex-grow: 1;
+  & > .tree-node-title > span > a,
+  & .chapter-heading {
     color: var(--textColor);
+    flex-grow: 1;
+    display: block;
+  }
+
+  & > .tree-node-title > span > a,
+  & > a,
+  & .chapter-heading {
     text-decoration: none;
     font-weight: ${({ level }) => (level === 0 ? 700 : 500)};
     font-size: 14px;
-    padding: 0.45rem 1rem 0.45rem ${props => 2 + (props.level || 0) * 1}rem;
-    display: block;
+    padding: 0.45rem 1rem 0.45rem ${props => 2 + (props.level || 0)}rem;
     position: relative;
   }
 `

@@ -2,7 +2,7 @@ import React from "react"
 import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
-import styled from "@emotion/styled"
+import { styled } from '@linaria/react';
 
 import { NextPrevious } from "../components/NextPrevious"
 import { GithubButton } from "../components/GithubButton"
@@ -119,7 +119,7 @@ const BookTemplate = props => {
             content: "e8ODwZKRJ5H_TiNsq-70JsUkCkCiXRtvC6IMNJayTN8",
           },
         ]}
-      ></Helmet>
+      />
 
       <PaddingWrapper className="addPaddTopBottom">
         <NextPrevious mdx={mdx} />

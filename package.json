@@ -14,13 +14,11 @@
     "delete-maps": "rimraf ./public/**.map"
   },
   "dependencies": {
-    "@emotion/css": "^11.0.0",
-    "@emotion/react": "^11.1.1",
-    "@emotion/styled": "^11.0.0",
     "@mdx-js/mdx": "^1.6.19",
     "@mdx-js/react": "^1.6.19",
     "@svgr/webpack": "^5.4.0",
     "gatsby": "^2.29.0",
+    "gatsby-plugin-linaria": "^2.2.0",
     "gatsby-plugin-manifest": "^2.5.2",
     "gatsby-plugin-mdx": "^1.2.52",
     "gatsby-plugin-offline": "^3.9.0",
@@ -35,6 +33,7 @@
     "gatsby-remark-prismjs": "^3.11.0",
     "gatsby-remark-relative-images": "^2.0.2",
     "gatsby-source-filesystem": "^2.3.37",
+    "linaria": "^3.0.0-beta.1",
     "preact": "^10.5.12",
     "preact-render-to-string": "^5.1.12",
     "prismjs": "^1.23.0",

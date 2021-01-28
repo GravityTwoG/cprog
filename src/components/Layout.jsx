@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "@emotion/styled"
+import { styled } from '@linaria/react';
 import { MDXProvider } from "@mdx-js/react"
 
 import { mdxComponents } from "./mdxComponents"

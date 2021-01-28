@@ -45,7 +45,8 @@ const plugins = [
       ],
     },
   },
-  `gatsby-plugin-preact`
+  'gatsby-plugin-preact',
+  'gatsby-plugin-linaria'
 ]
 
 // check and add pwa functionality

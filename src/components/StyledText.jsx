@@ -1,5 +1,5 @@
-import styled from "@emotion/styled"
+import { styled } from '@linaria/react';
 
-export const StyledText = styled("div")`
+export const StyledText = styled.div`
   color: var(--textColor);
 `

@@ -3,7 +3,7 @@ import { useStaticQuery, graphql } from "gatsby"
 
 import config from "../../config"
 
-import styled from "@emotion/styled"
+import { styled } from '@linaria/react';
 
 export const Sidebar = styled("aside")`
   width: 100%;
