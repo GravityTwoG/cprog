@@ -16,6 +16,8 @@ const ChapterHeading = styled(p => (
 const StyledDiv = styled.div`
   display: flex;
   align-items: center;
+  font-size: 16px;
+  line-height: 16px;
 
   & > .chapter-heading,
   & > span {

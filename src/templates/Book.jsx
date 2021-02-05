@@ -2,7 +2,7 @@ import React from "react"
 import Helmet from "react-helmet"
 import { graphql } from "gatsby"
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react"
 
 import { NextPrevious } from "../components/NextPrevious"
 import { GithubButton } from "../components/GithubButton"
@@ -27,28 +27,27 @@ export const PaddingWrapper = styled.div`
 `
 
 const StyledTitleWrapper = styled.div`
-  margin-bottom: 20px;
+  margin: 1rem 0;
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  padding-bottom: 12px;
+  padding-bottom: 1rem;
   border-bottom: 1px solid var(--decoColor);
 
   & > div {
-    margin-top: 12px;
     align-self: flex-end;
   }
 `
 
 const StyledHeading = styled.h1`
-  max-width: 100%;
   flex: 1;
+  margin-bottom: 1rem;
+  max-width: 100%;
   font-size: 28px;
   line-height: 1.5;
   font-weight: 500;
   border-left: 2px solid var(--accentColor);
-  padding: 0 16px;
-  margin-top: 0;
+  padding-left: 1rem;
   color: var(--headingColor);
 
   @media (max-width: 767px) {
@@ -121,7 +120,7 @@ const BookTemplate = props => {
         ]}
       />
 
-      <PaddingWrapper className="addPaddTopBottom">
+      <PaddingWrapper>
         <NextPrevious mdx={mdx} />
       </PaddingWrapper>
 
@@ -147,7 +146,7 @@ const BookTemplate = props => {
         <MDXRenderer>{mdx.body}</MDXRenderer>
       </PaddingWrapper>
 
-      <PaddingWrapper className={"addPaddTopBottom"}>
+      <PaddingWrapper>
         <NextPrevious mdx={mdx} />
       </PaddingWrapper>
     </>

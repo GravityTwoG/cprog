@@ -1,10 +1,10 @@
 import React from "react"
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react"
 import { Link } from "gatsby"
 import { useNavigationArray } from "./useNavigationArray"
 
 export const StyledNextPrevious = styled("div")`
-  margin: 1.5rem 0;
+  margin: 2rem 0;
   padding: 0px;
   width: auto;
   display: grid;
@@ -23,11 +23,11 @@ export const StyledNextPrevious = styled("div")`
     cursor: pointer;
     position: relative;
 
+    color: var(--textColor);
     border-radius: 3px;
     border: 1px solid var(--decoColor);
     text-decoration: none;
     background-color: var(--backgroundColor);
-    color: var(--textColor);
 
     transition: border-color 200ms ease, color 200ms ease;
     box-shadow: var(--boxShadow);
@@ -82,17 +82,16 @@ export const StyledNextPrevious = styled("div")`
   }
 
   .nextPreviousTitle {
+    margin-top: 8px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     line-clamp: 2;
     -webkit-line-clamp: 2;
     overflow: hidden;
     text-overflow: ellipsis;
-    margin: 0px;
-    padding: 0px;
     transition: color 200ms ease;
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 18px;
     font-weight: 500;
   }
 `

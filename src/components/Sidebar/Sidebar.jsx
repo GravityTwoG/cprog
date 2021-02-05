@@ -21,19 +21,19 @@ const StyledSidebar = styled.aside`
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   padding-top: 6px;
-  padding-right: 12px;
+  padding-right: 20px;
 
   scrollbar-width: auto;
   scrollbar-color: var(--accentColor) transparent;
 
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 8px;
     cursor: pointer;
   }
 
   &::-webkit-scrollbar-thumb {
     background-color: var(--accentColor);
-    border-radius: 5px;
+    border-radius: 4px;
   }
   &::-webkit-scrollbar-thumb:hover {
     background-color: #4e70df;
