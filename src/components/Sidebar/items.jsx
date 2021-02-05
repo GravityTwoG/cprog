@@ -1,27 +1,34 @@
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react"
 import React from "react"
-
-export const ChapterHeading = styled(p => (
-  <span {...p} className={"chapter-heading " + p.className} />
-))`
-  transition: color 0.2s linear;
-  cursor: pointer;
-`
 
 export const StyledListItem = styled.li`
   list-style: none;
   border-left: 1px solid var(--decoColor);
+  margin-bottom: 0.5em;
 
   &.active:hover a,
   &.active:hover .chapter-heading:hover {
-    color: #fff;
+    color: var(--accentColor);
   }
-
-  &.active > .tree-node-title {
+  & > .tree-node-title {
+    position: relative;
+  }
+  & > .tree-node-title:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    margin-left: 1rem;
+    width: calc(100% - 2rem);
+    height: 4px;
+    border-radius: 2px;
+    background-color: transparent;
+  }
+  &.active > .tree-node-title:after {
     background-color: var(--accentColor);
   }
   &.active > .tree-node-title > span > a {
-    color: #fff;
+    color: var(--accentColor);
   }
 
   & > .tree-node-title > span > a,
@@ -44,101 +51,10 @@ export const StyledListItem = styled.li`
 
 export const ListItem = ({ className, active, level, ...props }) => {
   return (
-    <StyledListItem className={className}>
+    <StyledListItem className={className} level={level} active={active}>
       <a href={props.to} {...props} target="_blank" rel="noopener noreferrer">
         {props.children}
       </a>
     </StyledListItem>
   )
 }
-
-export const StyledSidebar = styled.aside`
-  width: 100%;
-  height: calc(100vh - 70px);
-  padding-left: 0;
-  position: sticky;
-  top: 0;
-  padding-right: 0;
-  overflow: auto;
-  -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
-
-  .firstLevel > ul > .item {
-    margin-left: 0 !important;
-    border: none;
-  }
-  .sideBarUL > li {
-    border: none;
-  }
-  .sideBarUL li {
-    list-style-type: none;
-    width: auto;
-  }
-  .sideBarUL li a {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.5;
-    border-style: solid none solid solid;
-    border-width: 1px 0 1px 1px;
-    border-color: transparent currentcolor transparent transparent;
-  }
-  .sideBarUL .item {
-    list-style: none;
-    padding: 0;
-  }
-  .sideBarUL .item > a {
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    position: relative;
-    width: 100%;
-  }
-  .sideBarUL .item .item {
-    margin-left: 16px;
-  }
-
-  .sidebarTitle {
-    background-color: #f8f8f8;
-    padding: 18px 16px;
-    font-family: "Roboto", sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: #001934;
-    display: flex;
-    align-items: center;
-
-    & a {
-      color: #001934;
-    }
-  }
-
-  @media only screen and (max-width: 1023px) {
-    width: 100%;
-    height: 100vh;
-  }
-
-  @media (min-width: 767px) and (max-width: 1023px) {
-    padding-left: 0;
-  }
-
-  @media only screen and (max-width: 767px) {
-    padding-left: 0px;
-    height: auto;
-  }
-`
-
-export const Divider = styled(props => (
-  <li {...props}>
-    <hr />
-  </li>
-))`
-  list-style: none;
-  padding: 0.5rem 0;
-
-  hr {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    border-bottom: 1px solid #ede7f3;
-  }
-`

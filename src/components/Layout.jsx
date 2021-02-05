@@ -1,5 +1,5 @@
 import React from "react"
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react"
 import { MDXProvider } from "@mdx-js/react"
 
 import { mdxComponents } from "./mdxComponents"
@@ -36,7 +36,7 @@ const Content = styled.main`
   min-height: calc(100vh - 70px);
 `
 
-const MaxWidth = styled("div")`
+const MaxWidth = styled.div`
   flex: 1;
   width: 100%;
   max-width: 100%;
@@ -47,17 +47,12 @@ const MaxWidth = styled("div")`
 `
 
 const LeftSideBar = styled.div`
+  margin-top: -70px;
   max-width: 390px;
   min-width: 320px;
   flex: 1 1 320px;
   z-index: 0;
   box-shadow: var(--boxShadow);
-
-  & > .navBarBrand {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-  }
 `
 
 const RightSideBarWidth = styled("div")`
@@ -97,6 +92,7 @@ export const Layout = ({ children, location }) => {
             >
               <Logo />
             </Link>
+
             {!isSSR && (
               <React.Suspense fallback={<div />}>
                 <Sidebar location={location} style={{ top: "70px" }} />

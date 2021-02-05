@@ -1,16 +1,22 @@
 import React from "react"
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react"
 
-import { ChapterHeading } from "./items"
 import OpenedSvg from "../../images/opened"
 import { Link } from "../Link"
 
 import config from "../../../config"
 
+const ChapterHeading = styled(p => (
+  <span {...p} className={"chapter-heading " + p.className} />
+))`
+  transition: color 0.2s linear;
+  cursor: pointer;
+`
+
 const StyledDiv = styled.div`
   display: flex;
   align-items: center;
-  
+
   & > .chapter-heading,
   & > span {
     flex: 1;
@@ -20,6 +26,7 @@ const StyledDiv = styled.div`
   &:hover > .chapter-heading {
     color: var(--accentColor);
     & + button > svg {
+      // arrow
       fill: var(--accentColor);
     }
   }

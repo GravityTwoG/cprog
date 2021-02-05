@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react"
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react"
 import { useStaticQuery, graphql } from "gatsby"
 import { useMediaQuery } from "./useMediaQuery"
 import { useThemeContext } from "./ThemeProvider"

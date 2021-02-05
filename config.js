@@ -19,7 +19,7 @@ const config = {
   },
   sidebar: {
     forcedNavOrder: ["/", "/book"],
-    notCollapsedDepth: 2,
+    notCollapsedDepth: 1,
     links: [
       {
         text: "Cprog — оригинальный сайт",

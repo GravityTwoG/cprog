@@ -1,5 +1,5 @@
 import React from "react"
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react"
 import "prismjs/themes/prism-tomorrow.css"
 import "./code-block.scss"
 
@@ -17,6 +17,22 @@ const StyledDiv = styled.div`
     scroll-behavior: smooth;
     padding: 16px;
     background-color: #011627 !important;
+
+    scrollbar-width: auto;
+    scrollbar-color: var(--accentColor) transparent;
+
+    &::-webkit-scrollbar {
+      height: 12px;
+      cursor: pointer;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--accentColor);
+      border-radius: 6px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: #4e70df;
+    }
   }
 `
 
