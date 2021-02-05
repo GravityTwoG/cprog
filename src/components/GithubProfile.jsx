@@ -1,15 +1,13 @@
 import React from "react"
 
 import { StyledText } from "./StyledText"
-import { GithubButton } from "./GithubButton";
+import { GithubButton } from "./GithubButton"
 
-export const GithubProfile = ({url, nickname}) => {
+export const GithubProfile = ({ url, nickname }) => {
   return (
     <StyledText>
       <strong style={{ marginRight: ".8em" }}>Разработано</strong>
-      <GithubButton to={url} style={{verticalAlign: "middle"}}>
-        {nickname}
-      </GithubButton>
+      <GithubButton to={url}>{nickname}</GithubButton>
     </StyledText>
   )
 }

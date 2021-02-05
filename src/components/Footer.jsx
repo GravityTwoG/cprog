@@ -1,5 +1,5 @@
 import React from "react"
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react"
 import { ExternalLink } from "react-feather"
 
 import config from "../../config"
@@ -13,7 +13,7 @@ const StyledFooter = styled.footer`
   padding: 1rem 0;
   border-top: 1px solid var(--decoColor);
   content-visibility: auto;
-  contain-intrinsic-size: 0 175x;
+  contain-intrinsic-size: 0 175px;
 `
 
 export const Footer = () => (

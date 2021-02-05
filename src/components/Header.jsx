@@ -71,7 +71,7 @@ const StyledMobileNavbar = styled.div`
     will-change: transform;
     visibility: hidden;
     content-visibility: auto;
-    contain-intrinsic-size: 100vh;
+    contain-intrinsic-size: 431px 100vh;
     contain: layout paint;
 
     &[data-is-open="true"] {

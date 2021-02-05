@@ -27,22 +27,21 @@ const Wrapper = styled("div")`
 `
 
 const Content = styled.main`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex: 1 1 100%;
+  align-self: center;
   overflow: hidden;
   background: var(--backgroundColor);
   min-height: calc(100vh - 70px);
-`
 
-const MaxWidth = styled.div`
   flex: 1;
   width: 100%;
   max-width: 100%;
   @media only screen and (min-width: 1279px) {
     max-width: 850px;
     position: relative;
+  }
+
+  & > .footer {
+    width: 100%;
   }
 `
 
@@ -102,10 +101,10 @@ export const Layout = ({ children, location }) => {
         )}
 
         <Content>
-          <MaxWidth>{children}</MaxWidth>
-          <MaxWidth>
+          <div>{children}</div>
+          <div className="footer">
             <Footer />
-          </MaxWidth>
+          </div>
         </Content>
 
         {isDesktop && (

@@ -1,10 +1,13 @@
-import React from "react";
-import { styled } from '@linaria/react';
+import React from "react"
+import { styled } from "@linaria/react"
 
-import {Link} from "./Link";
+import { Link } from "./Link"
 import gitHub from "../images/github.svg"
 
 const StyledLink = styled.span`
+  vertical-align: middle;
+  display: inline-block;
+
   & > a {
     margin: 6px 0.5rem;
     height: 30px;
@@ -41,17 +44,13 @@ const StyledLink = styled.span`
   }
 `
 
-export  const GithubButton = ({children, style, ...props}) => {
-  return <StyledLink
-    style={style}
-  >
-    <Link
-      target="_blank"
-      rel="noopener"
-      {...props}
-    >
-      <img src={gitHub} alt="Github logo" />
-      <span>{children}</span>
-    </Link>
-  </StyledLink>
+export const GithubButton = ({ children, style, ...props }) => {
+  return (
+    <StyledLink style={style}>
+      <Link target="_blank" rel="noopener" {...props}>
+        <img src={gitHub} alt="Github logo" />
+        <span>{children}</span>
+      </Link>
+    </StyledLink>
+  )
 }
