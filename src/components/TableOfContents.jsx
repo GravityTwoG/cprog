@@ -1,19 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 
 import config from "../../config"
 
 import { styled } from "@linaria/react"
+import { ArrowButton } from "./ArrowButton"
 
 export const Sidebar = styled.aside`
   width: 100%;
   border-right: 1px solid #ede7f3;
-  height: 100vh;
-  overflow: auto;
-  position: fixed;
   padding-left: 1.5rem;
-  position: sticky;
-  top: 70px;
 
   background: var(--backgroundColor);
 
@@ -74,7 +70,11 @@ export const ListItem = ({ className, level, ...props }) => {
   )
 }
 
-export const RightSidebar = ({ location }) => {
+export const TableOfContents = ({
+  location,
+  isDefaultCollapsed = false,
+  className,
+}) => {
   const { allMdx } = useStaticQuery(graphql`
     query RightSidebarQuery {
       allMdx {
@@ -124,19 +124,41 @@ export const RightSidebar = ({ location }) => {
     })
   }
 
+  const [isCollapsed, setIsCollapsed] = useState(true)
+
   if (finalNavItems && finalNavItems.length) {
     return (
-      <Sidebar>
+      <Sidebar className={className}>
         <ul className={"rightSideBarUL"}>
-          <li className={"rightSideTitle"}>Содержание</li>
-          {finalNavItems}
+          {!isDefaultCollapsed && (
+            <>
+              <li className={"rightSideTitle"}>Содержание</li>
+              {finalNavItems}
+            </>
+          )}
+          {isDefaultCollapsed && (
+            <>
+              <li
+                className={"rightSideTitle"}
+                onClick={() => setIsCollapsed(!isCollapsed)}
+              >
+                Содержание
+                <ArrowButton
+                  aria-label={isCollapsed ? "Развернуть" : "Свернуть"}
+                  title={isCollapsed ? "Развернуть" : "Свернуть"}
+                  data-is-collapsed={isCollapsed}
+                />
+              </li>
+              {!isCollapsed && finalNavItems}
+            </>
+          )}
         </ul>
       </Sidebar>
     )
   }
 
   return (
-    <Sidebar>
+    <Sidebar className={className}>
       <ul></ul>
     </Sidebar>
   )

@@ -16,8 +16,10 @@ const Header = React.lazy(() =>
 const Sidebar = React.lazy(() =>
   import("./Sidebar").then(module => ({ default: module.Sidebar }))
 )
-const RightSidebar = React.lazy(() =>
-  import("./RightSidebar").then(module => ({ default: module.RightSidebar }))
+const TableOfContents = React.lazy(() =>
+  import("./TableOfContents").then(module => ({
+    default: module.TableOfContents,
+  }))
 )
 
 const Wrapper = styled("div")`
@@ -43,6 +45,38 @@ const Content = styled.main`
   & > .footer {
     width: 100%;
   }
+  & > aside.before-content {
+    padding: 0 60px;
+
+    & > ul > .rightSideTitle {
+      border: none;
+      padding-left: 0;
+      padding-right: 0;
+      padding-top: 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.2s linear;
+
+      & > button {
+        margin: 0;
+      }
+
+      &:hover {
+        color: var(--accentColor);
+      }
+      &:hover svg {
+        fill: var(--accentColor);
+      }
+    }
+  }
+
+  @media (max-width: 520px) {
+    & > aside.before-content {
+      padding: 0 16px;
+    }
+  }
 `
 
 const LeftSideBar = styled.div`
@@ -58,8 +92,12 @@ const RightSideBarWidth = styled("div")`
   max-width: 420px;
   flex: 0.2 1 auto;
 
-  @media (max-width: 1439px) {
-    display: none;
+  & > aside.sticky {
+    position: fixed;
+    position: sticky;
+    top: 70px;
+    height: 100vh;
+    overflow: auto;
   }
 `
 
@@ -101,6 +139,15 @@ export const Layout = ({ children, location }) => {
         )}
 
         <Content>
+          {!isDesktop && !isSSR && (
+            <React.Suspense fallback={<div />}>
+              <TableOfContents
+                location={location}
+                isDefaultCollapsed
+                className="before-content"
+              />
+            </React.Suspense>
+          )}
           <div>{children}</div>
           <div className="footer">
             <Footer />
@@ -111,7 +158,7 @@ export const Layout = ({ children, location }) => {
           <RightSideBarWidth className={"rightSidebar"}>
             {!isSSR && (
               <React.Suspense fallback={<div />}>
-                <RightSidebar location={location} />
+                <TableOfContents location={location} className="sticky" />
               </React.Suspense>
             )}
           </RightSideBarWidth>
