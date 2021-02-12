@@ -18,8 +18,8 @@ export const StyledListItem = styled.li`
     display: block;
     position: absolute;
     bottom: 0;
-    margin-left: 1rem;
-    width: calc(100% - 2rem);
+    margin-left: 2rem;
+    width: calc(100% - 4rem);
     height: 4px;
     border-radius: 2px;
     background-color: transparent;

@@ -13,9 +13,7 @@ import { useNavigationTree } from "../useNavigationTree"
 const StyledSidebar = styled.aside`
   width: 100%;
   height: calc(100vh - 70px);
-
-  position: sticky;
-  top: 0;
+  contain: content;
   overflow-y: auto;
   overflow-y: overlay;
   -webkit-overflow-scrolling: touch;

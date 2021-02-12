@@ -33,6 +33,7 @@ const Content = styled.main`
   overflow: hidden;
   background: var(--backgroundColor);
   min-height: calc(100vh - 70px);
+  contain: content;
 
   flex: 1;
   width: 100%;
@@ -86,6 +87,12 @@ const LeftSideBar = styled.div`
   flex: 1 1 320px;
   z-index: 0;
   box-shadow: var(--boxShadow);
+  position: relative;
+
+  & > .sticky {
+    position: sticky;
+    top: 70px;
+  }
 `
 
 const RightSideBarWidth = styled("div")`
@@ -132,7 +139,7 @@ export const Layout = ({ children, location }) => {
 
             {!isSSR && (
               <React.Suspense fallback={<div />}>
-                <Sidebar location={location} style={{ top: "70px" }} />
+                <Sidebar location={location} className="sticky" />
               </React.Suspense>
             )}
           </LeftSideBar>
