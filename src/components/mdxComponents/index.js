@@ -1,14 +1,11 @@
 import React from "react"
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react"
 
 import { Pre } from "./Pre"
 import { AnchorTag } from "./Anchor"
 import { Icon } from "./Icons"
 import { Table } from "./Table"
-
-const StyledImage = styled.img`
-  background-color: #fff;
-`
+import { Image } from "./Image"
 
 const StyledCode = styled.code`
   html *:not(pre) > & {
@@ -104,7 +101,7 @@ export const mdxComponents = {
   pre: Pre,
   code: StyledCode,
   a: AnchorTag,
-  img: StyledImage,
+  img: Image,
   Icon,
   // TODO add `blockquote`
   table: Table,

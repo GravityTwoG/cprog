@@ -177,3 +177,7 @@ img {
 .tac {
   text-align: center;
 }
+
+.gatsby-resp-image-wrapper {
+  margin-bottom: 2.5rem;
+}
