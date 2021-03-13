@@ -1,6 +1,5 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { withPrefix } from "gatsby"
 
 export default function HTML(props) {
   return (
@@ -19,34 +18,6 @@ export default function HTML(props) {
               document.documentElement.setAttribute('data-theme', isDarkThemeActive ? 'dark' : 'light');
             `,
           }}
-        />
-        <link
-          type="text/css"
-          rel="stylesheet"
-          href={withPrefix("/media-styles.css")}
-        />
-        <link
-          type="text/css"
-          rel="stylesheet"
-          href={withPrefix("/media-btw768-991.css")}
-          media="all and (min-width: 768px) and (max-width: 991px)"
-        />
-        <link
-          type="text/css"
-          rel="stylesheet"
-          href={withPrefix("/media-max1023.css")}
-          media="all and (max-width: 1023px)"
-        />
-        <link
-          type="text/css"
-          rel="stylesheet"
-          href={withPrefix("/media-max767.css")}
-          media="all and (max-width: 767px)"
-        />
-        <link
-          type="text/css"
-          rel="stylesheet"
-          href={withPrefix("/global-styles.css")}
         />
         {props.headComponents}
       </head>
