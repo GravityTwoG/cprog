@@ -151,8 +151,12 @@ export const Header = ({ location }) => {
     let prevScrollPos = window.pageYOffset
     function onScroll() {
       const currentScrollPos = window.pageYOffset
-      headerRef.current.dataset.isHidden =
-        currentScrollPos > 70 && currentScrollPos > prevScrollPos
+      const isHidden = currentScrollPos > 70 && currentScrollPos > prevScrollPos
+
+      if (headerRef.current.dataset.isHidden !== isHidden.toString()) {
+        headerRef.current.dataset.isHidden = isHidden.toString()
+      }
+
       prevScrollPos = currentScrollPos
     }
 
