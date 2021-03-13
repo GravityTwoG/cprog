@@ -3,6 +3,7 @@ const config = require("./config")
 const plugins = [
   "gatsby-plugin-sass",
   "gatsby-plugin-sharp",
+  "gatsby-remark-images",
   {
     resolve: "gatsby-plugin-svgr",
     options: {
@@ -23,26 +24,26 @@ const plugins = [
     options: {
       extensions: [".md", ".mdx"],
       gatsbyRemarkPlugins: [
-        "gatsby-remark-relative-images",
         {
           resolve: "gatsby-remark-images",
           options: {
-            maxWidth: 750,
-            linkImagesToOriginal: false,
+            maxWidth: 1200,
+            showCaptions: true,
+            backgroundColor: "transparent",
           },
         },
         {
-          resolve:"gatsby-remark-prismjs",
+          resolve: "gatsby-remark-prismjs",
           options: {
             classPrefix: "language-",
             inlineCodeMarker: null,
-          }
-        }
+          },
+        },
       ],
     },
   },
-  'gatsby-plugin-preact',
-  'gatsby-plugin-linaria'
+  "gatsby-plugin-preact",
+  "gatsby-plugin-linaria",
 ]
 
 // check and add pwa functionality
@@ -50,15 +51,15 @@ if (config.pwa && config.pwa.enabled && config.pwa.manifest) {
   plugins.push({
     resolve: `gatsby-plugin-manifest`,
     options: { ...config.pwa.manifest },
-  });
+  })
   plugins.push({
-    resolve: 'gatsby-plugin-offline',
+    resolve: "gatsby-plugin-offline",
     options: {
-      appendScript: 'src/sw.js'
+      appendScript: "src/sw.js",
     },
-  });
+  })
 } else {
-  plugins.push('gatsby-plugin-remove-serviceworker');
+  plugins.push("gatsby-plugin-remove-serviceworker")
 }
 
 module.exports = {

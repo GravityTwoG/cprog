@@ -1,13 +1,13 @@
-const config = require("./config");
-const { GraphQLScalarType, GraphQLInt } = require('gatsby/graphql');
+const config = require("./config")
+const { GraphQLScalarType, GraphQLInt } = require("gatsby/graphql")
 
 function calculateTreeData(pages) {
   const originalData = config.sidebar.ignoreIndex
-    ? pages.filter(( node ) => node.fields.slug !== "/")
+    ? pages.filter(node => node.fields.slug !== "/")
     : pages
 
   const tree = originalData.reduce(
-    (accu, node ) => {
+    (accu, node) => {
       const { slug, title } = node.fields
       const parts = slug.split("/")
       const isChapterHeading = node.frontmatter.type === "chapter-heading"
@@ -148,41 +148,40 @@ function recursiveFlattenNav(tree) {
   return { title: tree.title, url: tree.url }
 }
 
-
-const buildTreeForPath = async(getNodes) => {
+const buildTreeForPath = async getNodes => {
   const pages = getNodes()
-    .filter(node => node.internal.type === 'Mdx')
-    .map(node => ({fields: node.fields, frontmatter: node.frontmatter}));
-  const tree = calculateTreeData(pages);
+    .filter(node => node.internal.type === "Mdx")
+    .map(node => ({ fields: node.fields, frontmatter: node.frontmatter }))
+  const tree = calculateTreeData(pages)
   const array = recursiveFlattenNav(tree)
-  return {tree, array};
-};
+  return { tree, array }
+}
 
-module.exports.setFieldsOnGraphQLNodeType = async({ type, getNodes }) => {
-  if (type.name === 'Site') {
+module.exports.setFieldsOnGraphQLNodeType = async ({ type, getNodes }) => {
+  if (type.name === "Site") {
     return {
       navigation: {
         type: new GraphQLScalarType({
-          name: 'Navigation',
+          name: "Navigation",
           serialize(value) {
-            return value;
-          }
+            return value
+          },
         }),
         resolve: () => {
-          return buildTreeForPath(getNodes);
-        }
+          return buildTreeForPath(getNodes)
+        },
       },
       order: {
         type: GraphQLInt,
-        result: (node) => {
-          if(node.fields && node.fields.order) {
-            return node.fields.order;
+        result: node => {
+          if (node.fields && node.fields.order) {
+            return node.fields.order
           }
-          return 0;
-        }
-      }
-    };
+          return 0
+        },
+      },
+    }
   }
 
-  return {};
-};
+  return {}
+}
