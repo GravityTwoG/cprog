@@ -178,6 +178,6 @@ img {
   text-align: center;
 }
 
-.gatsby-resp-image-wrapper {
-  margin-bottom: 2.5rem;
+.gatsby-resp-image-figure {
+  text-align: center;
 }

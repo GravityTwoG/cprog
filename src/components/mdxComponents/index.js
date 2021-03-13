@@ -5,7 +5,6 @@ import { Pre } from "./Pre"
 import { AnchorTag } from "./Anchor"
 import { Icon } from "./Icons"
 import { Table } from "./Table"
-import { Image } from "./Image"
 
 const StyledCode = styled.code`
   html *:not(pre) > & {
@@ -101,7 +100,6 @@ export const mdxComponents = {
   pre: Pre,
   code: StyledCode,
   a: AnchorTag,
-  img: Image,
   Icon,
   // TODO add `blockquote`
   table: Table,
