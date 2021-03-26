@@ -64,6 +64,8 @@ const StyledSidebar = styled.aside`
 `
 
 const SidebarUl = styled.ul`
+  padding-inline-start: 0;
+
   & > li {
     border: none;
   }

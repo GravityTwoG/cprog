@@ -47,6 +47,10 @@ export const StyledListItem = styled.li`
     padding: 0.45rem 1rem 0.45rem ${props => 2 + (props.level || 0)}rem;
     position: relative;
   }
+
+  ul {
+    padding-inline-start: 0;
+  }
 `
 
 export const ListItem = ({ className, active, level, ...props }) => {

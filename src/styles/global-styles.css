@@ -108,8 +108,24 @@ blockquote {
   border-left: 4px solid rgb(230, 236, 241);
 }
 
-ol {
+ol,
+ul {
   padding-inline-start: 1.3em;
+}
+
+ol > li::marker {
+  font-weight: 700;
+}
+
+ol > li > p.paragraph,
+ul > li > p.paragraph {
+  margin: 0.5rem 0 1rem;
+}
+
+ul > li {
+  font-size: 16px;
+  line-height: 1.8;
+  font-weight: 400;
 }
 
 .socialWrapper {

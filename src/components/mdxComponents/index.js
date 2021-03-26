@@ -30,17 +30,6 @@ const StyledFlex = styled.div`
   }
 `
 
-const StyledUL = styled.ul`
-  margin: 24px 0px;
-  padding-inline-start: 1.3em;
-
-  li {
-    font-size: 16px;
-    line-height: 1.8;
-    font-weight: 400;
-  }
-`
-
 export const mdxComponents = {
   h1: ({ children, ...props }) => (
     <h1
@@ -103,6 +92,5 @@ export const mdxComponents = {
   Icon,
   // TODO add `blockquote`
   table: Table,
-  ul: StyledUL,
   Flex: StyledFlex,
 }
