@@ -6,12 +6,12 @@
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "delete-maps": "rimraf ./public/**.map"
+    "del-maps": "rimraf ./public/**.map"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.6.19",
