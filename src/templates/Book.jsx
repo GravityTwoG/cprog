@@ -6,6 +6,7 @@ import { styled } from "@linaria/react"
 
 import { NextPrevious } from "../components/NextPrevious"
 import { GithubButton } from "../components/GithubButton"
+import { TableOfContents } from "../components/TableOfContents"
 
 import "../styles/global-styles.css"
 import "../styles/media-styles.css"
@@ -146,6 +147,14 @@ const BookTemplate = props => {
             )}
           </div>
         </StyledTitleWrapper>
+      </PaddingWrapper>
+
+      <PaddingWrapper>
+        <TableOfContents
+          location={props.location}
+          isDefaultCollapsed
+          className="before-content"
+        />
       </PaddingWrapper>
 
       <PaddingWrapper className="main">

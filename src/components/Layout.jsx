@@ -16,11 +16,6 @@ const Header = React.lazy(() =>
 const Sidebar = React.lazy(() =>
   import("./Sidebar").then(module => ({ default: module.Sidebar }))
 )
-const TableOfContents = React.lazy(() =>
-  import("./TableOfContents").then(module => ({
-    default: module.TableOfContents,
-  }))
-)
 
 const Wrapper = styled("div")`
   display: flex;
@@ -146,30 +141,13 @@ export const Layout = ({ children, location }) => {
         )}
 
         <Content>
-          {!isDesktop && !isSSR && (
-            <React.Suspense fallback={<div />}>
-              <TableOfContents
-                location={location}
-                isDefaultCollapsed
-                className="before-content"
-              />
-            </React.Suspense>
-          )}
           <div>{children}</div>
           <div className="footer">
             <Footer />
           </div>
         </Content>
 
-        {isDesktop && (
-          <RightSideBarWidth className={"rightSidebar"}>
-            {!isSSR && (
-              <React.Suspense fallback={<div />}>
-                <TableOfContents location={location} className="sticky" />
-              </React.Suspense>
-            )}
-          </RightSideBarWidth>
-        )}
+        {isDesktop && <RightSideBarWidth className={"rightSidebar"} />}
       </Wrapper>
     </MDXProvider>
   )

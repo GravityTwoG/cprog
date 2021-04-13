@@ -8,38 +8,45 @@ import { ArrowButton } from "./ArrowButton"
 
 export const Sidebar = styled.aside`
   width: 100%;
-  border-right: 1px solid #ede7f3;
-  padding-left: 1.5rem;
-
+  padding-bottom: 1rem;
   background: var(--backgroundColor);
 
   .rightSideTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     line-height: 1;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.2px;
-    padding: 7px 24px 7px 16px;
-    border-left: 1px solid #e6ecf1;
-    border-left-color: rgb(230, 236, 241);
-
+    padding: 7px 16px;
     color: var(--textColor);
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
   }
 
   .rightSideBarUL {
-    margin-top: 32px;
+    padding-inline-start: 0;
   }
 
   .rightSideBarUL li {
     list-style-type: none;
-    border-left: 1px solid #e6ecf1;
-    border-left-color: var(--decoColor);
+    padding: 7px 24px 7px 16px;
   }
 
   .rightSideBarUL li a {
+    padding: 0;
     font-size: 14px;
     font-weight: 500;
     line-height: 1.5;
-    padding: 7px 24px 7px 16px;
+    display: inline;
 
     color: var(--textColor);
   }
