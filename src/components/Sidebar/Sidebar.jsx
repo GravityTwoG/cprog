@@ -34,7 +34,7 @@ const StyledSidebar = styled.aside`
     border-radius: 4px;
   }
   &::-webkit-scrollbar-thumb:hover {
-    background-color: #4e70df;
+    background-color: var(--accentHoverColor);
   }
 
   @media (max-width: 767px) {

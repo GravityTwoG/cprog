@@ -31,7 +31,7 @@ const StyledDiv = styled.div`
       border-radius: 6px;
     }
     &::-webkit-scrollbar-thumb:hover {
-      background-color: #4e70df;
+      background-color: var(--accentHoverColor);
     }
   }
 `
