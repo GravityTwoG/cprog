@@ -47,7 +47,12 @@ const plugins = [
 ]
 
 // check and add pwa functionality
-if (config.pwa && config.pwa.enabled && config.pwa.manifest) {
+if (
+  process.env.NODE_END == "production" &&
+  config.pwa &&
+  config.pwa.enabled &&
+  config.pwa.manifest
+) {
   plugins.push({
     resolve: `gatsby-plugin-manifest`,
     options: { ...config.pwa.manifest },
