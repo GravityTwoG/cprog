@@ -135,8 +135,7 @@ export const Sidebar = ({ location, ...props }) => {
           return null
         })}
       </ul>
-
-      <PwaWidget />
+      {config.pwa.enabled && <PwaWidget />}
     </StyledSidebar>
   )
 }
