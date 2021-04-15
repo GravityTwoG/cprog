@@ -20,6 +20,7 @@ const StyledSidebar = styled.aside`
   scroll-behavior: smooth;
   padding-top: 6px;
   padding-right: 20px;
+  padding-left: 12px;
 
   scrollbar-width: auto;
   scrollbar-color: var(--accentColor) transparent;

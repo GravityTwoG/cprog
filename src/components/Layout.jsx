@@ -84,13 +84,19 @@ const LeftSideBar = styled.div`
   box-shadow: var(--boxShadow);
   position: relative;
 
+  & > span {
+    position: sticky;
+    top: 10px;
+    margin-left: 15px;
+    display: block;
+  }
   & > .sticky {
     position: sticky;
     top: 70px;
   }
 `
 
-const RightSideBarWidth = styled("div")`
+const RightSideBarWidth = styled.div`
   max-width: 420px;
   flex: 0.2 1 auto;
 

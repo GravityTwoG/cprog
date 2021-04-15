@@ -14,22 +14,31 @@ const ChapterHeading = styled(p => (
 `
 
 const StyledDiv = styled.div`
+  min-height: 37px;
   display: flex;
   align-items: center;
+
   font-size: 16px;
   line-height: 16px;
+
+  background-color: transparent;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
 
   & > .chapter-heading,
   & > span {
     flex: 1;
   }
 
-  &:hover > span > a,
-  &:hover > .chapter-heading {
-    color: var(--accentColor);
-    & + button > svg {
-      // arrow
-      fill: var(--accentColor);
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    & > span > a,
+    & > .chapter-heading {
+      color: var(--accentColor);
+      & + button > svg {
+        // arrow
+        fill: var(--accentColor);
+      }
     }
   }
 `
@@ -42,6 +51,7 @@ export const TreeNodeTitle = ({
   url,
   hasChildren,
   active,
+  notCollapsedDepth,
 }) => {
   return (
     <StyledDiv className="tree-node-title">
@@ -51,7 +61,10 @@ export const TreeNodeTitle = ({
           {title}
         </ChapterHeading>
       )}
-      {title && hasChildren && !config.sidebar.frontLine ? (
+      {title &&
+      hasChildren &&
+      notCollapsedDepth == 0 &&
+      !config.sidebar.frontLine ? (
         <ArrowButton
           onClick={collapse}
           aria-label={isCollapsed ? "Развернуть" : "Свернуть"}

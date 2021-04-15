@@ -3,7 +3,6 @@ import React from "react"
 
 export const StyledListItem = styled.li`
   list-style: none;
-  border-left: 1px solid var(--decoColor);
   margin-bottom: 0.5em;
 
   &.active:hover a,

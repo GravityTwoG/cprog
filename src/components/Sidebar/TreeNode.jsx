@@ -17,7 +17,7 @@ export const TreeNode = React.memo(
     const active = isNodeActive(location, url)
 
     const calculatedClassName = `${className} item ${active ? "active" : ""}`
-    const [isCollapsed, setIsCollapsed] = useState(!notCollapsedDepth > 0)
+    const [isCollapsed, setIsCollapsed] = useState(notCollapsedDepth == 0)
     const collapse = () => setIsCollapsed(c => !c)
 
     const hasChildren = items.length !== 0
@@ -31,6 +31,7 @@ export const TreeNode = React.memo(
           isChapterHeading={isChapterHeading}
           hasChildren={hasChildren}
           active={active}
+          notCollapsedDepth={notCollapsedDepth}
         />
 
         {!isCollapsed && hasChildren ? (
