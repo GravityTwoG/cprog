@@ -198,3 +198,7 @@ img {
 .gatsby-resp-image-figure {
   text-align: center;
 }
+
+.gatsby-resp-image-figcaption {
+  margin-top: 1rem;
+}

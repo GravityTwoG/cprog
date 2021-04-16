@@ -1,4 +1,4 @@
-import {styled} from "@linaria/react"
+import { styled } from "@linaria/react"
 import React from "react"
 import { mdxComponents as MDXC } from "../src/components/mdxComponents"
 
@@ -21,7 +21,11 @@ const StyledStreamlinedImage = styled(StyledImage)`
   margin: 0 0.5rem 0.5rem 0;
   max-width: 320px;
   @media (max-width: 576px) {
-    margin: 0 0 0.5rem;
+    float: none;
+    max-width: 100%;
+    margin: 0 0 0.5rem 0;
+    display: block;
+    width: 100%;
   }
 `
 
@@ -37,14 +41,21 @@ const Flex = styled.div`
 
   & > .poem {
     flex: 1 1 290px;
-    max-width: 400px;
+    max-width: 460px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
-  @media (max-width: 768px) {
+  & > .poem + img {
+    width: auto;
+  }
+  @media (max-width: 576px) {
+    & > .poem {
+      max-width: 100%;
+    }
     & > .poem + img {
       max-width: 100%;
+      width: 100%;
     }
   }
 
@@ -116,12 +127,7 @@ export const IndexPage = () => {
       </Flex>
 
       <MDXC.p>
-        <StyledStreamlinedImage
-          src={self2}
-          width="300"
-          loading="lazy"
-          alt="self"
-        />
+        <StyledStreamlinedImage src={self2} width="300" alt="self" />
         <strong>Немного истории.</strong> Когда мне, новоиспеченному кандидату
         технических наук, в 1987 году было поручено чтение лекций по языку Си в
         течение одного семестра, я не думал, что это затянется так надолго.
