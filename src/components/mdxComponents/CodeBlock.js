@@ -42,25 +42,27 @@ const StyledHeader = styled.div`
   align-items: center;
   padding-left: 10px;
   background-color: var(--accentColor);
-  height: 30px;
+  height: 26px;
 
   & > span {
-    font-size: 20px;
+    font-family: monospace;
+    font-size: 16px;
+    line-height: 16px;
     color: #fff;
   }
 `
 
 export const CodeBlock = ({ children, ...props }) => {
   const language = props.className
-    ? props.className.replace(/language-/, "")
+    ? props.className.replace(/language-/, "").toUpperCase()
     : ""
-
   return (
     <StyledDiv {...props}>
-      {/*<StyledHeader>*/}
-      {/*  <span>{language}</span>*/}
-      {/*  <CopyButton string={props.children} />*/}
-      {/*</StyledHeader>*/}
+      <StyledHeader>
+        <span>{language}</span>
+        {/* <CopyButton string={children} /> */}
+      </StyledHeader>
+
       <pre>{children}</pre>
     </StyledDiv>
   )

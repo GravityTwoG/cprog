@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { styled } from "@linaria/react"
 
 import config from "../../config"
 
-import { styled } from "@linaria/react"
 import { ArrowButton } from "./ArrowButton"
 
 export const Sidebar = styled.aside`
@@ -11,7 +11,7 @@ export const Sidebar = styled.aside`
   padding-bottom: 1rem;
   background: var(--backgroundColor);
 
-  .rightSideTitle {
+  & .rightSideBarUL .rightSideTitle {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -20,7 +20,7 @@ export const Sidebar = styled.aside`
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.2px;
-    padding: 7px 16px;
+    padding: 0px 16px;
     color: var(--textColor);
     cursor: pointer;
     border-radius: 5px;
@@ -30,25 +30,30 @@ export const Sidebar = styled.aside`
     &:hover {
       background-color: rgba(0, 0, 0, 0.1);
     }
+
+    & > button {
+      height: auto;
+      margin-right: 0;
+      padding-top: 10px;
+      padding-bottom: 6px;
+    }
   }
 
   .rightSideBarUL {
     padding-inline-start: 0;
-  }
 
-  .rightSideBarUL li {
-    list-style-type: none;
-    padding: 7px 24px 7px 16px;
-  }
+    & li {
+      list-style-type: none;
+      padding: 10px 16px;
+    }
+    & li a {
+      padding: 0;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
 
-  .rightSideBarUL li a {
-    padding: 0;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.5;
-    display: inline;
-
-    color: var(--textColor);
+      color: var(--textColor);
+    }
   }
 `
 
