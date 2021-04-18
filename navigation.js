@@ -59,9 +59,7 @@ function calculateTreeData(pages) {
     { items: [] }
   )
 
-  const {
-    sidebar: { forcedNavOrder = [] },
-  } = config
+  const { forcedNavOrder = [] } = config.sidebar
 
   const tmp = [...forcedNavOrder]
   tmp.reverse()
@@ -125,12 +123,12 @@ function sortTreeData(tree) {
   return { ...tree, items: finallySortedItems }
 }
 
-function recursiveFlattenNav(tree) {
+function recursivelyFlattenNav(tree) {
   if (tree.items.length) {
     const items = []
 
-    tree.items.forEach(t => {
-      const res = recursiveFlattenNav(t)
+    tree.items.forEach(item => {
+      const res = recursivelyFlattenNav(item)
       if (Array.isArray(res)) {
         items.push(...res)
       } else {
@@ -152,8 +150,9 @@ const buildTreeForPath = async getNodes => {
   const pages = getNodes()
     .filter(node => node.internal.type === "Mdx")
     .map(node => ({ fields: node.fields, frontmatter: node.frontmatter }))
+
   const tree = calculateTreeData(pages)
-  const array = recursiveFlattenNav(tree)
+  const array = recursivelyFlattenNav(tree)
   return { tree, array }
 }
 

@@ -18,7 +18,7 @@ const config = {
     links: [{ text: "", link: "" }],
   },
   sidebar: {
-    forcedNavOrder: ["/", "/book"],
+    forcedNavOrder: ["/", "/book", "/tasks"],
     notCollapsedDepth: 1,
     links: [
       {

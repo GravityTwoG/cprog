@@ -48,7 +48,7 @@ const plugins = [
 
 // check and add pwa functionality
 if (
-  process.env.NODE_END == "production" &&
+  process.env.NODE_ENV == "production" &&
   config.pwa &&
   config.pwa.enabled &&
   config.pwa.manifest
