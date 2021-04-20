@@ -134,18 +134,6 @@ const BookTemplate = props => {
       <PaddingWrapper>
         <StyledTitleWrapper className={"titleWrapper"}>
           <StyledHeading>{mdx.fields.title}</StyledHeading>
-          <div>
-            {githubUrl && (
-              <GithubButton to={githubUrl} aria-label="Star on GitHub">
-                Star
-              </GithubButton>
-            )}
-            {docsLocation && (
-              <GithubButton to={`${docsLocation}/${mdx.parent.relativePath}`}>
-                Edit on GitHub
-              </GithubButton>
-            )}
-          </div>
         </StyledTitleWrapper>
       </PaddingWrapper>
 
@@ -159,6 +147,19 @@ const BookTemplate = props => {
 
       <PaddingWrapper className="main">
         <MDXRenderer>{mdx.body}</MDXRenderer>
+      </PaddingWrapper>
+
+      <PaddingWrapper>
+        {githubUrl && (
+          <GithubButton to={githubUrl} aria-label="Star on GitHub">
+            Star
+          </GithubButton>
+        )}
+        {docsLocation && (
+          <GithubButton to={`${docsLocation}/${mdx.parent.relativePath}`}>
+            Edit on GitHub
+          </GithubButton>
+        )}
       </PaddingWrapper>
 
       <PaddingWrapper>

@@ -41,31 +41,31 @@ export const Sidebar = styled.aside`
 
   .rightSideBarUL {
     padding-inline-start: 0;
-
-    & li {
-      list-style-type: none;
-      padding: 10px 16px;
-    }
-    & li a {
-      padding: 0;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 1.5;
-
-      color: var(--textColor);
-    }
   }
 `
 
 const StyledListItem = styled.li`
   list-style: none;
+  list-style-type: none;
+  margin-bottom: 4px;
+
+  border-radius: 5px;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
 
   & > a {
     display: block;
-    padding: 0.45rem 0 0.45rem ${props => 2 + (props.level || 0) * 1}rem;
-    color: #5c6975;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+
+    color: var(--textColor);
     text-decoration: none;
-    font-weight: ${({ level }) => (level === 0 ? 700 : 400)};
     position: relative;
 
     &:hover {
@@ -74,9 +74,9 @@ const StyledListItem = styled.li`
   }
 `
 
-export const ListItem = ({ className, level, ...props }) => {
+export const ListItem = ({ className, ...props }) => {
   return (
-    <StyledListItem className={className} level={level}>
+    <StyledListItem className={className}>
       <a href={props.to} {...props} />
     </StyledListItem>
   )
