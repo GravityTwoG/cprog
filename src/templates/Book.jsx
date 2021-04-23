@@ -8,12 +8,6 @@ import { NextPrevious } from "../components/NextPrevious"
 import { GithubButton } from "../components/GithubButton"
 import { TableOfContents } from "../components/TableOfContents"
 
-import "../styles/global-styles.css"
-import "../styles/media-styles.css"
-import "../styles/media-btw768-991.css"
-import "../styles/media-max1023.css"
-import "../styles/media-max767.css"
-
 export const PaddingWrapper = styled.div`
   padding: 0 60px;
 

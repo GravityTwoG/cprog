@@ -10,6 +10,13 @@ import config from "../../config"
 import { Logo } from "./Logo"
 import { Link } from "./Link"
 
+import "../styles/theme.css"
+import "../styles/global-styles.css"
+import "../styles/media-styles.css"
+import "../styles/media-btw768-991.css"
+import "../styles/media-max1023.css"
+import "../styles/media-max767.css"
+
 const Header = React.lazy(() =>
   import("./Header").then(module => ({ default: module.Header }))
 )
