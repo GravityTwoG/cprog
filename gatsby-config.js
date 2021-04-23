@@ -61,6 +61,9 @@ if (
     resolve: "gatsby-plugin-offline",
     options: {
       appendScript: "src/sw.js",
+      workboxConfig: {
+        globPatterns: ["**/icons/*"],
+      },
     },
   })
 } else {

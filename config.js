@@ -31,8 +31,8 @@ const config = {
   siteMetadata: {
     title: "Cprog",
     description: "Си/Си++. От дилетанта до профессионала",
-    ogImage: "",
-    favicon: "",
+    ogImage: "src/images/favicon.svg",
+    favicon: "src/images/favicon.svg",
     docsLocation: "https://github.com/GravityTwoG/cprog/blob/master/content",
   },
   pwa: {
@@ -45,7 +45,13 @@ const config = {
       theme_color: "#fff",
       display: "standalone",
       crossOrigin: "use-credentials",
-      icon: `src/images/favicon.svg`,
+      icon: "src/images/favicon.png",
+      icon_oprions: {
+        purpose: "any maskable",
+      },
+      include_favicon: true,
+      theme_color_in_head: false,
+      cache_busting_mode: "none",
     },
   },
 }
