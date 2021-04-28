@@ -13,9 +13,10 @@ import { BurgerButton } from "./BurgerButton"
 import config from "../../config"
 const help = require("../images/help.svg")
 
+const headerHeight = 70
 const StyledHeader = styled.header`
   width: 100%;
-  height: 70px;
+  height: ${headerHeight}px;
   padding: 15px;
   display: flex;
   align-items: center;
@@ -148,13 +149,26 @@ export const Header = ({ location }) => {
 
   const headerRef = useRef(null)
   useEffect(() => {
-    let prevScrollPos = window.pageYOffset
-    function onScroll() {
-      const currentScrollPos = window.pageYOffset
-      const isHidden = currentScrollPos > 70 && currentScrollPos > prevScrollPos
+    let prevScrollPos = window.scrollY
+    let delta = headerHeight
 
-      if (headerRef.current.dataset.isHidden !== isHidden.toString()) {
-        headerRef.current.dataset.isHidden = isHidden.toString()
+    function onScroll() {
+      if (!headerRef.current) return
+      const currentScrollPos = window.scrollY
+      delta += currentScrollPos - prevScrollPos
+
+      if (currentScrollPos <= headerHeight) {
+        headerRef.current.dataset.isHidden = false
+        prevScrollPos = currentScrollPos
+        return
+      }
+
+      if (delta > headerHeight) {
+        delta = headerHeight
+        headerRef.current.dataset.isHidden = true
+      } else if (delta < 0) {
+        delta = 0
+        headerRef.current.dataset.isHidden = false
       }
 
       prevScrollPos = currentScrollPos
@@ -199,16 +213,13 @@ export const Header = ({ location }) => {
           if (link.link && link.text) {
             return (
               <li key={key}>
-                {
-                  // eslint-disable-next-line jsx-a11y/control-has-associated-label
-                  <a
-                    className="sidebarLink"
-                    href={link.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    dangerouslySetInnerHTML={{ __html: link.text }}
-                  />
-                }
+                <a
+                  className="sidebarLink"
+                  href={link.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  dangerouslySetInnerHTML={{ __html: link.text }}
+                />
               </li>
             )
           }
