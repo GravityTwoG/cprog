@@ -46,7 +46,7 @@ const config = {
       display: "standalone",
       crossOrigin: "use-credentials",
       icon: "src/images/favicon.png",
-      icon_oprions: {
+      icon_options: {
         purpose: "any maskable",
       },
       include_favicon: true,

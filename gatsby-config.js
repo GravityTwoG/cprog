@@ -60,10 +60,15 @@ if (
   plugins.push({
     resolve: "gatsby-plugin-offline",
     options: {
-      appendScript: "src/sw.js",
-      workboxConfig: {
-        globPatterns: ["**/icons/*"],
-      },
+      globPatterns: [
+        "index.html",
+        "404.html",
+        "*.css",
+        "*.png",
+        "*.jpg",
+        "*.svg",
+        "**/icons/*",
+      ],
     },
   })
 } else {

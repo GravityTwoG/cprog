@@ -1,5 +1,5 @@
 const path = require("path")
-const {setFieldsOnGraphQLNodeType} = require("./navigation")
+const { setFieldsOnGraphQLNodeType } = require("./navigation")
 
 module.exports.setFieldsOnGraphQLNodeType = setFieldsOnGraphQLNodeType
 
