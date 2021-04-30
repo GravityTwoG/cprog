@@ -114,6 +114,10 @@ const RightSideBarWidth = styled.div`
     height: 100vh;
     overflow: auto;
   }
+
+  @media (max-width: 1440px) {
+    display: none;
+  }
 `
 
 export const Layout = ({ children, location }) => {
@@ -122,7 +126,6 @@ export const Layout = ({ children, location }) => {
     config.header.logoLink !== "" ? config.header.logoLink : "/"
 
   const isPhoneOrTablet = useMediaQuery("(max-width: 1023px)")
-  const isDesktop = useMediaQuery("(min-width: 1440px)")
   return (
     <MDXProvider components={mdxComponents}>
       <div style={{ height: "70px", width: "100%" }}>
@@ -160,7 +163,7 @@ export const Layout = ({ children, location }) => {
           </div>
         </Content>
 
-        {isDesktop && <RightSideBarWidth className={"rightSidebar"} />}
+        <RightSideBarWidth className={"rightSidebar "} />
       </Wrapper>
     </MDXProvider>
   )
