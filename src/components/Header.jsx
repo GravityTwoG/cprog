@@ -68,16 +68,16 @@ const StyledMobileNavbar = styled.div`
     box-shadow: var(--boxShadow);
     overflow: hidden;
     transition: transform 0.2s ease, visibility 0.2s ease;
-    transform: translate(100%) rotateZ(0);
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
     will-change: transform;
-    visibility: hidden;
     content-visibility: auto;
     contain-intrinsic-size: 431px 100vh;
     contain: layout paint;
 
     &[data-is-open="true"] {
-      transform: translate(0%) rotateZ(0);
-      visibility: visible;
+      -webkit-transform: translate3d(0%, 0, 0);
+      transform: translate3d(0%, 0, 0);
     }
   }
 `
