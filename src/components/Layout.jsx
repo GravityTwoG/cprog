@@ -20,8 +20,8 @@ import "../styles/media-max767.css"
 const Header = React.lazy(() =>
   import("./Header").then(module => ({ default: module.Header }))
 )
-const Sidebar = React.lazy(() =>
-  import("./Sidebar").then(module => ({ default: module.Sidebar }))
+const Navbar = React.lazy(() =>
+  import("./Navbar").then(module => ({ default: module.Navbar }))
 )
 
 const Wrapper = styled("div")`
@@ -150,7 +150,7 @@ export const Layout = ({ children, location }) => {
 
             {!isSSR && (
               <React.Suspense fallback={<div />}>
-                <Sidebar location={location} className="sticky" />
+                <Navbar location={location} className="sticky" />
               </React.Suspense>
             )}
           </LeftSideBar>

@@ -1,8 +1,14 @@
 import React, { useState } from "react"
+import { styled } from "@linaria/react"
 
 import { StyledListItem } from "./items"
 import { TreeNodeTitle } from "./TreeNodeTitle"
 import config from "../../../config"
+
+const StyledChildrenList = styled.ul`
+  border-left: 2px solid var(--decoColor);
+  margin-left: 1rem;
+`
 
 export const TreeNode = React.memo(
   ({
@@ -31,11 +37,10 @@ export const TreeNode = React.memo(
           isChapterHeading={isChapterHeading}
           hasChildren={hasChildren}
           active={active}
-          notCollapsedDepth={notCollapsedDepth}
         />
 
         {!isCollapsed && hasChildren ? (
-          <ul>
+          <StyledChildrenList>
             {items.map(item => (
               <TreeNode
                 key={item.url}
@@ -47,7 +52,7 @@ export const TreeNode = React.memo(
                 title={item.title}
               />
             ))}
-          </ul>
+          </StyledChildrenList>
         ) : null}
       </StyledListItem>
     )

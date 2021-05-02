@@ -5,7 +5,7 @@ import { useMediaQuery } from "./useMediaQuery"
 import { useThemeContext } from "./ThemeProvider"
 
 import { DarkModeSwitch } from "./DarkModeSwitch"
-import { Sidebar } from "./Sidebar"
+import { Navbar } from "./Navbar"
 import { Link } from "./Link"
 import { Logo } from "./Logo.jsx"
 import { BurgerButton } from "./BurgerButton"
@@ -287,7 +287,7 @@ export const Header = ({ location }) => {
             )}
           </StyledList>
 
-          <Sidebar location={location} style={{ maxHeight: "100%" }} />
+          <Navbar location={location} style={{ maxHeight: "100%" }} />
         </StyledMobileNavbar>
       )}
     </StyledHeader>

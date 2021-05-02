@@ -51,7 +51,6 @@ export const TreeNodeTitle = ({
   url,
   hasChildren,
   active,
-  notCollapsedDepth,
 }) => {
   return (
     <StyledDiv className="tree-node-title">
@@ -61,10 +60,7 @@ export const TreeNodeTitle = ({
           {title}
         </ChapterHeading>
       )}
-      {title &&
-      hasChildren &&
-      notCollapsedDepth == 0 &&
-      !config.sidebar.frontLine ? (
+      {title && hasChildren && !config.sidebar.frontLine ? (
         <ArrowButton
           onClick={collapse}
           aria-label={isCollapsed ? "Развернуть" : "Свернуть"}
