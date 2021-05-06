@@ -19,7 +19,7 @@ const StyledSidebar = styled.aside`
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
   padding-top: 6px;
-  padding-right: 20px;
+  padding-right: 12px;
   padding-left: 12px;
 
   scrollbar-width: auto;
@@ -39,7 +39,6 @@ const StyledSidebar = styled.aside`
   }
 
   @media (max-width: 767px) {
-    padding-right: 8px;
     &::-webkit-scrollbar {
       width: 8px;
     }
@@ -85,12 +84,9 @@ const SidebarUl = styled.ul`
     position: relative;
     width: 100%;
   }
-  & .item .item {
-    margin-left: 16px;
-  }
 `
 
-export const Sidebar = ({ location, ...props }) => {
+export const Navbar = ({ location, ...props }) => {
   const treeData = useNavigationTree()
 
   return (

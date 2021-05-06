@@ -3,7 +3,7 @@ import { styled } from "@linaria/react"
 import { Link } from "gatsby"
 import { useNavigationArray } from "./useNavigationArray"
 
-export const StyledNextPrevious = styled("div")`
+export const StyledNextPrevious = styled.div`
   margin: 2rem 0;
   padding: 0px;
   width: auto;
@@ -68,21 +68,7 @@ export const StyledNextPrevious = styled("div")`
     text-align: left;
   }
 
-  .smallContent {
-    color: var(--textColor);
-    display: block;
-    margin: 0px;
-    padding: 0px;
-  }
-
-  .smallContent span {
-    font-size: 12px;
-    line-height: 1.625;
-    font-weight: 400;
-  }
-
   .nextPreviousTitle {
-    margin-top: 8px;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     line-clamp: 2;
@@ -151,9 +137,6 @@ export const NextPrevious = ({ mdx }) => {
             <LeftArrow />
           </div>
           <div className={"preRightWrapper"}>
-            <div className={"smallContent"}>
-              <span>Назад</span>
-            </div>
             <div className={"nextPreviousTitle"}>
               {nav[currentIndex - 1].title}
             </div>
@@ -163,9 +146,6 @@ export const NextPrevious = ({ mdx }) => {
       {nextInfo.url && currentIndex >= 0 ? (
         <Link to={nav[currentIndex + 1].url} className={"nextBtn"}>
           <div className={"nextRightWrapper"}>
-            <div className={"smallContent"}>
-              <span>Вперёд</span>
-            </div>
             <div className={"nextPreviousTitle"}>
               {nav[currentIndex + 1] && nav[currentIndex + 1].title}
             </div>

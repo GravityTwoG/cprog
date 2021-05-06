@@ -60,15 +60,7 @@ if (
   plugins.push({
     resolve: "gatsby-plugin-offline",
     options: {
-      globPatterns: [
-        "index.html",
-        "404.html",
-        "*.css",
-        "*.png",
-        "*.jpg",
-        "*.svg",
-        "**/icons/*",
-      ],
+      globPatterns: ["**/icons/*"],
     },
   })
 } else {
