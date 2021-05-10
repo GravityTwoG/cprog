@@ -1,4 +1,5 @@
 :root {
+  --commonTextSize: 20px;
   --accentColor: #3884ff;
   --accentHoverColor: #1656b3;
   --backgroundColor: #fff;
@@ -19,4 +20,10 @@
   --linkColor: #3884ff;
   --decoColor: #777;
   --boxShadow: rgba(0, 0, 0, 0.3) 0px 4px 12px 0px;
+}
+
+@media (max-width: 767px) {
+  :root {
+    --commonTextSize: 18px;
+  }
 }
