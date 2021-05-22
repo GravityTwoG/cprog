@@ -51,8 +51,8 @@ a:hover {
 
 .paragraph {
   margin: 1rem 0 2.5rem;
-  line-height: 1.56;
-  font-size: 16px;
+  line-height: 1.5;
+  font-size: var(--commonTextSize);
   overflow-wrap: break-word;
 }
 
@@ -76,6 +76,7 @@ a:hover {
 }
 
 pre {
+  font-size: var(--commonTextSize);
   border: 0 !important;
   background-color: rgb(245, 247, 249);
 }
@@ -161,16 +162,6 @@ img {
 .heading6 {
   font-size: 14px;
   font-weight: 400;
-}
-
-.tal {
-  text-align: left;
-}
-.tar {
-  text-align: right;
-}
-.tac {
-  text-align: center;
 }
 
 .gatsby-resp-image-figure {

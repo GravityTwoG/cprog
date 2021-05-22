@@ -11,19 +11,20 @@ export const Sidebar = styled.aside`
   padding-bottom: 1rem;
   background: var(--backgroundColor);
 
-  & .rightSideBarUL .rightSideTitle {
+  & ul .rightSideTitle {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0px 16px;
+    border-radius: 5px;
 
-    line-height: 1;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.2px;
-    padding: 0px 16px;
+    line-height: 1;
+
     color: var(--textColor);
     cursor: pointer;
-    border-radius: 5px;
     background-color: transparent;
     transition: background-color 0.3s ease;
 
@@ -39,7 +40,7 @@ export const Sidebar = styled.aside`
     }
   }
 
-  .rightSideBarUL {
+  & ul {
     padding-inline-start: 0;
   }
 `
@@ -60,7 +61,7 @@ const StyledListItem = styled.li`
   & > a {
     display: block;
     padding: 10px 16px;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
     line-height: 1.5;
 
@@ -70,6 +71,12 @@ const StyledListItem = styled.li`
 
     &:hover {
       color: var(--accentColor) !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    & > a {
+      font-size: 14px;
     }
   }
 `
@@ -141,7 +148,7 @@ export const TableOfContents = ({
   if (finalNavItems && finalNavItems.length) {
     return (
       <Sidebar className={className}>
-        <ul className={"rightSideBarUL"}>
+        <ul className="table-of-contents">
           {!isDefaultCollapsed && (
             <>
               <li className={"rightSideTitle"}>Содержание</li>

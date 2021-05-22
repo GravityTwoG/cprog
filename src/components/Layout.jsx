@@ -16,6 +16,7 @@ import "../styles/media-styles.css"
 import "../styles/media-btw768-991.css"
 import "../styles/media-max1023.css"
 import "../styles/media-max767.css"
+import "../styles/utility.css"
 
 const Header = React.lazy(() =>
   import("./Header").then(module => ({ default: module.Header }))

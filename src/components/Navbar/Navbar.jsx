@@ -29,7 +29,6 @@ const StyledSidebar = styled.aside`
     width: 8px;
     cursor: pointer;
   }
-
   &::-webkit-scrollbar-thumb {
     background-color: var(--accentColor);
     border-radius: 4px;
@@ -37,7 +36,6 @@ const StyledSidebar = styled.aside`
   &::-webkit-scrollbar-thumb:hover {
     background-color: var(--accentHoverColor);
   }
-
   @media (max-width: 767px) {
     &::-webkit-scrollbar {
       width: 8px;
@@ -59,6 +57,17 @@ const StyledSidebar = styled.aside`
 
     & a {
       color: #001934;
+    }
+  }
+
+  .external-links a {
+    display: inline-block;
+    width: 100%;
+    padding-left: 0;
+    & > svg {
+      vertical-align: middle;
+      margin-left: 6px;
+      margin-bottom: 3px;
     }
   }
 `
@@ -116,22 +125,20 @@ export const Navbar = ({ location, ...props }) => {
         </SidebarUl>
       </nav>
 
-      <ul>
+      <ul className="external-links">
         {config.sidebar.links.map((link, key) => {
           if (link.link && link.text) {
             return (
               <ListItem key={key} to={link.link} rel="noopener">
                 {link.text}
-                <ExternalLink
-                  size={14}
-                  style={{ marginLeft: "5px", verticalAlign: "baseline" }}
-                />
+                <ExternalLink size={14} />
               </ListItem>
             )
           }
           return null
         })}
       </ul>
+
       {config.pwa.enabled && <PwaWidget />}
     </StyledSidebar>
   )
