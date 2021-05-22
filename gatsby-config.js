@@ -44,6 +44,13 @@ const plugins = [
   },
   "gatsby-plugin-preact",
   "gatsby-plugin-linaria",
+  {
+    resolve: `gatsby-progress-bar`,
+    options: {
+      showSpinner: false,
+      color: "#3884ff",
+    },
+  },
 ]
 
 // check and add pwa functionality
