@@ -102,8 +102,9 @@ ul > li > p.paragraph {
   margin: 0.5rem 0 1rem;
 }
 
-ul > li {
-  font-size: 16px;
+ul > li,
+ol > li {
+  font-size: var(--commonTextSize);
   line-height: 1.8;
   font-weight: 400;
 }

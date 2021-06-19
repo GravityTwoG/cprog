@@ -17,6 +17,7 @@ const StyledDiv = styled.div`
   min-height: 37px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 
   font-size: 16px;
   line-height: 16px;

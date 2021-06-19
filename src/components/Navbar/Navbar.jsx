@@ -60,10 +60,21 @@ const StyledSidebar = styled.aside`
     }
   }
 
+  .external-links {
+    padding-inline-start: 0;
+  }
+  .external-links li {
+    background-color: transparent;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+  }
   .external-links a {
     display: inline-block;
     width: 100%;
-    padding-left: 0;
+    padding: 0.45rem 1rem 0.45rem 2rem;
     & > svg {
       vertical-align: middle;
       margin-left: 6px;

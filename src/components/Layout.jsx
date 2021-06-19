@@ -34,7 +34,6 @@ const Wrapper = styled("div")`
 const Content = styled.main`
   align-self: center;
   overflow: hidden;
-  background: var(--backgroundColor);
   min-height: calc(100vh - 70px);
   contain: content;
 

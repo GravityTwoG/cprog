@@ -1,5 +1,5 @@
-import React from "react";
-import { styled } from '@linaria/react';
+import React from "react"
+import { styled } from "@linaria/react"
 
 const StyledTableWrapper = styled.div`
   display: flex;
@@ -8,7 +8,7 @@ const StyledTableWrapper = styled.div`
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  
+
   & > div {
     flex: 0 0 60px;
   }
@@ -41,6 +41,17 @@ const StyledTableWrapper = styled.div`
       background-color: #001523;
     }
   }
+  table thead tr {
+    background-color: #f8f8f8;
+
+    html[data-theme="dark"] & {
+      background-color: #001523;
+    }
+  }
+  table thead {
+    position: sticky;
+    top: 0;
+  }
 
   table tr th {
     font-weight: bold;
@@ -70,6 +81,8 @@ const StyledTableWrapper = styled.div`
 
 export const Table = props => (
   <StyledTableWrapper>
-    <div/><table {...props} /><div/>
+    <div />
+    <table {...props} />
+    <div />
   </StyledTableWrapper>
 )
