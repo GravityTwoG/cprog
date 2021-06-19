@@ -44,6 +44,7 @@
   },
   "devDependencies": {
     "@emotion/babel-plugin": "^11.1.2",
+    "netlify-cli": "^3.37.37",
     "prettier": "2.1.2",
     "rimraf": "^3.0.2"
   },
