@@ -5,7 +5,7 @@ const config = {
   },
   gatsby: {
     pathPrefix: "/",
-    siteUrl: "https://github.com/GravityTwoG/cprog",
+    siteUrl: "https://cprog.netlify.app",
     gaTrackingId: null,
     trailingSlash: false,
   },

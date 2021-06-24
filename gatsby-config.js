@@ -51,6 +51,7 @@ const plugins = [
       color: "#3884ff",
     },
   },
+  "gatsby-plugin-sitemap",
 ]
 
 // check and add pwa functionality

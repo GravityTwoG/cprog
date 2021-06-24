@@ -27,6 +27,7 @@
     "gatsby-plugin-remove-serviceworker": "^1.0.0",
     "gatsby-plugin-sass": "^3.0.0",
     "gatsby-plugin-sharp": "^2.6.43",
+    "gatsby-plugin-sitemap": "^4.3.1",
     "gatsby-plugin-svgr": "^2.0.2",
     "gatsby-remark-images": "^3.3.40",
     "gatsby-remark-prismjs": "^3.11.0",
