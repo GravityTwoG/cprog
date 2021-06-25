@@ -11,6 +11,8 @@ const StyledButton = styled.button`
   margin-right: 5px;
   padding: 0.5rem;
   cursor: pointer;
+  display: flex;
+  align-items: center;
 
   & > svg {
     width: 20px;

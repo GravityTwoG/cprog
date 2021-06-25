@@ -14,7 +14,7 @@ const ChapterHeading = styled(p => (
 `
 
 const StyledDiv = styled.div`
-  min-height: 37px;
+  min-height: 36px;
   display: flex;
   align-items: center;
   cursor: pointer;
@@ -44,32 +44,37 @@ const StyledDiv = styled.div`
   }
 `
 
-export const TreeNodeTitle = ({
-  title,
-  isChapterHeading,
-  isCollapsed,
-  collapse,
-  url,
-  hasChildren,
-  active,
-}) => {
-  return (
-    <StyledDiv className="tree-node-title">
-      {title && !isChapterHeading && <Link to={url}>{title}</Link>}
-      {isChapterHeading && (
-        <ChapterHeading onClick={collapse} role="button">
-          {title}
-        </ChapterHeading>
-      )}
-      {title && hasChildren && !config.sidebar.frontLine ? (
-        <ArrowButton
-          onClick={collapse}
-          aria-label={isCollapsed ? "Развернуть" : "Свернуть"}
-          title={isCollapsed ? "Развернуть" : "Свернуть"}
-          data-is-active={active}
-          data-is-collapsed={isCollapsed}
-        />
-      ) : null}
-    </StyledDiv>
-  )
-}
+export const TreeNodeTitle = React.forwardRef(
+  (
+    {
+      title,
+      isChapterHeading,
+      isCollapsed,
+      collapse,
+      url,
+      hasChildren,
+      active,
+    },
+    ref
+  ) => {
+    return (
+      <StyledDiv className="tree-node-title" ref={ref}>
+        {title && !isChapterHeading && <Link to={url}>{title}</Link>}
+        {isChapterHeading && (
+          <ChapterHeading onClick={collapse} role="button">
+            {title}
+          </ChapterHeading>
+        )}
+        {title && hasChildren && !config.sidebar.frontLine ? (
+          <ArrowButton
+            onClick={collapse}
+            aria-label={isCollapsed ? "Развернуть" : "Свернуть"}
+            title={isCollapsed ? "Развернуть" : "Свернуть"}
+            data-is-active={active}
+            data-is-collapsed={isCollapsed}
+          />
+        ) : null}
+      </StyledDiv>
+    )
+  }
+)

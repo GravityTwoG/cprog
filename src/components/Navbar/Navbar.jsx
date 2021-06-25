@@ -2,7 +2,7 @@ import React from "react"
 import { styled } from "@linaria/react"
 
 import { ExternalLink } from "react-feather"
-import { ListItem } from "./items"
+import { ListItem } from "./ListItem"
 import { Divider } from "./Divider"
 import { PwaWidget } from "../PwaWidget"
 import { TreeNode } from "./TreeNode"

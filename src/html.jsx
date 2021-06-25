@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-
+import "resize-observer-polyfill"
 export default function HTML(props) {
   return (
     <html {...props.htmlAttributes} lang="ru">

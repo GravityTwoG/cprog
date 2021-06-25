@@ -1,23 +1,31 @@
 import React, { useState } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { styled } from "@linaria/react"
+import { useMeasure } from "react-use"
 
 import config from "../../config"
 
 import { ArrowButton } from "./ArrowButton"
 
-export const Sidebar = styled.aside`
+export const Nav = styled.nav`
   width: 100%;
-  padding-bottom: 1rem;
+  margin-bottom: 1rem;
   background: var(--backgroundColor);
+  overflow: hidden;
+  transition: height 0.2s ease-in-out;
 
-  & ul .rightSideTitle {
+  & .rightSideTitle {
+    width: 100%;
+    height: 36px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 0px 16px;
     border-radius: 5px;
+    border: none;
 
+    font-family: inherit;
+    font-size: 20px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 1.2px;
@@ -35,13 +43,13 @@ export const Sidebar = styled.aside`
     & > button {
       height: auto;
       margin-right: 0;
-      padding-top: 10px;
-      padding-bottom: 6px;
     }
   }
 
   & ul {
     padding-inline-start: 0;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 1;
   }
 `
 
@@ -60,7 +68,7 @@ const StyledListItem = styled.li`
 
   & > a {
     display: block;
-    padding: 10px 16px;
+    padding: 6px 16px;
     font-size: 16px;
     font-weight: 500;
     line-height: 1.5;
@@ -143,42 +151,39 @@ export const TableOfContents = ({
     })
   }
 
-  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [isCollapsed, setIsCollapsed] = useState(isDefaultCollapsed)
 
+  const [contentRef, { height: contentHeight }] = useMeasure()
   if (finalNavItems && finalNavItems.length) {
     return (
-      <Sidebar className={className}>
-        <ul className="table-of-contents">
-          {!isDefaultCollapsed && (
-            <>
-              <li className={"rightSideTitle"}>Содержание</li>
-              {finalNavItems}
-            </>
-          )}
-          {isDefaultCollapsed && (
-            <>
-              <li
-                className={"rightSideTitle"}
-                onClick={() => setIsCollapsed(!isCollapsed)}
-              >
-                Содержание
-                <ArrowButton
-                  aria-label={isCollapsed ? "Развернуть" : "Свернуть"}
-                  title={isCollapsed ? "Развернуть" : "Свернуть"}
-                  data-is-collapsed={isCollapsed}
-                />
-              </li>
-              {!isCollapsed && finalNavItems}
-            </>
-          )}
+      <Nav
+        className={className}
+        style={{ height: 36 + (isCollapsed ? 0 : contentHeight) }}
+      >
+        <button
+          className={"rightSideTitle"}
+          onClick={() => setIsCollapsed(!isCollapsed)}
+          aria-label={isCollapsed ? "Развернуть" : "Свернуть"}
+          title={isCollapsed ? "Развернуть" : "Свернуть"}
+        >
+          Содержание
+          <ArrowButton data-is-collapsed={isCollapsed} />
+        </button>
+
+        <ul
+          ref={contentRef}
+          className="table-of-contents"
+          style={{ opacity: isCollapsed ? 0 : 1 }}
+        >
+          {finalNavItems}
         </ul>
-      </Sidebar>
+      </Nav>
     )
   }
 
   return (
-    <Sidebar className={className}>
+    <Nav className={className}>
       <ul></ul>
-    </Sidebar>
+    </Nav>
   )
 }

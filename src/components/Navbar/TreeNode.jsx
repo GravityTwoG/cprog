@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { styled } from "@linaria/react"
 
-import { StyledListItem } from "./items"
+import { StyledListItem } from "./ListItem"
 import { TreeNodeTitle } from "./TreeNodeTitle"
 import config from "../../../config"
 
@@ -39,7 +39,7 @@ export const TreeNode = React.memo(
           active={active}
         />
 
-        {!isCollapsed && hasChildren ? (
+        {hasChildren && !isCollapsed ? (
           <StyledChildrenList>
             {items.map(item => (
               <TreeNode

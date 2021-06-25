@@ -50,29 +50,6 @@ const Content = styled.main`
   }
   & > aside.before-content {
     padding: 0 60px;
-
-    & > ul > .rightSideTitle {
-      border: none;
-      padding-left: 0;
-      padding-right: 0;
-      padding-top: 0;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: color 0.2s linear;
-
-      & > button {
-        margin: 0;
-      }
-
-      &:hover {
-        color: var(--accentColor);
-      }
-      &:hover svg {
-        fill: var(--accentColor);
-      }
-    }
   }
 
   @media (max-width: 520px) {
