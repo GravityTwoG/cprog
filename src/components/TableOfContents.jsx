@@ -7,6 +7,8 @@ import config from "../../config"
 
 import { ArrowButton } from "./ArrowButton"
 
+const titleHeight = 36
+
 export const Nav = styled.nav`
   width: 100%;
   margin-bottom: 1rem;
@@ -16,7 +18,7 @@ export const Nav = styled.nav`
 
   & .rightSideTitle {
     width: 100%;
-    height: 36px;
+    height: ${titleHeight}px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -47,9 +49,13 @@ export const Nav = styled.nav`
   }
 
   & ul {
+    margin-top: 0.5rem;
     padding-inline-start: 0;
     transition: opacity 0.2s ease-in-out;
     opacity: 1;
+    &[data-is-collapsed="true"] {
+      opacity: 0;
+    }
   }
 `
 
@@ -158,7 +164,7 @@ export const TableOfContents = ({
     return (
       <Nav
         className={className}
-        style={{ height: 36 + (isCollapsed ? 0 : contentHeight) }}
+        style={{ height: titleHeight + (isCollapsed ? 0 : contentHeight) }}
       >
         <button
           className={"rightSideTitle"}
@@ -173,7 +179,7 @@ export const TableOfContents = ({
         <ul
           ref={contentRef}
           className="table-of-contents"
-          style={{ opacity: isCollapsed ? 0 : 1 }}
+          data-is-collapsed={isCollapsed}
         >
           {finalNavItems}
         </ul>
