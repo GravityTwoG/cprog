@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useMemo } from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import { styled } from "@linaria/react"
 import { useMeasure } from "react-use"
@@ -8,6 +8,7 @@ import config from "../../config"
 import { ArrowButton } from "./ArrowButton"
 
 const titleHeight = 36
+const padHeight = 8
 
 export const Nav = styled.nav`
   width: 100%;
@@ -48,8 +49,7 @@ export const Nav = styled.nav`
     }
   }
 
-  & ul {
-    margin-top: 0.5rem;
+  & > ul {
     padding-inline-start: 0;
     transition: opacity 0.2s ease-in-out;
     opacity: 1;
@@ -123,73 +123,71 @@ export const TableOfContents = ({
     }
   `)
 
-  let finalNavItems
-
-  if (allMdx.edges !== undefined && allMdx.edges.length > 0) {
-    allMdx.edges.forEach(item => {
-      let innerItems
-
-      if (item !== undefined) {
-        if (
-          item.node.fields.slug === location.pathname ||
-          config.gatsby.pathPrefix + item.node.fields.slug === location.pathname
-        ) {
-          if (item.node.tableOfContents.items) {
-            innerItems = item.node.tableOfContents.items.map(
-              (innerItem, index) => {
-                const itemId = innerItem.title
-                  ? innerItem.title.replace(/\s+/g, "").toLowerCase()
-                  : "#"
-
-                return (
-                  <ListItem key={index} to={`#${itemId}`} level={1}>
-                    {innerItem.title}
-                  </ListItem>
-                )
-              }
-            )
-          }
-        }
-      }
-      if (innerItems) {
-        finalNavItems = innerItems
-      }
-    })
-  }
-
   const [isCollapsed, setIsCollapsed] = useState(isDefaultCollapsed)
-
   const [contentRef, { height: contentHeight }] = useMeasure()
-  if (finalNavItems && finalNavItems.length) {
-    return (
-      <Nav
-        className={className}
-        style={{ height: titleHeight + (isCollapsed ? 0 : contentHeight) }}
-      >
-        <button
-          className={"rightSideTitle"}
-          onClick={() => setIsCollapsed(!isCollapsed)}
-          aria-label={isCollapsed ? "Развернуть" : "Свернуть"}
-          title={isCollapsed ? "Развернуть" : "Свернуть"}
-        >
-          Содержание
-          <ArrowButton data-is-collapsed={isCollapsed} />
-        </button>
 
-        <ul
-          ref={contentRef}
-          className="table-of-contents"
-          data-is-collapsed={isCollapsed}
-        >
-          {finalNavItems}
-        </ul>
-      </Nav>
-    )
-  }
+  const links = useMemo(() => generateLinks(allMdx, location), [
+    allMdx,
+    location,
+  ])
+  if (!links.length) return null
 
   return (
-    <Nav className={className}>
-      <ul></ul>
+    <Nav
+      className={className}
+      style={{
+        height: titleHeight + (isCollapsed ? 0 : contentHeight + padHeight),
+      }}
+    >
+      <button
+        className={"rightSideTitle"}
+        onClick={() => setIsCollapsed(!isCollapsed)}
+        aria-label={isCollapsed ? "Развернуть" : "Свернуть"}
+        title={isCollapsed ? "Развернуть" : "Свернуть"}
+      >
+        Содержание
+        <ArrowButton data-is-collapsed={isCollapsed} />
+      </button>
+
+      <div style={{ height: padHeight }}></div>
+      <ul
+        ref={contentRef}
+        className="table-of-contents"
+        data-is-collapsed={isCollapsed}
+      >
+        {links.map((l, i) => (
+          <ListItem key={i} to={l.link} level={1}>
+            {l.title}
+          </ListItem>
+        ))}
+      </ul>
     </Nav>
   )
+}
+
+function generateLinks(allMdx, location) {
+  if (allMdx.edges === undefined || allMdx.edges.length === 0) return []
+
+  const currentPage = allMdx.edges.find(item => {
+    if (!item) return false
+    return (
+      item.node.fields.slug === location.pathname ||
+      config.gatsby.pathPrefix + item.node.fields.slug === location.pathname
+    )
+  })
+
+  if (!currentPage || !currentPage.node.tableOfContents.items) return []
+
+  const links = currentPage.node.tableOfContents.items.map(innerItem => {
+    const itemId = innerItem.title
+      ? innerItem.title.replace(/\s+/g, "").toLowerCase()
+      : "#"
+
+    return {
+      link: `#${itemId}`,
+      title: innerItem.title,
+    }
+  })
+
+  return links
 }
