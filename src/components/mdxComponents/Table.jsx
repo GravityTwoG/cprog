@@ -1,6 +1,10 @@
 import React from "react"
 import { styled } from "@linaria/react"
 
+const borderColor = "#cccccc"
+const nthBackgroundLight = "#f8f8f8"
+const nthBackgroundDark = "#146da9"
+
 const StyledTableWrapper = styled.div`
   display: flex;
   margin: 0 -60px;
@@ -9,6 +13,7 @@ const StyledTableWrapper = styled.div`
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
 
+  // pad
   & > div {
     flex: 0 0 60px;
   }
@@ -23,59 +28,50 @@ const StyledTableWrapper = styled.div`
   }
 
   table {
-    padding: 0;
     border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  thead tr th {
+    position: sticky;
+    top: 0;
   }
 
   table tr {
-    border-top: 1px solid #cccccc;
     margin: 0;
     padding: 0;
     background: var(--backgroundColor);
   }
 
-  table tr:nth-of-type(2n) {
-    background-color: #f8f8f8;
-
-    html[data-theme="dark"] & {
-      background-color: #001523;
-    }
-  }
   table thead tr {
-    background-color: #f8f8f8;
+    background-color: ${nthBackgroundLight};
 
     html[data-theme="dark"] & {
-      background-color: #001523;
+      background-color: ${nthBackgroundDark};
+    }
+
+    & th {
+      font-weight: bold;
+      border: 1px solid ${borderColor};
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px;
     }
   }
-  table thead {
-    position: sticky;
-    top: 0;
+
+  table tbody tr:nth-of-type(2n) {
+    background-color: ${nthBackgroundLight};
+
+    html[data-theme="dark"] & {
+      background-color: ${nthBackgroundDark};
+    }
   }
 
-  table tr th {
-    font-weight: bold;
-    border: 1px solid #cccccc;
+  table td {
+    border: 1px solid ${borderColor};
     text-align: left;
     margin: 0;
     padding: 6px 13px;
-  }
-
-  table tr td {
-    border: 1px solid #cccccc;
-    text-align: left;
-    margin: 0;
-    padding: 6px 13px;
-  }
-
-  table tr th :first-of-type,
-  table tr td :first-of-type {
-    margin-top: 0;
-  }
-
-  table tr th :last-child,
-  table tr td :last-child {
-    margin-bottom: 0;
   }
 `
 
