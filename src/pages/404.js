@@ -1,15 +1,28 @@
 import React from "react"
-import { Link } from "../components/Link"
-import { StyledText } from "../components/StyledText"
+import { styled } from "@linaria/react"
+
+import { Link } from "../components/atoms/Link"
+import { StyledText } from "../components/atoms/StyledText"
+
+const StyledContent = styled.div`
+  padding: 20px 60px;
+  min-height: 20vh;
+
+  @media (max-width: 520px) {
+    padding: 20px 16px;
+  }
+`
 
 const Page404 = () => {
   return (
-    <StyledText>
-      <h1>Такой страницы не существует</h1>
-      <p className="paragraph">
-        <Link to="/">Главная</Link>
-      </p>
-    </StyledText>
+    <StyledContent>
+      <StyledText>
+        <h1>Страница не найдена</h1>
+        <p className="paragraph">
+          <Link to="/">Главная</Link>
+        </p>
+      </StyledText>
+    </StyledContent>
   )
 }
 

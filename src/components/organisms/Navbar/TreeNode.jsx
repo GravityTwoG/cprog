@@ -3,7 +3,7 @@ import { styled } from "@linaria/react"
 
 import { StyledListItem } from "./ListItem"
 import { TreeNodeTitle } from "./TreeNodeTitle"
-import config from "../../../config"
+import config from "../../../../config"
 
 const StyledChildrenList = styled.ul`
   border-left: 2px solid var(--decoColor);
@@ -23,7 +23,7 @@ export const TreeNode = React.memo(
     const active = isNodeActive(location, url)
 
     const calculatedClassName = `${className} item ${active ? "active" : ""}`
-    const [isCollapsed, setIsCollapsed] = useState(notCollapsedDepth == 0)
+    const [isCollapsed, setIsCollapsed] = useState(notCollapsedDepth === 0)
     const collapse = () => setIsCollapsed(c => !c)
 
     const hasChildren = items.length !== 0
@@ -67,12 +67,9 @@ const isNodeActive = (location, url) => {
   ) {
     return true
   }
-  if (
+
+  return (
     location.pathname === `${url}/` ||
     location.pathname === config.gatsby.pathPrefix + `${url}/`
-  ) {
-    return true
-  }
-
-  return false
+  )
 }

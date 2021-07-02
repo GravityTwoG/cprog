@@ -2,12 +2,12 @@ import React from "react"
 import { styled } from "@linaria/react"
 import { ExternalLink } from "react-feather"
 
-import config from "../../config"
+import config from "../../../config"
 
-import { Link } from "./Link"
-import { StyledText } from "./StyledText"
-import { PaddingWrapper } from "../templates/Book"
-import { GithubProfile } from "./GithubProfile"
+import { Link } from "../atoms/Link"
+import { StyledText } from "../atoms/StyledText"
+import { PaddingWrapper } from "../../templates/Book"
+import { GithubProfile } from "../molecules/GithubProfile"
 
 const StyledFooter = styled.footer`
   padding: 1rem 0;

@@ -2,13 +2,13 @@ import React from "react"
 import { styled } from "@linaria/react"
 import { MDXProvider } from "@mdx-js/react"
 
-import { mdxComponents } from "./mdxComponents"
-import { useMediaQuery } from "./useMediaQuery"
-
-import { Footer } from "./Footer.jsx"
 import config from "../../config"
-import { Logo } from "./Logo"
-import { Link } from "./Link"
+import { mdxComponents } from "./mdxComponents"
+import { useMediaQuery } from "../hooks/useMediaQuery"
+
+import { Footer } from "./organisms/Footer.jsx"
+import { Logo } from "./atoms/Logo"
+import { Link } from "./atoms/Link"
 
 import "../styles/theme.css"
 import "../styles/global-styles.css"
@@ -19,10 +19,10 @@ import "../styles/media-max767.css"
 import "../styles/utility.css"
 
 const Header = React.lazy(() =>
-  import("./Header").then(module => ({ default: module.Header }))
+  import("./organisms/Header").then(module => ({ default: module.Header }))
 )
 const Navbar = React.lazy(() =>
-  import("./Navbar").then(module => ({ default: module.Navbar }))
+  import("./organisms/Navbar").then(module => ({ default: module.Navbar }))
 )
 
 const Wrapper = styled("div")`

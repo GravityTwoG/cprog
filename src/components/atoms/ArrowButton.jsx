@@ -1,7 +1,7 @@
 import React from "react"
 import { styled } from "@linaria/react"
 
-import OpenedSvg from "../images/opened"
+import OpenedSvg from "../../images/opened"
 
 const StyledButton = styled.button`
   background: transparent;

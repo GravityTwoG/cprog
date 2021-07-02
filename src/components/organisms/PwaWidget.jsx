@@ -1,12 +1,12 @@
-import React from 'react'
-import { styled } from '@linaria/react';
-import {usePwaContext} from "./PwaProvider";
+import React from "react"
+import { styled } from "@linaria/react"
+import { usePwaContext } from "../PwaProvider"
 
-import {StyledText} from "./StyledText";
+import { StyledText } from "../atoms/StyledText"
 
 const StyledDiv = styled.div`
   padding: 16px 16px 16px 32px;
-  
+
   @media all and (display-mode: standalone) {
     .pwa-install {
       display: none;
@@ -24,29 +24,28 @@ const StyledButton = styled.button`
   text-align: center;
   color: #fff;
   cursor: pointer;
-  transition: background-color .3s linear;
-  
+  transition: background-color 0.3s linear;
+
   &:hover {
     background-color: #575bb1;
   }
 `
 
 export const PwaWidget = () => {
-  const {buildDate, installApp, installable} = usePwaContext()
+  const { buildDate, installApp, installable } = usePwaContext()
 
   return (
     <StyledDiv>
-      {installable &&
+      {installable && (
         <div className="pwa-install">
-          <StyledButton
-            type="button"
-            onClick={installApp}
-          >Установить</StyledButton>
+          <StyledButton type="button" onClick={installApp}>
+            Установить
+          </StyledButton>
         </div>
-      }
+      )}
 
       <StyledText>Последнее обновление:</StyledText>
       <StyledText>{buildDate}</StyledText>
-    </StyledDiv>)
+    </StyledDiv>
+  )
 }
-

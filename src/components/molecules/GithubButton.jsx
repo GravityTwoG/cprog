@@ -1,8 +1,8 @@
 import React from "react"
 import { styled } from "@linaria/react"
 
-import { Link } from "./Link"
-import gitHub from "../images/github.svg"
+import { Link } from "../atoms/Link"
+import gitHub from "../../images/github.svg"
 
 const StyledLink = styled.span`
   vertical-align: middle;

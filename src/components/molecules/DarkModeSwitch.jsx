@@ -1,7 +1,7 @@
 import React from "react"
-import { styled } from '@linaria/react';
+import { styled } from "@linaria/react"
 
-import { useThemeContext } from "./ThemeProvider"
+import { useThemeContext } from "../ThemeProvider"
 
 const StyledSwitch = styled.label`
   display: inline-block;
@@ -10,7 +10,7 @@ const StyledSwitch = styled.label`
   height: 30px;
   border-radius: 16px;
   overflow: hidden;
-  
+
   & > input {
     width: 100%;
     height: 100%;
@@ -24,7 +24,7 @@ const StyledSwitch = styled.label`
     opacity: 0;
     z-index: 2;
   }
-  
+
   & > span {
     display: block;
     width: 100%;
@@ -48,9 +48,10 @@ const StyledSwitch = styled.label`
       transition: border-color 0.2s ease;
     }
   }
-  
-  & .switch-circle, & .switch-circle:after {
-    content: '';
+
+  & .switch-circle,
+  & .switch-circle:after {
+    content: "";
     display: block;
     position: absolute;
     top: 50%;
@@ -63,7 +64,7 @@ const StyledSwitch = styled.label`
 
   & .switch-circle:after {
     background-color: #fff;
-    transform: translate(-100%,-100%);
+    transform: translate(-100%, -100%);
     z-index: 1;
     transition: transform 0.8s ease, background-color 0.2s ease;
   }
@@ -76,9 +77,12 @@ const StyledSwitch = styled.label`
   & input:checked + span {
     background-color: #000;
   }
-  
-  & input:active, & input:hover, 
-  & input:focus, & input:focus-within, & input:focus-visible {
+
+  & input:active,
+  & input:hover,
+  & input:focus,
+  & input:focus-within,
+  & input:focus-visible {
     & + span > .switch-border {
       border-color: var(--accentColor);
     }
@@ -98,17 +102,17 @@ const StyledSwitch = styled.label`
 export const DarkModeSwitch = ({ ...props }) => {
   const [toggleActiveTheme, isDark] = useThemeContext()
 
-    return (
-      <StyledSwitch
-        {...props}
-        title={isDark ? "Включить светлую тему" : "Включить тёмную тему"}
-        aria-label={isDark ? "Включить светлую тему" : "Включить тёмную тему"}
-      >
-        <input type="checkbox" onChange={toggleActiveTheme} checked={isDark}/>
-        <span>
-          <span className="switch-border"/>
-          <span className="switch-circle"/>
-        </span>
-      </StyledSwitch>
+  return (
+    <StyledSwitch
+      {...props}
+      title={isDark ? "Включить светлую тему" : "Включить тёмную тему"}
+      aria-label={isDark ? "Включить светлую тему" : "Включить тёмную тему"}
+    >
+      <input type="checkbox" onChange={toggleActiveTheme} checked={isDark} />
+      <span>
+        <span className="switch-border" />
+        <span className="switch-circle" />
+      </span>
+    </StyledSwitch>
   )
-};
+}

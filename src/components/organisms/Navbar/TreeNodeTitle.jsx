@@ -1,10 +1,10 @@
 import React from "react"
 import { styled } from "@linaria/react"
 
-import { Link } from "../Link"
-import { ArrowButton } from "../ArrowButton"
+import config from "../../../../config"
 
-import config from "../../../config"
+import { Link } from "../../atoms/Link"
+import { ArrowButton } from "../../atoms/ArrowButton"
 
 const ChapterHeading = styled(p => (
   <span {...p} className={"chapter-heading " + p.className} />

@@ -3,9 +3,9 @@ import { useStaticQuery, graphql } from "gatsby"
 import { styled } from "@linaria/react"
 import { useMeasure } from "react-use"
 
-import config from "../../config"
+import config from "../../../config"
 
-import { ArrowButton } from "./ArrowButton"
+import { ArrowButton } from "../atoms/ArrowButton"
 
 const titleHeight = 36
 const padHeight = 8
@@ -95,10 +95,10 @@ const StyledListItem = styled.li`
   }
 `
 
-export const ListItem = ({ className, ...props }) => {
+export const ListItem = ({ className, children, ...props }) => {
   return (
     <StyledListItem className={className}>
-      <a href={props.to} {...props} />
+      <a href={props.to} {...props} children={children} />
     </StyledListItem>
   )
 }

@@ -7,8 +7,8 @@ import { Divider } from "./Divider"
 import { PwaWidget } from "../PwaWidget"
 import { TreeNode } from "./TreeNode"
 
-import config from "../../../config"
-import { useNavigationTree } from "../useNavigationTree"
+import config from "../../../../config"
+import { useNavigationTree } from "../../../hooks/useNavigationTree"
 
 const StyledSidebar = styled.aside`
   width: 100%;

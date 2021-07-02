@@ -1,6 +1,6 @@
 import React from "react"
-import { styled } from '@linaria/react';
-import { ReactComponent as LogoSVG } from "../images/clogo.svg"
+import { styled } from "@linaria/react"
+import { ReactComponent as LogoSVG } from "../../images/clogo.svg"
 
 const StyledLogo = styled(LogoSVG)`
   max-width: 100%;

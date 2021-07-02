@@ -1,12 +1,13 @@
 import React from "react"
 import Helmet from "react-helmet"
-import { graphql } from "gatsby"
-import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 import { styled } from "@linaria/react"
 
-import { NextPrevious } from "../components/NextPrevious"
-import { GithubButton } from "../components/GithubButton"
-import { TableOfContents } from "../components/TableOfContents"
+import { graphql } from "gatsby"
+import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
+
+import { GithubButton } from "../components/molecules/GithubButton"
+import { NextPrevious } from "../components/organisms/NextPrevious"
+import { TableOfContents } from "../components/organisms/TableOfContents"
 
 export const PaddingWrapper = styled.div`
   padding: 0 60px;

@@ -1,17 +1,18 @@
 import React, { useEffect, useRef } from "react"
 import { styled } from "@linaria/react"
+
 import { useStaticQuery, graphql } from "gatsby"
-import { useMediaQuery } from "./useMediaQuery"
-import { useThemeContext } from "./ThemeProvider"
+import { useMediaQuery } from "../../hooks/useMediaQuery"
+import { useThemeContext } from "../ThemeProvider"
 
-import { DarkModeSwitch } from "./DarkModeSwitch"
+import { Link } from "../atoms/Link"
+import { Logo } from "../atoms/Logo.jsx"
+import { BurgerButton } from "../atoms/BurgerButton"
+import { DarkModeSwitch } from "../molecules/DarkModeSwitch"
 import { Navbar } from "./Navbar"
-import { Link } from "./Link"
-import { Logo } from "./Logo.jsx"
-import { BurgerButton } from "./BurgerButton"
 
-import config from "../../config"
-const help = require("../images/help.svg")
+import config from "../../../config"
+const help = require("../../images/help.svg")
 
 const headerHeight = 70
 const StyledHeader = styled.header`

@@ -1,6 +1,6 @@
 import React from "react"
 
-import { StyledText } from "./StyledText"
+import { StyledText } from "../atoms/StyledText"
 import { GithubButton } from "./GithubButton"
 
 export const GithubProfile = ({ url, nickname }) => {

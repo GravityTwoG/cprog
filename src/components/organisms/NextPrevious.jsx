@@ -1,7 +1,7 @@
 import React from "react"
 import { styled } from "@linaria/react"
 import { Link } from "gatsby"
-import { useNavigationArray } from "./useNavigationArray"
+import { useNavigationArray } from "../../hooks/useNavigationArray"
 
 export const StyledNextPrevious = styled.div`
   margin: 2rem 0;
