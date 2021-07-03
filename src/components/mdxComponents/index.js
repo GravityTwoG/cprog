@@ -5,10 +5,12 @@ import { Pre } from "./Pre"
 import { AnchorTag } from "./Anchor"
 import { Icon } from "./Icons"
 import { Table } from "./Table"
+import { BlockQuote } from "./BlockQuote"
 
 const StyledCode = styled.code`
   html *:not(pre) > & {
-    padding: 0.2em 0.3em !important;
+    padding: 0.3em 0.4em !important;
+    font-size: 1rem;
   }
 `
 
@@ -87,10 +89,10 @@ export const mdxComponents = {
   ),
   p: props => <p className="paragraph" {...props} />,
   pre: Pre,
-  code: StyledCode,
   a: AnchorTag,
+  code: StyledCode,
   Icon,
-  // TODO add `blockquote`
+  blockquote: BlockQuote,
   table: Table,
   Flex: StyledFlex,
 }

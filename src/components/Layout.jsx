@@ -78,6 +78,10 @@ const LeftSideBar = styled.div`
     position: sticky;
     top: 70px;
   }
+
+  @media (max-width: 1365px) {
+    max-width: 320px;
+  }
 `
 
 const RightSideBarWidth = styled.div`
@@ -92,7 +96,7 @@ const RightSideBarWidth = styled.div`
     overflow: auto;
   }
 
-  @media (max-width: 1440px) {
+  @media (max-width: 1140px) {
     display: none;
   }
 `

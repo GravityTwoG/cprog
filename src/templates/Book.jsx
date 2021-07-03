@@ -43,7 +43,6 @@ const StyledTitleWrapper = styled.div`
 
 const StyledHeading = styled.h1`
   flex: 1;
-  margin-bottom: 1rem;
   max-width: 100%;
   font-size: 28px;
   line-height: 1.5;
