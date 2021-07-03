@@ -13,7 +13,16 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
     "del-maps": "rimraf ./public/**.map"
   },
-  "dependencies": {
+  "browserslist": [
+    ">0.25%", 
+    "not dead", 
+    "not ie <= 11", 
+    "not android <= 4.4.4",
+    "not edge < 15",
+    "not op_mini all",
+    "not iOS <= 10.2"
+  ],
+  "dependencies": { 
     "@mdx-js/mdx": "^1.6.19",
     "@mdx-js/react": "^1.6.19",
     "@svgr/webpack": "^5.4.0",

@@ -1,4 +1,5 @@
 const config = {
+  polyfill: false, // Promise polyfill
   author: {
     githubUrl: "https://github.com/GravityTwoG",
     githubNickname: "GravityTwoG",
