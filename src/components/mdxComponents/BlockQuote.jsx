@@ -21,7 +21,5 @@ const StyledBlockQuote = styled.blockquote`
 `
 
 export const BlockQuote = props => {
-  console.log(props)
-
   return <StyledBlockQuote {...props} />
 }
