@@ -68,51 +68,51 @@ export const CodeBlock = ({ children, ...props }) => {
   )
 }
 
-const StyledCopyButton = styled.button`
-  padding: 8px 12px;
-  background-color: #511190;
-  border-radius: 5px 5px 0 5px;
+// const StyledCopyButton = styled.button`
+//   padding: 8px 12px;
+//   background-color: #511190;
+//   border-radius: 5px 5px 0 5px;
 
-  border: none;
-  box-shadow: none;
-  text-decoration: none;
-  cursor: pointer;
+//   border: none;
+//   box-shadow: none;
+//   text-decoration: none;
+//   cursor: pointer;
 
-  font-size: 14px;
-  font-family: inherit;
-  line-height: 1;
-  color: #e2e8f0;
-`
+//   font-size: 14px;
+//   font-family: inherit;
+//   line-height: 1;
+//   color: #e2e8f0;
+// `
 
-const copyButtonText = {
-  copied: "Скопировано",
-  copy: "Копировать",
-}
+// const copyButtonText = {
+//   copied: "Скопировано",
+//   copy: "Копировать",
+// }
 
-const CopyButton = ({ string }) => {
-  const [isCopied, setIsCopied] = React.useState(false)
+// const CopyButton = ({ string }) => {
+//   const [isCopied, setIsCopied] = React.useState(false)
 
-  return (
-    <StyledCopyButton
-      onClick={() => {
-        copyToClipboard(string)
-        setIsCopied(true)
-        setTimeout(() => setIsCopied(false), 1500)
-      }}
-    >
-      {isCopied ? copyButtonText.copied : copyButtonText.copy}
-    </StyledCopyButton>
-  )
-}
+//   return (
+//     <StyledCopyButton
+//       onClick={() => {
+//         copyToClipboard(string)
+//         setIsCopied(true)
+//         setTimeout(() => setIsCopied(false), 1500)
+//       }}
+//     >
+//       {isCopied ? copyButtonText.copied : copyButtonText.copy}
+//     </StyledCopyButton>
+//   )
+// }
 
-function copyToClipboard(str) {
-  const el = document.createElement("textarea")
-  el.value = str
-  el.setAttribute("readonly", "")
-  el.style.position = "absolute"
-  el.style.left = "-9999px"
-  document.body.appendChild(el)
-  el.select()
-  document.execCommand("copy")
-  document.body.removeChild(el)
-}
+// function copyToClipboard(str) {
+//   const el = document.createElement("textarea")
+//   el.value = str
+//   el.setAttribute("readonly", "")
+//   el.style.position = "absolute"
+//   el.style.left = "-9999px"
+//   document.body.appendChild(el)
+//   el.select()
+//   document.execCommand("copy")
+//   document.body.removeChild(el)
+// }

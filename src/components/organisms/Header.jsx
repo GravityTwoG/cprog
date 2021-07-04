@@ -12,13 +12,12 @@ import { DarkModeSwitch } from "../molecules/DarkModeSwitch"
 import { Navbar } from "./Navbar"
 
 import config from "../../../config"
-const help = require("../../images/help.svg")
 
 const headerHeight = 70
 const StyledHeader = styled.header`
-  width: 100%;
+  width: 100vw;
   height: ${headerHeight}px;
-  padding: 15px;
+  padding: 15px 27px 15px 15px;
   display: flex;
   align-items: center;
   position: fixed;
@@ -33,10 +32,8 @@ const StyledHeader = styled.header`
     transform: translate(0%, -100%) rotateZ(0);
   }
 
-  @media (max-width: 767px) {
-    & .styled-list .githubBtn {
-      display: none;
-    }
+  @media (max-width: 768px) {
+    padding: 15px;
   }
 `
 
@@ -104,7 +101,6 @@ export const Header = ({ location }) => {
         siteMetadata {
           headerTitle
           githubUrl
-          helpUrl
           headerLinks {
             link
             text
@@ -114,15 +110,7 @@ export const Header = ({ location }) => {
     }
   `)
 
-  const {
-    site: {
-      siteMetadata: { headerTitle, helpUrl, headerLinks },
-    },
-  } = data
-
-  const finalLogoLink =
-    config.header.logoLink !== "" ? config.header.logoLink : "/"
-  const [, isDarkThemeActive] = useThemeContext()
+  const { headerTitle, headerLinks } = data.site.siteMetadata
 
   const burgerButtonRef = useRef(null)
   const navbarRef = useRef(null)
@@ -140,6 +128,7 @@ export const Header = ({ location }) => {
     }
   }
 
+  // Hide navbar on pathname change
   useEffect(() => {
     if (navbarRef.current && burgerButtonRef.current) {
       navbarRef.current.dataset.isOpen = "false"
@@ -176,6 +165,7 @@ export const Header = ({ location }) => {
     }
 
     function onKeyUp(event) {
+      if (!navbarRef.current || !burgerButtonRef.current) return
       const isOpen = navbarRef.current.dataset.isOpen
       if (event.code === "Escape" && isOpen === "true") {
         navbarRef.current.dataset.isOpen = "false"
@@ -192,8 +182,10 @@ export const Header = ({ location }) => {
     }
   }, [])
 
+  const [, isDarkThemeActive] = useThemeContext()
   const isPhoneOrTablet = useMediaQuery("(max-width: 1023px)")
-
+  const finalLogoLink =
+    config.header.logoLink !== "" ? config.header.logoLink : "/"
   return (
     <StyledHeader ref={headerRef} data-is-hidden="false">
       <StyledHeaderBG />
@@ -219,6 +211,8 @@ export const Header = ({ location }) => {
                   href={link.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  label={link.text}
+                  title={link.text}
                   dangerouslySetInnerHTML={{ __html: link.text }}
                 />
               </li>
@@ -226,13 +220,6 @@ export const Header = ({ location }) => {
           }
           return null
         })}
-        {helpUrl && (
-          <li>
-            <a href={helpUrl}>
-              <img src={help} alt={"Help icon"} />
-            </a>
-          </li>
-        )}
 
         {config.header.social && (
           <li className={"hiddenMobile"}>
@@ -279,13 +266,6 @@ export const Header = ({ location }) => {
               }
               return null
             })}
-            {helpUrl && (
-              <li>
-                <a href={helpUrl}>
-                  <img src={help} alt={"Help icon"} />
-                </a>
-              </li>
-            )}
           </StyledList>
 
           <Navbar location={location} style={{ maxHeight: "100%" }} />
