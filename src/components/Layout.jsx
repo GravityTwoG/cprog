@@ -18,12 +18,8 @@ import "../styles/media-max1023.css"
 import "../styles/media-max767.css"
 import "../styles/utility.css"
 
-const Header = React.lazy(() =>
-  import("./organisms/Header").then(module => ({ default: module.Header }))
-)
-const Navbar = React.lazy(() =>
-  import("./organisms/Navbar").then(module => ({ default: module.Navbar }))
-)
+import { Header } from "./organisms/Header"
+import { Navbar } from "./organisms/Navbar"
 
 const Wrapper = styled("div")`
   display: flex;
@@ -102,7 +98,6 @@ const RightSideBarWidth = styled.div`
 `
 
 export const Layout = ({ children, location }) => {
-  const isSSR = typeof window === "undefined"
   const finalLogoLink =
     config.header.logoLink !== "" ? config.header.logoLink : "/"
 
@@ -110,11 +105,7 @@ export const Layout = ({ children, location }) => {
   return (
     <MDXProvider components={mdxComponents}>
       <div style={{ height: "70px", width: "100%" }}>
-        {!isSSR && (
-          <React.Suspense fallback={""}>
-            <Header location={location} />
-          </React.Suspense>
-        )}
+        <Header location={location} />
       </div>
 
       <Wrapper>
@@ -129,11 +120,7 @@ export const Layout = ({ children, location }) => {
               <Logo />
             </Link>
 
-            {!isSSR && (
-              <React.Suspense fallback={<div />}>
-                <Navbar location={location} className="sticky" />
-              </React.Suspense>
-            )}
+            <Navbar location={location} className="sticky" />
           </LeftSideBar>
         )}
 
