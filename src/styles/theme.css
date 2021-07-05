@@ -2,6 +2,7 @@
   --commonTextSize: 20px;
   --accentColor: #3884ff;
   --accentHoverColor: #1656b3;
+  --hoverColor: #f0f0f0;
   --backgroundColor: #fff;
   --headingColor: #000;
   --textColor: #222;
@@ -12,7 +13,7 @@
 }
 
 [data-theme="dark"] {
-  --accentColor: #3884ff;
+  --hoverColor: #434343;
   --backgroundColor: #2a2b2d;
   --headingColor: #fff;
   --textColor: #fafafa;

@@ -5,24 +5,22 @@ export const StyledListItem = styled.li`
   list-style: none;
   margin-bottom: 0.5em;
 
-  &.active:hover a,
-  &.active:hover .chapter-heading:hover {
-    color: var(--accentColor);
-  }
   & > .tree-node-title {
     position: relative;
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      bottom: 0;
+      margin-left: 2rem;
+      width: calc(100% - 4rem);
+      height: 4px;
+      border-radius: 2px;
+      background-color: transparent;
+    }
   }
-  & > .tree-node-title:after {
-    content: "";
-    display: block;
-    position: absolute;
-    bottom: 0;
-    margin-left: 2rem;
-    width: calc(100% - 4rem);
-    height: 4px;
-    border-radius: 2px;
-    background-color: transparent;
-  }
+
   &.active > .tree-node-title:after {
     background-color: var(--accentColor);
   }
@@ -30,8 +28,7 @@ export const StyledListItem = styled.li`
     color: var(--accentColor);
   }
 
-  & > .tree-node-title > span > a,
-  & .chapter-heading {
+  & > .tree-node-title > span > a {
     color: var(--textColor);
     flex-grow: 1;
     display: block;

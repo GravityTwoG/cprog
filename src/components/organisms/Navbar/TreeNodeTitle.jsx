@@ -6,14 +6,11 @@ import config from "../../../../config"
 import { Link } from "../../atoms/Link"
 import { ArrowButton } from "../../atoms/ArrowButton"
 
-const ChapterHeading = styled(p => (
+const ChapterHeading = p => (
   <span {...p} className={"chapter-heading " + p.className} />
-))`
-  transition: color 0.2s linear;
-  cursor: pointer;
-`
+)
 
-const StyledDiv = styled.div`
+const StyledDivNodeTitle = styled.div`
   min-height: 36px;
   display: flex;
   align-items: center;
@@ -26,20 +23,27 @@ const StyledDiv = styled.div`
   border-radius: 5px;
   transition: background-color 0.3s ease;
 
+  & > .chapter-heading {
+    color: var(--textColor);
+    flex-grow: 1;
+    display: block;
+  }
+
   & > .chapter-heading,
   & > span {
     flex: 1;
   }
-
+  & > .tree-node-arrow {
+    pointer-events: none;
+  }
   &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-    & > span > a,
-    & > .chapter-heading {
+    background-color: var(--hoverColor);
+    & > span > a {
       color: var(--accentColor);
-      & + button > svg {
-        // arrow
-        fill: var(--accentColor);
-      }
+    }
+    & > .chapter-heading + button > svg {
+      // arrow
+      fill: var(--accentColor);
     }
   }
 `
@@ -58,23 +62,24 @@ export const TreeNodeTitle = React.forwardRef(
     ref
   ) => {
     return (
-      <StyledDiv className="tree-node-title" ref={ref}>
+      <StyledDivNodeTitle
+        className="tree-node-title"
+        ref={ref}
+        onClick={isChapterHeading ? collapse : undefined}
+        role={isChapterHeading ? "button" : ""}
+      >
         {title && !isChapterHeading && <Link to={url}>{title}</Link>}
-        {isChapterHeading && (
-          <ChapterHeading onClick={collapse} role="button">
-            {title}
-          </ChapterHeading>
-        )}
+        {isChapterHeading && <ChapterHeading>{title}</ChapterHeading>}
         {title && hasChildren && !config.sidebar.frontLine ? (
           <ArrowButton
-            onClick={collapse}
             aria-label={isCollapsed ? "Развернуть" : "Свернуть"}
             title={isCollapsed ? "Развернуть" : "Свернуть"}
             data-is-active={active}
             data-is-collapsed={isCollapsed}
+            className="tree-node-arrow"
           />
         ) : null}
-      </StyledDiv>
+      </StyledDivNodeTitle>
     )
   }
 )

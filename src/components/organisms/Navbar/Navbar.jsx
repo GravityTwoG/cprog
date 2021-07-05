@@ -1,7 +1,7 @@
 import React from "react"
 import { styled } from "@linaria/react"
 
-import { ExternalLink } from "react-feather"
+import { ExternalLink as ExternalLinkIcon } from "react-feather"
 import { ListItem } from "./ListItem"
 import { Divider } from "./Divider"
 import { PwaWidget } from "../PwaWidget"
@@ -63,14 +63,6 @@ const StyledSidebar = styled.aside`
   .external-links {
     padding-inline-start: 0;
   }
-  .external-links li {
-    background-color: transparent;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.1);
-    }
-  }
   .external-links a {
     display: inline-block;
     width: 100%;
@@ -79,6 +71,13 @@ const StyledSidebar = styled.aside`
       vertical-align: middle;
       margin-left: 6px;
       margin-bottom: 3px;
+    }
+
+    border-radius: 5px;
+    background-color: transparent;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: var(--hoverColor);
     }
   }
 `
@@ -105,6 +104,15 @@ const SidebarUl = styled.ul`
     width: 100%;
   }
 `
+
+const ExternalLink = ({ link, label }) => {
+  return (
+    <ListItem to={link} rel="noopener">
+      {label}
+      <ExternalLinkIcon />
+    </ListItem>
+  )
+}
 
 export const Navbar = ({ location, ...props }) => {
   const treeData = useNavigationTree()
@@ -139,12 +147,7 @@ export const Navbar = ({ location, ...props }) => {
       <ul className="external-links">
         {config.sidebar.links.map((link, key) => {
           if (link.link && link.text) {
-            return (
-              <ListItem key={key} to={link.link} rel="noopener">
-                {link.text}
-                <ExternalLink size={14} />
-              </ListItem>
-            )
+            return <ExternalLink key={key} link={link.link} label={link.text} />
           }
           return null
         })}

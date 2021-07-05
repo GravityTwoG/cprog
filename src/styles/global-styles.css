@@ -11,7 +11,7 @@ body {
   -webkit-font-smoothing: subpixel-antialiased;
 }
 body {
-  font-family: Roboto, "-apple-system", BlinkMacSystemFont, "Segoe UI", Arial,
+  font-family: "Segoe UI", Roboto, "-apple-system", BlinkMacSystemFont, Arial,
     sans-serif;
   font-weight: 400;
   background-color: var(--backgroundColor);

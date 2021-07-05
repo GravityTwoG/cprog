@@ -40,7 +40,7 @@ export const Nav = styled.nav`
     transition: background-color 0.3s ease;
 
     &:hover {
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: var(--hoverColor);
     }
 
     & > button {
@@ -69,7 +69,7 @@ const StyledListItem = styled.li`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--hoverColor);
   }
 
   & > a {
