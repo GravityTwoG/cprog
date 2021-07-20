@@ -14,15 +14,16 @@
     "del-maps": "rimraf ./public/**.map"
   },
   "browserslist": [
-    ">0.25%", 
-    "not dead", 
-    "not ie <= 11", 
+    ">0.25%",
+    "not dead",
+    "not ie <= 11",
     "not android <= 4.4.4",
     "not edge < 15",
     "not op_mini all",
     "not iOS <= 10.2"
   ],
-  "dependencies": { 
+  "dependencies": {
+    "@matejmazur/react-katex": "^3.1.3",
     "@mdx-js/mdx": "^1.6.19",
     "@mdx-js/react": "^1.6.19",
     "@svgr/webpack": "^5.4.0",
@@ -41,6 +42,7 @@
     "gatsby-remark-images": "^3.3.40",
     "gatsby-remark-prismjs": "^3.11.0",
     "gatsby-source-filesystem": "^2.3.37",
+    "katex": "^0.13.11",
     "linaria": "^3.0.0-beta.1",
     "nprogress": "^0.2.0",
     "preact": "^10.5.12",
@@ -51,6 +53,7 @@
     "react-feather": "^2.0.8",
     "react-helmet": "^6.1.0",
     "react-use": "^17.2.4",
+    "remark-math": "3.0.1",
     "resize-observer-polyfill": "^1.5.1",
     "sass": "^1.32.4"
   },

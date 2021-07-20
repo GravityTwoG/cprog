@@ -6,6 +6,7 @@ import { AnchorTag } from "./Anchor"
 import { Icon } from "./Icons"
 import { Table } from "./Table"
 import { BlockQuote } from "./BlockQuote"
+import { components } from "./Math"
 
 const StyledCode = styled.code`
   html *:not(pre) > & {
@@ -95,4 +96,6 @@ export const mdxComponents = {
   blockquote: BlockQuote,
   table: Table,
   Flex: StyledFlex,
+  div: components.div,
+  span: components.span,
 }
