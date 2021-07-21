@@ -68,6 +68,7 @@ export const pageQuery = graphql`
         title
       }
       body
+      tableOfContents
       fields {
         slug
         title
@@ -133,9 +134,9 @@ const BookTemplate = props => {
 
       <PaddingWrapper>
         <TableOfContents
-          location={props.location}
           isDefaultCollapsed
           className="before-content"
+          content={mdx.tableOfContents}
         />
       </PaddingWrapper>
 

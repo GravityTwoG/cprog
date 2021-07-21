@@ -33,58 +33,41 @@ const StyledFlex = styled.div`
   }
 `
 
+export function generateHeadingId(title) {
+  return title
+    .replace(/[/,.\()\?–]/g, "")
+    .replace(/\s+/g, "-")
+    .toLowerCase()
+}
+
 export const mdxComponents = {
   h1: ({ children, ...props }) => (
-    <h1
-      className="heading1"
-      id={children.replace(/\s+/g, "").toLowerCase()}
-      {...props}
-    >
+    <h1 className="heading1" id={generateHeadingId(children)} {...props}>
       {children}
     </h1>
   ),
   h2: ({ children, ...props }) => (
-    <h2
-      className="heading2"
-      id={children.replace(/\s+/g, "").toLowerCase()}
-      {...props}
-    >
+    <h2 className="heading2" id={generateHeadingId(children)} {...props}>
       {children}
     </h2>
   ),
   h3: ({ children, ...props }) => (
-    <h3
-      className="heading3"
-      id={children.replace(/\s+/g, "").toLowerCase()}
-      {...props}
-    >
+    <h3 className="heading3" id={generateHeadingId(children)} {...props}>
       {children}
     </h3>
   ),
   h4: ({ children, ...props }) => (
-    <h4
-      className="heading4"
-      id={children.replace(/\s+/g, "").toLowerCase()}
-      {...props}
-    >
+    <h4 className="heading4" id={generateHeadingId(children)} {...props}>
       {children}
     </h4>
   ),
   h5: ({ children, ...props }) => (
-    <h5
-      className="heading5"
-      id={children.replace(/\s+/g, "").toLowerCase()}
-      {...props}
-    >
+    <h5 className="heading5" id={generateHeadingId(children)} {...props}>
       {children}
     </h5>
   ),
   h6: ({ children, ...props }) => (
-    <h6
-      className="heading6"
-      id={children.replace(/\s+/g, "").toLowerCase()}
-      {...props}
-    >
+    <h6 className="heading6" id={generateHeadingId(children)} {...props}>
       {children}
     </h6>
   ),

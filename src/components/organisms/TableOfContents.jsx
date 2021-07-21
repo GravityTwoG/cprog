@@ -1,11 +1,10 @@
-import React, { useState, useMemo } from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import React, { useState } from "react"
 import { styled } from "@linaria/react"
 import { useMeasure } from "react-use"
 
-import config from "../../../config"
-
 import { ArrowButton } from "../atoms/ArrowButton"
+import { generateHeadingId } from "../mdxComponents"
+import { useMemo } from "react"
 
 const titleHeight = 36
 const padHeight = 8
@@ -104,33 +103,24 @@ export const ListItem = ({ className, children, ...props }) => {
 }
 
 export const TableOfContents = ({
-  location,
   isDefaultCollapsed = false,
   className,
+  content,
 }) => {
-  const { allMdx } = useStaticQuery(graphql`
-    query RightSidebarQuery {
-      allMdx {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            tableOfContents
-          }
-        }
-      }
-    }
-  `)
-
   const [isCollapsed, setIsCollapsed] = useState(isDefaultCollapsed)
   const [contentRef, { height: contentHeight }] = useMeasure()
 
-  const links = useMemo(() => generateLinks(allMdx, location), [
-    allMdx,
-    location,
-  ])
-  if (!links.length) return null
+  const links = useMemo(() => {
+    if (!content || !content.items || !content.items.length) return null
+
+    return content.items.map((l, i) => (
+      <ListItem key={i} to={`#${generateHeadingId(l.title)}`} level={1}>
+        {l.title}
+      </ListItem>
+    ))
+  }, [content.items])
+
+  if (!links) return null
 
   return (
     <Nav
@@ -155,39 +145,8 @@ export const TableOfContents = ({
         className="table-of-contents"
         data-is-collapsed={isCollapsed}
       >
-        {links.map((l, i) => (
-          <ListItem key={i} to={l.link} level={1}>
-            {l.title}
-          </ListItem>
-        ))}
+        {links}
       </ul>
     </Nav>
   )
-}
-
-function generateLinks(allMdx, location) {
-  if (allMdx.edges === undefined || allMdx.edges.length === 0) return []
-
-  const currentPage = allMdx.edges.find(item => {
-    if (!item) return false
-    return (
-      item.node.fields.slug === location.pathname ||
-      config.gatsby.pathPrefix + item.node.fields.slug === location.pathname
-    )
-  })
-
-  if (!currentPage || !currentPage.node.tableOfContents.items) return []
-
-  const links = currentPage.node.tableOfContents.items.map(innerItem => {
-    const itemId = innerItem.title
-      ? innerItem.title.replace(/\s+/g, "").toLowerCase()
-      : "#"
-
-    return {
-      link: `#${itemId}`,
-      title: innerItem.title,
-    }
-  })
-
-  return links
 }
