@@ -118,7 +118,7 @@ export const TableOfContents = ({
         {l.title}
       </ListItem>
     ))
-  }, [content.items])
+  }, [content])
 
   if (!links) return null
 
