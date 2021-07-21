@@ -5,8 +5,8 @@ import { ExternalLink } from "react-feather"
 import config from "../../../config"
 
 import { Link } from "../atoms/Link"
+import { ContentPadding } from "../atoms/ContentPadding"
 import { StyledText } from "../atoms/StyledText"
-import { PaddingWrapper } from "../../templates/Book"
 import { GithubProfile } from "../molecules/GithubProfile"
 
 const StyledFooter = styled.footer`
@@ -17,7 +17,7 @@ const StyledFooter = styled.footer`
 `
 
 export const Footer = () => (
-  <PaddingWrapper>
+  <ContentPadding>
     <StyledFooter>
       <StyledText>
         <p className="paragraph">
@@ -36,5 +36,5 @@ export const Footer = () => (
         />
       ) : null}
     </StyledFooter>
-  </PaddingWrapper>
+  </ContentPadding>
 )

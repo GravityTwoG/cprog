@@ -5,28 +5,10 @@ import { styled } from "@linaria/react"
 import { graphql } from "gatsby"
 import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 
+import { ContentPadding } from "../components/atoms/ContentPadding"
 import { GithubButton } from "../components/molecules/GithubButton"
 import { NextPrevious } from "../components/organisms/NextPrevious"
 import { TableOfContents } from "../components/organisms/TableOfContents"
-
-export const PaddingWrapper = styled.div`
-  padding: 0 60px;
-
-  @media (max-width: 520px) {
-    padding: 0 16px;
-  }
-
-  &.main {
-    max-width: 100%;
-    color: var(--textColor);
-    overflow: hidden;
-
-    & a {
-      transition: color 0.15s;
-      color: var(--linkColor);
-    }
-  }
-`
 
 const StyledTitleWrapper = styled.div`
   margin: 1rem 0;
@@ -122,29 +104,29 @@ const BookTemplate = props => {
         ]}
       />
 
-      <PaddingWrapper>
+      <ContentPadding>
         <NextPrevious mdx={mdx} />
-      </PaddingWrapper>
+      </ContentPadding>
 
-      <PaddingWrapper>
+      <ContentPadding>
         <StyledTitleWrapper className={"titleWrapper"}>
           <StyledHeading>{mdx.fields.title}</StyledHeading>
         </StyledTitleWrapper>
-      </PaddingWrapper>
+      </ContentPadding>
 
-      <PaddingWrapper>
+      <ContentPadding>
         <TableOfContents
           isDefaultCollapsed
           className="before-content"
           content={mdx.tableOfContents}
         />
-      </PaddingWrapper>
+      </ContentPadding>
 
-      <PaddingWrapper className="main">
+      <ContentPadding className="main">
         <MDXRenderer>{mdx.body}</MDXRenderer>
-      </PaddingWrapper>
+      </ContentPadding>
 
-      <PaddingWrapper>
+      <ContentPadding>
         {githubUrl && (
           <GithubButton to={githubUrl} aria-label="Star on GitHub">
             Star
@@ -155,11 +137,11 @@ const BookTemplate = props => {
             Edit on GitHub
           </GithubButton>
         )}
-      </PaddingWrapper>
+      </ContentPadding>
 
-      <PaddingWrapper>
+      <ContentPadding>
         <NextPrevious mdx={mdx} />
-      </PaddingWrapper>
+      </ContentPadding>
     </>
   )
 }
