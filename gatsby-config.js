@@ -69,7 +69,9 @@ if (
   plugins.push({
     resolve: "gatsby-plugin-offline",
     options: {
-      globPatterns: ["**/icons/*"],
+      workboxConfig: {
+        globPatterns: ["**/icons/*"],
+      },
     },
   })
 } else {
