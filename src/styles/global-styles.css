@@ -165,8 +165,16 @@ img {
   font-weight: 400;
 }
 
+.gatsby-resp-image-wrapper {
+  max-width: 500px !important;
+}
+
 .gatsby-resp-image-figure {
   text-align: center;
+}
+
+.gatsby-resp-image-image {
+  background-color: #fff;
 }
 
 .gatsby-resp-image-figcaption {
