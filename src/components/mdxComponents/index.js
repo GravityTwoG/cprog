@@ -1,5 +1,6 @@
 import React from "react"
 import { styled } from "@linaria/react"
+import { copyToClipboard } from "./copyToClipboard"
 
 import { Pre } from "./Pre"
 import { AnchorTag } from "./Anchor"
@@ -33,6 +34,50 @@ const StyledFlex = styled.div`
   }
 `
 
+const StyledHeading = styled.h1`
+  & > button {
+    margin-left: 0.2em;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 700;
+    vertical-align: middle;
+    transition: color 0.3s linear;
+
+    &:hover {
+      color: var(--accentColor);
+    }
+    &:active {
+      color: initial;
+    }
+  }
+`
+
+const Heading = ({ children, as = "h1", ...props }) => {
+  const id = generateHeadingId(children)
+  let url = ""
+
+  if (typeof window !== "undefined") {
+    url = window.location.origin + window.location.pathname + "#" + id
+  }
+
+  return (
+    <StyledHeading as={as} {...props} id={id}>
+      {children}{" "}
+      {url && (
+        <button
+          aria-label="Скопировать ссылку"
+          title="Скопировать ссылку"
+          onClick={() => copyToClipboard(url)}
+        >
+          #
+        </button>
+      )}
+    </StyledHeading>
+  )
+}
+
 export function generateHeadingId(title) {
   return title
     .replace(/[/,.\()\?–]/g, "")
@@ -42,34 +87,34 @@ export function generateHeadingId(title) {
 
 export const mdxComponents = {
   h1: ({ children, ...props }) => (
-    <h1 className="heading1" id={generateHeadingId(children)} {...props}>
+    <Heading as="h1" className="heading1" {...props}>
       {children}
-    </h1>
+    </Heading>
   ),
   h2: ({ children, ...props }) => (
-    <h2 className="heading2" id={generateHeadingId(children)} {...props}>
+    <Heading as="h2" className="heading2" {...props}>
       {children}
-    </h2>
+    </Heading>
   ),
   h3: ({ children, ...props }) => (
-    <h3 className="heading3" id={generateHeadingId(children)} {...props}>
+    <Heading as="h3" className="heading3" {...props}>
       {children}
-    </h3>
+    </Heading>
   ),
   h4: ({ children, ...props }) => (
-    <h4 className="heading4" id={generateHeadingId(children)} {...props}>
+    <Heading as="h4" className="heading4" {...props}>
       {children}
-    </h4>
+    </Heading>
   ),
   h5: ({ children, ...props }) => (
-    <h5 className="heading5" id={generateHeadingId(children)} {...props}>
+    <Heading as="h5" className="heading5" {...props}>
       {children}
-    </h5>
+    </Heading>
   ),
   h6: ({ children, ...props }) => (
-    <h6 className="heading6" id={generateHeadingId(children)} {...props}>
+    <Heading as="h6" className="heading6" {...props}>
       {children}
-    </h6>
+    </Heading>
   ),
   p: props => <p className="paragraph" {...props} />,
   pre: Pre,
