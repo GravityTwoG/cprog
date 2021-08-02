@@ -31,6 +31,7 @@ metaTitle: 'Тестовые задания (все)'
 - [6.2. Массивы указателей](http://ermak.cs.nstu.ru/cprog/Programms/62-08.cpp)
 
 - [6.3. Линейные списки](http://ermak.cs.nstu.ru/cprog/Programms/63-11.cpp)
+
 - [7.4. Рекурсия](http://ermak.cs.nstu.ru/cprog/Programms/74-06.cpp)
 
 - [8.5. Деревья](http://ermak.cs.nstu.ru/cprog/Programms/85-10.cpp) 
@@ -56,4 +57,5 @@ metaTitle: 'Тестовые задания (все)'
 - [11.2. Наследование](http://ermak.cs.nstu.ru/cprog/Programms/112-05.cpp) 
 
 - [11.3. Исключения](http://ermak.cs.nstu.ru/cprog/Programms/113-02.cpp) 
+
 - [11.4. Полиморфизм](http://ermak.cs.nstu.ru/cprog/Programms/114-05.cpp)

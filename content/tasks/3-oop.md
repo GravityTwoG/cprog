@@ -20,6 +20,6 @@ metaTitle: 'ООП (семестр 3)'
 - [Отличная+](http://ermak.cs.nstu.ru/cprog/tutor/KP3-example4.pdf)
 - [Free Style](http://ermak.cs.nstu.ru/cprog/tutor/KP3-example5.pdf)
 
-[Расчетно-графическая работа](/tasks/labs/rgr-4) (ТП)
+[Расчетно-графическая работа](/tasks/rgr-4) (ТП)
 
 [Экзаменационные вопросы и задачи](/tasks/exams/exam-4)
