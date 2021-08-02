@@ -7,15 +7,11 @@ const StyledDiv = styled.div`
   overflow: hidden;
   border-radius: 5px;
 
-  @media (max-width: 767px) {
-    font-size: 14px;
-  }
-
   & > pre {
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
-    padding: 16px;
+    padding: 12px 16px;
     background-color: #011627 !important;
 
     scrollbar-width: auto;
@@ -34,21 +30,49 @@ const StyledDiv = styled.div`
       background-color: var(--accentHoverColor);
     }
   }
+
+  & code {
+    font-size: 18px;
+  }
+
+  @media (max-width: 1023px) {
+    & code {
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 575px) {
+    & > pre {
+      padding: 8px 13px;
+    }
+
+    & code {
+      font-size: 14px;
+    }
+  }
 `
 
 const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 10px;
   background-color: var(--accentColor);
-  height: 26px;
+  padding: 5px 0px 5px 10px;
 
   & > span {
-    font-family: monospace;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    font-weight: 700;
     font-size: 16px;
     line-height: 16px;
     color: #fff;
+  }
+
+  @media (max-width: 575px) {
+    padding: 4px 0px 2px 6px;
+
+    & > span {
+      font-size: 14px;
+      line-height: 14px;
+    }
   }
 `
 
