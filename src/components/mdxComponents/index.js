@@ -40,16 +40,16 @@ const StyledHeading = styled.h1`
     border: none;
     background-color: transparent;
     cursor: pointer;
-    font-size: 24px;
+    font-size: inherit;
     font-weight: 700;
-    vertical-align: middle;
-    transition: color 0.3s linear;
+    transition: color 0.15s ease-in;
+    color: var(--textColor);
 
     &:hover {
       color: var(--accentColor);
     }
     &:active {
-      color: initial;
+      color: var(--textColor);
     }
   }
 `
