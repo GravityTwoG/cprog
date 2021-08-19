@@ -16,6 +16,8 @@ jobs:
     env:
       NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
       NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+      GATSBY_GOOGLE_SITE_VID: ${{ secrets.GATSBY_GOOGLE_SITE_VID }}
+      GATSBY_YANDEX_SITE_VID: ${{ secrets.GATSBY_YANDEX_SITE_VID }}
 
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it

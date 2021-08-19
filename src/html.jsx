@@ -11,6 +11,14 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, min-width=320, initial-scale=1, shrink-to-fit=no"
         />
+        <meta
+          name="google-site-verification"
+          content={process.env.GATSBY_GOOGLE_SITE_VID}
+        />
+        <meta
+          name="yandex-verification"
+          content={process.env.GATSBY_YANDEX_SITE_VID}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `

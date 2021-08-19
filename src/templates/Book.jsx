@@ -97,10 +97,6 @@ const BookTemplate = props => {
           { name: "description", content: metaDescription },
           { name: "og:description", content: metaDescription },
           { name: "twitter:description", content: metaDescription },
-          {
-            name: "google-site-verification",
-            content: "e8ODwZKRJ5H_TiNsq-70JsUkCkCiXRtvC6IMNJayTN8",
-          },
         ]}
       />
 
