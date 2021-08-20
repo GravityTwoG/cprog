@@ -43,13 +43,13 @@ const StyledHeading = styled.h1`
     font-size: inherit;
     font-weight: 700;
     transition: color 0.15s ease-in;
-    color: var(--textColor);
+    color: var(--decoColor);
 
     &:hover {
       color: var(--accentColor);
     }
     &:active {
-      color: var(--textColor);
+      color: var(--decoColor);
     }
   }
 `

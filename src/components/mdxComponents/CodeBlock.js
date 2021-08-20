@@ -13,26 +13,30 @@ const StyledDiv = styled.div`
     scroll-behavior: smooth;
     padding: 12px 16px;
     background-color: #011627 !important;
-
-    scrollbar-width: auto;
-    scrollbar-color: var(--accentColor) transparent;
-
-    &::-webkit-scrollbar {
-      height: 12px;
-      cursor: pointer;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      background-color: var(--accentColor);
-      border-radius: 6px;
-    }
-    &::-webkit-scrollbar-thumb:hover {
-      background-color: var(--accentHoverColor);
-    }
   }
 
   & code {
     font-size: 18px;
+  }
+
+  @media (min-width: 768px) {
+    & > pre {
+      scrollbar-width: auto;
+      scrollbar-color: var(--accentColor) transparent;
+
+      &::-webkit-scrollbar {
+        height: 12px;
+        cursor: pointer;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: var(--accentColor);
+        border-radius: 6px;
+      }
+      &::-webkit-scrollbar-thumb:hover {
+        background-color: var(--accentHoverColor);
+      }
+    }
   }
 
   @media (max-width: 1023px) {
