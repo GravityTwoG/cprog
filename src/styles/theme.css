@@ -9,7 +9,7 @@
   --preFormattedTextColor: rgb(245, 247, 249);
   --linkColor: #3884ff;
   --decoColor: rgb(230, 236, 241);
-  --boxShadow: rgba(116, 129, 141, 0.1) 0px 3px 8px 0px;
+  --boxShadow: rgba(74, 83, 87, 0.1) 0px 3px 10px 0px;
 }
 
 [data-theme="dark"] {

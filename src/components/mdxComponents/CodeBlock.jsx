@@ -13,6 +13,8 @@ const StyledDiv = styled.div`
     scroll-behavior: smooth;
     padding: 12px 16px;
     background-color: #011627 !important;
+    font-size: 18px;
+    line-height: 1;
   }
 
   & code {
@@ -41,6 +43,11 @@ const StyledDiv = styled.div`
 
   @media (max-width: 1023px) {
     & code {
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 767px) {
+    & > pre {
       font-size: 16px;
     }
   }
@@ -91,7 +98,9 @@ export const CodeBlock = ({ children, ...props }) => {
         {/* <CopyButton string={children} /> */}
       </StyledHeader>
 
-      <pre>{children}</pre>
+      <pre role="region" aria-label="Code block">
+        {children}
+      </pre>
     </StyledDiv>
   )
 }

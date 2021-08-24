@@ -3,9 +3,9 @@ import { styled } from "@linaria/react"
 
 const StyledBlockQuote = styled.blockquote`
   margin: 0 0 40px;
-  padding: 6px 12px;
+  padding: 4px 12px 6px;
   background-color: #d7edff;
-  color: #555;
+  color: #444;
   border-radius: 5px;
   border-left: 5px solid var(--accentColor, #e6ecf1);
 
