@@ -1,6 +1,6 @@
 import { styled } from "@linaria/react"
 import React from "react"
-import { mdxComponents as MDXC } from "../src/components/mdxComponents"
+import { mdxComponents as Mdx } from "../src/components/mdxComponents"
 
 const selfImage = require("./images/Self.jpg")
 const self2 = require("./images/vt79-12.jpg")
@@ -67,43 +67,41 @@ const Flex = styled.div`
 export const IndexPage = () => {
   return (
     <div>
-      <MDXC.h1>
-        CPROG - о программировании вообще, в том числе на Си/Си++
-      </MDXC.h1>
+      <Mdx.h1>Cprog - о программировании вообще, в том числе на Си/Си++</Mdx.h1>
 
-      <MDXC.p>
+      <Mdx.p>
         Все материалы взяты с сайта{" "}
-        <MDXC.a href="http://ermak.cs.nstu.ru/cprog/html/">
+        <Mdx.a href="http://ermak.cs.nstu.ru/cprog/html/">
           http://ermak.cs.nstu.ru/cprog/html
-        </MDXC.a>
-      </MDXC.p>
+        </Mdx.a>
+      </Mdx.p>
 
-      <MDXC.p>
+      <Mdx.p>
         <strong>
           Здесь размещены методические материалы по дисциплинам "Информатика",
           "Программирование", "Технология программирования" для направления
           "Информатика и ВТ". Автор:{" "}
         </strong>
-        <MDXC.a href="http://ciu.nstu.ru/kaf/persons/91/?page=182">
+        <Mdx.a href="http://ciu.nstu.ru/kaf/persons/91/?page=182">
           <strong>Романов Евгений Леонидович</strong>
-        </MDXC.a>
+        </Mdx.a>
         <strong>
           , к.т.н, доц. кафедры Вычислительной техники, факультет Автоматики и
           вычислительной техники{" "}
         </strong>
-        <MDXC.a href="http://www.nstu.ru/">
+        <Mdx.a href="http://www.nstu.ru/">
           <strong>
             Новосибирского государственного технического университета
           </strong>
-        </MDXC.a>
+        </Mdx.a>
         <strong> (НГТУ)</strong>
         <br />(
-        <MDXC.a href="http://ermak.cs.nstu.ru/~romanow">неофициально</MDXC.a>) (
-        <MDXC.a href="http://ermak.cs.nstu.ru/cprog.rar">cprog.rar</MDXC.a>)
-      </MDXC.p>
+        <Mdx.a href="http://ermak.cs.nstu.ru/~romanow">неофициально</Mdx.a>) (
+        <Mdx.a href="http://ermak.cs.nstu.ru/cprog.rar">cprog.rar</Mdx.a>)
+      </Mdx.p>
 
       <Flex className="jc-center">
-        <MDXC.pre className="poem">
+        <Mdx.pre className="poem">
           <b
             dangerouslySetInnerHTML={{
               __html:
@@ -122,12 +120,22 @@ export const IndexPage = () => {
           <br />
           "Колыбельная". <br />
           ("Болдинская осень", 1996 г.)
-        </MDXC.pre>
-        <StyledImage src={selfImage} width="300" alt="self" />
+        </Mdx.pre>
+        <StyledImage
+          src={selfImage}
+          width="300"
+          height="300"
+          alt="Фотография автора"
+        />
       </Flex>
 
-      <MDXC.p>
-        <StyledStreamlinedImage src={self2} width="300" alt="self" />
+      <Mdx.p>
+        <StyledStreamlinedImage
+          src={self2}
+          width="300"
+          height="250"
+          alt="Фотография автора"
+        />
         <strong>Немного истории.</strong> Когда мне, новоиспеченному кандидату
         технических наук, в 1987 году было поручено чтение лекций по языку Си в
         течение одного семестра, я не думал, что это затянется так надолго.
@@ -137,9 +145,9 @@ export const IndexPage = () => {
         пор классический Си превратился из сравнительно простого
         псевдо-ассемблера в "вавилонскую башню", которая надстраивается и
         перестраивается до сих пор.
-      </MDXC.p>
+      </Mdx.p>
 
-      <MDXC.p>
+      <Mdx.p>
         <strong>Еще раньше.</strong> Кафедра ВТ НГТУ (НЭТИ), 1979 год,
         12-разрядная мини-ЭВМ 'Электроника-100И' (аналог первой американской
         мини-ЭВМ PDP-8), тактовая частота - 1Мгц, память - 4Кб. На пульте
@@ -148,9 +156,9 @@ export const IndexPage = () => {
         опроса готовности клавиатуры пишущей машинки. За пультом - ваш покорный
         слуга (автор сайта) и мне всего 20. Несколько раньше с подобного компа
         начинал широко известный в определенных кругах Билл Гейтс.
-      </MDXC.p>
+      </Mdx.p>
 
-      <MDXC.p>
+      <Mdx.p>
         <strong>Билл Гейтс. "Дорога в будущее":</strong>
         <br />
         Правда, и в то время (речь идет о 1968-70 годах) можно было завести
@@ -175,7 +183,7 @@ export const IndexPage = () => {
         думал, что мне удастся сделать то же самое и для крошечного чипа фирмы
         Intel. Но, изучая документацию, понял, что не стоит и пытаться. Слишком
         он прост, слишком мало в нем транзисторов.
-      </MDXC.p>
+      </Mdx.p>
 
       <Flex className="jc-center">
         <figure>
@@ -184,6 +192,8 @@ export const IndexPage = () => {
             alt="PDP-8"
             loading="lazy"
             style={{ marginBottom: "4px" }}
+            width="300"
+            height="436"
           />
           <figcaption>
             А это та же самая PDP-8, но в другом ракурсе...
