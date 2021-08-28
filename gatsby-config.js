@@ -53,6 +53,14 @@ const plugins = [
     },
   },
   "gatsby-plugin-sitemap",
+  {
+    resolve: "gatsby-plugin-robots-txt",
+    options: {
+      host: "https://cprog.netlify.app",
+      sitemap: "https://cprog.netlify.app/sitemap.xml",
+      policy: [{ userAgent: "*", allow: "/" }],
+    },
+  },
 ]
 
 // check and add pwa functionality
