@@ -75,7 +75,7 @@ const StyledSidebar = styled.aside`
 
     border-radius: 5px;
     background-color: transparent;
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     &:hover {
       background-color: var(--hoverColor);
     }

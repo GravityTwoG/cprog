@@ -34,7 +34,7 @@ export const Nav = styled.nav`
     color: var(--textColor);
     cursor: pointer;
     background-color: transparent;
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
 
     &:hover {
       background-color: var(--hoverColor);
@@ -132,7 +132,7 @@ const StyledListItem = styled.li`
 
   border-radius: 5px;
   background-color: transparent;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
 
   &:hover {
     background-color: var(--hoverColor);
