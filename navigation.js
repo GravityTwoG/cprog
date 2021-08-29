@@ -1,121 +1,114 @@
-const config = require("./config")
 const { GraphQLScalarType, GraphQLInt } = require("gatsby/graphql")
+const config = require("./config")
 
-function calculateTreeData(pages) {
-  const originalData = config.sidebar.ignoreIndex
-    ? pages.filter(node => node.fields.slug !== "/")
-    : pages
+const CHAPTER_HEADING = "chapter-heading"
+const trailingSlash = !!config.gatsby?.trailingSlash // boolean
+const ignoreIndex = !!config.sidebar.ignoreIndex // boolean
+const { forcedNavOrder = [] } = config.sidebar.forcedNavOrder
 
-  const tree = originalData.reduce(
-    (accu, node) => {
-      const { slug, title } = node.fields
-      const parts = slug.split("/")
-      const isChapterHeading = node.frontmatter.type === "chapter-heading"
+function calculateTreeData(pagesArg) {
+  const mapped = pagesArg.map(page => {
+    const { slug, title } = page.fields
+    const { type } = page.frontmatter
 
-      const slicedParts =
-        config.gatsby && config.gatsby.trailingSlash
-          ? parts.slice(1, -2)
-          : parts.slice(1, -1)
+    return { slug, title, isChapterHeading: type === CHAPTER_HEADING }
+  })
 
-      let { items: prevItems } = accu
-      for (const part of slicedParts) {
-        let tmp = prevItems && prevItems.find(({ label }) => label === part)
+  const pages = ignoreIndex ? mapped.filter(page => page.slug !== "/") : mapped
 
-        if (tmp) {
-          if (!tmp.items) {
-            tmp.items = []
-          }
-        } else {
-          tmp = { label: part, items: [] }
-          prevItems.push(tmp)
-        }
-        prevItems = tmp.items
-      }
+  // build tree
+  const tree = { items: [], label: "" }
+  pages.forEach(page => {
+    const slugParts = page.slug.split("/")
 
-      const slicedLength =
-        config.gatsby && config.gatsby.trailingSlash
-          ? parts.length - 2
-          : parts.length - 1
+    const directory = trailingSlash
+      ? slugParts.slice(1, -2)
+      : slugParts.slice(1, -1)
 
-      const existingItem = prevItems.find(
-        ({ label }) => label === parts[slicedLength]
-      )
+    const fileIndex = trailingSlash
+      ? slugParts.length - 2
+      : slugParts.length - 1
+    const fileName = slugParts[fileIndex]
 
-      if (existingItem) {
-        existingItem.url = slug
-        existingItem.title = title
-        existingItem.isChapterHeading = isChapterHeading
+    let workDir = tree.items
+    // find or create folders subtree
+    for (const folderName of directory) {
+      const dir = workDir.find(f => f.label === folderName)
+
+      if (!dir) {
+        const newFolder = { items: [], label: folderName }
+        workDir.push(newFolder)
+        workDir = newFolder.items
       } else {
-        prevItems.push({
-          label: parts[slicedLength],
-          url: slug,
-          isChapterHeading,
-          items: [],
-          title: title || "Undefined",
-        })
-      }
-      return accu
-    },
-    { items: [] }
-  )
-
-  const { forcedNavOrder = [] } = config.sidebar
-
-  const tmp = [...forcedNavOrder]
-  tmp.reverse()
-
-  const treeData = tmp.reduce((accu, slug) => {
-    const parts = slug.split("/")
-
-    let { items: prevItems } = accu
-
-    const slicedParts =
-      config.gatsby && config.gatsby.trailingSlash
-        ? parts.slice(1, -2)
-        : parts.slice(1, -1)
-
-    for (const part of slicedParts) {
-      let tmp = prevItems.find(item => item && item.label === part)
-
-      if (tmp) {
-        if (!tmp.items) {
-          tmp.items = []
-        }
-      } else {
-        tmp = { label: part, items: [] }
-        prevItems.push(tmp)
-      }
-      if (tmp && tmp.items) {
-        prevItems = tmp.items
+        workDir = dir.items
       }
     }
 
-    const slicedLength =
-      config.gatsby && config.gatsby.trailingSlash
-        ? parts.length - 2
-        : parts.length - 1
+    const file = workDir.find(f => f.label === fileName)
 
-    const index = prevItems.findIndex(
-      ({ label }) => label === parts[slicedLength]
-    )
-
-    if (prevItems.length) {
-      accu.items.unshift(prevItems.splice(index, 1)[0])
+    if (!file) {
+      // add page
+      workDir.push({
+        label: fileName,
+        url: page.slug,
+        title: page.title,
+        isChapterHeading: page.isChapterHeading,
+        items: [],
+      })
+    } else {
+      // if folder/file is already exists, then add url, title, isChapterHeading
+      file.url = page.slug
+      file.title = page.title
+      file.isChapterHeading = page.isChapterHeading
     }
-    return accu
+  })
+
+  // merge tree with forcedNavOrder
+  const tmp = [...forcedNavOrder].reverse()
+
+  const treeData = tmp.reduce((acc, slug) => {
+    const slugParts = slug.split("/")
+    const directory = trailingSlash
+      ? slugParts.slice(1, -2)
+      : slugParts.slice(1, -1)
+    const slicedLength = trailingSlash
+      ? slugParts.length - 2
+      : slugParts.length - 1
+    const name = slugParts[slicedLength]
+
+    let workDir = acc.items
+    for (const folder of directory) {
+      let node = workDir.find(item => item.label === folder)
+
+      if (!node) {
+        const newFolder = { label: folder, items: [] }
+        workDir.push(newFolder)
+      } else {
+        workDir = node.items
+      }
+    }
+
+    const index = workDir.findIndex(({ label }) => label === name)
+
+    if (workDir.length) {
+      const node = workDir.splice(index, 1)[0] // remove node
+      accu.items.unshift(node) // add node on the first place
+    }
+
+    return acc
   }, tree)
 
-  return sortTreeData(treeData)
+  return sortTree(treeData)
 }
 
-function sortTreeData(tree) {
+function sortTree(tree) {
   const sortedItems = tree.items.sort((a, b) => {
     return a.label.localeCompare(b.label, "kn", { numeric: true })
   })
 
   const finallySortedItems = sortedItems.map(item => {
     if (item.items.length > 0) {
-      return sortTreeData(item)
+      return sortTree(item)
     }
     return item
   })
