@@ -79,6 +79,17 @@ if (
     options: {
       workboxConfig: {
         globPatterns: ["**/icons/*"],
+        runtimeCaching: [
+          {
+            // page-data.json files, static query results and app-data.json
+            // are not content hashed
+            urlPattern: /^https?:.*\/page-data\/.*\.json/,
+            handler: `NetworkFirst`,
+            options: {
+              networkTimeoutSeconds: 1,
+            },
+          },
+        ],
       },
     },
   })
