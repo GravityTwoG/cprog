@@ -53,6 +53,14 @@ const plugins = [
     },
   },
   "gatsby-plugin-sitemap",
+  {
+    resolve: "gatsby-plugin-robots-txt",
+    options: {
+      host: "https://cprog.netlify.app",
+      sitemap: "https://cprog.netlify.app/sitemap.xml",
+      policy: [{ userAgent: "*", allow: "/" }],
+    },
+  },
 ]
 
 // check and add pwa functionality
@@ -71,6 +79,17 @@ if (
     options: {
       workboxConfig: {
         globPatterns: ["**/icons/*"],
+        runtimeCaching: [
+          {
+            // page-data.json files, static query results and app-data.json
+            // are not content hashed
+            urlPattern: /^https?:.*\/page-data\/.*\.json/,
+            handler: `NetworkFirst`,
+            options: {
+              networkTimeoutSeconds: 1,
+            },
+          },
+        ],
       },
     },
   })

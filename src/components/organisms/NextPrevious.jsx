@@ -131,30 +131,41 @@ export const NextPrevious = ({ mdx }) => {
 
   return (
     <StyledNextPrevious>
-      {previousInfo.url && currentIndex >= 0 ? (
-        <Link to={nav[currentIndex - 1].url} className={"previousBtn"}>
+      {previousInfo.url && currentIndex >= 0 && (
+        <Link
+          aria-label={nav[currentIndex - 1].title}
+          to={nav[currentIndex - 1].url}
+          className={"previousBtn"}
+        >
           <div className="arrow">
             <LeftArrow />
           </div>
+
           <div className={"preRightWrapper"}>
             <div className={"nextPreviousTitle"}>
               {nav[currentIndex - 1].title}
             </div>
           </div>
         </Link>
-      ) : null}
-      {nextInfo.url && currentIndex >= 0 ? (
-        <Link to={nav[currentIndex + 1].url} className={"nextBtn"}>
+      )}
+
+      {nextInfo.url && currentIndex >= 0 && (
+        <Link
+          aria-label={nav[currentIndex + 1] && nav[currentIndex + 1].title}
+          to={nav[currentIndex + 1].url}
+          className={"nextBtn"}
+        >
           <div className={"nextRightWrapper"}>
             <div className={"nextPreviousTitle"}>
               {nav[currentIndex + 1] && nav[currentIndex + 1].title}
             </div>
           </div>
+
           <div className="arrow">
             <RightArrow />
           </div>
         </Link>
-      ) : null}
+      )}
     </StyledNextPrevious>
   )
 }

@@ -20,7 +20,7 @@ const StyledButton = styled.button`
     fill: var(--textColor);
     transform: rotate(0deg);
     transform-origin: center;
-    transition: transform 0.15s linear, fill 0.2s linear;
+    transition: transform 0.2s linear, fill 0.2s linear;
   }
   &[data-is-active="true"] > svg {
     fill: #fff;
