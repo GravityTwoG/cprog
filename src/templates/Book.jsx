@@ -97,6 +97,11 @@ const BookTemplate = props => {
           { name: "description", content: metaDescription },
           { name: "og:description", content: metaDescription },
           { name: "twitter:description", content: metaDescription },
+          {
+            name: "keywords",
+            content:
+              "cprog, ermak, сипрог, ермак, cprog спк, cprog задачи, ermak.cs.nstu.ru cprog, cprog ermak nstu, cprog ermak, cprog.ru, cprog что это, cprog.rar, cprok, crrog",
+          },
         ]}
       />
 
