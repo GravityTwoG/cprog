@@ -11,7 +11,8 @@
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
-    "del-maps": "rimraf ./public/**.map"
+    "del-maps": "rimraf ./public/**.map",
+    "deploy": "netlify deploy --dir=public --prod"
   },
   "browserslist": [
     ">0.25%",
