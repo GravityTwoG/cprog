@@ -100,7 +100,7 @@ const BookTemplate = props => {
           {
             name: "keywords",
             content:
-              "cprog, ermak, сипрог, ермак, cprog спк, cprog задачи, ermak.cs.nstu.ru cprog, cprog ermak nstu, cprog ermak, cprog.ru, cprog что это, cprog.rar, cprok, crrog",
+              "cprog, ermak, сипрог, ермак, ermak.cs.nstu.ru cprog, cprog ermak nstu, cprog ermak, cprog.ru, cprog.rar, C++, C, programming, программирование, ООП, OOP, Си, Си++, учебник по программированию",
           },
         ]}
       />
