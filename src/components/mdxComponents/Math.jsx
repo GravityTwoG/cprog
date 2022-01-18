@@ -2,17 +2,20 @@ import React, { useEffect } from "react"
 
 const TeX = React.lazy(() => import("@matejmazur/react-katex"))
 
-const MathBlock = props => {
+const SSRWrapper = props => {
   const isSSR = typeof window === "undefined"
-  useEffect(() => {
-    if (!isSSR) {
-      import("katex/dist/katex.min.css").catch(e => console.log(e))
-    }
-  }, [])
 
   if (isSSR) {
-    return <div {...props} />
+    return props.fallback
   }
+
+  return props.children
+}
+
+const MathBlock = props => {
+  useEffect(() => {
+    import("katex/dist/katex.min.css").catch(e => console.log(e))
+  }, [])
 
   return (
     <React.Suspense fallback={<div {...props} />}>
@@ -22,16 +25,9 @@ const MathBlock = props => {
 }
 
 const MathInline = props => {
-  const isSSR = typeof window === "undefined"
   useEffect(() => {
-    if (!isSSR) {
-      import("katex/dist/katex.min.css").catch(e => console.log(e))
-    }
+    import("katex/dist/katex.min.css").catch(e => console.log(e))
   }, [])
-
-  if (isSSR) {
-    return <span {...props} />
-  }
 
   return (
     <React.Suspense fallback={<span {...props} />}>
@@ -43,13 +39,21 @@ const MathInline = props => {
 export const components = {
   div: props => {
     if (props.className.includes("math-display")) {
-      return <MathBlock {...props} />
+      return (
+        <SSRWrapper fallback={<div {...props} />}>
+          <MathBlock {...props} />
+        </SSRWrapper>
+      )
     }
     return <div {...props} />
   },
   span: props => {
     if (props.className.includes("math-inline")) {
-      return <MathInline {...props} />
+      return (
+        <SSRWrapper fallback={<span {...props} />}>
+          <MathInline {...props} />
+        </SSRWrapper>
+      )
     }
     return <span {...props} />
   },

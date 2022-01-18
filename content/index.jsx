@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-pascal-case */
 import { styled } from "@linaria/react"
 import React from "react"
 import { mdxComponents as Mdx } from "../src/components/mdxComponents"

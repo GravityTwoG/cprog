@@ -206,15 +206,18 @@ export const Header = ({ location }) => {
           if (link.link && link.text) {
             return (
               <li key={key}>
-                <a
-                  className="sidebarLink"
-                  href={link.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  label={link.text}
-                  title={link.text}
-                  dangerouslySetInnerHTML={{ __html: link.text }}
-                />
+                {
+                  // eslint-disable-next-line jsx-a11y/control-has-associated-label
+                  <a
+                    className="sidebarLink"
+                    href={link.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    label={link.text}
+                    title={link.text}
+                    dangerouslySetInnerHTML={{ __html: link.text }}
+                  />
+                }
               </li>
             )
           }

@@ -79,7 +79,7 @@ const Heading = ({ children, as = "h1", ...props }) => {
 }
 
 export function generateHeadingId(title) {
-  return title
+  return title // eslint-disable-next-line no-useless-escape
     .replace(/[/,.\()\?–]/g, "")
     .replace(/\s+/g, "-")
     .toLowerCase()
