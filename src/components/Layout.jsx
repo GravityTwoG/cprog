@@ -27,11 +27,13 @@ const Wrapper = styled("div")`
   background: var(--backgroundColor);
 `
 
-const Content = styled.main`
+const Main = styled.main`
   align-self: center;
   overflow: hidden;
   min-height: calc(100vh - 70px);
   contain: content;
+  display: flex;
+  flex-direction: column;
 
   flex: 1;
   width: 100%;
@@ -39,6 +41,10 @@ const Content = styled.main`
   @media only screen and (min-width: 1279px) {
     max-width: 850px;
     position: relative;
+  }
+
+  & > .content {
+    flex: 1;
   }
 
   & > .footer {
@@ -124,12 +130,12 @@ export const Layout = ({ children, location }) => {
           </LeftSideBar>
         )}
 
-        <Content>
-          <div>{children}</div>
+        <Main>
+          <div className="content">{children}</div>
           <div className="footer">
             <Footer />
           </div>
-        </Content>
+        </Main>
 
         <RightSideBarWidth className={"rightSidebar "} />
       </Wrapper>
