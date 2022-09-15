@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useCallback } from "react"
 import { styled } from "@linaria/react"
 
 import { useStaticQuery, graphql } from "gatsby"
 import { useMediaQuery } from "../../hooks/useMediaQuery"
+import { useOnClickOutside } from "../../hooks/useOnClickOutside"
 import { useThemeContext } from "../ThemeProvider"
 
 import { Link } from "../atoms/Link"
@@ -109,13 +110,20 @@ export const Header = ({ location }) => {
       }
     }
   `)
-
   const { headerTitle, headerLinks } = data.site.siteMetadata
 
   const burgerButtonRef = useRef(null)
   const navbarRef = useRef(null)
 
-  const toggleNavbar = () => {
+  useOnClickOutside(navbarRef, e => {
+    if (e.target === burgerButtonRef.current) return
+
+    navbarRef.current.dataset.isOpen = "false"
+    burgerButtonRef.current.dataset.isOpen = "false"
+    document.body.style.overflow = "auto"
+  })
+
+  const toggleNavbar = useCallback(() => {
     const isOpen = navbarRef.current.dataset.isOpen
     if (isOpen === "true") {
       navbarRef.current.dataset.isOpen = "false"
@@ -126,7 +134,14 @@ export const Header = ({ location }) => {
       burgerButtonRef.current.dataset.isOpen = "true"
       document.body.style.overflow = "hidden"
     }
-  }
+  }, [navbarRef, burgerButtonRef])
+
+  const isPhoneOrTablet = useMediaQuery("(max-width: 1023px)")
+  useEffect(() => {
+    if (!isPhoneOrTablet) {
+      document.body.style.overflow = "auto"
+    }
+  }, [isPhoneOrTablet])
 
   // Hide navbar on pathname change
   useEffect(() => {
@@ -137,6 +152,7 @@ export const Header = ({ location }) => {
     }
   }, [location.pathname])
 
+  // hide header on scroll
   const headerRef = useRef(null)
   useEffect(() => {
     let prevScrollPos = window.scrollY
@@ -183,7 +199,6 @@ export const Header = ({ location }) => {
   }, [])
 
   const [, isDarkThemeActive] = useThemeContext()
-  const isPhoneOrTablet = useMediaQuery("(max-width: 1023px)")
   const finalLogoLink =
     config.header.logoLink !== "" ? config.header.logoLink : "/"
   return (
