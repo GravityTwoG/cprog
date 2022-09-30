@@ -3,7 +3,6 @@ const config = require("./config")
 const plugins = [
   "gatsby-plugin-sass",
   "gatsby-plugin-sharp",
-  "gatsby-remark-images",
   {
     resolve: "gatsby-plugin-svgr",
     options: {
@@ -13,17 +12,12 @@ const plugins = [
   },
   "gatsby-plugin-react-helmet",
   {
-    resolve: "gatsby-source-filesystem",
-    options: {
-      name: "content",
-      path: `${__dirname}/content/`,
-    },
-  },
-  {
     resolve: "gatsby-plugin-mdx",
     options: {
       extensions: [".md", ".mdx"],
-      remarkPlugins: [require("remark-math")],
+      mdxOptions: {
+        remarkPlugins: [require("remark-math")],
+      },
       gatsbyRemarkPlugins: [
         {
           resolve: "gatsby-remark-images",
@@ -43,8 +37,19 @@ const plugins = [
       ],
     },
   },
-  "gatsby-plugin-preact",
-  "gatsby-plugin-linaria",
+  {
+    resolve: "gatsby-source-filesystem",
+    options: {
+      name: "content",
+      path: `${__dirname}/content/`,
+    },
+  },
+  {
+    resolve: "gatsby-plugin-linaria",
+    options: {
+      extractCritical: true,
+    },
+  },
   {
     resolve: `gatsby-progress-bar`,
     options: {

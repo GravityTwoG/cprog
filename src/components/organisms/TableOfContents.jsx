@@ -110,7 +110,7 @@ export const TableOfContents = ({
         title={isCollapsed ? "Развернуть" : "Свернуть"}
       >
         Содержание
-        <ArrowButton data-is-collapsed={isCollapsed} />
+        <ArrowButton data-is-collapsed={isCollapsed} as="div" />
       </button>
 
       <div style={{ height: isCollapsed ? 0 : contentHeight + 4 }}>

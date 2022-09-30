@@ -1,6 +1,6 @@
 ---
-title: 'Учебник'
-metaDescription: 'Учебник'
-metaTitle: 'Учебник'
-type: 'chapter-heading'
+title: "Учебник"
+metaDescription: "Учебник"
+metaTitle: "Учебник"
+type: "chapter-heading"
 ---

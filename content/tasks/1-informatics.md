@@ -1,7 +1,7 @@
 ---
-title: 'Информатика (семестр 1)'
-metaDescription: 'Информатика (семестр 1)'
-metaTitle: 'Информатика (семестр 1)'
+title: "Информатика (семестр 1)"
+metaDescription: "Информатика (семестр 1)"
+metaTitle: "Информатика (семестр 1)"
 ---
 
 [Правила подсчета рейтинга](http://ermak.cs.nstu.ru/cprog/tutor/AM1-rating.htm)
@@ -12,7 +12,7 @@ metaTitle: 'Информатика (семестр 1)'
 
 ## Лабораторные работы
 
-- 1. Среда разработки 
+- 1. Среда разработки
 - 2-3. [Анализ программ и функции](/book/2/2.5#вопросы-без-ответов)
 - 4. [Арифметические задачи](/book/4/4.2#лабораторный-практикум) ([отчет](http://ermak.cs.nstu.ru/cprog/tutor/%D0%90%D0%9C1-lab4.pdf))
 - 5. [Итерационные циклы](/book/4/4.3#лабораторный-практикум) ([отчет](http://ermak.cs.nstu.ru/cprog/tutor/%D0%90%D0%9C1-lab5.pdf))
@@ -21,6 +21,7 @@ metaTitle: 'Информатика (семестр 1)'
 - 8. [Работа с файлами](/book/4/4.5) ([отчет](http://ermak.cs.nstu.ru/cprog/tutor/%D0%90%D0%9C1-lab7.pdf))
 
 ## Практические занятия
+
 (см. список занятий)
 
 1. [Системы счисления](/book/1/1.3) ([пример](http://ermak.cs.nstu.ru/cprog/tutor/1-1kr-example.JPG))
@@ -38,6 +39,3 @@ metaTitle: 'Информатика (семестр 1)'
 - [FreeStyle](http://ermak.cs.nstu.ru/cprog/tutor/rgr1-example3.pdf)
 
 [2D-3D-графика OpenGL (Glut) для РГР](https://yadi.sk/d/UtSLCdg-m3Mrc)
- 
-
- 

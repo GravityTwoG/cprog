@@ -91,6 +91,9 @@ export const CodeBlock = ({ children, ...props }) => {
   const language = props.className
     ? props.className.replace(/language-/, "").toUpperCase()
     : ""
+
+  console.log("code")
+
   return (
     <StyledDiv {...props}>
       <StyledHeader>
@@ -153,3 +156,10 @@ export const CodeBlock = ({ children, ...props }) => {
 //   document.execCommand("copy")
 //   document.body.removeChild(el)
 // }
+
+export const CodeInline = styled.code`
+  html *:not(pre) > & {
+    padding: 0.3em 0.4em !important;
+    font-size: 1rem;
+  }
+`

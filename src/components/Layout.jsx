@@ -103,10 +103,10 @@ const RightSideBarWidth = styled.div`
   }
 `
 
-export const Layout = ({ children, location }) => {
-  const finalLogoLink =
-    config.header.logoLink !== "" ? config.header.logoLink : "/"
+const finalLogoLink =
+  config.header.logoLink !== "" ? config.header.logoLink : "/"
 
+export const Layout = ({ children, location }) => {
   const isPhoneOrTablet = useMediaQuery("(max-width: 1023px)")
   return (
     <MDXProvider components={mdxComponents}>

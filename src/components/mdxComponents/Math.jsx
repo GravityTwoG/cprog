@@ -38,7 +38,7 @@ const MathInline = props => {
 
 export const components = {
   div: props => {
-    if (props.className.includes("math-display")) {
+    if (props.className?.includes("math-display")) {
       return (
         <SSRWrapper fallback={<div {...props} />}>
           <MathBlock {...props} />
@@ -48,7 +48,7 @@ export const components = {
     return <div {...props} />
   },
   span: props => {
-    if (props.className.includes("math-inline")) {
+    if (props.className?.includes("math-inline")) {
       return (
         <SSRWrapper fallback={<span {...props} />}>
           <MathInline {...props} />

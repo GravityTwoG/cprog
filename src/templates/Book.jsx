@@ -3,7 +3,6 @@ import Helmet from "react-helmet"
 import { styled } from "@linaria/react"
 
 import { graphql } from "gatsby"
-import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer"
 
 import { ContentPadding } from "../components/atoms/ContentPadding"
 import { GithubButton } from "../components/molecules/GithubButton"
@@ -49,7 +48,6 @@ export const pageQuery = graphql`
         metaTitle
         title
       }
-      body
       tableOfContents
       fields {
         slug
@@ -123,9 +121,7 @@ const BookTemplate = props => {
         />
       </ContentPadding>
 
-      <ContentPadding className="main">
-        <MDXRenderer>{mdx.body}</MDXRenderer>
-      </ContentPadding>
+      <ContentPadding className="main">{props.children}</ContentPadding>
 
       <ContentPadding>
         {githubUrl && (

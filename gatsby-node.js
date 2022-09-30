@@ -1,7 +1,47 @@
 const path = require("path")
 const { setFieldsOnGraphQLNodeType } = require("./navigation")
 
+const bookTemplate = path.resolve("./src/templates/Book.jsx")
+
 module.exports.setFieldsOnGraphQLNodeType = setFieldsOnGraphQLNodeType
+
+module.exports.createPages = async ({ graphql, actions, reporter }) => {
+  const res = await graphql(`
+    query {
+      allMdx {
+        nodes {
+          frontmatter {
+            type
+          }
+          fields {
+            slug
+          }
+          internal {
+            contentFilePath
+          }
+        }
+      }
+    }
+  `)
+
+  if (res.errors) {
+    reporter.panicOnBuild("Error loading MDX result", result.errors)
+  }
+
+  res.data.allMdx.nodes.forEach(node => {
+    if (node.frontmatter.type === "chapter-heading") {
+      return
+    }
+
+    actions.createPage({
+      component: `${bookTemplate}?__contentFilePath=${node.internal.contentFilePath}`,
+      path: node.fields.slug,
+      context: {
+        slug: node.fields.slug,
+      },
+    })
+  })
+}
 
 // Create slug and title fields for each file
 module.exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -17,44 +57,9 @@ module.exports.onCreateNode = ({ node, actions, getNode }) => {
     }
     createNodeField({ node, name: "slug", value: `/${slug}` })
     createNodeField({
-      name: "title",
       node,
+      name: "title",
       value: node.frontmatter.title,
     })
   }
-}
-
-module.exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
-  const bookTemplate = path.resolve("./src/templates/Book.jsx")
-
-  const res = await graphql(`
-    query {
-      allMdx {
-        edges {
-          node {
-            frontmatter {
-              type
-            }
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    }
-  `)
-
-  res.data.allMdx.edges.forEach(edge => {
-    if (edge.node.frontmatter.type === "chapter-heading") {
-      return
-    }
-    createPage({
-      component: bookTemplate,
-      path: edge.node.fields.slug,
-      context: {
-        slug: edge.node.fields.slug,
-      },
-    })
-  })
 }
