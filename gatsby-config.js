@@ -1,5 +1,14 @@
 const config = require("./config")
 
+const wrapESMPlugin = name =>
+  function wrapESM(opts) {
+    return async (...args) => {
+      const mod = await import(name)
+      const plugin = mod.default(opts)
+      return plugin(...args)
+    }
+  }
+
 const plugins = [
   "gatsby-plugin-sass",
   "gatsby-plugin-sharp",
@@ -16,7 +25,7 @@ const plugins = [
     options: {
       extensions: [".md", ".mdx"],
       mdxOptions: {
-        remarkPlugins: [require("remark-math")],
+        remarkPlugins: [require("remark-math"), require("remark-gfm")],
       },
       gatsbyRemarkPlugins: [
         {
@@ -31,7 +40,7 @@ const plugins = [
           resolve: "gatsby-remark-prismjs",
           options: {
             classPrefix: "language-",
-            inlineCodeMarker: null,
+            inlineCodeMarker: true,
           },
         },
       ],

@@ -1,5 +1,5 @@
 {
-  "extends": ["plugin:mdx/recommended", "prettier"],
+  "extends": ["react-app", "plugin:mdx/recommended", "prettier"],
   "plugins": [],
   // optional, if you want to lint code blocks at the same time
   "settings": {

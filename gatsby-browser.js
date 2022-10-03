@@ -2,6 +2,7 @@ const React = require("react")
 const { Layout } = require("./src/components/Layout")
 const { ThemeProvider } = require("./src/components/ThemeProvider")
 const { PwaProvider } = require("./src/components/PwaProvider")
+require("prismjs/themes/prism-tomorrow.css")
 
 exports.wrapRootElement = ({ element }) => {
   return (

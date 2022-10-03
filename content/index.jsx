@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-pascal-case */
-import { styled } from "@linaria/react"
 import React from "react"
+import { styled } from "@linaria/react"
 import { mdxComponents as Mdx } from "../src/components/mdxComponents"
+import { Pre } from "../src/components/mdxComponents/Pre"
 
-const selfImage = require("./images/Self.jpg")
-const self2 = require("./images/vt79-12.jpg")
-const pdp8 = require("./images/lera.jpg")
+import selfImage from "./images/Self.jpg"
+import self2 from "./images/vt79-12.jpg"
 
-const StyledImage = styled.img`
+export const StyledImage = styled.img`
   max-width: 300px;
   min-width: 230px;
   object-fit: cover;
@@ -30,7 +30,7 @@ const StyledStreamlinedImage = styled(StyledImage)`
   }
 `
 
-const Flex = styled.div`
+export const Flex = styled.div`
   display: flex;
   align-content: stretch;
   flex-wrap: wrap;
@@ -102,7 +102,7 @@ export const IndexPage = () => {
       </Mdx.p>
 
       <Flex className="jc-center">
-        <Mdx.pre className="poem">
+        <Pre className="poem">
           <b
             dangerouslySetInnerHTML={{
               __html:
@@ -121,7 +121,7 @@ export const IndexPage = () => {
           <br />
           "Колыбельная". <br />
           ("Болдинская осень", 1996 г.)
-        </Mdx.pre>
+        </Pre>
         <StyledImage
           src={selfImage}
           width="300"
@@ -147,60 +147,6 @@ export const IndexPage = () => {
         псевдо-ассемблера в "вавилонскую башню", которая надстраивается и
         перестраивается до сих пор.
       </Mdx.p>
-
-      <Mdx.p>
-        <strong>Еще раньше.</strong> Кафедра ВТ НГТУ (НЭТИ), 1979 год,
-        12-разрядная мини-ЭВМ 'Электроника-100И' (аналог первой американской
-        мини-ЭВМ PDP-8), тактовая частота - 1Мгц, память - 4Кб. На пульте
-        процессора по адресу 1142 команда с кодом 5341 (JMP.-1) - безусловный
-        переход на одну команду назад на текущей странице (128 слов) к команде
-        опроса готовности клавиатуры пишущей машинки. За пультом - ваш покорный
-        слуга (автор сайта) и мне всего 20. Несколько раньше с подобного компа
-        начинал широко известный в определенных кругах Билл Гейтс.
-      </Mdx.p>
-
-      <Mdx.p>
-        <strong>Билл Гейтс. "Дорога в будущее":</strong>
-        <br />
-        Правда, и в то время (речь идет о 1968-70 годах) можно было завести
-        собственный компьютер. Если Вы могли раскошелиться на 18000 долларов,
-        пожалуйста - Digital Equipment Corporation (DEC) выпускала PDP-8. Хотя
-        эту модель и называли "мини-компьютером", по нынешним стандартам, она
-        была весьма громоздкой. Компьютер размещался на двухметровой стойке
-        (площадь ее основания около половины квадратного метра), а весил 120
-        килограммов. Одно время такой компьютер стоял у нас в школе, и я часто
-        вертелся вокруг него. По сравнению с мэйнфреймами, с которыми легко было
-        связаться по телефону, PDP-8 обладал весьма ограниченными возможностями:
-        его вычислительная мощность меньше, чем у некоторых современных наручных
-        часов. Но программировать их можно было так же, как и самые большие и
-        дорогостоящие ЭВМ. Несмотря на все свои ограничения, PDP-8 вселял в нас
-        надежду, что когда-нибудь собственные дешевые компьютеры появятся у
-        миллионов людей, и с каждым годом эта вера во мне укреплялась. Вероятно,
-        одна из причин - желание самому иметь персональный компьютер. ...Мы с
-        Полом заинтересовались, какие программы можно сделать на 8008
-        микропроцессоре. Пол связался с Intel и попросил выслать документацию.
-        Слегка удивившись, когда ее действительно прислали, мы с головой
-        зарылись в нее. Я разработал версию Бейсика, "ходившую" на DEC PDP-8, и
-        думал, что мне удастся сделать то же самое и для крошечного чипа фирмы
-        Intel. Но, изучая документацию, понял, что не стоит и пытаться. Слишком
-        он прост, слишком мало в нем транзисторов.
-      </Mdx.p>
-
-      <Flex className="jc-center">
-        <figure>
-          <StyledImage
-            src={pdp8}
-            alt="PDP-8"
-            loading="lazy"
-            style={{ marginBottom: "4px" }}
-            width="300"
-            height="436"
-          />
-          <figcaption>
-            А это та же самая PDP-8, но в другом ракурсе...
-          </figcaption>
-        </figure>
-      </Flex>
     </div>
   )
 }

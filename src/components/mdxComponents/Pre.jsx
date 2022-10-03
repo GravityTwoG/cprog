@@ -10,5 +10,5 @@ const StyledPre = styled.pre`
 `
 
 export const Pre = props => {
-  return <StyledPre {...props} />
+  return <StyledPre {...props} className="kek" />
 }

@@ -1,5 +1,7 @@
 import React from "react"
 import { mdxComponents } from "../../src/components/mdxComponents"
+import { Pre } from "../../src/components/mdxComponents/Pre"
+
 import sleepImg from "./sleep1.jpg"
 
 const { Flex } = mdxComponents
@@ -8,7 +10,7 @@ export const Intro = () => (
   <Flex className="fxww flex-childs">
     <img src={sleepImg} alt="sleep" style={{ maxWidth: "340px" }} />
 
-    <mdxComponents.pre className="tar">
+    <Pre className="tar">
       «Не умеешь работать, иди руководить.
       <br />
       Не умеешь руководить, иди учить других.
@@ -19,6 +21,6 @@ export const Intro = () => (
       <br />
       <br />
       <strong>Слегка измененное автором ходячее изречение</strong>
-    </mdxComponents.pre>
+    </Pre>
   </Flex>
 )

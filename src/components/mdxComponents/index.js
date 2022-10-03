@@ -8,18 +8,6 @@ import { Icon } from "./Icons"
 import { Table } from "./Table"
 import { BlockQuote } from "./BlockQuote"
 import { components } from "./Math"
-import { CodeInline } from "./CodeBlock"
-
-// const CodeSkeleton = styled.div`
-//   width: 100%;
-//   height: 170px;
-//   background: #011627;
-//   border-radius: 5px;
-// `
-
-// const LazyCodeBlock = React.lazy(() =>
-//   import("./CodeBlock").then(module => ({ default: module.CodeBlock }))
-// )
 
 const StyledFlex = styled.div`
   display: flex;
@@ -122,20 +110,6 @@ export const mdxComponents = {
     </Heading>
   ),
   p: props => <p className="paragraph" {...props} />,
-  pre: props => {
-    console.log("pre", props)
-    if (props.children?.props?.mdxType === "code") {
-      return <CodeBlock {...props} />
-      //TODO: Make it lazy
-      // return (
-      //   <React.Suspense fallback={<CodeSkeleton />}>
-      //     <LazyCodeBlock {...props} />
-      //   </React.Suspense>
-      // )
-    }
-    return <Pre {...props} />
-  },
-  code: CodeInline,
   a: AnchorTag,
   div: components.div,
   span: components.span,
