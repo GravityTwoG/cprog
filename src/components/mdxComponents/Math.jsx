@@ -18,7 +18,7 @@ const MathBlock = props => {
   }, [])
 
   return (
-    <React.Suspense fallback={<div {...props} />}>
+    <React.Suspense fallback={<math {...props} />}>
       <TeX block math={props.children} />
     </React.Suspense>
   )
@@ -40,7 +40,7 @@ export const components = {
   div: props => {
     if (props.className?.includes("math-display")) {
       return (
-        <SSRWrapper fallback={<div {...props} />}>
+        <SSRWrapper fallback={<math {...props} />}>
           <MathBlock {...props} />
         </SSRWrapper>
       )

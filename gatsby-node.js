@@ -5,6 +5,27 @@ const bookTemplate = path.resolve("./src/templates/Book.jsx")
 
 module.exports.setFieldsOnGraphQLNodeType = setFieldsOnGraphQLNodeType
 
+// Create slug and title fields for each node of type Mdx
+module.exports.onCreateNode = ({ node, actions, getNode }) => {
+  const { createNodeField } = actions
+
+  if (node.internal.type === "Mdx") {
+    const parent = getNode(node.parent)
+
+    let slug = parent.relativePath.replace(parent.ext, "")
+
+    if (slug === "index") {
+      slug = ""
+    }
+    createNodeField({ node, name: "slug", value: `/${slug}` })
+    createNodeField({
+      node,
+      name: "title",
+      value: node.frontmatter.title,
+    })
+  }
+}
+
 module.exports.createPages = async ({ graphql, actions, reporter }) => {
   const res = await graphql(`
     query {
@@ -25,10 +46,10 @@ module.exports.createPages = async ({ graphql, actions, reporter }) => {
   `)
 
   if (res.errors) {
-    reporter.panicOnBuild("Error loading MDX result", result.errors)
+    reporter.panicOnBuild("Error loading MDX result in createPages", res.errors)
   }
 
-  res.data.allMdx.nodes.forEach(node => {
+  res.data?.allMdx.nodes.forEach(node => {
     if (node.frontmatter.type === "chapter-heading") {
       return
     }
@@ -41,25 +62,4 @@ module.exports.createPages = async ({ graphql, actions, reporter }) => {
       },
     })
   })
-}
-
-// Create slug and title fields for each file
-module.exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
-
-  if (node.internal.type === "Mdx") {
-    const parent = getNode(node.parent)
-
-    let slug = parent.relativePath.replace(parent.ext, "")
-
-    if (slug === "index") {
-      slug = ""
-    }
-    createNodeField({ node, name: "slug", value: `/${slug}` })
-    createNodeField({
-      node,
-      name: "title",
-      value: node.frontmatter.title,
-    })
-  }
 }
