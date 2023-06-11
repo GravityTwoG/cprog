@@ -31,7 +31,10 @@ const plugins = [
           resolve: "gatsby-remark-prismjs",
           options: {
             classPrefix: "language-",
-            inlineCodeMarker: true,
+            inlineCodeMarker: "±",
+            // If setting this to true, the parser won't handle and highlight inline
+            // code used in markdown i.e. single backtick code like `this`.
+            noInlineHighlight: false,
           },
         },
       ],
