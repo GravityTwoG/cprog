@@ -1,10 +1,9 @@
 import React from "react"
 import { mdxComponents } from "../../src/components/mdxComponents"
-import { Pre } from "../../src/components/mdxComponents/Pre"
 
 import sleepImg from "./sleep1.jpg"
 
-const { Flex } = mdxComponents
+const { Flex, pre: Pre } = mdxComponents
 
 export const Intro = () => (
   <Flex className="fxww flex-childs">
