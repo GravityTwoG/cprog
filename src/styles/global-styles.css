@@ -49,11 +49,15 @@ a:hover {
   color: #ff6975;
 }
 
-.paragraph {
+p.paragraph {
   margin: 1rem 0 2.5rem;
   line-height: 1.5;
   font-size: var(--commonTextSize);
   overflow-wrap: break-word;
+}
+
+p.paragraph > div {
+  display: inline;
 }
 
 .headerTitle {
@@ -242,10 +246,6 @@ img {
   .gatsby-highlight code {
     font-size: 14px;
   }
-}
-
-p.paragraph > div {
-  display: inline;
 }
 
 html *:not(pre) > code[class*="language-"] {

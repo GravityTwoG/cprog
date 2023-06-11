@@ -7,7 +7,8 @@ import { AnchorTag } from "./Anchor"
 import { Icon } from "./Icons"
 import { Table } from "./Table"
 import { BlockQuote } from "./BlockQuote"
-import { components } from "./Math"
+import { MathBlock, MathInline } from "./Math"
+import { SSRWrapper } from "./SSRWrapper"
 
 const StyledFlex = styled.div`
   display: flex;
@@ -79,43 +80,63 @@ export function generateHeadingId(title) {
 }
 
 export const mdxComponents = {
+  p: props => <p {...props} className="paragraph" />,
   h1: ({ children, ...props }) => (
-    <Heading as="h1" className="heading1" {...props}>
+    <Heading {...props} as="h1" className="heading1">
       {children}
     </Heading>
   ),
   h2: ({ children, ...props }) => (
-    <Heading as="h2" className="heading2" {...props}>
+    <Heading {...props} as="h2" className="heading2">
       {children}
     </Heading>
   ),
   h3: ({ children, ...props }) => (
-    <Heading as="h3" className="heading3" {...props}>
+    <Heading {...props} as="h3" className="heading3">
       {children}
     </Heading>
   ),
   h4: ({ children, ...props }) => (
-    <Heading as="h4" className="heading4" {...props}>
+    <Heading {...props} as="h4" className="heading4">
       {children}
     </Heading>
   ),
   h5: ({ children, ...props }) => (
-    <Heading as="h5" className="heading5" {...props}>
+    <Heading {...props} as="h5" className="heading5">
       {children}
     </Heading>
   ),
   h6: ({ children, ...props }) => (
-    <Heading as="h6" className="heading6" {...props}>
+    <Heading {...props} as="h6" className="heading6">
       {children}
     </Heading>
   ),
-  p: props => <p className="paragraph" {...props} />,
-  a: AnchorTag,
-  div: components.div,
-  span: components.span,
-  pre: Pre,
-  Icon,
   blockquote: BlockQuote,
   table: Table,
+  a: AnchorTag,
+  div: props => {
+    if (props.className?.includes("math-display")) {
+      return (
+        <SSRWrapper fallback={<math {...props} />}>
+          <MathBlock {...props} />
+        </SSRWrapper>
+      )
+    }
+    return <div {...props} />
+  },
+  span: props => {
+    if (props.className?.includes("math-inline")) {
+      return (
+        <SSRWrapper fallback={<span {...props} />}>
+          <MathInline {...props} />
+        </SSRWrapper>
+      )
+    }
+
+    return <span {...props} />
+  },
+  // shortcodes
+  Icon,
   Flex: StyledFlex,
+  Pre: Pre,
 }

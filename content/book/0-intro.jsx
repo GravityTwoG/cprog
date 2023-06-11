@@ -3,7 +3,7 @@ import { mdxComponents } from "../../src/components/mdxComponents"
 
 import sleepImg from "./sleep1.jpg"
 
-const { Flex, pre: Pre } = mdxComponents
+const { Flex, Pre } = mdxComponents
 
 export const Intro = () => (
   <Flex className="fxww flex-childs">

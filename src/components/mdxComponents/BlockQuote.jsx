@@ -14,7 +14,7 @@ const StyledBlockQuote = styled.blockquote`
     color: #fff;
   }
 
-  & p {
+  & p.paragraph {
     padding: 0;
     margin: 0;
   }
