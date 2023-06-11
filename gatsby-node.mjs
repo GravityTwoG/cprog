@@ -1,12 +1,10 @@
-const path = require("path")
-const { setFieldsOnGraphQLNodeType } = require("./navigation")
+import path from "path"
+export { setFieldsOnGraphQLNodeType } from "./navigation.mjs"
 
 const bookTemplate = path.resolve("./src/templates/Book.jsx")
 
-module.exports.setFieldsOnGraphQLNodeType = setFieldsOnGraphQLNodeType
-
 // Create slug and title fields for each node of type Mdx
-module.exports.onCreateNode = ({ node, actions, getNode }) => {
+export const onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === "Mdx") {
@@ -26,7 +24,7 @@ module.exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 }
 
-module.exports.createPages = async ({ graphql, actions, reporter }) => {
+export const createPages = async ({ graphql, actions, reporter }) => {
   const res = await graphql(`
     query {
       allMdx {

@@ -1,4 +1,13 @@
-const config = require("./config")
+// const config = require("./config")
+import { visit } from "unist-util-visit"
+import { dirname } from "path"
+import { fileURLToPath } from "url"
+import remarkGfm from "remark-gfm"
+import remarkMath from "remark-math"
+
+import config from "./config.mjs"
+
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
 const plugins = [
   "gatsby-plugin-sass",
@@ -16,7 +25,26 @@ const plugins = [
     options: {
       extensions: [".md", ".mdx"],
       mdxOptions: {
-        remarkPlugins: [require("remark-math"), require("remark-gfm")],
+        remarkPlugins: [remarkMath, remarkGfm],
+        rehypePlugins: [
+          // it allows to override html tags im .mdx file
+          // () => tree => {
+          //   // console.log(JSON.stringify(tree))
+          //   visit(tree, "mdxJsxFlowElement", node => {
+          //     console.log(node)
+          //     // node.data?._mdxExplicitJsx = false
+          //     // node.type = "element"
+          //     // node.tagName = node.name
+          //   })
+          // },
+          () => tree => {
+            visit(tree, "mdxJsxTextElement", node => {
+              if (node.data) {
+                delete node.data._mdxExplicitJsx
+              }
+            })
+          },
+        ],
       },
       gatsbyRemarkPlugins: [
         {
@@ -105,7 +133,7 @@ if (
   plugins.push("gatsby-plugin-remove-serviceworker")
 }
 
-module.exports = {
+export default {
   pathPrefix: config.gatsby.pathPrefix,
   siteMetadata: {
     title: config.siteMetadata.title,

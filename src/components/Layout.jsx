@@ -1,9 +1,8 @@
 import React from "react"
 import { styled } from "@linaria/react"
-import { MDXProvider } from "@mdx-js/react"
 
 import config from "../../config"
-import { mdxComponents } from "./mdxComponents"
+
 import { useMediaQuery } from "../hooks/useMediaQuery"
 
 import { Footer } from "./organisms/Footer.jsx"
@@ -109,7 +108,7 @@ const finalLogoLink =
 export const Layout = ({ children, location }) => {
   const isPhoneOrTablet = useMediaQuery("(max-width: 1023px)")
   return (
-    <MDXProvider components={mdxComponents}>
+    <>
       <div style={{ height: "70px", width: "100%" }}>
         <Header location={location} />
       </div>
@@ -139,6 +138,6 @@ export const Layout = ({ children, location }) => {
 
         <RightSideBarWidth className={"rightSidebar "} />
       </Wrapper>
-    </MDXProvider>
+    </>
   )
 }

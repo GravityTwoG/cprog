@@ -1,14 +1,18 @@
 const React = require("react")
+require("prismjs/themes/prism-tomorrow.css")
+const { MDXProvider } = require("@mdx-js/react")
 
 const { Layout } = require("./src/components/Layout")
 const { ThemeProvider } = require("./src/components/ThemeProvider")
 const { PwaProvider } = require("./src/components/PwaProvider")
-require("prismjs/themes/prism-tomorrow.css")
+const mdxComponents = require("./src/components/mdxComponents").mdxComponents
 
 exports.wrapRootElement = ({ element }) => {
   return (
     <PwaProvider>
-      <ThemeProvider>{element}</ThemeProvider>
+      <ThemeProvider>
+        <MDXProvider components={mdxComponents}>{element}</MDXProvider>
+      </ThemeProvider>
     </PwaProvider>
   )
 }
