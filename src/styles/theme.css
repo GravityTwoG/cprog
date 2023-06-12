@@ -10,6 +10,9 @@
   --linkColor: #3884ff;
   --decoColor: rgb(230, 236, 241);
   --boxShadow: rgba(74, 83, 87, 0.1) 0px 3px 10px 0px;
+
+  --tableBorderColor: #cccccc;
+  --tableNthBackground: #f8f8f8;
 }
 
 [data-theme="dark"] {
@@ -21,6 +24,8 @@
   --linkColor: #3884ff;
   --decoColor: #777;
   --boxShadow: rgba(0, 0, 0, 0.3) 0px 4px 12px 0px;
+
+  --tableNthBackground: #146da9;
 }
 
 @media (max-width: 767px) {

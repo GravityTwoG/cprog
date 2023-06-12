@@ -181,6 +181,7 @@ img {
   max-width: 100%;
   border-radius: 5px;
   overflow: hidden;
+  position: relative;
 }
 
 @media (max-width: 320px) {
@@ -255,6 +256,7 @@ html *:not(pre) > code[class*="language-"] {
   color: #ccc;
 }
 
+/* gatsby-remark-images */
 .gatsby-resp-image-figure {
   text-align: center;
 }
@@ -265,4 +267,56 @@ html *:not(pre) > code[class*="language-"] {
 
 .gatsby-resp-image-figcaption {
   margin-top: 1rem;
+}
+
+/* table */
+table {
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 1rem;
+}
+
+@media (max-width: 575px) {
+  table {
+    font-size: 14px;
+  }
+}
+
+thead tr th {
+  position: sticky;
+  top: 0;
+}
+
+table tr {
+  margin: 0;
+  padding: 0;
+  background: var(--backgroundColor);
+}
+
+table thead tr {
+  background-color: var(--tableNthBackground);
+
+  & th {
+    font-weight: bold;
+    border: 1px solid var(--tableBorderColor);
+    text-align: left;
+    margin: 0;
+    padding: 6px 13px;
+    min-width: min-content;
+  }
+}
+
+table tbody tr:nth-of-type(2n) {
+  background-color: var(--tableNthBackground);
+}
+
+table td {
+  border: 1px solid var(--tableBorderColor);
+  text-align: left;
+  margin: 0;
+  padding: 6px 13px;
+  min-width: min-content;
+  word-wrap: normal;
+  white-space: pre-wrap;
 }

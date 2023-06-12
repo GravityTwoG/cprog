@@ -5,7 +5,7 @@ import { copyToClipboard } from "./copyToClipboard"
 import { Pre } from "./Pre"
 import { AnchorTag } from "./Anchor"
 import { Icon } from "./Icons"
-import { Table } from "./Table"
+import { Table, TableWrapper } from "./Table"
 import { BlockQuote } from "./BlockQuote"
 import { MathBlock, MathInline } from "./Math"
 import { SSRWrapper } from "./SSRWrapper"
@@ -139,4 +139,5 @@ export const mdxComponents = {
   Icon,
   Flex: StyledFlex,
   Pre: Pre,
+  TableWrapper,
 }

@@ -26,25 +26,6 @@ const plugins = [
       extensions: [".md", ".mdx"],
       mdxOptions: {
         remarkPlugins: [remarkMath, remarkGfm],
-        rehypePlugins: [
-          // it allows to override html tags im .mdx file
-          // () => tree => {
-          //   // console.log(JSON.stringify(tree))
-          //   visit(tree, "mdxJsxFlowElement", node => {
-          //     console.log(node)
-          //     // node.data?._mdxExplicitJsx = false
-          //     // node.type = "element"
-          //     // node.tagName = node.name
-          //   })
-          // },
-          () => tree => {
-            visit(tree, "mdxJsxTextElement", node => {
-              if (node.data) {
-                delete node.data._mdxExplicitJsx
-              }
-            })
-          },
-        ],
       },
       gatsbyRemarkPlugins: [
         {
