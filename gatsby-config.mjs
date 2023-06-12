@@ -1,5 +1,3 @@
-// const config = require("./config")
-import { visit } from "unist-util-visit"
 import { dirname } from "path"
 import { fileURLToPath } from "url"
 import remarkGfm from "remark-gfm"

@@ -58,14 +58,14 @@
     "remark-gfm": "^3.0.1",
     "remark-math": "^5.1.1",
     "resize-observer-polyfill": "^1.5.1",
-    "sass": "^1.63.3",
-    "unist-util-visit": "^4.1.2"
+    "sass": "^1.63.3"
   },
   "devDependencies": {
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-mdx": "^2.1.0",
+    "netlify-cli": "^15.4.1",
     "prettier": "^2.8.8",
     "rimraf": "^5.0.1"
   },
