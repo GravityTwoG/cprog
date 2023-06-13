@@ -1,6 +1,8 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { styled } from "@linaria/react"
+
 import { Link } from "gatsby"
+
 import { useNavigationArray } from "../../hooks/useNavigationArray"
 
 export const StyledNextPrevious = styled.div`
@@ -84,57 +86,47 @@ export const StyledNextPrevious = styled.div`
 
 export const NextPrevious = ({ mdx }) => {
   const nav = useNavigationArray()
-  let currentIndex
 
-  nav.forEach((el, index) => {
-    if (el && el.url === mdx.fields.slug) {
-      currentIndex = index
+  const { nextInfo, previousInfo } = useMemo(() => {
+    const idx = nav.findIndex(el => el && el.url === mdx.fields.slug)
+
+    const prev = {}
+    const next = {}
+
+    if (idx < 0) {
+      prev.url = null
+      prev.title = null
+      next.url = null
+      next.title = null
+    } else if (idx === 0) {
+      // first page
+      prev.url = null
+      prev.title = null
+      next.url = nav[idx + 1] ? nav[idx + 1].url : null
+      next.title = nav[idx + 1] ? nav[idx + 1].title : null
+    } else if (idx === nav.length - 1) {
+      // last page
+      prev.url = nav[idx - 1] ? nav[idx - 1].url : null
+      prev.title = nav[idx - 1] ? nav[idx - 1].title : null
+      next.url = null
+      next.title = null
+    } else {
+      // any other page
+      prev.url = nav[idx - 1].url
+      prev.title = nav[idx - 1].title
+      next.url = nav[idx + 1].url
+      next.title = nav[idx + 1].title
     }
-  })
 
-  const nextInfo = {}
-
-  const previousInfo = {}
-
-  if (currentIndex === undefined) {
-    // index
-    if (nav[0]) {
-      nextInfo.url = nav[0].url
-      nextInfo.title = nav[0].title
-    }
-    previousInfo.url = null
-    previousInfo.title = null
-    currentIndex = -1
-  } else if (currentIndex === 0) {
-    // first page
-    nextInfo.url = nav[currentIndex + 1] ? nav[currentIndex + 1].url : null
-    nextInfo.title = nav[currentIndex + 1] ? nav[currentIndex + 1].title : null
-    previousInfo.url = null
-    previousInfo.title = null
-  } else if (currentIndex === nav.length - 1) {
-    // last page
-    nextInfo.url = null
-    nextInfo.title = null
-    previousInfo.url = nav[currentIndex - 1] ? nav[currentIndex - 1].url : null
-    previousInfo.title = nav[currentIndex - 1]
-      ? nav[currentIndex - 1].title
-      : null
-  } else if (currentIndex) {
-    // any other page
-    nextInfo.url = nav[currentIndex + 1].url
-    nextInfo.title = nav[currentIndex + 1].title
-    if (nav[currentIndex - 1]) {
-      previousInfo.url = nav[currentIndex - 1].url
-      previousInfo.title = nav[currentIndex - 1].title
-    }
-  }
+    return { previousInfo: prev, nextInfo: next }
+  }, [nav])
 
   return (
     <StyledNextPrevious>
-      {previousInfo.url && currentIndex >= 0 && (
+      {previousInfo.url && (
         <Link
-          aria-label={nav[currentIndex - 1].title}
-          to={nav[currentIndex - 1].url}
+          aria-label={previousInfo.title}
+          to={previousInfo.url}
           className={"previousBtn"}
         >
           <div className="arrow">
@@ -142,23 +134,19 @@ export const NextPrevious = ({ mdx }) => {
           </div>
 
           <div className={"preRightWrapper"}>
-            <div className={"nextPreviousTitle"}>
-              {nav[currentIndex - 1].title}
-            </div>
+            <div className={"nextPreviousTitle"}>{previousInfo.title}</div>
           </div>
         </Link>
       )}
 
-      {nextInfo.url && currentIndex >= 0 && (
+      {nextInfo.url && (
         <Link
-          aria-label={nav[currentIndex + 1] && nav[currentIndex + 1].title}
-          to={nav[currentIndex + 1].url}
+          aria-label={nextInfo.title}
+          to={nextInfo.url}
           className={"nextBtn"}
         >
           <div className={"nextRightWrapper"}>
-            <div className={"nextPreviousTitle"}>
-              {nav[currentIndex + 1] && nav[currentIndex + 1].title}
-            </div>
+            <div className={"nextPreviousTitle"}>{nextInfo.title}</div>
           </div>
 
           <div className="arrow">

@@ -1,10 +1,10 @@
 import React from "react"
 import { styled } from "@linaria/react"
-import { ExternalLink } from "react-feather"
 
 import config from "../../../config"
 
 import { Link } from "../atoms/Link"
+import { ExternalLinkIcon } from "../atoms/ExternalLinkIcon"
 import { ContentPadding } from "../atoms/ContentPadding"
 import { StyledText } from "../atoms/StyledText"
 import { GithubProfile } from "../molecules/GithubProfile"
@@ -24,12 +24,12 @@ export const Footer = () => (
           <strong>Все материалы взяты с сайта </strong>
           <Link to="http://ermak.cs.nstu.ru/cprog/html/" rel="noopener">
             ermak.cs.nstu.ru/cprog/html
-            <ExternalLink size={14} style={{ marginLeft: "0.3rem" }} />
+            <ExternalLinkIcon size={14} style={{ marginLeft: "0.3rem" }} />
           </Link>
         </p>
       </StyledText>
 
-      {config.author?.githubUrl && config.author?.githubUrl ? (
+      {config.author?.githubUrl && config.author.githubUrl ? (
         <GithubProfile
           url={config.author.githubUrl}
           nickname={config.author.githubNickname}

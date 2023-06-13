@@ -131,7 +131,7 @@ const BookTemplate = props => {
         )}
         {docsLocation && (
           <GithubButton to={`${docsLocation}/${mdx.parent.relativePath}`}>
-            Edit on GitHub
+            Редактировать на GitHub
           </GithubButton>
         )}
       </ContentPadding>

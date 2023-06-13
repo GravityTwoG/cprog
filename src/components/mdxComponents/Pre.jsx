@@ -17,11 +17,11 @@ const StyledPre = styled.pre`
   }
 `
 
-export const Pre = props => {
+export const Pre = ({ wrap = false, ...props }) => {
   return (
     <StyledPre
       {...props}
-      className={`${props.className || "" + props.wrap ? " wrap" : ""}`}
+      className={`${props.className || "" + wrap ? " wrap" : ""}`}
     />
   )
 }

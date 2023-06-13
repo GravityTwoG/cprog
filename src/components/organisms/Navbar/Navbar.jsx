@@ -1,14 +1,13 @@
 import React from "react"
 import { styled } from "@linaria/react"
 
-import { ExternalLink as ExternalLinkIcon } from "react-feather"
-import { ListItem } from "./ListItem"
-import { Divider } from "./Divider"
-import { PwaWidget } from "../PwaWidget"
-import { TreeNode } from "./TreeNode"
-
 import config from "../../../../config"
 import { useNavigationTree } from "../../../hooks/useNavigationTree"
+
+import { PwaWidget } from "../PwaWidget"
+import { Divider } from "./Divider"
+import { TreeNode } from "./TreeNode"
+import { ExternalLink } from "./ExternalLink"
 
 const StyledSidebar = styled.aside`
   width: 100%;
@@ -59,27 +58,6 @@ const StyledSidebar = styled.aside`
       color: #001934;
     }
   }
-
-  .external-links {
-    padding-inline-start: 0;
-  }
-  .external-links a {
-    display: inline-block;
-    width: 100%;
-    padding: 0.45rem 1rem 0.45rem 2rem;
-    & > svg {
-      vertical-align: middle;
-      margin-left: 6px;
-      margin-bottom: 3px;
-    }
-
-    border-radius: 5px;
-    background-color: transparent;
-    transition: all 0.2s ease;
-    &:hover {
-      background-color: var(--hoverColor);
-    }
-  }
 `
 
 const SidebarUl = styled.ul`
@@ -94,7 +72,7 @@ const SidebarUl = styled.ul`
     line-height: 1.5;
     border-style: solid none solid solid;
     border-width: 1px 0 1px 1px;
-    border-color: transparent currentcolor transparent transparent;
+    border-color: transparent;
   }
   & .item > a {
     text-decoration: none;
@@ -104,15 +82,6 @@ const SidebarUl = styled.ul`
     width: 100%;
   }
 `
-
-const ExternalLink = ({ link, label }) => {
-  return (
-    <ListItem to={link} rel="noopener">
-      {label}
-      <ExternalLinkIcon />
-    </ListItem>
-  )
-}
 
 export const Navbar = ({ location, ...props }) => {
   const treeData = useNavigationTree()
@@ -137,12 +106,10 @@ export const Navbar = ({ location, ...props }) => {
               {...item}
             />
           ))}
-
-          {config.sidebar.links && config.sidebar.links.length > 0 && (
-            <Divider />
-          )}
         </SidebarUl>
       </nav>
+
+      {config.sidebar.links && config.sidebar.links.length ? <Divider /> : null}
 
       <ul className="external-links">
         {config.sidebar.links.map((link, key) => {

@@ -199,13 +199,11 @@ export const Header = ({ location }) => {
   }, [])
 
   const [, isDarkThemeActive] = useThemeContext()
-  const finalLogoLink =
-    config.header.logoLink !== "" ? config.header.logoLink : "/"
   return (
     <StyledHeader ref={headerRef} data-is-hidden="false">
       <StyledHeaderBG />
       <Link
-        to={finalLogoLink}
+        to={config.header.logoLink ?? "/"}
         aria-label={config.siteMetadata.title}
         title={config.siteMetadata.title}
       >
