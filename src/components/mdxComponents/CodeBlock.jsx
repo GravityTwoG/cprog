@@ -98,7 +98,7 @@ export const CodeBlock = ({ children, ...props }) => {
         {/* <CopyButton string={children} /> */}
       </StyledHeader>
 
-      <pre role="region" aria-label="Code block">
+      <pre role="region" aria-label="Code block" aria-labelledby="Code block">
         {children}
       </pre>
     </StyledDiv>

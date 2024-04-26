@@ -29,7 +29,7 @@ export const Footer = () => (
         </p>
       </StyledText>
 
-      {config.author?.githubUrl && config.author?.githubUrl ? (
+      {config.author?.githubUrl ? (
         <GithubProfile
           url={config.author.githubUrl}
           nickname={config.author.githubNickname}

@@ -7,18 +7,27 @@ const ignoreIndex = !!config.sidebar.ignoreIndex // boolean
 const { forcedNavOrder = [] } = config.sidebar.forcedNavOrder
 
 function calculateTreeData(pagesArg) {
-  const mapped = pagesArg.map(page => {
-    const { slug, title } = page.fields
-    const { type } = page.frontmatter
+  const pages = []
 
-    return { slug, title, isChapterHeading: type === CHAPTER_HEADING }
-  })
+  for (const page of pagesArg) {
+    const mappedPage = {
+      slug: page.fields.slug,
+      title: page.fields.title,
+      isChapterHeading: page.frontmatter.type === CHAPTER_HEADING,
+    }
 
-  const pages = ignoreIndex ? mapped.filter(page => page.slug !== "/") : mapped
+    if (ignoreIndex) {
+      if (mappedPage.slug !== "/") {
+        pages.push(mappedPage)
+      }
+    } else {
+      pages.push(mappedPage)
+    }
+  }
 
   // build tree
   const tree = { items: [], label: "" }
-  pages.forEach(page => {
+  for (const page of pages) {
     const slugParts = page.slug.split("/")
 
     const directory = trailingSlash
@@ -61,7 +70,7 @@ function calculateTreeData(pagesArg) {
       file.title = page.title
       file.isChapterHeading = page.isChapterHeading
     }
-  })
+  }
 
   // merge tree with forcedNavOrder
   const tmp = [...forcedNavOrder].reverse()
@@ -117,32 +126,33 @@ function sortTree(tree) {
 }
 
 function recursivelyFlattenNav(tree) {
-  if (tree.items.length) {
-    const items = []
+  const items = []
 
-    tree.items.forEach(item => {
-      const res = recursivelyFlattenNav(item)
-      if (Array.isArray(res)) {
-        items.push(...res)
-      } else {
-        items.push(res)
-      }
-    })
-
-    if (!tree.isChapterHeading) {
-      return [{ title: tree.title, url: tree.url }, ...items]
-    }
-
-    return items
+  if (!tree.items.length) {
+    return [{ title: tree.title, url: tree.url }]
+  }
+  if (!tree.isChapterHeading) {
+    items.push({ title: tree.title, url: tree.url })
   }
 
-  return { title: tree.title, url: tree.url }
+  for (const item of tree.items) {
+    const flatChildren = recursivelyFlattenNav(item)
+    items.push(...flatChildren)
+  }
+
+  return items
 }
 
-const buildTreeForPath = async getNodes => {
-  const pages = getNodes()
-    .filter(node => node.internal.type === "Mdx")
-    .map(node => ({ fields: node.fields, frontmatter: node.frontmatter }))
+async function buildTreeForPath(getNodes) {
+  const pages = []
+  for (const node of getNodes()) {
+    if (node.internal.type === "Mdx") {
+      pages.push({
+        fields: node.fields,
+        frontmatter: node.frontmatter,
+      })
+    }
+  }
 
   const tree = calculateTreeData(pages)
   const array = recursivelyFlattenNav(tree)
@@ -150,30 +160,27 @@ const buildTreeForPath = async getNodes => {
 }
 
 module.exports.setFieldsOnGraphQLNodeType = async ({ type, getNodes }) => {
-  if (type.name === "Site") {
-    return {
-      navigation: {
-        type: new GraphQLScalarType({
-          name: "Navigation",
-          serialize(value) {
-            return value
-          },
-        }),
-        resolve: () => {
-          return buildTreeForPath(getNodes)
-        },
-      },
-      order: {
-        type: GraphQLInt,
-        result: node => {
-          if (node.fields && node.fields.order) {
-            return node.fields.order
-          }
-          return 0
-        },
-      },
-    }
+  if (type.name !== "Site") {
+    return {}
   }
 
-  return {}
+  return {
+    navigation: {
+      type: new GraphQLScalarType({
+        name: "Navigation",
+        serialize(value) {
+          return value
+        },
+      }),
+      resolve: () => {
+        return buildTreeForPath(getNodes)
+      },
+    },
+    order: {
+      type: GraphQLInt,
+      result: node => {
+        return node.fields?.order ? node.fields.order : 0
+      },
+    },
+  }
 }

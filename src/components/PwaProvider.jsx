@@ -1,5 +1,4 @@
-import React, { useContext, useEffect, useState } from "react"
-
+import React, { useCallback, useContext, useEffect, useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 
 const PwaContext = React.createContext({
@@ -7,8 +6,6 @@ const PwaContext = React.createContext({
   buildDate: "",
   installable: false,
 })
-
-let deferredPrompt
 
 export const PwaProvider = props => {
   const data = useStaticQuery(graphql`
@@ -18,41 +15,46 @@ export const PwaProvider = props => {
       }
     }
   `)
-  const [buildDate] = useState(formatDate(data.site.buildTime))
   const [installable, setInstallable] = useState(false)
+  const [deferredPrompt, setDeferredPrompt] = useState(null)
+  const buildDate = formatDate(data.site.buildTime)
 
   useEffect(() => {
-    function beforeinstallprompt(e) {
+    function beforeInstallPrompt(e) {
       // Prevent the mini-infobar from appearing on mobile
       e.preventDefault()
       // Stash the event so it can be triggered later.
-      deferredPrompt = e
+      setDeferredPrompt(e)
       setInstallable(true)
       console.log("deferredPrompt saved", e)
     }
-
-    window.addEventListener("beforeinstallprompt", beforeinstallprompt)
+    window.addEventListener("beforeinstallprompt", beforeInstallPrompt)
 
     return () =>
-      window.removeEventListener("beforeinstallprompt", beforeinstallprompt)
+      window.removeEventListener("beforeinstallprompt", beforeInstallPrompt)
   }, [])
 
-  const installApp = () => {
-    setInstallable(false)
-    // Show the install prompt
-    deferredPrompt.prompt()
-    // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then(choiceResult => {
+  const installApp = useCallback(async () => {
+    if (!deferredPrompt) return
+
+    try {
+      setInstallable(false)
+      // Show the install prompt
+      deferredPrompt.prompt()
+      // Wait for the user to respond to the prompt
+      const choiceResult = await deferredPrompt.userChoice
       if (choiceResult.outcome === "accepted") {
         console.log("User accepted the install prompt")
       } else {
         console.log("User dismissed the install prompt")
       }
-    })
-  }
+    } catch (e) {
+      console.error(e)
+    }
+  }, [deferredPrompt])
 
   return (
-    <PwaContext.Provider value={{ buildDate, installApp, installable }}>
+    <PwaContext.Provider value={{ buildDate, installable, installApp }}>
       {props.children}
     </PwaContext.Provider>
   )
