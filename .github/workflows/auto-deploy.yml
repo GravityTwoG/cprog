@@ -26,7 +26,7 @@ jobs:
       # Installs specific version of Node.js
       - uses: actions/setup-node@v4
         with:
-          node-version: 14
+          node-version: 22.23.4
 
       # Runs a single command using the runners shell
       - name: Install all dependencies
